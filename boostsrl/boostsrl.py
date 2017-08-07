@@ -4,7 +4,7 @@
 
    Name:         boostsrl.py
    Author:       Alexander L. Hayes
-   Updated:      August 5, 2017
+   Updated:      August 7, 2017
    License:      GPLv3
 '''
 
@@ -21,6 +21,13 @@ else:
 def call_process(call):
     p = subprocess.Popen(call, shell=True)
     os.waitpid(p.pid, 0)
+
+    
+def write_to_file(content, path):
+    '''Takes a list (content) and a path/file (path) and writes each line of the list to the file location.'''
+    with open(path, 'w') as f:
+        for line in content:
+            f.write(line)
 
 class modes(object):
 
@@ -46,11 +53,9 @@ class modes(object):
     def infer_modes(self, background):
         pass
         
-class boostsrl_train(object):
-
-    # BoostSRL Training method.
-
-    def __init__(self, target, train_pos, train_neg, train_facts, advice=False, softm=False, alpha=0.5, beta=-2, trees=10):
+class train(object):
+    
+    def __init__(self, target, train_pos, train_neg, train_facts, save=False, advice=False, softm=False, alpha=0.5, beta=-2, trees=10):
         self.target = target
         self.train_pos = train_pos
         self.train_neg = train_neg
@@ -59,32 +64,24 @@ class boostsrl_train(object):
         self.softm = softm
         self.alpha = alpha
         self.beta = beta
-        self.trees = trees
-        self.TRAINED = 0
+        self.trees = str(trees)
 
-    def write_to_file(self, content, path):
-        '''Takes a list (content) and a path/file (path) and writes each line of the list to the file location.'''
-        with open(path, 'w') as f:
-            for line in content:
-                f.write(line)
-        f.close()
+        write_to_file(self.train_pos, 'boostsrl/train/train_pos.txt')
+        write_to_file(self.train_neg, 'boostsrl/train/train_neg.txt')
+        write_to_file(self.train_facts, 'boostsrl/train/train_facts.txt')
+        
+        CALL = '(cd boostsrl; java -jar v1-0.jar -l -train train/ -target ' + self.target + \
+               ' -trees ' + self.trees + ' > train_output.txt 2>&1)'
+        #print(CALL)
+        call_process(CALL)
 
     def test_cases(self):
         # test that train_pos, train_neg (etc.) are lists of strings
         # tests that each string is in predicate-logic notation.
         # check to make sure there are no references that are not present in the modes object.
+        # check that train_bk.txt and test_bk.txt exist, and both point to a background file.
         pass
         
-    def Train(self):
-        # Begin by writing the contents of each (pos/neg/facts) to respectives files that will be used in a few.
-        self.write_to_file(self.train_pos, 'boostsrl-src/train/train_pos.txt')
-        self.write_to_file(self.train_neg, 'boostsrl-src/train/train_neg.txt')
-        self.write_to_file(self.train_facts, 'boostsrl-src/train/train_facts.txt')
-        
-        CALL = 'java -jar v1-0.jar -l -train boostsrl-src/train/ -target ' + self.target + ' -trees ' + self.trees + ' 2>&1'
-        call_process(CALL)
-        self.TRAINED = 1
-
     def Tree(self, treenumber):
         # Tree number is between 0 and the self.trees.
         if (treenumber > (self.trees - 1)) or (self.TRAINED == 0):
@@ -93,11 +90,21 @@ class boostsrl_train(object):
             # read the tree from the file produced by boostsrl
             pass
 
-class boostsrl_test(object):
+class test(object):
 
     # BoostSRL Testing method.
 
-    def __init__(self, test_pos, test_neg, test_facts, trees=10):
-        self.trees = trees
+    def __init__(self, target, test_pos, test_neg, test_facts, trees=10):
+        self.target = target
+        self.test_pos = test_pos
+        self.test_neg = test_neg
+        self.test_facts = test_facts
+        self.trees = str(trees)
 
+        write_to_file(self.test_pos, 'boostsrl/test/test_pos.txt')
+        write_to_file(self.test_neg, 'boostsrl/test/test_neg.txt')
+        write_to_file(self.test_facts, 'boostsrl/test/test_facts.txt')
         
+        CALL = '(cd boostsrl; java -jar v1-0.jar -i -model train/models/ -test test/ -target ' + self.target + \
+               ' -trees ' + self.trees + ' > test_output.txt 2>&1)'
+        call_process(CALL)

@@ -1,10 +1,30 @@
+# Alexander here, adding a few things to the gitignore.
+*~
+*.pyc
+
+# log files
+boostsrl/train_output.txt
+boostsrl/test_output.txt
+boostsrl/train/train_gleaner.txt
+boostsrl/train/train_learn_dribble.txt
+boostsrl/test/test_infer_dribble.txt
+boostsrl/test/query_*.txt
+*_gleaner.txt
+
+# positives, negatives, and facts.
+boostsrl/*/*_pos.txt
+boostsrl/*/*_neg.txt
+boostsrl/*/*_facts.txt
+
+# results
+boostsrl/test/results_*.db
+boostsrl/train/models/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
 
-# No need for emacs backup files.
-*~
 
 # C extensions
 *.so
