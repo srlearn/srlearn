@@ -27,7 +27,8 @@ def write_to_file(content, path):
     '''Takes a list (content) and a path/file (path) and writes each line of the list to the file location.'''
     with open(path, 'w') as f:
         for line in content:
-            f.write(line)
+            f.write(line + '\n')
+    f.close()
 
 class modes(object):
     
@@ -56,10 +57,18 @@ class modes(object):
         background_knowledge = []
         for a, v in relevant:
             if v is True:
-                print(a + ': ' + str(v).lower() + '.')
+                s = a + ': ' + str(v).lower() + '.'
+                background_knowledge.append(s)
             else:
-                print('setParam: ' + a + '=' + str(v) + '.')
-                #print(a + ': ' + str(v) + '.')
+                s = 'setParam: ' + a + '=' + str(v) + '.'
+                background_knowledge.append(s)
+
+        print(background_knowledge)
+        for pred in background:
+            background_knowledge.append(pred)
+        print(background_knowledge)
+        # Write the newly created background_knowledge to a file: background.txt
+        write_to_file(background_knowledge, 'boostsrl/background.txt')
             
     def check_exists(self, predicate):
         pass
