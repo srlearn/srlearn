@@ -25,9 +25,25 @@ def call_process(call):
 class modes(object):
 
     def __init__(self):
-        pass
+        self.loadAllLibraries = False
+        self.usePrologVariables = False
+        # Note to self: check further into the difference between treeDepth and maxTreeDepth
+        self.maxTreeDepth = 3
+        self.treeDepth = 3
+        self.nodeSize = 1
+        self.numOfClauses = 8
+        self.numOfCycles = 8
+        self.minLCTrees = 5
+        self.incrLCTrees = 5
+        self.recursion = False
+        self.lineSearch = False
+        self.resampleNegs = False
+        self.queryPred = 'advisedby/2'
 
     def check_exists(self, predicate):
+        pass
+
+    def infer_modes(self, background):
         pass
         
 class boostsrl_train(object):
