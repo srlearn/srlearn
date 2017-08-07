@@ -65,7 +65,7 @@ class modes(object):
 
         print(background_knowledge)
         for pred in background:
-            background_knowledge.append(pred)
+            background_knowledge.append('mode: ' + pred)
         print(background_knowledge)
         # Write the newly created background_knowledge to a file: background.txt
         write_to_file(background_knowledge, 'boostsrl/background.txt')

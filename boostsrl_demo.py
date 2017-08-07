@@ -19,7 +19,7 @@ precomputes = {
 
 #background = boostsrl.modes(bk, treeDepth=4, nodeSize=2, numOfClauses=8, useStdLogicVariables=True)
 #background = boostsrl.modes(bk, treeDepth=4)
-background = boostsrl.modes(bk)
+background = boostsrl.modes(bk, useStdLogicVariables=True)
 
 train_pos = ['cancer(Alice).', 'cancer(Bob).', 'cancer(Chuck).', 'cancer(Fred).']
 train_neg = ['cancer(Dan).','cancer(Earl).']
@@ -50,8 +50,8 @@ test_pos = [
 ]
 
 test_neg = [
-    'cancer(Voldemort)',
-    'cancer(Watson)'
+    'cancer(Voldemort).',
+    'cancer(Watson).'
 ]
 
 test_facts = [

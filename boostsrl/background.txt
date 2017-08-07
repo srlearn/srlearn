@@ -1,4 +1,5 @@
-friends(+Person, -Person).
-friends(-Person, +Person).
-smokes(+Person).
-cancer(+Person).
+useStdLogicVariables: true.
+mode: friends(+Person, -Person).
+mode: friends(-Person, +Person).
+mode: smokes(+Person).
+mode: cancer(+Person).
