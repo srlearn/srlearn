@@ -63,10 +63,9 @@ class modes(object):
                 s = 'setParam: ' + a + '=' + str(v) + '.'
                 background_knowledge.append(s)
 
-        print(background_knowledge)
         for pred in background:
             background_knowledge.append('mode: ' + pred)
-        print(background_knowledge)
+
         # Write the newly created background_knowledge to a file: background.txt
         write_to_file(background_knowledge, 'boostsrl/background.txt')
             
@@ -112,21 +111,28 @@ class train(object):
             # read the tree from the file produced by boostsrl
             pass
 
-class test(object):
+def test(target, test_pos, test_neg, test_facts, trees=10):
 
-    # BoostSRL Testing method.
+    write_to_file(test_pos, 'boostsrl/test/test_pos.txt')
+    write_to_file(test_neg, 'boostsrl/test/test_neg.txt')
+    write_to_file(test_facts, 'boostsrl/test/test_facts.txt')
+    
+    CALL = '(cd boostsrl; java -jar v1-0.jar -i -model train/models/ -test test/ -target ' + target + \
+           ' -trees ' + str(trees) + ' -aucJarPath . > test_output.txt 2>&1)'
+    call_process(CALL)
 
-    def __init__(self, target, test_pos, test_neg, test_facts, trees=10):
-        self.target = target
-        self.test_pos = test_pos
-        self.test_neg = test_neg
-        self.test_facts = test_facts
-        self.trees = str(trees)
+    import re
+    text = open('boostsrl/test_output.txt').read()
+    line = re.findall(r'AUC ROC.*|AUC PR.*|CLL.*|Precision.*|Recall.*|%   F1.*', text)
+    line = [word.replace(' ','').replace('\t','').replace('%','').replace('atthreshold=',',') for word in line]
 
-        write_to_file(self.test_pos, 'boostsrl/test/test_pos.txt')
-        write_to_file(self.test_neg, 'boostsrl/test/test_neg.txt')
-        write_to_file(self.test_facts, 'boostsrl/test/test_facts.txt')
-        
-        CALL = '(cd boostsrl; java -jar v1-0.jar -i -model train/models/ -test test/ -target ' + self.target + \
-               ' -trees ' + self.trees + ' -aucJarPath . > test_output.txt 2>&1)'
-        call_process(CALL)
+    results = {
+        'AUC ROC': line[0][line[0].index('=')+1:],
+        'AUC PR': line[1][line[1].index('=')+1:],
+        'CLL': line[2][line[2].index('=')+1:],
+        'Precision': line[3][line[3].index('=')+1:],
+        'Recall': line[4][line[4].index('=')+1:],
+        'F1': line[5][line[5].index('=')+1:]
+    }
+
+    return results

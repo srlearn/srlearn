@@ -1,4 +1,7 @@
+setParam: numOfClauses=8.
 useStdLogicVariables: true.
+setParam: treeDepth=4.
+setParam: nodeSize=2.
 mode: friends(+Person, -Person).
 mode: friends(-Person, +Person).
 mode: smokes(+Person).

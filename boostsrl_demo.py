@@ -24,6 +24,9 @@ test_pos = ['cancer(Zod).', 'cancer(Xena).', 'cancer(Yoda).']
 test_neg = ['cancer(Voldemort).', 'cancer(Watson).']
 test_facts = ['friends(Zod, Xena).', 'friends(Xena, Watson).', 'friends(Watson, Voldemort).', 'friends(Voldemort, Yoda).', 'friends(Yoda, Zod).', 'friends(Xena, Zod).', 'friends(Watson, Xena).', 'friends(Voldemort, Watson).', 'friends(Yoda, Voldemort).', 'friends(Zod, Yoda).', 'smokes(Zod).', 'smokes(Xena).', 'smokes(Yoda).']
 
-background = boostsrl.modes(bk, useStdLogicVariables=True)
+background = boostsrl.modes(bk, useStdLogicVariables=True, treeDepth=4, nodeSize=2, numOfClauses=8)
 model = boostsrl.train('cancer', train_pos, train_neg, train_facts)
 results = boostsrl.test('cancer', test_pos, test_neg, test_facts)
+#print(results.results['AUC ROC'])
+#print(results['AUC ROC'])
+print(results)
