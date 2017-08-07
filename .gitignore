@@ -10,6 +10,7 @@ boostsrl/train/train_learn_dribble.txt
 boostsrl/test/test_infer_dribble.txt
 boostsrl/test/query_*.txt
 *_gleaner.txt
+boostsrl/backup-background.txt
 
 # positives, negatives, and facts.
 boostsrl/*/*_pos.txt
@@ -19,6 +20,7 @@ boostsrl/*/*_facts.txt
 # results
 boostsrl/test/results_*.db
 boostsrl/train/models/*
+boostsrl/test/AUC/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

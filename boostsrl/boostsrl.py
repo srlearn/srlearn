@@ -30,23 +30,37 @@ def write_to_file(content, path):
             f.write(line)
 
 class modes(object):
-
-    def __init__(self):
-        self.loadAllLibraries = False
-        self.usePrologVariables = False
+    
+    def __init__(self, background, loadAllLibraries=False, useStdLogicVariables=False, usePrologVariables=False,
+                 recursion=False, lineSearch=False, resampleNegs=False,
+                 treeDepth=None, maxTreeDepth=None, nodeSize=None, numOfClauses=None, numOfCycles=None, minLCTrees=None, incrLCTrees=None):
+        self.loadAllLibraries = loadAllLibraries
+        self.useStdLogicVariables = useStdLogicVariables
+        self.usePrologVariables = usePrologVariables
         # Note to self: check further into the difference between treeDepth and maxTreeDepth
-        self.maxTreeDepth = 3
-        self.treeDepth = 3
-        self.nodeSize = 1
-        self.numOfClauses = 8
-        self.numOfCycles = 8
-        self.minLCTrees = 5
-        self.incrLCTrees = 5
-        self.recursion = False
-        self.lineSearch = False
-        self.resampleNegs = False
-        self.queryPred = 'advisedby/2'
+        self.treeDepth = treeDepth
+        self.maxTreeDepth = maxTreeDepth
+        self.nodeSize = nodeSize
+        self.numOfClauses = numOfClauses
+        self.numOfCycles = numOfCycles
+        self.minLCTrees = minLCTrees
+        self.incrLCTrees = incrLCTrees
+        self.recursion = recursion
+        self.lineSearch = lineSearch
+        self.resampleNegs = resampleNegs
+        #self.queryPred = 'advisedby/2'
 
+        # Many of the arguments in the modes object are optional this shows us the values of the ones that are neither false nor none.
+        relevant = [[attr, value] for attr, value in self.__dict__.iteritems() if (value is not False) and (value is not None)]
+
+        background_knowledge = []
+        for a, v in relevant:
+            if v is True:
+                print(a + ': ' + str(v).lower() + '.')
+            else:
+                print('setParam: ' + a + '=' + str(v) + '.')
+                #print(a + ': ' + str(v) + '.')
+            
     def check_exists(self, predicate):
         pass
 
@@ -72,7 +86,6 @@ class train(object):
         
         CALL = '(cd boostsrl; java -jar v1-0.jar -l -train train/ -target ' + self.target + \
                ' -trees ' + self.trees + ' > train_output.txt 2>&1)'
-        #print(CALL)
         call_process(CALL)
 
     def test_cases(self):
@@ -84,7 +97,7 @@ class train(object):
         
     def Tree(self, treenumber):
         # Tree number is between 0 and the self.trees.
-        if (treenumber > (self.trees - 1)) or (self.TRAINED == 0):
+        if (treenumber > (self.trees - 1)):
             raise Exception('Tried to find a tree that does not exist.')
         else:
             # read the tree from the file produced by boostsrl
@@ -106,5 +119,5 @@ class test(object):
         write_to_file(self.test_facts, 'boostsrl/test/test_facts.txt')
         
         CALL = '(cd boostsrl; java -jar v1-0.jar -i -model train/models/ -test test/ -target ' + self.target + \
-               ' -trees ' + self.trees + ' > test_output.txt 2>&1)'
+               ' -trees ' + self.trees + ' -aucJarPath . > test_output.txt 2>&1)'
         call_process(CALL)
