@@ -86,14 +86,14 @@ class train(object):
         self.softm = softm
         self.alpha = alpha
         self.beta = beta
-        self.trees = str(trees)
+        self.trees = trees
 
         write_to_file(self.train_pos, 'boostsrl/train/train_pos.txt')
         write_to_file(self.train_neg, 'boostsrl/train/train_neg.txt')
         write_to_file(self.train_facts, 'boostsrl/train/train_facts.txt')
         
         CALL = '(cd boostsrl; java -jar v1-0.jar -l -train train/ -target ' + self.target + \
-               ' -trees ' + self.trees + ' > train_output.txt 2>&1)'
+               ' -trees ' + str(self.trees) + ' > train_output.txt 2>&1)'
         call_process(CALL)
 
     def test_cases(self):
@@ -103,13 +103,15 @@ class train(object):
         # check that train_bk.txt and test_bk.txt exist, and both point to a background file.
         pass
         
-    def Tree(self, treenumber):
+    def tree(self, treenumber):
         # Tree number is between 0 and the self.trees.
         if (treenumber > (self.trees - 1)):
             raise Exception('Tried to find a tree that does not exist.')
         else:
-            # read the tree from the file produced by boostsrl
-            pass
+            tree_file = 'boostsrl/train/models/bRDNs/Trees/' + self.target + 'Tree' + str(treenumber) + '.tree'
+            with open(tree_file, 'r') as f:
+                tree_output = f.read()
+            return tree_output
 
 def test(target, test_pos, test_neg, test_facts, trees=10):
 
