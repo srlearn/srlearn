@@ -9,10 +9,7 @@ bk = [
     'cancer(+Person).'
 ]
 
-bridgers = [
-    'friends/2'
-]
-
+bridgers = ['friends/2']
 precomputes = {
     'num_of_smoking_friends(+Person, #Number).': 'num_of_smoking_friends(x, n) :- friends(x, y), countUniqueBindings((friends(x,z)^smokes(z)), n).'
 }
@@ -26,7 +23,8 @@ test_facts = ['friends(Zod, Xena).', 'friends(Xena, Watson).', 'friends(Watson, 
 
 background = boostsrl.modes(bk, useStdLogicVariables=True, treeDepth=4, nodeSize=2, numOfClauses=8)
 model = boostsrl.train('cancer', train_pos, train_neg, train_facts)
-results = boostsrl.test('cancer', test_pos, test_neg, test_facts)
-#print(results.results['AUC ROC'])
-#print(results['AUC ROC'])
-print(results)
+#results = boostsrl.test('cancer', test_pos, test_neg, test_facts)
+test = boostsrl.bettertest(model, test_pos, test_neg, test_facts)
+
+print(test.summarize_results())
+print(test.inference_results())
