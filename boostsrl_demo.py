@@ -23,13 +23,7 @@ test_facts = ['friends(Zod, Xena).', 'friends(Xena, Watson).', 'friends(Watson, 
 
 background = boostsrl.modes(bk, useStdLogicVariables=True, treeDepth=4, nodeSize=2, numOfClauses=8)
 model = boostsrl.train('cancer', train_pos, train_neg, train_facts)
-print(model.tree(0))
-print(model.tree(1))
-print(model.tree(2))
-print(model.tree(3))
-print(model.tree(4))
-#results = boostsrl.test('cancer', test_pos, test_neg, test_facts)
-test = boostsrl.bettertest(model, test_pos, test_neg, test_facts)
+test = boostsrl.test(model, test_pos, test_neg, test_facts)
 
 print(test.summarize_results())
 print(test.inference_results())

@@ -113,35 +113,27 @@ class train(object):
                 tree_output = f.read()
             return tree_output
 
-def test(target, test_pos, test_neg, test_facts, trees=10):
+    def get_training_time(self):
+        '''Return the training time as a float representing the total number of seconds seconds.'''
+        import re
+        text = open('boostsrl/train_output.txt').read()
+        line = re.findall(r'% Total learning time \(\d* trees\):.*', text)
+        # Remove the last character "." from the line and split it on spaces.
+        splitline = line[0][:-1].split()
+        seconds = []
+        if 'milliseconds' in splitline:
+            seconds.append((float(splitline[splitline.index('milliseconds') - 1])) / 1000)
+        if 'seconds' in splitline:
+            seconds.append(float(splitline[splitline.index('seconds') - 1]))
+        if 'minutes' in splitline:
+            seconds.append(float(splitline[splitline.index('minutes') - 1]) * 60)
+        if 'hours' in splitline:
+            seconds.append(float(splitline[splitline.index('hours') - 1]) * 3600)
+        if 'days' in splitline:
+            seconds.append(float(splitline[splitline.index('days') - 1]) * 86400)
+        return sum(seconds)
 
-    # Use the same target as was specified in the train object.
-    
-    write_to_file(test_pos, 'boostsrl/test/test_pos.txt')
-    write_to_file(test_neg, 'boostsrl/test/test_neg.txt')
-    write_to_file(test_facts, 'boostsrl/test/test_facts.txt')
-    
-    CALL = '(cd boostsrl; java -jar v1-0.jar -i -model train/models/ -test test/ -target ' + target + \
-           ' -trees ' + str(trees) + ' -aucJarPath . > test_output.txt 2>&1)'
-    call_process(CALL)
-
-    import re
-    text = open('boostsrl/test_output.txt').read()
-    line = re.findall(r'AUC ROC.*|AUC PR.*|CLL.*|Precision.*|Recall.*|%   F1.*', text)
-    line = [word.replace(' ','').replace('\t','').replace('%','').replace('atthreshold=',',') for word in line]
-
-    results = {
-        'AUC ROC': line[0][line[0].index('=')+1:],
-        'AUC PR': line[1][line[1].index('=')+1:],
-        'CLL': line[2][line[2].index('=')+1:],
-        'Precision': line[3][line[3].index('=')+1:],
-        'Recall': line[4][line[4].index('=')+1:],
-        'F1': line[5][line[5].index('=')+1:]
-    }
-
-    return results
-
-class bettertest(object):
+class test(object):
 
     def __init__(self, model, test_pos, test_neg, test_facts, trees=10):
         write_to_file(test_pos, 'boostsrl/test/test_pos.txt')
