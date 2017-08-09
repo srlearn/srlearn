@@ -19,8 +19,12 @@ else:
     import subprocess
 
 def call_process(call):
-    p = subprocess.Popen(call, shell=True)
-    os.waitpid(p.pid, 0)
+    '''Create a subprocess and wait for it to finish. Error out if errors occur.'''
+    try:
+        p = subprocess.Popen(call, shell=True)
+        os.waitpid(p.pid, 0)
+    except:
+        raise(Exception('Encountered problems while running process: ', call))
 
     
 def write_to_file(content, path):
