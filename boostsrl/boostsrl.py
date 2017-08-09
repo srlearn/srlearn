@@ -44,6 +44,11 @@ def build_bridges(target, bk):
             if num_commas > 0:
                 print('querypred: ' + target + '/' + str(num_commas + 1))
                 break
+
+def save_model(model):
+    '''Take the trees from the current model and pickle them.'''
+    import cPickle as pickle
+    pass
                 
 class modes(object):
     
