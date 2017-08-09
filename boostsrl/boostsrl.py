@@ -4,7 +4,7 @@
 
    Name:         boostsrl.py
    Author:       Alexander L. Hayes
-   Updated:      August 8, 2017
+   Updated:      August 9, 2017
    License:      GPLv3
 '''
 
@@ -34,6 +34,17 @@ def write_to_file(content, path):
             f.write(line + '\n')
     f.close()
 
+def build_bridges(target, bk):
+    '''I'm experimenting with whether bridgers can be set automatically. I'll experiment with the ability here.'''
+    # Loop through the background information in order to find the target.
+    for pred in bk:
+        if (target + '(') in pred:
+            # Number of commas in the predicate changes the behavior of the querypred.
+            num_commas = pred.count(',')
+            if num_commas > 0:
+                print('querypred: ' + target + '/' + str(num_commas + 1))
+                break
+                
 class modes(object):
     
     def __init__(self, background, loadAllLibraries=False, useStdLogicVariables=False, usePrologVariables=False,

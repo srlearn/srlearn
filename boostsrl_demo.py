@@ -10,6 +10,7 @@ bk = [
 ]
 
 bridgers = ['friends/2']
+
 precomputes = {
     'num_of_smoking_friends(+Person, #Number).': 'num_of_smoking_friends(x, n) :- friends(x, y), countUniqueBindings((friends(x,z)^smokes(z)), n).'
 }
