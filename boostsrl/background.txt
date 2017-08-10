@@ -1,4 +1,5 @@
 setParam: numOfClauses=8.
+setParam: target=cancer.
 useStdLogicVariables: true.
 setParam: treeDepth=4.
 setParam: nodeSize=2.

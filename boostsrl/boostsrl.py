@@ -52,9 +52,10 @@ def save_model(model):
                 
 class modes(object):
     
-    def __init__(self, background, loadAllLibraries=False, useStdLogicVariables=False, usePrologVariables=False,
+    def __init__(self, background, target, loadAllLibraries=False, useStdLogicVariables=False, usePrologVariables=False,
                  recursion=False, lineSearch=False, resampleNegs=False,
                  treeDepth=None, maxTreeDepth=None, nodeSize=None, numOfClauses=None, numOfCycles=None, minLCTrees=None, incrLCTrees=None):
+        self.target = target
         self.loadAllLibraries = loadAllLibraries
         self.useStdLogicVariables = useStdLogicVariables
         self.usePrologVariables = usePrologVariables
