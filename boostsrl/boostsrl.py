@@ -4,7 +4,7 @@
 
    Name:         boostsrl.py
    Author:       Alexander L. Hayes
-   Updated:      August 9, 2017
+   Updated:      August 12, 2017
    License:      GPLv3
 '''
 
@@ -98,11 +98,7 @@ class modes(object):
         
 class train(object):
 
-    #model = boostsrl.train(background, train_pos, train_neg, train_facts)
-    
-    #def __init__(self, target, train_pos, train_neg, train_facts, save=False, advice=False, softm=False, alpha=0.5, beta=-2, trees=10):
     def __init__(self, background, train_pos, train_neg, train_facts, save=False, advice=False, softm=False, alpha=0.5, beta=-2, trees=10):
-        #self.target = target
         self.target = background.target
         self.train_pos = train_pos
         self.train_neg = train_neg
