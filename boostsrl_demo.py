@@ -23,7 +23,8 @@ test_neg = ['cancer(Voldemort).', 'cancer(Watson).']
 test_facts = ['friends(Zod, Xena).', 'friends(Xena, Watson).', 'friends(Watson, Voldemort).', 'friends(Voldemort, Yoda).', 'friends(Yoda, Zod).', 'friends(Xena, Zod).', 'friends(Watson, Xena).', 'friends(Voldemort, Watson).', 'friends(Yoda, Voldemort).', 'friends(Zod, Yoda).', 'smokes(Zod).', 'smokes(Xena).', 'smokes(Yoda).']
 
 background = boostsrl.modes(bk, 'cancer', useStdLogicVariables=True, treeDepth=4, nodeSize=2, numOfClauses=8)
-model = boostsrl.train('cancer', train_pos, train_neg, train_facts)
+#model = boostsrl.train('cancer', train_pos, train_neg, train_facts)
+model = boostsrl.train(background, train_pos, train_neg, train_facts)
 test = boostsrl.test(model, test_pos, test_neg, test_facts)
 
 print(test.summarize_results())

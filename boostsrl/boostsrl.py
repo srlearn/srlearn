@@ -97,9 +97,13 @@ class modes(object):
         pass
         
 class train(object):
+
+    #model = boostsrl.train(background, train_pos, train_neg, train_facts)
     
-    def __init__(self, target, train_pos, train_neg, train_facts, save=False, advice=False, softm=False, alpha=0.5, beta=-2, trees=10):
-        self.target = target
+    #def __init__(self, target, train_pos, train_neg, train_facts, save=False, advice=False, softm=False, alpha=0.5, beta=-2, trees=10):
+    def __init__(self, background, train_pos, train_neg, train_facts, save=False, advice=False, softm=False, alpha=0.5, beta=-2, trees=10):
+        #self.target = target
+        self.target = background.target
         self.train_pos = train_pos
         self.train_neg = train_neg
         self.train_facts = train_facts
