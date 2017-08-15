@@ -6,7 +6,7 @@
 
 | License | Build Status |
 | --- | --- |
-| [![][license img]][license] | [![Build Status](https://travis-ci.org/batflyer/CI-practice.svg?branch=master)](https://travis-ci.org/batflyer/CI-practice) |
+| [![][license img]][license] | [![Build Status](https://travis-ci.org/batflyer/boostsrl-python-package.svg?branch=master)](https://travis-ci.org/batflyer/boostsrl-python-package) |
 
 ---
 
