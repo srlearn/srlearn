@@ -3,8 +3,9 @@ import os
 import sys
 import unittest
 
-sys.path.insert(0, '../boostsrl/')
+sys.path.insert(0, '../../boostsrl/')
 import boostsrl
+#from boostsrl import boostsrl
 
 class BasicFunctions:
 
