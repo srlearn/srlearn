@@ -74,6 +74,7 @@ class modes(object):
 
         # Many of the arguments in the modes object are optional this shows us the values of the ones that are neither false nor none.
         relevant = [[attr, value] for attr, value in self.__dict__.iteritems() if (value is not False) and (value is not None)]
+        self.relevant = relevant
 
         background_knowledge = []
         for a, v in relevant:
@@ -88,6 +89,7 @@ class modes(object):
             background_knowledge.append('mode: ' + pred)
 
         # Write the newly created background_knowledge to a file: background.txt
+        self.background_knowledge = background_knowledge
         write_to_file(background_knowledge, 'boostsrl/background.txt')
             
     def check_exists(self, predicate):
