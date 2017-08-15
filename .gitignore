@@ -11,6 +11,7 @@ boostsrl/test/test_infer_dribble.txt
 boostsrl/test/query_*.txt
 *_gleaner.txt
 boostsrl/backup-background.txt
+boostsrl/background.txt
 
 */boostsrl/train_output.txt
 */boostsrl/test_output.txt
@@ -20,6 +21,7 @@ boostsrl/backup-background.txt
 */boostsrl/test/query_*.txt
 */*_gleaner.txt
 */boostsrl/backup-background.txt
+*/boostsrl/background.txt
 
 # positives, negatives, and facts.
 boostsrl/*/*_pos.txt
