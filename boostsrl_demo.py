@@ -29,5 +29,7 @@ model = boostsrl.train(background, train_pos, train_neg, train_facts)
 # Test on new data using the trained model and testing data.
 test = boostsrl.test(model, test_pos, test_neg, test_facts)
 
-print(test.summarize_results())
-print(test.inference_results())
+print('Training Time (s): ' + str(model.get_training_time()))
+print('Results Summary:   ' + str(test.summarize_results()))
+print('Inference Results: ' + str(test.inference_results()))
+
