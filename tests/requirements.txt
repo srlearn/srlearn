@@ -2,4 +2,3 @@ coverage
 pytest
 pytest-cov
 unittest2
-subprocess32
