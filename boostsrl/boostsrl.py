@@ -18,6 +18,28 @@ if os.name == 'posix' and sys.version_info[0] < 3:
 else:
     import subprocess
 
+def sample_data(example):
+    '''For demo purposes, include some sample data.
+         train_pos = sample_data(train_pos)
+         train_neg = sample_data(train_neg)
+         train_facts = sample_data(train_facts)'''
+    if example == 'train_pos':
+        return ['cancer(Alice).', 'cancer(Bob).', 'cancer(Chuck).', 'cancer(Fred).']
+    elif example == 'train_neg':
+        return ['cancer(Dan).','cancer(Earl).']
+    elif example == 'train_facts':
+        return ['friends(Alice, Bob).', 'friends(Alice, Fred).', 'friends(Chuck, Bob).', 'friends(Chuck, Fred).', 'friends(Dan, Bob).', 'friends(Earl, Bob).','friends(Bob, Alice).', 'friends(Fred, Alice).', 'friends(Bob, Chuck).', 'friends(Fred, Chuck).', 'friends(Bob, Dan).', 'friends(Bob, Earl).', 'smokes(Alice).', 'smokes(Chuck).', 'smokes(Bob).']
+    elif example == 'test_pos':
+        return ['cancer(Zod).', 'cancer(Xena).', 'cancer(Yoda).']
+    elif example == 'test_neg':
+        return ['cancer(Voldemort).', 'cancer(Watson).']
+    elif example == 'test_facts':
+        return ['friends(Zod, Xena).', 'friends(Xena, Watson).', 'friends(Watson, Voldemort).', 'friends(Voldemort, Yoda).', 'friends(Yoda, Zod).', 'friends(Xena, Zod).', 'friends(Watson, Xena).', 'friends(Voldemort, Watson).', 'friends(Yoda, Voldemort).', 'friends(Zod, Yoda).', 'smokes(Zod).', 'smokes(Xena).', 'smokes(Yoda).']
+    elif example == 'background':
+        return ['friends(+Person, -Person).', 'friends(-Person, +Person).', 'smokes(+Person).', 'cancer(+Person).']
+    else:
+        raise(Exception('Attempted to use sample data that does not exist.'))
+    
 def call_process(call):
     '''Create a subprocess and wait for it to finish. Error out if errors occur.'''
     try:
