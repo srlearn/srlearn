@@ -95,7 +95,7 @@ class modes(object):
         #self.queryPred = 'advisedby/2'
 
         # Many of the arguments in the modes object are optional this shows us the values of the ones that are neither false nor none.
-        relevant = [[attr, value] for attr, value in self.__dict__.iteritems() if (value is not False) and (value is not None)]
+        relevant = [[attr, value] for attr, value in self.__dict__.items() if (value is not False) and (value is not None)]
         self.relevant = relevant
 
         background_knowledge = []
