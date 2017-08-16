@@ -29,7 +29,7 @@ class MyTest(unittest.TestCase):
         '''Ensure that the background returned by boostsrl.modes sets variables correctly.'''
         f = background_functions()
         background = f.build_background_1()
-        print(background.relevant)
+        #print(background.relevant)
         # These background values should be bound since they are set with the build_background function.
         self.assertEqual(background.target, 'cancer')
         self.assertEqual(background.useStdLogicVariables, True)
@@ -69,7 +69,20 @@ class MyTest(unittest.TestCase):
         self.assertTrue('mode: friends(-Person, +Person).' in background.background_knowledge)
         self.assertTrue('mode: smokes(+Person).' in background.background_knowledge)
         self.assertTrue('mode: cancer(+Person).' in background.background_knowledge)
-    
+
+    def test_background_setup_1_file_exists(self):
+        '''Ensure that the background file is actually created.'''
+        f = background_functions()
+        background = f.build_background_1()
+        self.assertTrue(os.path.isfile('boostsrl/background.txt'))
+
+    def test_background_setup_1_matches_background_knowledge(self):
+        '''Open the background.txt up and make sure it matches what was written into it.'''
+        f = background_functions()
+        background = f.build_background_1()
+        with open('boostsrl/background.txt', 'r') as f:
+            self.assertTrue(f.read().splitlines() == background.background_knowledge)
+        
     def test_background_setup_2(self):
         '''Ensure that the file created by boostsrl.modes is created properly'''
         pass
