@@ -5,10 +5,12 @@ import unittest
 
 # Path problems tend to be caused depending on which directory tests begin in.
 try:
-    sys.path.insert(0, '../boostsrl/')
+    #    sys.path.insert(0, './boostsrl/')
+    sys.path.append('./boostsrl')
     import boostsrl
 except:
-    sys.path.insert(0, './boostsrl/')
+    #    sys.path.insert(0, '../boostsrl/')
+    sys.path.append('../boostsrl')
     import boostsrl
 
 class background_functions:
