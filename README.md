@@ -6,7 +6,7 @@
 
 | License | Build Status | Codecov |
 | --- | --- | --- |
-| [![][license img]][license] | [![Build Status](https://travis-ci.org/batflyer/boostsrl-python-package.svg?branch=master)](https://travis-ci.org/batflyer/boostsrl-python-package) | [![][codecov img][codecov link]] |
+| [![][license img]][license] | [![Build Status](https://travis-ci.org/batflyer/boostsrl-python-package.svg?branch=master)](https://travis-ci.org/batflyer/boostsrl-python-package) | [![][codecov img]][codecov link] |
 
 ---
 
