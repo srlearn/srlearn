@@ -161,7 +161,9 @@ class train(object):
     def get_training_time(self):
         '''Return the training time as a float representing the total number of seconds seconds.'''
         import re
-        text = open('boostsrl/train_output.txt').read()
+        with open('boostsrl/train_output.txt', 'r') as f:
+            text = f.read()
+        f.close()
         line = re.findall(r'% Total learning time \(\d* trees\):.*', text)
         # Remove the last character "." from the line and split it on spaces.
         splitline = line[0][:-1].split()

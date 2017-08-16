@@ -13,6 +13,12 @@ except:
     sys.path.append('../boostsrl')
     import boostsrl
 
+class sample_data_functions:
+
+    def sample(example):
+        '''Calls the sample_data function from boostsrl.py'''
+        return boostsrl.sample_data(example)
+    
 class background_functions:
 
     def build_background_1(self):
@@ -20,12 +26,30 @@ class background_functions:
         background = boostsrl.modes(bk, 'cancer', useStdLogicVariables=True, treeDepth=4, nodeSize=2, numOfClauses=8)
         return background
 
-    def build_background_2(self):
+class train_functions:
+
+    def test_training_1(self):
         bk = ['friends(+Person, -Person).', 'friends(-Person, +Person).', 'smokes(+Person).', 'cancer(+Person).']
-        background = boostsrl.modes(bk, 'cancer')
-        return background
+        background = boostsrl.modes(bk, 'cancer', useStdLogicVariables=True, treeDepth=4, nodeSize=2, numOfClauses=8)
+        train_pos = boostsrl.sample_data('train_pos')
+        train_neg = boostsrl.sample_data('train_neg')
+        train_facts = boostsrl.sample_data('train_facts')
+        model = boostsrl.train(background, train_pos, train_neg, train_facts)
+        return model
 
 class MyTest(unittest.TestCase):
+
+    def sample_data_tests(self):
+        '''Ensures that sample_data function is returning the proper results.'''
+        f = sample_data_functions()
+        self.assertEqual(f.sample('background'), ['friends(+Person, -Person).', 'friends(-Person, +Person).', 'smokes(+Person).', 'cancer(+Person).'])
+        self.assertEqual(f.sample('train_pos'), ['cancer(Alice).', 'cancer(Bob).', 'cancer(Chuck).', 'cancer(Fred).'])
+        self.assertEqual(f.sample('train_neg'), ['cancer(Dan).','cancer(Earl).'])
+        self.assertEqual(f.sample('train_facts'), ['friends(Alice, Bob).', 'friends(Alice, Fred).', 'friends(Chuck, Bob).', 'friends(Chuck, Fred).', 'friends(Dan, Bob).', 'friends(Earl, Bob).','friends(Bob, Alice).', 'friends(Fred, Alice).', 'friends(Bob, Chuck).', 'friends(Fred, Chuck).', 'friends(Bob, Dan).', 'friends(Bob, Earl).', 'smokes(Alice).', 'smokes(Chuck).', 'smokes(Bob).'])
+        self.assertEqual(f.sample('test_pos'), ['cancer(Zod).', 'cancer(Xena).', 'cancer(Yoda).'])
+        self.assertEqual(f.sample('test_neg'), ['cancer(Voldemort).', 'cancer(Watson).'])
+        self.assertEqual(f.sample('test_facts'), ['friends(Zod, Xena).', 'friends(Xena, Watson).', 'friends(Watson, Voldemort).', 'friends(Voldemort, Yoda).', 'friends(Yoda, Zod).', 'friends(Xena, Zod).', 'friends(Watson, Xena).', 'friends(Voldemort, Watson).', 'friends(Yoda, Voldemort).', 'friends(Zod, Yoda).', 'smokes(Zod).', 'smokes(Xena).', 'smokes(Yoda).'])
+        self.assertRaises(f.sample('something_else'))
 
     def test_background_setup_1(self):
         '''Ensure that the background returned by boostsrl.modes sets variables correctly.'''
@@ -84,15 +108,21 @@ class MyTest(unittest.TestCase):
         background = f.build_background_1()
         with open('boostsrl/background.txt', 'r') as f:
             self.assertTrue(f.read().splitlines() == background.background_knowledge)
-        
-    def test_background_setup_2(self):
-        '''Ensure that the file created by boostsrl.modes is created properly'''
-        pass
-        '''
-        f = background_functions()
-        background = f.build_background_2()
-        self.assertEqual(background.target, 'cancer')
-        '''
+
+    def test_boostsrl_training(self):
+        '''Check assignment and outcomes of BoostSRL training.'''
+        f = train_functions()
+        model = f.test_training_1()
+        self.assertEqual(model.target, 'cancer')
+        self.assertEqual(model.advice, False)
+        self.assertEqual(model.softm, False)
+        self.assertEqual(model.alpha, 0.5)
+        self.assertEqual(model.beta, -2)
+        self.assertEqual(model.trees, 10)
+
+        # Does training time return either a float or an int?
+        traintime = model.get_training_time()
+        self.assertTrue(isinstance(traintime, float) or isinstance(traintime, int))
 
 if __name__ == '__main__':
     unittest.main()
