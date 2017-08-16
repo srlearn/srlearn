@@ -21,5 +21,8 @@ install:
 script:
   - coverage run tests/tests.py
 
+before_install:
+  pip install codecov
+
 after_success:
-- codecov
+  codecov
