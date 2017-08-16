@@ -4,6 +4,7 @@ import sys
 import unittest
 
 # Path problems tend to be caused depending on which directory tests begin in.
+'''
 try:
     #    sys.path.insert(0, './boostsrl/')
     sys.path.append('./boostsrl')
@@ -12,10 +13,14 @@ except:
     #    sys.path.insert(0, '../boostsrl/')
     sys.path.append('../boostsrl')
     import boostsrl
+'''
+
+sys.path.append('./boostsrl')
+import boostsrl
 
 class sample_data_functions:
 
-    def sample(example):
+    def sample(self, example):
         '''Calls the sample_data function from boostsrl.py'''
         return boostsrl.sample_data(example)
     
