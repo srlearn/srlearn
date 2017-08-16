@@ -46,7 +46,7 @@ git clone https://github.com/batflyer/boostsrl-python-package.git
 >>> train_facts = boostsrl.sample_data('train_facts')
 
 # Train a model using this data:
->>> model = boostsrl.train('cancer', train_pos, train_neg, train_facts)
+>>> model = boostsrl.train(background, train_pos, train_neg, train_facts)
 
 '''Step 3: Test Model on New Data'''
 
@@ -61,11 +61,11 @@ git clone https://github.com/batflyer/boostsrl-python-package.git
 '''Step 4: Observe Performance'''
 
 # To see the overall performance of the model on test data:
->>> test.summarize_results()
+>>> results.summarize_results()
 {'CLL': '-0.223184', 'F1': '1.000000', 'Recall': '1.000000', 'Precision': '1.000000,0.500', 'AUC ROC': '1.000000', 'AUC PR': '1.000000'}
 
 # To see probabilities for individual test examples:
->>> test.inference_results()
+>>> results.inference_results()
 {'!cancer(Watson)': 0.6924179024024251, 'cancer(Xena)': 0.8807961917687174, '!cancer(Voldemort)': 0.6924179024024251, 'cancer(Yoda)': 0.8807961917687174, 'cancer(Zod)': 0.8807961917687174}
 
 ```
