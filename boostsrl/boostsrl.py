@@ -4,7 +4,7 @@
 
    Name:         boostsrl.py
    Author:       Alexander L. Hayes
-   Updated:      August 12, 2017
+   Updated:      August 17, 2017
    License:      GPLv3
 '''
 
@@ -116,12 +116,6 @@ class modes(object):
         self.background_knowledge = background_knowledge
         write_to_file(background_knowledge, 'boostsrl/background.txt')
             
-    def check_exists(self, predicate):
-        pass
-
-    def infer_modes(self, background):
-        pass
-        
 class train(object):
 
     def __init__(self, background, train_pos, train_neg, train_facts, save=False, advice=False, softm=False, alpha=0.5, beta=-2, trees=10):
@@ -161,6 +155,10 @@ class train(object):
         line = re.findall(r'% Total learning time \(\d* trees\):.*', text)
         # Remove the last character "." from the line and split it on spaces.
         splitline = line[0][:-1].split()
+        return splitline
+
+    def training_time_to_float(self, splitline):
+        '''Convet the string representing training time into a float representing total seconds.'''
         seconds = []
         if 'milliseconds' in splitline:
             seconds.append((float(splitline[splitline.index('milliseconds') - 1])) / 1000)
@@ -173,6 +171,12 @@ class train(object):
         if 'days' in splitline:
             seconds.append(float(splitline[splitline.index('days') - 1]) * 86400)
         return sum(seconds)
+
+    def traintime(self):
+        '''Combines the get_training_time and training_time_to_float functions
+           to return a float representing seconds.'''
+        splitline = self.get_training_time()
+        return self.training_time_to_float(splitline)
 
 class test(object):
 

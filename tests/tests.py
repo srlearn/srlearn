@@ -158,8 +158,10 @@ class MyTest(unittest.TestCase):
         self.assertTrue('cancer' in model.tree(0))
 
         # Does training time return either a float or an int?
-        traintime = model.get_training_time()
-        self.assertTrue(isinstance(traintime, float) or isinstance(traintime, int))
+        self.assertTrue(isinstance(model.traintime(), float))
+        self.assertEqual(model.training_time_to_float(['1', 'milliseconds']), 0.001)
+        self.assertEqual(model.training_time_to_float(['1', 'days', '981', 'milliseconds']), 86400.981)
+        self.assertEqual(model.training_time_to_float(['2', 'hours', '1', 'minutes', '25', 'seconds', '120', 'milliseconds']), 7285.12)
 
     def test_boostsrl_testing(self):
         '''Run the entire training/testing pipeline to ensure testing works properly.'''
