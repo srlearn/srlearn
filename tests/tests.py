@@ -1,4 +1,3 @@
-# Tests for CI-practice
 import os
 import sys
 import unittest
@@ -14,6 +13,11 @@ except:
     sys.path.append('../boostsrl')
     import boostsrl
 '''
+
+# Test that train_pos, (etc) are lists of strings.
+# Test that each string is in predicate-logic notation.
+# Check to make sure there are no references that are not present in the modes object.
+# Check that train_bk and test_bk exist, and both point to background.txt
 
 sys.path.append('./boostsrl')
 import boostsrl
@@ -42,25 +46,29 @@ class train_functions:
         model = boostsrl.train(background, train_pos, train_neg, train_facts)
         return model
 
-class MyTest(unittest.TestCase):
+class test_with_model_functions:
 
-    def sample_data_tests(self):
-        '''Ensures that sample_data function is returning the proper results.'''
-        f = sample_data_functions()
-        self.assertEqual(f.sample('background'), ['friends(+Person, -Person).', 'friends(-Person, +Person).', 'smokes(+Person).', 'cancer(+Person).'])
-        self.assertEqual(f.sample('train_pos'), ['cancer(Alice).', 'cancer(Bob).', 'cancer(Chuck).', 'cancer(Fred).'])
-        self.assertEqual(f.sample('train_neg'), ['cancer(Dan).','cancer(Earl).'])
-        self.assertEqual(f.sample('train_facts'), ['friends(Alice, Bob).', 'friends(Alice, Fred).', 'friends(Chuck, Bob).', 'friends(Chuck, Fred).', 'friends(Dan, Bob).', 'friends(Earl, Bob).','friends(Bob, Alice).', 'friends(Fred, Alice).', 'friends(Bob, Chuck).', 'friends(Fred, Chuck).', 'friends(Bob, Dan).', 'friends(Bob, Earl).', 'smokes(Alice).', 'smokes(Chuck).', 'smokes(Bob).'])
-        self.assertEqual(f.sample('test_pos'), ['cancer(Zod).', 'cancer(Xena).', 'cancer(Yoda).'])
-        self.assertEqual(f.sample('test_neg'), ['cancer(Voldemort).', 'cancer(Watson).'])
-        self.assertEqual(f.sample('test_facts'), ['friends(Zod, Xena).', 'friends(Xena, Watson).', 'friends(Watson, Voldemort).', 'friends(Voldemort, Yoda).', 'friends(Yoda, Zod).', 'friends(Xena, Zod).', 'friends(Watson, Xena).', 'friends(Voldemort, Watson).', 'friends(Yoda, Voldemort).', 'friends(Zod, Yoda).', 'smokes(Zod).', 'smokes(Xena).', 'smokes(Yoda).'])
-        self.assertRaises(f.sample('something_else'))
+    def test_testing_1(self):
+        bk = boostsrl.sample_data('background')
+        background = boostsrl.modes(bk, 'cancer', useStdLogicVariables=True, treeDepth=4, nodeSize=2, numOfClauses=8)
+        train_pos = boostsrl.sample_data('train_pos')
+        train_neg = boostsrl.sample_data('train_neg')
+        train_facts = boostsrl.sample_data('train_facts')
+        
+        test_pos = boostsrl.sample_data('test_pos')
+        test_neg = boostsrl.sample_data('test_neg')
+        test_facts = boostsrl.sample_data('test_facts')
+        
+        model = boostsrl.train(background, train_pos, train_neg, train_facts)
+        results = boostsrl.test(model, test_pos, test_neg, test_facts)
+        return results
+
+class MyTest(unittest.TestCase):
 
     def test_background_setup_1(self):
         '''Ensure that the background returned by boostsrl.modes sets variables correctly.'''
         f = background_functions()
         background = f.build_background_1()
-        #print(background.relevant)
         # These background values should be bound since they are set with the build_background function.
         self.assertEqual(background.target, 'cancer')
         self.assertEqual(background.useStdLogicVariables, True)
@@ -77,6 +85,17 @@ class MyTest(unittest.TestCase):
         self.assertEqual(background.recursion, False)
         self.assertEqual(background.lineSearch, False)
         self.assertEqual(background.resampleNegs, False)
+
+    def test_data_sampling(self):
+        '''Ensures that sample_data function is returning the proper results.'''
+        f = sample_data_functions()
+        self.assertEqual(f.sample('background'), ['friends(+Person, -Person).', 'friends(-Person, +Person).', 'smokes(+Person).', 'cancer(+Person).'])
+        self.assertEqual(f.sample('train_pos'), ['cancer(Alice).', 'cancer(Bob).', 'cancer(Chuck).', 'cancer(Fred).'])
+        self.assertEqual(f.sample('train_neg'), ['cancer(Dan).','cancer(Earl).'])
+        self.assertEqual(f.sample('train_facts'), ['friends(Alice, Bob).', 'friends(Alice, Fred).', 'friends(Chuck, Bob).', 'friends(Chuck, Fred).', 'friends(Dan, Bob).', 'friends(Earl, Bob).','friends(Bob, Alice).', 'friends(Fred, Alice).', 'friends(Bob, Chuck).', 'friends(Fred, Chuck).', 'friends(Bob, Dan).', 'friends(Bob, Earl).', 'smokes(Alice).', 'smokes(Chuck).', 'smokes(Bob).'])
+        self.assertEqual(f.sample('test_pos'), ['cancer(Zod).', 'cancer(Xena).', 'cancer(Yoda).'])
+        self.assertEqual(f.sample('test_neg'), ['cancer(Voldemort).', 'cancer(Watson).'])
+        self.assertEqual(f.sample('test_facts'), ['friends(Zod, Xena).', 'friends(Xena, Watson).', 'friends(Watson, Voldemort).', 'friends(Voldemort, Yoda).', 'friends(Yoda, Zod).', 'friends(Xena, Zod).', 'friends(Watson, Xena).', 'friends(Voldemort, Watson).', 'friends(Yoda, Voldemort).', 'friends(Zod, Yoda).', 'smokes(Zod).', 'smokes(Xena).', 'smokes(Yoda).'])
 
     def test_background_setup_1_relevant(self):
         '''Ensure that the correct relevant information is created from the background variables.'''
@@ -125,9 +144,44 @@ class MyTest(unittest.TestCase):
         self.assertEqual(model.beta, -2)
         self.assertEqual(model.trees, 10)
 
+        # Do the trees exist? Does 'cancer' appear in tree0?
+        self.assertTrue(isinstance(model.tree(0), str))
+        self.assertTrue(isinstance(model.tree(1), str))
+        self.assertTrue(isinstance(model.tree(2), str))
+        self.assertTrue(isinstance(model.tree(3), str))
+        self.assertTrue(isinstance(model.tree(4), str))
+        self.assertTrue(isinstance(model.tree(5), str))
+        self.assertTrue(isinstance(model.tree(6), str))
+        self.assertTrue(isinstance(model.tree(7), str))
+        self.assertTrue(isinstance(model.tree(8), str))
+        self.assertTrue(isinstance(model.tree(9), str))
+        self.assertTrue('cancer' in model.tree(0))
+
         # Does training time return either a float or an int?
         traintime = model.get_training_time()
         self.assertTrue(isinstance(traintime, float) or isinstance(traintime, int))
+
+    def test_boostsrl_testing(self):
+        '''Run the entire training/testing pipeline to ensure testing works properly.'''
+        f = test_with_model_functions()
+        results = f.test_testing_1()
+
+        # Check the contents of the results summary.
+        summary = results.summarize_results()
+        self.assertTrue('AUC ROC' in summary)
+        self.assertTrue('AUC PR' in summary)
+        self.assertTrue('CLL' in summary)
+        self.assertTrue('Precision' in summary)
+        self.assertTrue('Recall' in summary)
+        self.assertTrue('F1' in summary)
+
+        # Check the contents of the inference results.
+        inference_dict = results.inference_results()
+        self.assertTrue('cancer(Zod)' in inference_dict)
+        self.assertTrue('!cancer(Watson)' in inference_dict)
+        self.assertTrue('cancer(Xena)' in inference_dict)
+        self.assertTrue('!cancer(Voldemort)' in inference_dict)
+        self.assertTrue('cancer(Yoda)' in inference_dict)
 
 if __name__ == '__main__':
     unittest.main()

@@ -56,8 +56,9 @@ def write_to_file(content, path):
             f.write(line + '\n')
     f.close()
 
+'''
 def build_bridges(target, bk):
-    '''I'm experimenting with whether bridgers can be set automatically. I'll experiment with the ability here.'''
+I'm experimenting with whether bridgers can be set automatically. I'll experiment with the ability here.
     # Loop through the background information in order to find the target.
     for pred in bk:
         if (target + '(') in pred:
@@ -68,9 +69,10 @@ def build_bridges(target, bk):
                 break
 
 def save_model(model):
-    '''Take the trees from the current model and pickle them.'''
+    Take the trees from the current model and pickle them.
     import cPickle as pickle
     pass
+'''
                 
 class modes(object):
     
@@ -141,13 +143,6 @@ class train(object):
                ' -trees ' + str(self.trees) + ' > train_output.txt 2>&1)'
         call_process(CALL)
 
-    def test_cases(self):
-        # test that train_pos, train_neg (etc.) are lists of strings
-        # tests that each string is in predicate-logic notation.
-        # check to make sure there are no references that are not present in the modes object.
-        # check that train_bk.txt and test_bk.txt exist, and both point to a background file.
-        pass
-        
     def tree(self, treenumber):
         # Tree number is between 0 and the self.trees.
         if (treenumber > (self.trees - 1)):
@@ -163,7 +158,6 @@ class train(object):
         import re
         with open('boostsrl/train_output.txt', 'r') as f:
             text = f.read()
-        f.close()
         line = re.findall(r'% Total learning time \(\d* trees\):.*', text)
         # Remove the last character "." from the line and split it on spaces.
         splitline = line[0][:-1].split()
@@ -195,7 +189,8 @@ class test(object):
     
     def summarize_results(self):
         import re
-        text = open('boostsrl/test_output.txt').read()
+        with open('boostsrl/test_output.txt', 'r') as f:
+            text = f.read()
         line = re.findall(r'AUC ROC.*|AUC PR.*|CLL.*|Precision.*|Recall.*|%   F1.*', text)
         line = [word.replace(' ','').replace('\t','').replace('%','').replace('atthreshold=',',') for word in line]
         
