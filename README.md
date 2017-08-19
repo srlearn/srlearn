@@ -17,15 +17,24 @@ Sriraam Natarajan, Tushar Khot, Kristian Kersting and Jude Shavlik, Boosted Stat
 
 ## Installation
 
-Python 2.7:
+Java 1.8 is required.
+
+Python 2:
 
 ```bash
-git clone https://github.com/batflyer/boostsrl-python-package.git
+$ pip install subprocess32
+$ git clone https://github.com/batflyer/boostsrl-python-package.git
+```
+
+Python 3:
+
+```bash
+$ git clone https://github.com/batflyer/boostsrl-python-package.git
 ```
 
 ---
 
-### Usage
+### Basic Usage
 
 ```python
 >>> from boostsrl import boostsrl
@@ -70,12 +79,14 @@ git clone https://github.com/batflyer/boostsrl-python-package.git
 
 ```
 
-### Saving a model (not implemented yet)
+### Planned Features:
 
-```python
->>> from boostsrl import boostsrl
->>> boostsrl.save_model('toy_cancer')
-```
+* saving/loading a model
+
+  ```python
+  >>> from boostsrl import boostsrl
+  >>> boostsrl.save_model('toy_cancer')
+  ```
 
 [license]:license.txt
 [license img]:https://img.shields.io/aur/license/yaourt.svg
