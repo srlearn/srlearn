@@ -32,4 +32,3 @@ test = boostsrl.test(model, test_pos, test_neg, test_facts)
 print('Training Time (s): ' + str(model.get_training_time()))
 print('Results Summary:   ' + str(test.summarize_results()))
 print('Inference Results: ' + str(test.inference_results()))
-

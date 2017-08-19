@@ -2,18 +2,6 @@ import os
 import sys
 import unittest
 
-# Path problems tend to be caused depending on which directory tests begin in.
-'''
-try:
-    #    sys.path.insert(0, './boostsrl/')
-    sys.path.append('./boostsrl')
-    import boostsrl
-except:
-    #    sys.path.insert(0, '../boostsrl/')
-    sys.path.append('../boostsrl')
-    import boostsrl
-'''
-
 # Test that train_pos, (etc) are lists of strings.
 # Test that each string is in predicate-logic notation.
 # Check to make sure there are no references that are not present in the modes object.
@@ -25,8 +13,8 @@ import boostsrl
 class sample_data_functions:
 
     def sample(self, example):
-        '''Calls the sample_data function from boostsrl.py'''
-        return boostsrl.sample_data(example)
+        '''Calls the example_data function from boostsrl.py'''
+        return boostsrl.example_data(example)
     
 class background_functions:
 
@@ -40,24 +28,24 @@ class train_functions:
     def test_training_1(self):
         bk = ['friends(+Person, -Person).', 'friends(-Person, +Person).', 'smokes(+Person).', 'cancer(+Person).']
         background = boostsrl.modes(bk, 'cancer', useStdLogicVariables=True, treeDepth=4, nodeSize=2, numOfClauses=8)
-        train_pos = boostsrl.sample_data('train_pos')
-        train_neg = boostsrl.sample_data('train_neg')
-        train_facts = boostsrl.sample_data('train_facts')
+        train_pos = boostsrl.example_data('train_pos')
+        train_neg = boostsrl.example_data('train_neg')
+        train_facts = boostsrl.example_data('train_facts')
         model = boostsrl.train(background, train_pos, train_neg, train_facts)
         return model
 
 class test_with_model_functions:
 
     def test_testing_1(self):
-        bk = boostsrl.sample_data('background')
+        bk = boostsrl.example_data('background')
         background = boostsrl.modes(bk, 'cancer', useStdLogicVariables=True, treeDepth=4, nodeSize=2, numOfClauses=8)
-        train_pos = boostsrl.sample_data('train_pos')
-        train_neg = boostsrl.sample_data('train_neg')
-        train_facts = boostsrl.sample_data('train_facts')
+        train_pos = boostsrl.example_data('train_pos')
+        train_neg = boostsrl.example_data('train_neg')
+        train_facts = boostsrl.example_data('train_facts')
         
-        test_pos = boostsrl.sample_data('test_pos')
-        test_neg = boostsrl.sample_data('test_neg')
-        test_facts = boostsrl.sample_data('test_facts')
+        test_pos = boostsrl.example_data('test_pos')
+        test_neg = boostsrl.example_data('test_neg')
+        test_facts = boostsrl.example_data('test_facts')
         
         model = boostsrl.train(background, train_pos, train_neg, train_facts)
         results = boostsrl.test(model, test_pos, test_neg, test_facts)
@@ -87,7 +75,7 @@ class MyTest(unittest.TestCase):
         self.assertEqual(background.resampleNegs, False)
 
     def test_data_sampling(self):
-        '''Ensures that sample_data function is returning the proper results.'''
+        '''Ensures that example_data function is returning the proper results.'''
         f = sample_data_functions()
         self.assertEqual(f.sample('background'), ['friends(+Person, -Person).', 'friends(-Person, +Person).', 'smokes(+Person).', 'cancer(+Person).'])
         self.assertEqual(f.sample('train_pos'), ['cancer(Alice).', 'cancer(Bob).', 'cancer(Chuck).', 'cancer(Fred).'])

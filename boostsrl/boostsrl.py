@@ -18,7 +18,7 @@ if os.name == 'posix' and sys.version_info[0] < 3:
 else:
     import subprocess
 
-def sample_data(example):
+def example_data(example):
     '''For demo purposes, include some sample data.
          train_pos = sample_data(train_pos)
          train_neg = sample_data(train_neg)

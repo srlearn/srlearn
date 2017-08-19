@@ -1,8 +1,8 @@
-setParam: numOfClauses=8.
-setParam: target=cancer.
 useStdLogicVariables: true.
+setParam: numOfClauses=8.
 setParam: treeDepth=4.
 setParam: nodeSize=2.
+setParam: target=cancer.
 mode: friends(+Person, -Person).
 mode: friends(-Person, +Person).
 mode: smokes(+Person).
