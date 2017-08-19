@@ -42,7 +42,7 @@ $ git clone https://github.com/batflyer/boostsrl-python-package.git
 '''Step 1: Background Knowledge'''
 
 # Sample data is built in from the 'Toy Cancer' Dataset, retrieve it with sample_data
->>> bk = boostsrl.sample_data('background')
+>>> bk = boostsrl.example_data('background')
 
 # Create the background knowledge or 'Modes,' where 'cancer' is the target we want to predict.
 >>> background = boostsrl.modes(bk, 'cancer', useStdLogicVariables=True, treeDepth=4, nodeSize=2, numOfClauses=8)
@@ -50,9 +50,9 @@ $ git clone https://github.com/batflyer/boostsrl-python-package.git
 '''Step 2: Training a Model'''
 
 # Retrieve the positives, negatives, and facts.
->>> train_pos = boostsrl.sample_data('train_pos')
->>> train_neg = boostsrl.sample_data('train_neg')
->>> train_facts = boostsrl.sample_data('train_facts')
+>>> train_pos = boostsrl.example_data('train_pos')
+>>> train_neg = boostsrl.example_data('train_neg')
+>>> train_facts = boostsrl.example_data('train_facts')
 
 # Train a model using this data:
 >>> model = boostsrl.train(background, train_pos, train_neg, train_facts)
@@ -60,9 +60,9 @@ $ git clone https://github.com/batflyer/boostsrl-python-package.git
 '''Step 3: Test Model on New Data'''
 
 # Retrieve the positives, negatives, and facts.
->>> test_pos = boostsrl.sample_data('test_pos')
->>> test_neg = boostsrl.sample_data('test_neg')
->>> test_facts = boostsrl.sample_data('test_facts')
+>>> test_pos = boostsrl.example_data('test_pos')
+>>> test_neg = boostsrl.example_data('test_neg')
+>>> test_facts = boostsrl.example_data('test_facts')
 
 # Test the data
 >>> results = boostsrl.test(model, test_pos, test_neg, test_facts)
