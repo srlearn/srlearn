@@ -17,14 +17,21 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='boostsrl_java',
+    packages=['boostsrl_java'],
     author='Alexander L. Hayes (batflyer)',
     author_email='alexander@batflyer.net',
-    version='0.0.1',
+    version='0.1',
     description='Python wrappers for using BoostSRL jar files.',
     long_description=long_description,
 
+    data_files=[('~/.boostsrl_data', ['boostsrl/v1-0.jar',
+                                      'boostsrl/auc.jar']),
+                ('~/.boostsrl_data/train', ['boostsrl/train/train_bk.txt']),
+                ('~/.boostsrl_data/test', ['boostsrl/test/test_bk.txt'])],
+
     # Project's main homepage.
     url='https://github.com/batflyer/boostsrl-python-package',
+    #download_url=...
 
     # License
     license='GPL-3.0+',

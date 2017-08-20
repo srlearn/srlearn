@@ -74,21 +74,6 @@ def save_model(model):
     pass
 '''
 
-def firstTimeSetup():
-
-    call_process('mkdir -p ~/boostsrl_data/train')
-    print('Created ~/boostsrl_data/train/')
-    call_process('mkdir -p ~/boostsrl_data/test')
-    print('Created ~/boostsrl_data/test/')
-    call_process('echo -e "import: \"../background.txt\".\n" > ~/boostsrl_data/train/train_bk.txt')
-    print('Created train_bk.txt')
-    call_process('echo -e "import: \"../background.txt\".\n" > ~/boostsrl_data/test/test_bk.txt')
-    print('Created test_bk.txt')
-    call_process('curl -# "https://github.com/boost-starai/BoostSRL-Misc/blob/master/VersionHistory/Version1.0/v1-0.jar?raw=true" > ~/boostsrl_data/v1-0.jar')
-    print('Downloaded v1-0.jar')
-    call_process('curl -# "https://github.com/boost-starai/BoostSRL-Misc/blob/master/VersionHistory/Version1.0/auc.jar?raw=true" > ~/boostsrl_data/auc.jar')
-    print('Downloaded auc.jar')
-
 class modes(object):
     
     def __init__(self, background, target, loadAllLibraries=False, useStdLogicVariables=False, usePrologVariables=False,
