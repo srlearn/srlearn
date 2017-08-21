@@ -89,7 +89,7 @@
 
 ## Contributing
 
-Please refer to [CONTRIBUTING.md](CONTRIBUTING.md) for documentation on submitting issues and pull requests.
+Please refer to [CONTRIBUTING.md](.github/CONTRIBUTING.md) for documentation on submitting issues and pull requests.
 
 ## Versioning
 
@@ -99,6 +99,8 @@ We use [SemVer](http://semver.org/) for versioning. See [Releases](https://githu
 
 * Professor Sriraam Natarajan
 * Members of STARAI Lab
+
+---
 
 ### Planned Features:
 
