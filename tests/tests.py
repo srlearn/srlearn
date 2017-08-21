@@ -165,6 +165,16 @@ class MyTest(unittest.TestCase):
         self.assertTrue('Recall' in summary)
         self.assertTrue('F1' in summary)
 
+        # Test if float_split is returning value pairs correctly
+        self.assertEqual(results.float_split('pred(t1,t2,t3) 0.512'), ['pred(t1,t2,t3)', 0.512])
+        self.assertEqual(results.float_split('pred(t1, t2, t3) 0.512'), ['pred(t1, t2, t3)', 0.512])
+        self.assertEqual(results.float_split('pred(t1,t2,t3). 0.512'), ['pred(t1,t2,t3).', 0.512])
+        self.assertEqual(results.float_split('pred(t1, t2, t3). 0.512'), ['pred(t1, t2, t3).', 0.512])
+        self.assertEqual(results.float_split('pred(t1, t2). 1.0'), ['pred(t1, t2).', 1.0])
+        self.assertEqual(results.float_split('pred(t1). 0.8'), ['pred(t1).', 0.8])
+        self.assertNotEqual(results.float_split('pred(t1). 0.8'), ['pred(t1).', 5])
+        self.assertNotEqual(results.float_split('pred(t1, t2, t3). 1'), ['pred(t1, t2, t3).', '1'])
+
         # Check the contents of the inference results.
         inference_dict = results.inference_results()
         self.assertTrue('cancer(Zod)' in inference_dict)

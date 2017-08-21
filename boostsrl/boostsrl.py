@@ -207,14 +207,26 @@ class test(object):
             'F1': line[5][line[5].index('=')+1:]
         }
         return results
+
+    def float_split(self, line):
+        '''Returns a list where the first item is a string and the second is a float.
+           Used when returning inference results.
+        
+        Example:
+           >>> test.float_split('target(pred1, pred2, pred3). 0.85691')
+           ['target(pred1, pred2, pred3).', 0.85691]'''
+        intermediate = line.rsplit(None, 1)
+        return [intermediate[0], float(intermediate[1])]
         
     def inference_results(self):
-
+        '''Converts BoostSRL results into a Python dictionary.'''
         results_file = 'boostsrl/test/results_' + self.target + '.db'
         inference_dict = {}
         
         with open(results_file, 'r') as f:
             for line in f.read().splitlines():
-                line = line.split()
-                inference_dict[line[0]] = float(line[1])
+                full = self.float_split(line)
+                key_predicate = full[0]
+                value_regression = full[1]
+                inference_dict[key_predicate] = value_regression
         return inference_dict
