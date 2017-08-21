@@ -2,6 +2,8 @@
 *~
 *.pyc
 
+tests/setupscript.sh
+
 # log files
 boostsrl/train_output.txt
 boostsrl/test_output.txt
