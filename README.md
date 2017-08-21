@@ -10,29 +10,37 @@
 
 ---
 
+# boostsrl_java
 
-**BoostSRL** (Boosting for Statistical Relational Learning) is a gradient-boosting based approach to learning different types of SRL models. As with the standard gradient-boosting approach, our approach turns the model learning problem to learning a sequence of regression models. The key difference to the standard approaches is that we learn relational regression models i.e., regression models that operate on relational data. We assume the data in a predicate logic format and the output are essentially first-order regression trees where the inner nodes contain conjunctions of logical predicates. For more details on the models and the algorithm, we refer to our book on this topic.
+> **BoostSRL** (Boosting for Statistical Relational Learning) is a gradient-boosting based approach to learning statistical relational models.
+> Sriraam Natarajan, Tushar Khot, Kristian Kersting and Jude Shavlik, Boosted Statistical Relational Learners: From Benchmarks to Data-Driven Medicine. SpringerBriefs in Computer Science, ISBN: 978-3-319-13643-1, 2015
 
-Sriraam Natarajan, Tushar Khot, Kristian Kersting and Jude Shavlik, Boosted Statistical Relational Learners: From Benchmarks to Data-Driven Medicine . SpringerBriefs in Computer Science, ISBN: 978-3-319-13643-1, 2015 
+*boostsrl_java* is a Python package with wrappers for creating background knowledge and performing learning and inference.
 
-## Installation
+## Getting Started
 
-Java 1.8 is required.
+### Prerequisites
 
-Python 2:
+* Java 1.8
+* Python (2.6, 2.7, 3.3, 3.4, 3.5, 3.6)
+* subprocess32 (if using Python 2.7: `pip install subprocess32`)
 
-```bash
-$ pip install subprocess32
-$ git clone https://github.com/batflyer/boostsrl-python-package.git
-```
+### Installation
 
-Python 3:
+* The latest stable build can be installed with pip:
 
-```bash
-$ git clone https://github.com/batflyer/boostsrl-python-package.git
-```
+  ```bash
+  $ pip install boostsrl_java
+  ```
 
----
+* For versions in development, use the most recent available on GitHub
+
+  ```bash
+  # Clone the repository
+  $ git clone https://github.com/batflyer/boostsrl-python-package.git
+  # Test the build
+  $ python tests/test.py
+  ```
 
 ### Basic Usage
 
@@ -78,6 +86,19 @@ $ git clone https://github.com/batflyer/boostsrl-python-package.git
 {'!cancer(Watson)': 0.6924179024024251, 'cancer(Xena)': 0.8807961917687174, '!cancer(Voldemort)': 0.6924179024024251, 'cancer(Yoda)': 0.8807961917687174, 'cancer(Zod)': 0.8807961917687174}
 
 ```
+
+## Contributing
+
+Please refer to [CONTRIBUTING.md](CONTRIBUTING.md) for documentation on submitting issues and pull requests.
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. See [Releases](https://github.com/batflyer/boostsrl-python-package/releases) for all stable versions that are available.
+
+## Acknowledgements
+
+* Professor Sriraam Natarajan
+* Members of STARAI Lab
 
 ### Planned Features:
 

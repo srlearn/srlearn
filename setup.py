@@ -24,6 +24,7 @@ setup(
     description='Python wrappers for using BoostSRL jar files.',
     long_description=long_description,
 
+    # boostsrl_java stores files in the user's home directory by default.
     data_files=[('~/.boostsrl_data', ['boostsrl/v1-0.jar',
                                       'boostsrl/auc.jar']),
                 ('~/.boostsrl_data/train', ['boostsrl/train/train_bk.txt']),
@@ -74,6 +75,4 @@ setup(
         'test': ['coverage']
     }
 
-    # boostsrl_java stores files in the user's home directory by default.
-    #data_files=[('')]
 )
