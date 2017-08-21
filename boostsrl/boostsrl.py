@@ -21,6 +21,10 @@ else:
 HOME_PATH = os.path.expanduser('~')
 SOURCE_PATH = HOME_PATH + '/.boostsrl_data/'
 
+# Mode definitions and predicate logic examples can be parsed with regular expressions.
+mode_re = re.compile(r'[a-zA-Z0-9]*\(((\+|\-)[a-zA-Z0-9]*,( )*)*(\+|\-)[a-zA-Z0-9]*\)\.')
+exam_re = re.compile(r'[a-zA-Z0-9]*\(([a-zA-Z0-9]*,( )*)*[a-zA-Z0-9]*\)\.')
+
 def example_data(example):
     '''For demo purposes, include some sample data.
          train_pos = sample_data(train_pos)
@@ -51,6 +55,24 @@ def call_process(call):
     except:
         raise(Exception('Encountered problems while running process: ', call))
 
+def inspect_mode_syntax(example):
+    '''Uses a regular expression to check whether all of the examples in a list are in the correct form.
+       Example:
+          friends(+person, -person). ::: pass
+          friends(-person, +person). ::: pass
+          friends(person, person).   ::: FAIL
+    '''
+    if not mode_re.search(example):
+        raise(Exception('Error when checking background knowledge; incorrect syntax: ' + example))
+    
+def inspect_example_syntax(example):
+    '''Uses a regular expression to check whether all of the examples in a list are in the correct form.
+       Example:
+          friends(Bob, Tom).         ::: pass
+          friends(+person, -person). ::: FAIL
+    '''
+    if not exam_re.search(example):
+        raise(Exception('Error when checking example; incorrect syntax: ' + example))
     
 def write_to_file(content, path):
     '''Takes a list (content) and a path/file (path) and writes each line of the list to the file location.'''
@@ -105,14 +127,18 @@ class modes(object):
 
         background_knowledge = []
         for a, v in relevant:
-            if v is True:
+            if (a in ['useStdLogicVariables', 'usePrologVariables'] and v == True):
                 s = a + ': ' + str(v).lower() + '.'
+                background_knowledge.append(s)
+            elif v == True:
+                s = 'setParam: ' + a + '=' + str(v).lower() + '.'
                 background_knowledge.append(s)
             else:
                 s = 'setParam: ' + a + '=' + str(v) + '.'
                 background_knowledge.append(s)
 
         for pred in background:
+            inspect_mode_syntax(pred)
             background_knowledge.append('mode: ' + pred)
 
         # Write the newly created background_knowledge to a file: background.txt
@@ -120,7 +146,7 @@ class modes(object):
         write_to_file(background_knowledge, SOURCE_PATH + 'background.txt')
             
 class train(object):
-
+    
     def __init__(self, background, train_pos, train_neg, train_facts, save=False, advice=False, softm=False, alpha=0.5, beta=-2, trees=10):
         self.target = background.target
         self.train_pos = train_pos
@@ -131,6 +157,16 @@ class train(object):
         self.alpha = alpha
         self.beta = beta
         self.trees = trees
+
+        #def inspect_mode_syntax(example):    
+        #def inspect_example_syntax(example):
+        
+        for example in self.train_pos:
+            inspect_example_syntax(example)
+        for example in self.train_neg:
+            inspect_example_syntax(example)
+        for example in self.train_facts:
+            inspect_example_syntax(example)
 
         write_to_file(self.train_pos, SOURCE_PATH + 'train/train_pos.txt')
         write_to_file(self.train_neg, SOURCE_PATH + 'train/train_neg.txt')

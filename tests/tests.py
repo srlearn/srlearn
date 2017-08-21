@@ -30,15 +30,6 @@ with open('tests/setupscript.sh', 'w') as f:
 # Yep, this is a hack.
 call_process('bash tests/setupscript.sh')
 
-'''
-call_process('if [[ ! -d ~/.boostsrl_data/train ]]; then mkdir -p ~/.boostsrl_data/train; fi')
-call_process('if [[ ! -d ~/.boostsrl_data/test ]]; then mkdir -p ~/.boostsrl_data/test; fi')
-call_process("echo 'import: \"../background.txt\".' > ~/.boostsrl_data/train/train_bk.txt")
-call_process("echo 'import: \"../background.txt\".' > ~/.boostsrl_data/test/test_bk.txt")
-call_process('cp boostsrl/v1-0.jar ~/.boostsrl_data/v1-0.jar')
-call_process('cp boostsrl/auc.jar ~/.boostsrl_data/auc.jar')
-'''
-
 HOME_PATH = os.path.expanduser('~')
 
 sys.path.append('./boostsrl')
@@ -54,7 +45,7 @@ class background_functions:
 
     def build_background_1(self):
         bk = ['friends(+Person, -Person).', 'friends(-Person, +Person).', 'smokes(+Person).', 'cancer(+Person).']
-        background = boostsrl.modes(bk, 'cancer', useStdLogicVariables=True, treeDepth=4, nodeSize=2, numOfClauses=8)
+        background = boostsrl.modes(bk, 'cancer', useStdLogicVariables=True, treeDepth=4, nodeSize=2, numOfClauses=8, resampleNegs=True)
         return background
 
 class train_functions:
@@ -97,6 +88,7 @@ class MyTest(unittest.TestCase):
         self.assertEqual(background.treeDepth, 4)
         self.assertEqual(background.nodeSize, 2)
         self.assertEqual(background.numOfClauses, 8)
+        self.assertEqual(background.resampleNegs, True)
         # These background values should remain as the default values since they are not referenced.
         self.assertEqual(background.loadAllLibraries, False)
         self.assertEqual(background.usePrologVariables, False)
@@ -106,7 +98,6 @@ class MyTest(unittest.TestCase):
         self.assertEqual(background.incrLCTrees, None)
         self.assertEqual(background.recursion, False)
         self.assertEqual(background.lineSearch, False)
-        self.assertEqual(background.resampleNegs, False)
 
     def test_data_sampling(self):
         '''Ensures that example_data function is returning the proper results.'''
@@ -128,6 +119,7 @@ class MyTest(unittest.TestCase):
         self.assertTrue(['useStdLogicVariables', True] in background.relevant)
         self.assertTrue(['treeDepth', 4] in background.relevant)
         self.assertTrue(['nodeSize', 2] in background.relevant)
+        self.assertTrue(['resampleNegs', True] in background.relevant)
         
     def test_background_setup_1_background_knowledge(self):
         '''Ensure that the background_knowledge list is created properly'''
@@ -137,6 +129,7 @@ class MyTest(unittest.TestCase):
         self.assertTrue('useStdLogicVariables: true.' in background.background_knowledge)
         self.assertTrue('setParam: treeDepth=4.' in background.background_knowledge)
         self.assertTrue('setParam: nodeSize=2.' in background.background_knowledge)
+        self.assertTrue('setParam: resampleNegs=true.' in background.background_knowledge)
         self.assertTrue('mode: friends(+Person, -Person).' in background.background_knowledge)
         self.assertTrue('mode: friends(-Person, +Person).' in background.background_knowledge)
         self.assertTrue('mode: smokes(+Person).' in background.background_knowledge)
@@ -146,7 +139,7 @@ class MyTest(unittest.TestCase):
         '''Ensure that the background file is actually created.'''
         f = background_functions()
         background = f.build_background_1()
-        self.assertTrue(os.path.isfile('boostsrl/background.txt'))
+        self.assertTrue(os.path.isfile(HOME_PATH + '/.boostsrl_data/background.txt'))
 
     def test_background_setup_1_matches_background_knowledge(self):
         '''Open the background.txt up and make sure it matches what was written into it.'''
