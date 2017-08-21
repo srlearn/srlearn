@@ -7,6 +7,28 @@ import unittest
 # Check to make sure there are no references that are not present in the modes object.
 # Check that train_bk and test_bk exist, and both point to background.txt
 
+if os.name == 'posix' and sys.version_info[0] < 3:
+    import subprocess32 as subprocess
+else:
+    import subprocess
+
+def call_process(call):
+    try:
+        p = subprocess.Popen(call, shell=True)
+        os.waitpid(p.pid, 0)
+    except:
+        raise(Exception('Encountered problems while running process: ', call))
+
+# Begin tests by making sure that ~/.boostsrl_data/{train}{test} exist, and necessary files exist.
+call_process('if [[ ! -d ~/.boostsrl_data/train ]]; then mkdir -p ~/.boostsrl_data/train; fi')
+call_process('if [[ ! -d ~/.boostsrl_data/test ]]; then mkdir -p ~/.boostsrl_data/test; fi')
+call_process("echo 'import: \"../background.txt\".' > ~/.boostsrl_data/train/train_bk.txt")
+call_process("echo 'import: \"../background.txt\".' > ~/.boostsrl_data/test/test_bk.txt")
+call_process('cp boostsrl/v1-0.jar ~/.boostsrl_data/v1-0.jar')
+call_process('cp boostsrl/auc.jar ~/.boostsrl_data/auc.jar')
+
+HOME_PATH = os.path.expanduser('~')
+
 sys.path.append('./boostsrl')
 import boostsrl
 
@@ -118,7 +140,7 @@ class MyTest(unittest.TestCase):
         '''Open the background.txt up and make sure it matches what was written into it.'''
         f = background_functions()
         background = f.build_background_1()
-        with open('boostsrl/background.txt', 'r') as f:
+        with open(HOME_PATH + '/.boostsrl_data/background.txt', 'r') as f:
             self.assertTrue(f.read().splitlines() == background.background_knowledge)
 
     def test_boostsrl_training(self):
