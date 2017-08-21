@@ -35,7 +35,7 @@ setup(
     #download_url=...
 
     # License
-    license='GPL-3.0+',
+    license='GPL-3.0',
 
     classifiers=[
         # Current development status
@@ -47,7 +47,7 @@ setup(
         'Intended Audience :: Science/Research',
 
         # License
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
 
         # OS
         'Operating System :: POSIX :: Linux',
