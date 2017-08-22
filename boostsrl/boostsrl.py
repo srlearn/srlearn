@@ -166,9 +166,7 @@ class train(object):
         self.beta = beta
         self.trees = trees
 
-        #def inspect_mode_syntax(example):    
-        #def inspect_example_syntax(example):
-        
+        # Syntax checking for examples in each set.
         for example in self.train_pos:
             inspect_example_syntax(example)
         for example in self.train_neg:
@@ -194,9 +192,9 @@ class train(object):
             tree_file = SOURCE_PATH + 'train/models/bRDNs/dotFiles/WILLTreeFor_' + target + str(treenumber) + '.dot'
             with open(tree_file, 'r') as f:
                 tree_output = ''.join(f.read().splitlines())
-            #print(tree_output)
-            src = Source(tree_output)
-            src
+            return tree_output
+            #src = Source(tree_output)
+            #src
         else:
             tree_file = SOURCE_PATH + 'train/models/bRDNs/Trees/' + target + 'Tree' + str(treenumber) + '.tree'
             with open(tree_file, 'r') as f:
