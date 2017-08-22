@@ -21,7 +21,7 @@ else:
 HOME_PATH = os.path.expanduser('~')
 SOURCE_PATH = HOME_PATH + '/.boostsrl_data/'
 
-# Mode definitions and predicate logic examples can be parsed with regular expressions.
+# Mode definitions and predicate logic examples can be verified with regular expressions.
 mode_re = re.compile(r'[a-zA-Z0-9]*\(((\+|\-)[a-zA-Z0-9]*,( )*)*(\+|\-)[a-zA-Z0-9]*\)\.')
 exam_re = re.compile(r'[a-zA-Z0-9]*\(([a-zA-Z0-9]*,( )*)*[a-zA-Z0-9]*\)\.')
 
@@ -104,6 +104,9 @@ class modes(object):
     def __init__(self, background, target, loadAllLibraries=False, useStdLogicVariables=False, usePrologVariables=False,
                  recursion=False, lineSearch=False, resampleNegs=False,
                  treeDepth=None, maxTreeDepth=None, nodeSize=None, numOfClauses=None, numOfCycles=None, minLCTrees=None, incrLCTrees=None):
+        '''
+        target: a list of predicate heads that learning/inference will be performed on.
+        '''
         self.target = target
         self.loadAllLibraries = loadAllLibraries
         self.useStdLogicVariables = useStdLogicVariables
@@ -130,6 +133,8 @@ class modes(object):
             if (a in ['useStdLogicVariables', 'usePrologVariables'] and v == True):
                 s = a + ': ' + str(v).lower() + '.'
                 background_knowledge.append(s)
+            elif a == 'target':
+                pass
             elif v == True:
                 s = 'setParam: ' + a + '=' + str(v).lower() + '.'
                 background_knowledge.append(s)
@@ -148,6 +153,9 @@ class modes(object):
 class train(object):
     
     def __init__(self, background, train_pos, train_neg, train_facts, save=False, advice=False, softm=False, alpha=0.5, beta=-2, trees=10):
+        '''
+        background: list of strings representing background knowledge.
+        '''
         self.target = background.target
         self.train_pos = train_pos
         self.train_neg = train_neg
@@ -172,16 +180,16 @@ class train(object):
         write_to_file(self.train_neg, SOURCE_PATH + 'train/train_neg.txt')
         write_to_file(self.train_facts, SOURCE_PATH + 'train/train_facts.txt')
         
-        CALL = '(cd ~/.boostsrl_data/; java -jar v1-0.jar -l -train train/ -target ' + self.target + \
+        CALL = '(cd ~/.boostsrl_data/; java -jar v1-0.jar -l -train train/ -target ' + ','.join(self.target) + \
                ' -trees ' + str(self.trees) + ' > train_output.txt 2>&1)'
         call_process(CALL)
 
-    def tree(self, treenumber):
+    def tree(self, treenumber, target):
         # Tree number is between 0 and the self.trees.
         if (treenumber > (self.trees - 1)):
             raise Exception('Tried to find a tree that does not exist.')
         else:
-            tree_file = SOURCE_PATH + 'train/models/bRDNs/Trees/' + self.target + 'Tree' + str(treenumber) + '.tree'
+            tree_file = SOURCE_PATH + 'train/models/bRDNs/Trees/' + target + 'Tree' + str(treenumber) + '.tree'
             with open(tree_file, 'r') as f:
                 tree_output = f.read()
             return tree_output
@@ -226,8 +234,8 @@ class test(object):
 
         self.target = model.target
 
-        CALL = '(cd ~/.boostsrl_data/; java -jar v1-0.jar -i -model train/models/ -test test/ -target ' + self.target + \
-               ' -trees ' + str(trees) + ' -aucJarPath . > test_output.txt 2>&1)'
+        CALL = '(cd ~/.boostsrl_data/; java -jar v1-0.jar -i -model train/models/ -test test/ -target ' + \
+               ','.join(self.target) + ' -trees ' + str(trees) + ' -aucJarPath . > test_output.txt 2>&1)'
         call_process(CALL)
     
     def summarize_results(self):
@@ -257,9 +265,9 @@ class test(object):
         intermediate = line.rsplit(None, 1)
         return [intermediate[0], float(intermediate[1])]
         
-    def inference_results(self):
+    def inference_results(self, target):
         '''Converts BoostSRL results into a Python dictionary.'''
-        results_file = SOURCE_PATH + 'test/results_' + self.target + '.db'
+        results_file = SOURCE_PATH + 'test/results_' + target + '.db'
         inference_dict = {}
         
         with open(results_file, 'r') as f:

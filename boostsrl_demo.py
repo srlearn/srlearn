@@ -23,12 +23,12 @@ test_neg = ['cancer(Voldemort).', 'cancer(Watson).']
 test_facts = ['friends(Zod, Xena).', 'friends(Xena, Watson).', 'friends(Watson, Voldemort).', 'friends(Voldemort, Yoda).', 'friends(Yoda, Zod).', 'friends(Xena, Zod).', 'friends(Watson, Xena).', 'friends(Voldemort, Watson).', 'friends(Yoda, Voldemort).', 'friends(Zod, Yoda).', 'smokes(Zod).', 'smokes(Xena).', 'smokes(Yoda).']
 
 # Instantiate a background object.
-background = boostsrl.modes(bk, 'cancer', useStdLogicVariables=True, treeDepth=4, nodeSize=2, numOfClauses=8)
+background = boostsrl.modes(bk, ['cancer'], useStdLogicVariables=True, treeDepth=4, nodeSize=2, numOfClauses=8)
 # Train a model using training data and the background information.
 model = boostsrl.train(background, train_pos, train_neg, train_facts)
 # Test on new data using the trained model and testing data.
 test = boostsrl.test(model, test_pos, test_neg, test_facts)
 
-print('Training Time (s): ' + str(model.get_training_time()))
+print('Training Time (s): ' + str(model.traintime()))
 print('Results Summary:   ' + str(test.summarize_results()))
-print('Inference Results: ' + str(test.inference_results()))
+print('Inference Results: ' + str(test.inference_results('cancer')))

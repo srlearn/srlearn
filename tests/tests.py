@@ -45,14 +45,14 @@ class background_functions:
 
     def build_background_1(self):
         bk = ['friends(+Person, -Person).', 'friends(-Person, +Person).', 'smokes(+Person).', 'cancer(+Person).']
-        background = boostsrl.modes(bk, 'cancer', useStdLogicVariables=True, treeDepth=4, nodeSize=2, numOfClauses=8, resampleNegs=True)
+        background = boostsrl.modes(bk, ['cancer'], useStdLogicVariables=True, treeDepth=4, nodeSize=2, numOfClauses=8, resampleNegs=True)
         return background
 
 class train_functions:
 
     def test_training_1(self):
         bk = ['friends(+Person, -Person).', 'friends(-Person, +Person).', 'smokes(+Person).', 'cancer(+Person).']
-        background = boostsrl.modes(bk, 'cancer', useStdLogicVariables=True, treeDepth=4, nodeSize=2, numOfClauses=8)
+        background = boostsrl.modes(bk, ['cancer'], useStdLogicVariables=True, treeDepth=4, nodeSize=2, numOfClauses=8)
         train_pos = boostsrl.example_data('train_pos')
         train_neg = boostsrl.example_data('train_neg')
         train_facts = boostsrl.example_data('train_facts')
@@ -63,7 +63,7 @@ class test_with_model_functions:
 
     def test_testing_1(self):
         bk = boostsrl.example_data('background')
-        background = boostsrl.modes(bk, 'cancer', useStdLogicVariables=True, treeDepth=4, nodeSize=2, numOfClauses=8)
+        background = boostsrl.modes(bk, ['cancer'], useStdLogicVariables=True, treeDepth=4, nodeSize=2, numOfClauses=8)
         train_pos = boostsrl.example_data('train_pos')
         train_neg = boostsrl.example_data('train_neg')
         train_facts = boostsrl.example_data('train_facts')
@@ -83,7 +83,7 @@ class MyTest(unittest.TestCase):
         f = background_functions()
         background = f.build_background_1()
         # These background values should be bound since they are set with the build_background function.
-        self.assertEqual(background.target, 'cancer')
+        self.assertEqual(background.target, ['cancer'])
         self.assertEqual(background.useStdLogicVariables, True)
         self.assertEqual(background.treeDepth, 4)
         self.assertEqual(background.nodeSize, 2)
@@ -115,7 +115,7 @@ class MyTest(unittest.TestCase):
         f = background_functions()
         background = f.build_background_1()
         self.assertTrue(['numOfClauses', 8] in background.relevant)
-        self.assertTrue(['target', 'cancer'] in background.relevant)
+        #self.assertTrue(['target', 'cancer'] in background.relevant)
         self.assertTrue(['useStdLogicVariables', True] in background.relevant)
         self.assertTrue(['treeDepth', 4] in background.relevant)
         self.assertTrue(['nodeSize', 2] in background.relevant)
@@ -152,7 +152,7 @@ class MyTest(unittest.TestCase):
         '''Check assignment and outcomes of BoostSRL training.'''
         f = train_functions()
         model = f.test_training_1()
-        self.assertEqual(model.target, 'cancer')
+        self.assertEqual(model.target, ['cancer'])
         self.assertEqual(model.advice, False)
         self.assertEqual(model.softm, False)
         self.assertEqual(model.alpha, 0.5)
@@ -160,17 +160,17 @@ class MyTest(unittest.TestCase):
         self.assertEqual(model.trees, 10)
 
         # Do the trees exist? Does 'cancer' appear in tree0?
-        self.assertTrue(isinstance(model.tree(0), str))
-        self.assertTrue(isinstance(model.tree(1), str))
-        self.assertTrue(isinstance(model.tree(2), str))
-        self.assertTrue(isinstance(model.tree(3), str))
-        self.assertTrue(isinstance(model.tree(4), str))
-        self.assertTrue(isinstance(model.tree(5), str))
-        self.assertTrue(isinstance(model.tree(6), str))
-        self.assertTrue(isinstance(model.tree(7), str))
-        self.assertTrue(isinstance(model.tree(8), str))
-        self.assertTrue(isinstance(model.tree(9), str))
-        self.assertTrue('cancer' in model.tree(0))
+        self.assertTrue(isinstance(model.tree(0, 'cancer'), str))
+        self.assertTrue(isinstance(model.tree(1, 'cancer'), str))
+        self.assertTrue(isinstance(model.tree(2, 'cancer'), str))
+        self.assertTrue(isinstance(model.tree(3, 'cancer'), str))
+        self.assertTrue(isinstance(model.tree(4, 'cancer'), str))
+        self.assertTrue(isinstance(model.tree(5, 'cancer'), str))
+        self.assertTrue(isinstance(model.tree(6, 'cancer'), str))
+        self.assertTrue(isinstance(model.tree(7, 'cancer'), str))
+        self.assertTrue(isinstance(model.tree(8, 'cancer'), str))
+        self.assertTrue(isinstance(model.tree(9, 'cancer'), str))
+        self.assertTrue('cancer' in model.tree(0, 'cancer'))
 
         # Does training time return either a float or an int?
         self.assertTrue(isinstance(model.traintime(), float))
@@ -203,7 +203,7 @@ class MyTest(unittest.TestCase):
         self.assertNotEqual(results.float_split('pred(t1, t2, t3). 1'), ['pred(t1, t2, t3).', '1'])
 
         # Check the contents of the inference results.
-        inference_dict = results.inference_results()
+        inference_dict = results.inference_results('cancer')
         self.assertTrue('cancer(Zod)' in inference_dict)
         self.assertTrue('!cancer(Watson)' in inference_dict)
         self.assertTrue('cancer(Xena)' in inference_dict)
