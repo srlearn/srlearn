@@ -188,11 +188,16 @@ class train(object):
         if (treenumber > (self.trees - 1)):
             raise Exception('Tried to find a tree that does not exist.')
         elif image:
+            '''
+            Writing this with Jupyter notebooks in mind.
+            '''
             from graphviz import Source
             tree_file = SOURCE_PATH + 'train/models/bRDNs/dotFiles/WILLTreeFor_' + target + str(treenumber) + '.dot'
             with open(tree_file, 'r') as f:
                 tree_output = ''.join(f.read().splitlines())
-            return tree_output
+            src = Source(tree_output)
+            return src
+            #return tree_output
             #src = Source(tree_output)
             #src
         else:
