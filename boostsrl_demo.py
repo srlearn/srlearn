@@ -9,7 +9,7 @@ bk = [
     'cancer(+Person).'
 ]
 
-bridgers = ['friends/2']
+bridgers = ['friends/2.']
 
 precomputes = {
     'num_of_smoking_friends(+Person, #Number).': 'num_of_smoking_friends(x, n) :- friends(x, y), countUniqueBindings((friends(x,z)^smokes(z)), n).'
@@ -23,10 +23,9 @@ test_neg = ['cancer(Voldemort).', 'cancer(Watson).']
 test_facts = ['friends(Zod, Xena).', 'friends(Xena, Watson).', 'friends(Watson, Voldemort).', 'friends(Voldemort, Yoda).', 'friends(Yoda, Zod).', 'friends(Xena, Zod).', 'friends(Watson, Xena).', 'friends(Voldemort, Watson).', 'friends(Yoda, Voldemort).', 'friends(Zod, Yoda).', 'smokes(Zod).', 'smokes(Xena).', 'smokes(Yoda).']
 
 # Instantiate a background object.
-background = boostsrl.modes(bk, ['cancer'], useStdLogicVariables=True, treeDepth=4, nodeSize=2, numOfClauses=8)
+background = boostsrl.modes(bk, ['cancer'], bridgers=bridgers, precomputes=precomputes, useStdLogicVariables=True, treeDepth=4, nodeSize=2, numOfClauses=8)
 # Train a model using training data and the background information.
 model = boostsrl.train(background, train_pos, train_neg, train_facts)
-#model.tree(0, 'cancer', image=True)
 # Test on new data using the trained model and testing data.
 test = boostsrl.test(model, test_pos, test_neg, test_facts)
 

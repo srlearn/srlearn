@@ -101,13 +101,18 @@ def save_model(model):
 
 class modes(object):
     
-    def __init__(self, background, target, loadAllLibraries=False, useStdLogicVariables=False, usePrologVariables=False,
+    def __init__(self, background, target, bridgers=None, precomputes=None, loadAllLibraries=False,
+                 useStdLogicVariables=False, usePrologVariables=False,
                  recursion=False, lineSearch=False, resampleNegs=False,
                  treeDepth=None, maxTreeDepth=None, nodeSize=None, numOfClauses=None, numOfCycles=None, minLCTrees=None, incrLCTrees=None):
         '''
         target: a list of predicate heads that learning/inference will be performed on.
         '''
         self.target = target
+
+        self.bridgers = bridgers
+        self.precomputes = precomputes
+        
         self.loadAllLibraries = loadAllLibraries
         self.useStdLogicVariables = useStdLogicVariables
         self.usePrologVariables = usePrologVariables
@@ -133,7 +138,7 @@ class modes(object):
             if (a in ['useStdLogicVariables', 'usePrologVariables'] and v == True):
                 s = a + ': ' + str(v).lower() + '.'
                 background_knowledge.append(s)
-            elif a == 'target':
+            elif a in ['target', 'bridgers', 'precomputes']:
                 pass
             elif v == True:
                 s = 'setParam: ' + a + '=' + str(v).lower() + '.'
@@ -145,6 +150,17 @@ class modes(object):
         for pred in background:
             inspect_mode_syntax(pred)
             background_knowledge.append('mode: ' + pred)
+
+        if self.bridgers is not None:
+            for bridger in self.bridgers:
+                background_knowledge.append('bridger: ' + bridger)
+                
+        if self.precomputes is not None:
+            for precompute in self.precomputes:
+                background_knowledge.append(self.precomputes[precompute])
+                background_knowledge.append('mode: ' + precompute)
+                #print(self.precomputes[precompute])
+                #print('mode: ' + precompute)
 
         # Write the newly created background_knowledge to a file: background.txt
         self.background_knowledge = background_knowledge
