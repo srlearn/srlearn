@@ -53,7 +53,7 @@
 >>> bk = boostsrl.example_data('background')
 
 # Create the background knowledge or 'Modes,' where 'cancer' is the target we want to predict.
->>> background = boostsrl.modes(bk, 'cancer', useStdLogicVariables=True, treeDepth=4, nodeSize=2, numOfClauses=8)
+>>> background = boostsrl.modes(bk, ['cancer'], useStdLogicVariables=True, treeDepth=4, nodeSize=2, numOfClauses=8)
 
 '''Step 2: Training a Model'''
 
@@ -64,6 +64,10 @@
 
 # Train a model using this data:
 >>> model = boostsrl.train(background, train_pos, train_neg, train_facts)
+
+# How many seconds did training take?
+>>> model.traintime()
+0.705
 
 '''Step 3: Test Model on New Data'''
 
@@ -82,7 +86,7 @@
 {'CLL': '-0.223184', 'F1': '1.000000', 'Recall': '1.000000', 'Precision': '1.000000,0.500', 'AUC ROC': '1.000000', 'AUC PR': '1.000000'}
 
 # To see probabilities for individual test examples:
->>> results.inference_results()
+>>> results.inference_results('cancer')
 {'!cancer(Watson)': 0.6924179024024251, 'cancer(Xena)': 0.8807961917687174, '!cancer(Voldemort)': 0.6924179024024251, 'cancer(Yoda)': 0.8807961917687174, 'cancer(Zod)': 0.8807961917687174}
 
 ```
