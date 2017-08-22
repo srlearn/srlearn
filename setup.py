@@ -20,7 +20,7 @@ setup(
     packages=['boostsrl'],
     author='Alexander L. Hayes (batflyer)',
     author_email='alexander@batflyer.net',
-    version='0.1',
+    version='0.2',
     description='Python wrappers for using BoostSRL jar files.',
     #long_description=long_description,
     long_description=open('README.md').read(),
@@ -34,7 +34,7 @@ setup(
 
     # Project's main homepage.
     url='https://github.com/batflyer/boostsrl-python-package',
-    download_url="https://github.com/batflyer/boostsrl-python-package/archive/0.1.tar.gz",
+    download_url="https://github.com/batflyer/boostsrl-python-package/archive/0.2.tar.gz",
 
     # License
     license='GPL-3.0',
