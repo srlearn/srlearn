@@ -10,12 +10,12 @@
 
 ---
 
-# boostsrl_java
+# boostsrl
 
-> **BoostSRL** (Boosting for Statistical Relational Learning) is a gradient-boosting based approach to learning statistical relational models.
+> **BoostSRL** (Boosting for Statistical Relational Learning) is a gradient-boosting based approach to learning statistical relational models.  
 > Sriraam Natarajan, Tushar Khot, Kristian Kersting and Jude Shavlik, Boosted Statistical Relational Learners: From Benchmarks to Data-Driven Medicine. SpringerBriefs in Computer Science, ISBN: 978-3-319-13643-1, 2015
 
-*boostsrl_java* is a Python package with wrappers for creating background knowledge and performing learning and inference.
+*boostsrl* is a Python package with wrappers for creating background knowledge and performing learning and inference.
 
 ## Getting Started
 
@@ -24,22 +24,14 @@
 * Java 1.8
 * Python (2.6, 2.7, 3.3, 3.4, 3.5, 3.6)
 * subprocess32 (if using Python 2.7: `pip install subprocess32`)
+* graphviz-0.8
 
 ### Installation
 
 * The latest stable build can be installed with pip:
 
   ```bash
-  $ pip install boostsrl_java
-  ```
-
-* For versions in development, use the most recent available on GitHub
-
-  ```bash
-  # Clone the repository
-  $ git clone https://github.com/batflyer/boostsrl-python-package.git
-  # Test the build
-  $ python tests/test.py
+  $ pip install git+git://github.com/batflyer/boostsrl-python-package.git
   ```
 
 ### Basic Usage

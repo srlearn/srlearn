@@ -12,8 +12,8 @@ here = path.abspath(path.dirname(__file__))
 
 # Description from README
 
-with open(path.join(here, 'README.md'), encoding='utf-8') as f:
-    long_description = f.read()
+#with open(path.join(here, 'README.md'), encoding='utf-8') as f:
+#    long_description = f.read()
 
 setup(
     name='boostsrl',
@@ -22,7 +22,8 @@ setup(
     author_email='alexander@batflyer.net',
     version='0.1',
     description='Python wrappers for using BoostSRL jar files.',
-    long_description=long_description,
+    #long_description=long_description,
+    long_description=open('README.md').read(),
 
     # boostsrl_java stores files in the user's home directory by default.
     include_package_data = True,
