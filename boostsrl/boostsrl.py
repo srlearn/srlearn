@@ -22,7 +22,7 @@ HOME_PATH = os.path.expanduser('~')
 SOURCE_PATH = HOME_PATH + '/.boostsrl_data/'
 
 # Mode definitions and predicate logic examples can be verified with regular expressions.
-mode_re = re.compile(r'[a-zA-Z0-9]*\(((\+|\-)[a-zA-Z0-9]*,( )*)*(\+|\-)[a-zA-Z0-9]*\)\.')
+mode_re = re.compile(r'[a-zA-Z0-9]*\(((\+|\-|\#)[a-zA-Z0-9]*,( )*)*(\+|\-|\#)[a-zA-Z0-9]*\)\.')
 exam_re = re.compile(r'[a-zA-Z0-9]*\(([a-zA-Z0-9]*,( )*)*[a-zA-Z0-9]*\)\.')
 
 def example_data(example):
@@ -184,10 +184,12 @@ class train(object):
                ' -trees ' + str(self.trees) + ' > train_output.txt 2>&1)'
         call_process(CALL)
 
-    def tree(self, treenumber, target):
+    def tree(self, treenumber, target, image=False):
         # Tree number is between 0 and the self.trees.
         if (treenumber > (self.trees - 1)):
             raise Exception('Tried to find a tree that does not exist.')
+        elif image:
+            pass
         else:
             tree_file = SOURCE_PATH + 'train/models/bRDNs/Trees/' + target + 'Tree' + str(treenumber) + '.tree'
             with open(tree_file, 'r') as f:
