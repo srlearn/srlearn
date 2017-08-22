@@ -1,5 +1,5 @@
 '''
-Setup file for boostsrl_java
+Setup file for boostsrl
 
 Refer to https://github.com/batflyer/boostsrl-python-package
 '''
@@ -16,8 +16,8 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='boostsrl_java',
-    packages=['boostsrl_java'],
+    name='boostsrl',
+    packages=['boostsrl'],
     author='Alexander L. Hayes (batflyer)',
     author_email='alexander@batflyer.net',
     version='0.1',
@@ -25,14 +25,15 @@ setup(
     long_description=long_description,
 
     # boostsrl_java stores files in the user's home directory by default.
-    data_files=[('~/.boostsrl_data', ['boostsrl/v1-0.jar',
-                                      'boostsrl/auc.jar']),
-                ('~/.boostsrl_data/train', ['boostsrl/train/train_bk.txt']),
-                ('~/.boostsrl_data/test', ['boostsrl/test/test_bk.txt'])],
+    include_package_data = True,
+    data_files=[(path.expanduser('~') + '/.boostsrl_data', ['boostsrl/v1-0.jar',
+                                                            'boostsrl/auc.jar']),
+                (path.expanduser('~') + '/.boostsrl_data/train', ['boostsrl/train/train_bk.txt']),
+                (path.expanduser('~') + '/.boostsrl_data/test', ['boostsrl/test/test_bk.txt'])],
 
     # Project's main homepage.
     url='https://github.com/batflyer/boostsrl-python-package',
-    #download_url=...
+    download_url="https://github.com/batflyer/boostsrl-python-package/archive/0.1.tar.gz",
 
     # License
     license='GPL-3.0',
@@ -70,7 +71,7 @@ setup(
     # Relevant keywords (from boost-starai/BoostSRL)
     keywords='machine-learning-algorithms machine-learning statistical-learning pattern-classification artificial-intelligence',
 
-    install_requires = ['subprocess32'],
+    install_requires = ['subprocess32', 'graphviz'],
     extras_require={
         'test': ['coverage']
     }
