@@ -26,6 +26,7 @@ test_facts = ['friends(Zod, Xena).', 'friends(Xena, Watson).', 'friends(Watson, 
 background = boostsrl.modes(bk, ['cancer'], useStdLogicVariables=True, treeDepth=4, nodeSize=2, numOfClauses=8)
 # Train a model using training data and the background information.
 model = boostsrl.train(background, train_pos, train_neg, train_facts)
+#model.tree(0, 'cancer', image=True)
 # Test on new data using the trained model and testing data.
 test = boostsrl.test(model, test_pos, test_neg, test_facts)
 

@@ -186,10 +186,17 @@ class train(object):
 
     def tree(self, treenumber, target, image=False):
         # Tree number is between 0 and the self.trees.
+        #print(treenumber, target, image)
         if (treenumber > (self.trees - 1)):
             raise Exception('Tried to find a tree that does not exist.')
         elif image:
-            pass
+            from graphviz import Source
+            tree_file = SOURCE_PATH + 'train/models/bRDNs/dotFiles/WILLTreeFor_' + target + str(treenumber) + '.dot'
+            with open(tree_file, 'r') as f:
+                tree_output = ''.join(f.read().splitlines())
+            #print(tree_output)
+            src = Source(tree_output)
+            src
         else:
             tree_file = SOURCE_PATH + 'train/models/bRDNs/Trees/' + target + 'Tree' + str(treenumber) + '.tree'
             with open(tree_file, 'r') as f:
