@@ -2,6 +2,8 @@
 *~
 *.pyc
 
+# ignore to rst readme
+README
 tests/setupscript.sh
 
 # log files

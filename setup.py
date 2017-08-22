@@ -23,7 +23,7 @@ setup(
     version='0.2',
     description='Python wrappers for using BoostSRL jar files.',
     #long_description=long_description,
-    long_description=open('README.md').read(),
+    #long_description=open('README.md').read(),
 
     # boostsrl_java stores files in the user's home directory by default.
     include_package_data = True,
