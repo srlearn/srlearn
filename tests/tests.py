@@ -1,3 +1,4 @@
+import graphviz
 import os
 import sys
 import unittest
@@ -44,8 +45,19 @@ class sample_data_functions:
 class background_functions:
 
     def build_background_1(self):
+        # Background creation with generic options.
         bk = ['friends(+Person, -Person).', 'friends(-Person, +Person).', 'smokes(+Person).', 'cancer(+Person).']
         background = boostsrl.modes(bk, ['cancer'], useStdLogicVariables=True, treeDepth=4, nodeSize=2, numOfClauses=8, resampleNegs=True)
+        return background
+
+    def build_background_2(self):
+        # Background creation with bridgers and precomputes.
+        bk = boostsrl.example_data('background')
+        bridgers = ['friends/2.']
+        precomputes = {
+            'num_of_smoking_friends(+Person, #Number).': 'num_of_smoking_friends(x, n) :- friends(x, y), countUniqueBindings((friends(x,z)^smokes(z)), n).'
+        }
+        background = boostsrl.modes(bk, ['cancer'], bridgers=bridgers, precomputes=precomputes, useStdLogicVariables=True, treeDepth=4, nodeSize=2, numOfClauses=8, resampleNegs=True)
         return background
 
 class train_functions:
@@ -82,6 +94,7 @@ class MyTest(unittest.TestCase):
         '''Ensure that the background returned by boostsrl.modes sets variables correctly.'''
         f = background_functions()
         background = f.build_background_1()
+        self.assertTrue(isinstance(background, boostsrl.modes))
         # These background values should be bound since they are set with the build_background function.
         self.assertEqual(background.target, ['cancer'])
         self.assertEqual(background.useStdLogicVariables, True)
@@ -98,6 +111,21 @@ class MyTest(unittest.TestCase):
         self.assertEqual(background.incrLCTrees, None)
         self.assertEqual(background.recursion, False)
         self.assertEqual(background.lineSearch, False)
+
+    def test_background_setup_2(self):
+        '''Ensure that the background returned by boostsrl.modes gets precomputes and bridgers right.'''
+        f = background_functions()
+        background = f.build_background_2()
+        self.assertTrue(isinstance(background, boostsrl.modes))
+        # These background values should be bound since they are set with the build_background function.
+        self.assertEqual(background.target, ['cancer'])
+        self.assertEqual(background.useStdLogicVariables, True)
+        self.assertEqual(background.treeDepth, 4)
+        self.assertEqual(background.nodeSize, 2)
+        self.assertEqual(background.numOfClauses, 8)
+        self.assertEqual(background.resampleNegs, True)
+        self.assertEqual(background.bridgers, ['friends/2.'])
+        self.assertEqual(background.precomputes, {'num_of_smoking_friends(+Person, #Number).': 'num_of_smoking_friends(x, n) :- friends(x, y), countUniqueBindings((friends(x,z)^smokes(z)), n).'})
 
     def test_data_sampling(self):
         '''Ensures that example_data function is returning the proper results.'''
@@ -125,6 +153,11 @@ class MyTest(unittest.TestCase):
         '''Ensure that the background_knowledge list is created properly'''
         f = background_functions()
         background = f.build_background_1()
+
+        # Was a background object created?
+        self.assertTrue(isinstance(background, boostsrl.modes))
+        
+        # Were background parameters created properly?
         self.assertTrue('setParam: numOfClauses=8.' in background.background_knowledge)
         self.assertTrue('useStdLogicVariables: true.' in background.background_knowledge)
         self.assertTrue('setParam: treeDepth=4.' in background.background_knowledge)
@@ -152,6 +185,10 @@ class MyTest(unittest.TestCase):
         '''Check assignment and outcomes of BoostSRL training.'''
         f = train_functions()
         model = f.test_training_1()
+
+        # Was a class created?
+        self.assertTrue(isinstance(model, boostsrl.train))
+        
         self.assertEqual(model.target, ['cancer'])
         self.assertEqual(model.advice, False)
         self.assertEqual(model.softm, False)
@@ -172,6 +209,14 @@ class MyTest(unittest.TestCase):
         self.assertTrue(isinstance(model.tree(9, 'cancer'), str))
         self.assertTrue('cancer' in model.tree(0, 'cancer'))
 
+        # Can the tree be converted to an image?
+        #import graphviz
+        self.assertTrue(isinstance(model.tree(0, 'cancer', image=True), graphviz.files.Source))
+        self.assertTrue(isinstance(model.tree(1, 'cancer', image=True), graphviz.files.Source))
+        self.assertTrue(isinstance(model.tree(2, 'cancer', image=True), graphviz.files.Source))
+        self.assertTrue(isinstance(model.tree(3, 'cancer', image=True), graphviz.files.Source))
+        self.assertTrue(isinstance(model.tree(9, 'cancer', image=True), graphviz.files.Source))
+
         # Does training time return either a float or an int?
         self.assertTrue(isinstance(model.traintime(), float))
         self.assertEqual(model.training_time_to_float(['1', 'milliseconds']), 0.001)
@@ -182,6 +227,9 @@ class MyTest(unittest.TestCase):
         '''Run the entire training/testing pipeline to ensure testing works properly.'''
         f = test_with_model_functions()
         results = f.test_testing_1()
+
+        # Check if class type is correct.
+        self.assertTrue(isinstance(results, boostsrl.test))
 
         # Check the contents of the results summary.
         summary = results.summarize_results()
