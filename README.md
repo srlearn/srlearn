@@ -22,7 +22,7 @@
 ### Prerequisites
 
 * Java 1.8
-* Python (2.6, 2.7, 3.3, 3.4, 3.5, 3.6)
+* Python (2.7, 3.3, 3.4, 3.5, 3.6)
 * subprocess32 (if using Python 2.7: `pip install subprocess32`)
 * graphviz-0.8
 
