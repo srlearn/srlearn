@@ -164,7 +164,7 @@ class modes(object):
 
         # Write the newly created background_knowledge to a file: background.txt
         self.background_knowledge = background_knowledge
-        write_to_file(background_knowledge, SOURCE_PATH + 'background.txt')
+        write_to_file(background_knowledge, 'background.txt')
             
 class train(object):
     
@@ -190,11 +190,11 @@ class train(object):
         for example in self.train_facts:
             inspect_example_syntax(example)
 
-        write_to_file(self.train_pos, SOURCE_PATH + 'train/train_pos.txt')
-        write_to_file(self.train_neg, SOURCE_PATH + 'train/train_neg.txt')
-        write_to_file(self.train_facts, SOURCE_PATH + 'train/train_facts.txt')
+        write_to_file(self.train_pos, 'boostsrl/train/train_pos.txt')
+        write_to_file(self.train_neg, 'boostsrl/train/train_neg.txt')
+        write_to_file(self.train_facts, 'boostsrl/train/train_facts.txt')
         
-        CALL = '(cd ~/.boostsrl_data/; java -jar v1-0.jar -l -train train/ -target ' + ','.join(self.target) + \
+        CALL = '(cd boostsrl; java -jar v1-0.jar -l -train train/ -target ' + ','.join(self.target) + \
                ' -trees ' + str(self.trees) + ' > train_output.txt 2>&1)'
         call_process(CALL)
 
@@ -208,7 +208,7 @@ class train(object):
             Writing this with Jupyter notebooks in mind.
             '''
             from graphviz import Source
-            tree_file = SOURCE_PATH + 'train/models/bRDNs/dotFiles/WILLTreeFor_' + target + str(treenumber) + '.dot'
+            tree_file = 'train/models/bRDNs/dotFiles/WILLTreeFor_' + target + str(treenumber) + '.dot'
             with open(tree_file, 'r') as f:
                 tree_output = ''.join(f.read().splitlines())
             src = Source(tree_output)
@@ -217,7 +217,7 @@ class train(object):
             #src = Source(tree_output)
             #src
         else:
-            tree_file = SOURCE_PATH + 'train/models/bRDNs/Trees/' + target + 'Tree' + str(treenumber) + '.tree'
+            tree_file = 'train/models/bRDNs/Trees/' + target + 'Tree' + str(treenumber) + '.tree'
             with open(tree_file, 'r') as f:
                 tree_output = f.read()
             return tree_output
@@ -225,7 +225,7 @@ class train(object):
     def get_training_time(self):
         '''Return the training time as a float representing the total number of seconds seconds.'''
         import re
-        with open(SOURCE_PATH + 'train_output.txt', 'r') as f:
+        with open('boostsrl/train_output.txt', 'r') as f:
             text = f.read()
         line = re.findall(r'% Total learning time \(\d* trees\):.*', text)
         # Remove the last character "." from the line and split it on spaces.
@@ -256,19 +256,19 @@ class train(object):
 class test(object):
 
     def __init__(self, model, test_pos, test_neg, test_facts, trees=10):
-        write_to_file(test_pos, SOURCE_PATH + 'test/test_pos.txt')
-        write_to_file(test_neg, SOURCE_PATH + 'test/test_neg.txt')
-        write_to_file(test_facts, SOURCE_PATH + 'test/test_facts.txt')
+        write_to_file(test_pos, 'boostsrl/test/test_pos.txt')
+        write_to_file(test_neg, 'boostsrl/test/test_neg.txt')
+        write_to_file(test_facts, 'boostsrl/test/test_facts.txt')
 
         self.target = model.target
 
-        CALL = '(cd ~/.boostsrl_data/; java -jar v1-0.jar -i -model train/models/ -test test/ -target ' + \
+        CALL = '(cd boostsrl; java -jar v1-0.jar -i -model train/models/ -test test/ -target ' + \
                ','.join(self.target) + ' -trees ' + str(trees) + ' -aucJarPath . > test_output.txt 2>&1)'
         call_process(CALL)
     
     def summarize_results(self):
         import re
-        with open(SOURCE_PATH + '/test_output.txt', 'r') as f:
+        with open('boostsrl/test_output.txt', 'r') as f:
             text = f.read()
         line = re.findall(r'%   AUC ROC.*|%   AUC PR.*|%   CLL.*|%   Precision.*|%   Recall.*|%   F1.*', text)
         line = [word.replace(' ','').replace('\t','').replace('%','').replace('atthreshold=',',') for word in line]
@@ -295,7 +295,7 @@ class test(object):
         
     def inference_results(self, target):
         '''Converts BoostSRL results into a Python dictionary.'''
-        results_file = SOURCE_PATH + 'test/results_' + target + '.db'
+        results_file = 'boostsrl/test/results_' + target + '.db'
         inference_dict = {}
         
         with open(results_file, 'r') as f:

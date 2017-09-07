@@ -21,6 +21,7 @@ def call_process(call):
         raise(Exception('Encountered problems while running process: ', call))
 
 # Begin tests by making sure that ~/.boostsrl_data/{train}{test} exist, and necessary files exist.
+'''
 with open('tests/setupscript.sh', 'w') as f:
     f.write('if [[ ! -d ~/.boostsrl_data/train ]]; then mkdir -p ~/.boostsrl_data/train; fi\n')
     f.write('if [[ ! -d ~/.boostsrl_data/test ]]; then mkdir -p ~/.boostsrl_data/test; fi\n')
@@ -30,6 +31,7 @@ with open('tests/setupscript.sh', 'w') as f:
     f.write('cp boostsrl/auc.jar ~/.boostsrl_data/auc.jar\n')
 # Yep, this is a hack.
 call_process('bash tests/setupscript.sh')
+'''
 
 HOME_PATH = os.path.expanduser('~')
 
