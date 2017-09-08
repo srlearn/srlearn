@@ -208,7 +208,7 @@ class train(object):
             Writing this with Jupyter notebooks in mind.
             '''
             from graphviz import Source
-            tree_file = 'train/models/bRDNs/dotFiles/WILLTreeFor_' + target + str(treenumber) + '.dot'
+            tree_file = 'boostsrl/train/models/bRDNs/dotFiles/WILLTreeFor_' + target + str(treenumber) + '.dot'
             with open(tree_file, 'r') as f:
                 tree_output = ''.join(f.read().splitlines())
             src = Source(tree_output)
@@ -217,7 +217,7 @@ class train(object):
             #src = Source(tree_output)
             #src
         else:
-            tree_file = 'train/models/bRDNs/Trees/' + target + 'Tree' + str(treenumber) + '.tree'
+            tree_file = 'boostsrl/train/models/bRDNs/Trees/' + target + 'Tree' + str(treenumber) + '.tree'
             with open(tree_file, 'r') as f:
                 tree_output = f.read()
             return tree_output
