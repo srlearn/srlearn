@@ -174,13 +174,13 @@ class MyTest(unittest.TestCase):
         '''Ensure that the background file is actually created.'''
         f = background_functions()
         background = f.build_background_1()
-        self.assertTrue(os.path.isfile(HOME_PATH + '/.boostsrl_data/background.txt'))
+        self.assertTrue(os.path.isfile('boostsrl/background.txt'))
 
     def test_background_setup_1_matches_background_knowledge(self):
         '''Open the background.txt up and make sure it matches what was written into it.'''
         f = background_functions()
         background = f.build_background_1()
-        with open(HOME_PATH + '/.boostsrl_data/background.txt', 'r') as f:
+        with open('boostsrl/background.txt', 'r') as f:
             self.assertTrue(f.read().splitlines() == background.background_knowledge)
 
     def test_boostsrl_training(self):
@@ -262,3 +262,4 @@ class MyTest(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
