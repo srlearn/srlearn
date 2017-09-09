@@ -96,17 +96,6 @@ We use [SemVer](http://semver.org/) for versioning. See [Releases](https://githu
 * Professor Sriraam Natarajan
 * Members of STARAI Lab
 
----
-
-### Planned Features:
-
-* saving/loading a model
-
-  ```python
-  >>> from boostsrl import boostsrl
-  >>> boostsrl.save_model('toy_cancer')
-  ```
-
 [license]:license.txt
 [license img]:https://img.shields.io/aur/license/yaourt.svg
 
