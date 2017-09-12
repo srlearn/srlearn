@@ -18,9 +18,6 @@ if os.name == 'posix' and sys.version_info[0] < 3:
 else:
     import subprocess
 
-HOME_PATH = os.path.expanduser('~')
-SOURCE_PATH = HOME_PATH + '/.boostsrl_data/'
-
 # Mode definitions and predicate logic examples can be verified with regular expressions.
 mode_re = re.compile(r'[a-zA-Z0-9]*\(((\+|\-|\#)[a-zA-Z0-9]*,( )*)*(\+|\-|\#)[a-zA-Z0-9]*\)\.')
 exam_re = re.compile(r'[a-zA-Z0-9]*\(([a-zA-Z0-9]*,( )*)*[a-zA-Z0-9]*\)\.')
@@ -63,7 +60,9 @@ def inspect_mode_syntax(example):
           friends(person, person).   ::: FAIL
     '''
     if not mode_re.search(example):
-        raise(Exception('Error when checking background knowledge; incorrect syntax: ' + example))
+        raise(Exception('Error when checking background knowledge; incorrect syntax: ' + example + \
+                        '\nBackground knowledge should only contain letters and numbers, of the form: ' + \
+                        'predicate(+var1, -var2).'))
     
 def inspect_example_syntax(example):
     '''Uses a regular expression to check whether all of the examples in a list are in the correct form.
@@ -159,8 +158,6 @@ class modes(object):
             for precompute in self.precomputes:
                 background_knowledge.append(self.precomputes[precompute])
                 background_knowledge.append('mode: ' + precompute)
-                #print(self.precomputes[precompute])
-                #print('mode: ' + precompute)
 
         # Write the newly created background_knowledge to a file: background.txt
         self.background_knowledge = background_knowledge
@@ -200,7 +197,6 @@ class train(object):
 
     def tree(self, treenumber, target, image=False):
         # Tree number is between 0 and the self.trees.
-        #print(treenumber, target, image)
         if (treenumber > (self.trees - 1)):
             raise Exception('Tried to find a tree that does not exist.')
         elif image:
@@ -213,9 +209,6 @@ class train(object):
                 tree_output = ''.join(f.read().splitlines())
             src = Source(tree_output)
             return src
-            #return tree_output
-            #src = Source(tree_output)
-            #src
         else:
             tree_file = 'boostsrl/train/models/bRDNs/Trees/' + target + 'Tree' + str(treenumber) + '.tree'
             with open(tree_file, 'r') as f:
@@ -224,7 +217,6 @@ class train(object):
 
     def get_training_time(self):
         '''Return the training time as a float representing the total number of seconds seconds.'''
-        import re
         with open('boostsrl/train_output.txt', 'r') as f:
             text = f.read()
         line = re.findall(r'% Total learning time \(\d* trees\):.*', text)
@@ -267,7 +259,6 @@ class test(object):
         call_process(CALL)
     
     def summarize_results(self):
-        import re
         with open('boostsrl/test_output.txt', 'r') as f:
             text = f.read()
         line = re.findall(r'%   AUC ROC.*|%   AUC PR.*|%   CLL.*|%   Precision.*|%   Recall.*|%   F1.*', text)
