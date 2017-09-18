@@ -133,8 +133,8 @@ class modes(object):
         types = {
             'background should be a list.': isinstance(background, list),
             'target should be a list.': isinstance(target, list),
-            'bridgers should be a list.': isinstance(bridgers, list),
-            'precomputes should be a dictionary.': isinstance(precomputes, dict),
+            'bridgers should be a list.': isinstance(bridgers, list) or bridgers is None,
+            'precomputes should be a dictionary.': isinstance(precomputes, dict) or precomputes is None,
             'loadAllLibraries should be boolean.': isinstance(loadAllLibraries, bool),
             'useStdLogicVariables should be boolean.': isinstance(useStdLogicVariables, bool),
             'usePrologVariables should be boolean.': isinstance(usePrologVariables, bool),
