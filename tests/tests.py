@@ -13,28 +13,6 @@ if os.name == 'posix' and sys.version_info[0] < 3:
 else:
     import subprocess
 
-def call_process(call):
-    try:
-        p = subprocess.Popen(call, shell=True)
-        os.waitpid(p.pid, 0)
-    except:
-        raise(Exception('Encountered problems while running process: ', call))
-
-# Begin tests by making sure that ~/.boostsrl_data/{train}{test} exist, and necessary files exist.
-'''
-with open('tests/setupscript.sh', 'w') as f:
-    f.write('if [[ ! -d ~/.boostsrl_data/train ]]; then mkdir -p ~/.boostsrl_data/train; fi\n')
-    f.write('if [[ ! -d ~/.boostsrl_data/test ]]; then mkdir -p ~/.boostsrl_data/test; fi\n')
-    f.write("echo 'import: \"../background.txt\".' > ~/.boostsrl_data/train/train_bk.txt\n")
-    f.write("echo 'import: \"../background.txt\".' > ~/.boostsrl_data/test/test_bk.txt\n")
-    f.write('cp boostsrl/v1-0.jar ~/.boostsrl_data/v1-0.jar\n')
-    f.write('cp boostsrl/auc.jar ~/.boostsrl_data/auc.jar\n')
-# Yep, this is a hack.
-call_process('bash tests/setupscript.sh')
-'''
-
-#HOME_PATH = os.path.expanduser('~')
-
 sys.path.append('./boostsrl')
 import boostsrl
 
