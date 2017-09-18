@@ -4,7 +4,7 @@
 
    Name:         boostsrl.py
    Author:       Alexander L. Hayes
-   Updated:      August 21, 2017
+   Updated:      September 18, 2017
    License:      GPLv3
 '''
 
@@ -130,6 +130,32 @@ class modes(object):
         #self.queryPred = 'advisedby/2'
 
         # Many of the arguments in the modes object are optional this shows us the values of the ones that are neither false nor none.
+
+        types = {
+            'background should be a list.': isinstance(background, list),
+            'target should be a list.': isinstance(target, list),
+            'bridgers should be a list.': isinstance(bridgers, list),
+            'precomputes should be a dictionary.': isinstance(precomputes, dict),
+            'loadAllLibraries should be boolean.': isinstance(loadAllLibraries, bool),
+            'useStdLogicVariables should be boolean.': isinstance(useStdLogicVariables, bool),
+            'usePrologVariables should be boolean.': isinstance(usePrologVariables, bool),
+            'recursion should be boolean.': isinstance(recursion, bool),
+            'lineSearch should be boolean.': isinstance(lineSearch, bool),
+            'resampleNegs should be boolean.': isinstance(resampleNegs, bool),
+            'treeDepth should be an int.': isinstance(treeDepth, int) or treeDepth is None,
+            'maxTreeDepth should be an int.': isinstance(maxTreeDepth, int) or maxTreeDepth is None,
+            'nodeSize should be an int.': isinstance(nodeSize, int) or nodeSize is None,
+            'numOfClause should be an int.': isinstance(numOfClauses, int) or numOfClauses is None,
+            'numOfCycles should be an int.': isinstance(numOfCycles, int) or numOfCycles is None,
+            'minLCTrees should be an int.': isinstance(minLCTrees, int) or minLCTrees is None,
+            'incrLCTrees should be an int.': isinstance(incrLCTrees, int) or incrLCTrees is None
+        }
+        
+        # Force type checking for input validation Issue #5
+        for type_check in types:
+            if not types[type_check]:
+                raise(TypeError('Error when checking type: ' +  type_check))
+        
         relevant = [[attr, value] for attr, value in self.__dict__.items() if (value is not False) and (value is not None)]
         self.relevant = relevant
 
