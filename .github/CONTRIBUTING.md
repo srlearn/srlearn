@@ -16,8 +16,8 @@
   * Any stack tracebacks that were returned by Python.
   * The background knowledge and some examples from the data.
   * If Java crashed, the tracebacks are logged. Check content of:
-    * ~/.boostsrl_data/train_output.txt
-    * ~/.boostsrl_data/test_output.txt
+    * boostsrl/train_output.txt
+    * boostsrl/test_output.txt
 
 * Examples:
 
