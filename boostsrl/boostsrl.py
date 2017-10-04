@@ -128,8 +128,8 @@ class modes(object):
         self.resampleNegs = resampleNegs
         #self.queryPred = 'advisedby/2'
 
-        # Many of the arguments in the modes object are optional this shows us the values of the ones that are neither false nor none.
-
+        # Many of the arguments in the modes object are optional this shows us the values of the ones that are neither false nor none
+        
         types = {
             'background should be a list.': isinstance(background, list),
             'target should be a list.': isinstance(target, list),
@@ -273,6 +273,11 @@ class train(object):
 
 class test(object):
 
+    # Possibly a partial fix to Issue #3: checking for the .aucTemp.txt.lock
+    if os.path.isfile('boostsrl/test/AUC/.aucTemp.txt.lock'):
+        print('Found lock file boostsrl/test/AUC/.aucTemp.txt.lock, removing it:')
+        os.remove('boostsrl/test/AUC/.aucTemp.txt.lock')
+
     def __init__(self, model, test_pos, test_neg, test_facts, trees=10):
         write_to_file(test_pos, 'boostsrl/test/test_pos.txt')
         write_to_file(test_neg, 'boostsrl/test/test_neg.txt')
@@ -322,3 +327,4 @@ class test(object):
                 value_regression = full[1]
                 inference_dict[key_predicate] = value_regression
         return inference_dict
+
