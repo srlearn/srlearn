@@ -2,6 +2,9 @@
 *~
 *.pyc
 
+# background.txt gets updated in minute ways, ignore any changes.
+background.txt
+
 # ignore to rst readme
 README
 tests/setupscript.sh

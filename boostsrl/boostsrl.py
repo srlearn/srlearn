@@ -273,6 +273,11 @@ class train(object):
 
 class test(object):
 
+    # Possibly a partial fix to Issue #3: checking for the .aucTemp.txt.lock
+    if os.path.isfile('boostsrl/test/AUC/.aucTemp.txt.lock'):
+        print('Found lock file boostsrl/test/AUC/.aucTemp.txt.lock, removing it:')
+        os.remove('boostsrl/test/AUC/.aucTemp.txt.lock')
+
     def __init__(self, model, test_pos, test_neg, test_facts, trees=10):
         write_to_file(test_pos, 'boostsrl/test/test_pos.txt')
         write_to_file(test_neg, 'boostsrl/test/test_neg.txt')
