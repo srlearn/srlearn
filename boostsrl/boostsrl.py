@@ -128,8 +128,8 @@ class modes(object):
         self.resampleNegs = resampleNegs
         #self.queryPred = 'advisedby/2'
 
-        # Many of the arguments in the modes object are optional this shows us the values of the ones that are neither false nor none.
-
+        # Many of the arguments in the modes object are optional this shows us the values of the ones that are neither false nor none
+        
         types = {
             'background should be a list.': isinstance(background, list),
             'target should be a list.': isinstance(target, list),
@@ -322,3 +322,4 @@ class test(object):
                 value_regression = full[1]
                 inference_dict[key_predicate] = value_regression
         return inference_dict
+

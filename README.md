@@ -41,7 +41,7 @@
 
 '''Step 1: Background Knowledge'''
 
-# Sample data is built in from the 'Toy Cancer' Dataset, retrieve it with sample_data
+# Sample data is built in from the 'Toy Cancer' Dataset, retrieve it with example_data
 >>> bk = boostsrl.example_data('background')
 
 # Create the background knowledge or 'Modes,' where 'cancer' is the target we want to predict.
