@@ -6,7 +6,7 @@
 
 | License | Build Status | Codecov |
 | --- | --- | --- |
-| [![][license img]][license] | [![Build Status](https://travis-ci.org/HumanInTheLoop/boostsrl-python-package.svg?branch=master)](https://travis-ci.org/batflyer/boostsrl-python-package) | [![][codecov img]][codecov link] |
+| [![][license img]][license] | [![Build Status](https://travis-ci.org/HumanInTheLoop/boostsrl-python-package.svg?branch=master)](https://travis-ci.org/HumanInTheLoop/boostsrl-python-package) | [![][codecov img]][codecov link] |
 
 ---
 
@@ -99,5 +99,5 @@ We use [SemVer](http://semver.org/) for versioning. See [Releases](https://githu
 [license]:license.txt
 [license img]:https://img.shields.io/aur/license/yaourt.svg
 
-[codecov img]:https://codecov.io/gh/batflyer/boostsrl-python-package/branch/master/graphs/badge.svg?branch=master
-[codecov link]:https://codecov.io/github/batflyer/boostsrl-python-package?branch=master
+[codecov img]:https://codecov.io/gh/HumanInTheLoop/boostsrl-python-package/branch/master/graphs/badge.svg?branch=master
+[codecov link]:https://codecov.io/github/HumanInTheLoop/boostsrl-python-package?branch=master
