@@ -6,7 +6,7 @@
 
 | License | Build Status | Codecov |
 | --- | --- | --- |
-| [![][license img]][license] | [![Build Status](https://travis-ci.org/HumanInTheLoop/boostsrl-python-package.svg?branch=master)](https://travis-ci.org/HumanInTheLoop/boostsrl-python-package) | [![][codecov img]][codecov link] |
+| [![][license img]][license] | [![Build Status](https://travis-ci.org/starling-lab/boostsrl-python-package.svg?branch=master)](https://travis-ci.org/starling-lab/boostsrl-python-package) | [![][codecov img]][codecov link] |
 
 ---
 
@@ -97,7 +97,7 @@ We use [SemVer](http://semver.org/) for versioning. See [Releases](https://githu
 * Members of STARAI Lab
 
 [license]:license.txt
-[license img]:https://img.shields.io/aur/license/yaourt.svg
+[license img]:https://img.shields.io/github/license/starling-lab/boostsrl-python-package.svg
 
-[codecov img]:https://codecov.io/gh/HumanInTheLoop/boostsrl-python-package/branch/master/graphs/badge.svg?branch=master
-[codecov link]:https://codecov.io/github/HumanInTheLoop/boostsrl-python-package?branch=master
+[codecov img]:https://codecov.io/gh/starling-lab/boostsrl-python-package/branch/master/graphs/badge.svg?branch=master
+[codecov link]:https://codecov.io/github/starling-lab/boostsrl-python-package?branch=master
