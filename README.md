@@ -31,7 +31,7 @@
 * The latest stable build can be installed with pip:
 
   ```bash
-  $ pip install git+git://github.com/batflyer/boostsrl-python-package.git
+  $ pip install git+git://github.com/starling-lab/boostsrl-python-package.git
   ```
 
 ### Basic Usage
@@ -89,7 +89,7 @@ Please refer to [CONTRIBUTING.md](.github/CONTRIBUTING.md) for documentation on 
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. See [Releases](https://github.com/batflyer/boostsrl-python-package/releases) for all stable versions that are available.
+We use [SemVer](http://semver.org/) for versioning. See [Releases](https://github.com/starling-lab/boostsrl-python-package/releases) for all stable versions that are available.
 
 ## Acknowledgements
 
