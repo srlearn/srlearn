@@ -1,80 +1,52 @@
-'''
+"""
 Setup file for boostsrl
 
-Refer to https://github.com/batflyer/boostsrl-python-package
-'''
+Refer to https://github.com/starling-lab/boostsrl-python-package
+"""
 
-from setuptools import setup, find_packages
+from setuptools import setup
+from setuptools import find_packages
 from codecs import open
 from os import path
 
-here = path.abspath(path.dirname(__file__))
+# Get __version__ from _meta.py
+with open(path.join("boostsrl", "_meta.py")) as f:
+    exec(f.read())
 
-# Description from README
-
-#with open(path.join(here, 'README.md'), encoding='utf-8') as f:
-#    long_description = f.read()
+_here = path.abspath(path.dirname(__file__))
+with open(path.join(_here, "README.rst"), encoding="utf-8") as f:
+    LONG_DESCRIPTION = f.read()
 
 setup(
-    name='boostsrl',
-    packages=['boostsrl'],
-    author='Alexander L. Hayes (batflyer)',
-    author_email='alexander@batflyer.net',
-    version='0.3',
-    description='Python wrappers for using BoostSRL jar files.',
-    #long_description=long_description,
-    #long_description=open('README.md').read(),
-
-    # boostsrl_java stores files in the user's home directory by default.
-    include_package_data = True,
-    data_files=[(path.expanduser('~') + '/.boostsrl_data', ['boostsrl/v1-0.jar',
-                                                            'boostsrl/auc.jar']),
-                (path.expanduser('~') + '/.boostsrl_data/train', ['boostsrl/train/train_bk.txt']),
-                (path.expanduser('~') + '/.boostsrl_data/test', ['boostsrl/test/test_bk.txt'])],
-
-    # Project's main homepage.
-    url='https://github.com/batflyer/boostsrl-python-package',
-    download_url="https://github.com/batflyer/boostsrl-python-package/archive/0.3.tar.gz",
-
-    # License
-    license='GPL-3.0',
-
+    name="boostsrl",
+    packages=find_packages(exclude=["tests"]),
+    package_dir={"boostsrl": "boostsrl/"},
+    author="Alexander L. Hayes (hayesall)",
+    author_email="alexander@batflyer.net",
+    version=__version__,
+    description="Python wrappers for using BoostSRL jar files.",
+    long_description=LONG_DESCRIPTION,
+    include_package_data=True,
+    package_data={"boostsrl": ["*.jar"]},
+    url="https://starling.utdallas.edu/software/boostsrl-python-wrappers/",
+    download_url="https://github.com/starling-lab/boostsrl-python-package",
+    license="GPL-3.0",
+    zip_safe=False,
     classifiers=[
-        # Current development status
-        'Development Status :: 3 - Alpha',
-
-        # Intended Audiences
-        'Intended Audience :: Developers',
-        'Intended Audience :: Education',
-        'Intended Audience :: Science/Research',
-
-        # License
-        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
-
-        # OS
-        'Operating System :: POSIX :: Linux',
-
-        # Supported Python Versions
-        # Check build status: https://travis-ci.org/batflyer/boostsrl-python-package
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.6',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
-
-        # Topic
-        'Topic :: Scientific/Engineering :: Artificial Intelligence'
+        "Development Status :: 3 - Alpha",
+        "Intended Audience :: Education",
+        "Intended Audience :: Science/Research",
+        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+        "Operating System :: POSIX :: Linux",
+        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Topic :: Scientific/Engineering :: Artificial Intelligence",
     ],
-
-    # Relevant keywords (from boost-starai/BoostSRL)
-    keywords='machine-learning-algorithms machine-learning statistical-learning pattern-classification artificial-intelligence',
-
-    install_requires = ['subprocess32', 'graphviz'],
+    keywords="machine-learning-algorithms machine-learning statistical-learning pattern-classification artificial-intelligence",
+    install_requires=["subprocess32", "graphviz"],
     extras_require={
-        'test': ['coverage']
-    }
-
+        "tests": ["coverage"],
+        "docs": ["sphinx", "starling_theme", "sphinx_gallery"],
+    },
 )

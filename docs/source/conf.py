@@ -37,6 +37,7 @@ release = __version__
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.autosummary",
+    "sphinx.ext.doctest",
     "sphinx.ext.viewcode",
     "sphinx_gallery.gen_gallery",
 ]
@@ -61,7 +62,7 @@ exclude_patterns = []
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'starling_theme'
+html_theme = "sphinx_rtd_theme"
 pygments_style = "monokai"
 
 # Add any paths that contain custom static files (such as style sheets) here,

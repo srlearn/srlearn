@@ -17,7 +17,10 @@
    :maxdepth: 1
    :caption: API
 
+   boostsrl.rdn
+   boostsrl.boostsrl
    boostsrl.database
+   boostsrl.example_data
 
 .. toctree::
    :hidden:

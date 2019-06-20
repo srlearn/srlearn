@@ -2,19 +2,17 @@ import graphviz
 import os
 import sys
 import unittest
+import subprocess
 
 # Test that train_pos, (etc) are lists of strings.
 # Test that each string is in predicate-logic notation.
 # Check to make sure there are no references that are not present in the modes object.
 # Check that train_bk and test_bk exist, and both point to background.txt
 
-if os.name == 'posix' and sys.version_info[0] < 3:
-    import subprocess32 as subprocess
-else:
-    import subprocess
 
-sys.path.append('./boostsrl')
-import boostsrl
+# sys.path.append('./boostsrl')
+sys.path.append('..')
+from boostsrl import boostsrl
 
 class sample_data_functions:
 
