@@ -15,17 +15,25 @@
 .. toctree::
    :hidden:
    :maxdepth: 1
-   :caption: Contents:
+   :caption: API
+
+   boostsrl.database
+
+.. toctree::
+   :hidden:
+   :glob:
+   :maxdepth: 1
+   :caption: Examples
+
+   auto_examples/index
 
 Getting Started
 ---------------
 
 **Prerequisites**:
 
-- Java 1.8
+- Java (1.8)
 - Python (3.5, 3.6, 3.7)
-- subprocess
-- graphviz
 
 **Installation**
 

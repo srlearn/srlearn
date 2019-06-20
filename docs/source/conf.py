@@ -10,9 +10,10 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+import os
+import sys
+sys.path.insert(0, os.path.abspath('../..'))
+import sphinx_gallery
 
 
 # -- Project information -----------------------------------------------------
@@ -21,8 +22,11 @@ project = 'boostsrl'
 copyright = '2019, Alexander L. Hayes'
 author = 'Alexander L. Hayes'
 
+from boostsrl._meta import __version__
+
+version = __version__
 # The full version, including alpha/beta/rc tags
-release = '0.4.0'
+release = __version__
 
 
 # -- General configuration ---------------------------------------------------
@@ -31,10 +35,20 @@ release = '0.4.0'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    "sphinx.ext.autodoc",
+    "sphinx.ext.autosummary",
+    "sphinx.ext.viewcode",
+    "sphinx_gallery.gen_gallery",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
+
+# generate autosummary even if no reference
+autosummary_generate = True
+
+# The master toctree document
+master_doc = "index"
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -54,3 +68,13 @@ pygments_style = "monokai"
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+# sphinx-gallery configuration
+sphinx_gallery_conf = {
+    "doc_module": "boostsrl",
+    "examples_dir": "examples",
+    "gallery_dirs": "auto_examples",
+    "reference_url": {
+        "boostsrl": None
+    }
+}
