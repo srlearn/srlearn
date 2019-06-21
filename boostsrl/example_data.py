@@ -34,10 +34,11 @@ Ellipsis added to the facts for easier reading.
 
 """
 
-from .database import database
+from .database import Database
 
-train = database()
-test = database()
+# pylint: disable=invalid-name
+train = Database()
+test = Database()
 
 train.background = [
     "friends(+Person,-Person).",

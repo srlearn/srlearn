@@ -203,9 +203,9 @@ class MyTest(unittest.TestCase):
 
         # Does training time return either a float or an int?
         self.assertTrue(isinstance(model.traintime(), float))
-        self.assertEqual(model.training_time_to_float(['1', 'milliseconds']), 0.001)
-        self.assertEqual(model.training_time_to_float(['1', 'days', '981', 'milliseconds']), 86400.981)
-        self.assertEqual(model.training_time_to_float(['2', 'hours', '1', 'minutes', '25', 'seconds', '120', 'milliseconds']), 7285.12)
+        self.assertEqual(model._training_time_to_float(['1', 'milliseconds']), 0.001)
+        self.assertEqual(model._training_time_to_float(['1', 'days', '981', 'milliseconds']), 86400.981)
+        self.assertEqual(model._training_time_to_float(['2', 'hours', '1', 'minutes', '25', 'seconds', '120', 'milliseconds']), 7285.12)
 
     def test_boostsrl_testing(self):
         '''Run the entire training/testing pipeline to ensure testing works properly.'''
@@ -225,14 +225,14 @@ class MyTest(unittest.TestCase):
         self.assertTrue('F1' in summary)
 
         # Test if float_split is returning value pairs correctly
-        self.assertEqual(results.float_split('pred(t1,t2,t3) 0.512'), ['pred(t1,t2,t3)', 0.512])
-        self.assertEqual(results.float_split('pred(t1, t2, t3) 0.512'), ['pred(t1, t2, t3)', 0.512])
-        self.assertEqual(results.float_split('pred(t1,t2,t3). 0.512'), ['pred(t1,t2,t3).', 0.512])
-        self.assertEqual(results.float_split('pred(t1, t2, t3). 0.512'), ['pred(t1, t2, t3).', 0.512])
-        self.assertEqual(results.float_split('pred(t1, t2). 1.0'), ['pred(t1, t2).', 1.0])
-        self.assertEqual(results.float_split('pred(t1). 0.8'), ['pred(t1).', 0.8])
-        self.assertNotEqual(results.float_split('pred(t1). 0.8'), ['pred(t1).', 5])
-        self.assertNotEqual(results.float_split('pred(t1, t2, t3). 1'), ['pred(t1, t2, t3).', '1'])
+        self.assertEqual(results._float_split('pred(t1,t2,t3) 0.512'), ['pred(t1,t2,t3)', 0.512])
+        self.assertEqual(results._float_split('pred(t1, t2, t3) 0.512'), ['pred(t1, t2, t3)', 0.512])
+        self.assertEqual(results._float_split('pred(t1,t2,t3). 0.512'), ['pred(t1,t2,t3).', 0.512])
+        self.assertEqual(results._float_split('pred(t1, t2, t3). 0.512'), ['pred(t1, t2, t3).', 0.512])
+        self.assertEqual(results._float_split('pred(t1, t2). 1.0'), ['pred(t1, t2).', 1.0])
+        self.assertEqual(results._float_split('pred(t1). 0.8'), ['pred(t1).', 0.8])
+        self.assertNotEqual(results._float_split('pred(t1). 0.8'), ['pred(t1).', 5])
+        self.assertNotEqual(results._float_split('pred(t1, t2, t3). 1'), ['pred(t1, t2, t3).', '1'])
 
         # Check the contents of the inference results.
         inference_dict = results.inference_results('cancer')

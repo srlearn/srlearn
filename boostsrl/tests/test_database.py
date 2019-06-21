@@ -1,11 +1,18 @@
 # Copyright 2017, 2018, 2019 Alexander L. Hayes
 
-from boostsrl.database import database
+"""
+Tests for boostsrl.database.Database
+"""
+
 import pytest
+from boostsrl.database import Database
 
 
 def test_initialize_database_1():
-    _db = database()
+    """
+    Test initializing a Database with defualt settings.
+    """
+    _db = Database()
     assert _db.target == "None"
     assert _db.trees == 10
     assert _db.pos == []
@@ -14,7 +21,10 @@ def test_initialize_database_1():
 
 
 def test_initialize_database_2():
-    _db = database("cancer")
+    """
+    Test initializing a Database with a specific target.
+    """
+    _db = Database("cancer")
     assert _db.target == "cancer"
     assert _db.pos == []
     assert _db.neg == []
@@ -22,7 +32,10 @@ def test_initialize_database_2():
 
 
 def test_initialize_database_switch_target_1():
-    _db = database()
+    """
+    Test switching the target value in a Database instance.
+    """
+    _db = Database()
     assert _db.target == "None"
     _db.target = "cancer"
     assert _db.target == "cancer"
@@ -31,7 +44,10 @@ def test_initialize_database_switch_target_1():
 
 
 def test_initialize_database_switch_trees_1():
-    _db = database()
+    """
+    Test switching the number of trees in a Database instance.
+    """
+    _db = Database()
     assert _db.trees == 10
     _db.trees = 15
     assert _db.trees == 15
@@ -51,7 +67,10 @@ def test_initialize_database_switch_trees_1():
     ],
 )
 def test_tree_property(test_input, expected):
-    _db = database()
+    """
+    Test several parametrizations of the trees, with several that should not pass.
+    """
+    _db = Database()
     _db.trees = test_input
     assert _db.trees == expected
 
@@ -60,20 +79,29 @@ def test_tree_property(test_input, expected):
     "test_input", [(1.5), (15 / 4), (10 / 3), (None), ("0"), ("None"), ("1")]
 )
 def test_tree_property_raises(test_input):
-    _db = database()
+    """
+    Test that exceptions are raised when invalid tree values are set.
+    """
+    _db = Database()
     with pytest.raises(Exception):
         _db.trees = test_input
 
 
 @pytest.mark.parametrize("test_input", [(0), (1), (10 / 3), (None)])
 def test_target_property_raises(test_input):
-    _db = database()
+    """
+    Test that exceptions are raised when invalid target values are set.
+    """
+    _db = Database()
     with pytest.raises(Exception):
         _db.target = test_input
 
 
 def test_write_to_location_1(tmpdir):
-    _db = database()
+    """
+    Test that predicates are written to files in a target location with add_pos syntax.
+    """
+    _db = Database()
     _db.add_pos("a(b).")
     _db.add_neg("a(c).")
     _db.add_fact("d(b,c).")
@@ -84,7 +112,10 @@ def test_write_to_location_1(tmpdir):
 
 
 def test_write_to_location_2(tmpdir):
-    _db = database()
+    """
+    Test that predicates are written to files in a target location with pos = [] syntax.
+    """
+    _db = Database()
     _db.pos = ["a(b)."]
     _db.neg = ["a(c)."]
     _db.facts = ["d(b,c)."]

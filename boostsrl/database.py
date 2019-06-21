@@ -32,13 +32,17 @@ Create an instance of the database from an existing set of files.
 """
 
 import pathlib
-import sys
 
 
-class database:
+class Database:
     """
     Base object that BoostSRL learning and inference are derived from.
     """
+
+    # pylint: disable=too-many-instance-attributes
+
+    # TODO: Currently disabling linter warnings, trimming attributes may be wise
+    #       e.g. file_prefix and target should typically be the same variable
 
     def __init__(self, target="None", location="bsrl_data"):
         self.pos = []
@@ -46,9 +50,10 @@ class database:
         self.facts = []
         self.background = []
 
+        self.location = location
+        self.file_prefix = target
+
         self._target = target
-        self._location = location
-        self._file_prefix = "train"
         self._n_trees = 10
         self._trees = []
 
@@ -56,7 +61,7 @@ class database:
     def target(self) -> str:
         """
         Target predicate for learning and inference.
-        
+
         Examples:
 
         >>> from boostsrl.database import database
@@ -71,7 +76,7 @@ class database:
 
     @target.setter
     def target(self, target: str) -> None:
-        if not (type(target) == str):
+        if not isinstance(target, str):
             raise Exception("Target must be a string.")
         self._target = target
 
@@ -84,7 +89,7 @@ class database:
 
     @trees.setter
     def trees(self, n_trees: int) -> None:
-        if not (type(n_trees) == int):
+        if not isinstance(n_trees, int):
             raise Exception("Tree must be an integer.")
         self._n_trees = n_trees
 
@@ -95,6 +100,7 @@ class database:
 
         # TODO: Different behavior will be necessary if the files are already
         #       stored on disk: they can be copied to self.location
+        #       with sys
 
         self.location = pathlib.Path(location)
 
@@ -103,17 +109,23 @@ class database:
 
         self.file_prefix = self.location.parts[-1]
 
-        with open(self.location.joinpath(f"{self.file_prefix}_pos.txt"), "w") as f:
+        with open(
+            self.location.joinpath("{0}_pos.txt".format(self.file_prefix)), "w"
+        ) as _fh:
             for pos_example in self.pos:
-                f.write(str(pos_example) + "\n")
+                _fh.write(str(pos_example) + "\n")
 
-        with open(self.location.joinpath(f"{self.file_prefix}_neg.txt"), "w") as f:
+        with open(
+            self.location.joinpath("{0}_neg.txt".format(self.file_prefix)), "w"
+        ) as _fh:
             for neg_example in self.neg:
-                f.write(str(neg_example) + "\n")
+                _fh.write(str(neg_example) + "\n")
 
-        with open(self.location.joinpath(f"{self.file_prefix}_facts.txt"), "w") as f:
+        with open(
+            self.location.joinpath("{0}_facts.txt".format(self.file_prefix)), "w"
+        ) as _fh:
             for fact in self.facts:
-                f.write(str(fact) + "\n")
+                _fh.write(str(fact) + "\n")
 
     def __repr__(self) -> str:
         return (
@@ -126,10 +138,19 @@ class database:
         )
 
     def add_pos(self, example: str) -> None:
+        """
+        Append a positive example to the list of positive examples.
+        """
         self.pos.append(example)
 
     def add_neg(self, example: str) -> None:
+        """
+        Append a negative example to the list of negative examples.
+        """
         self.neg.append(example)
 
     def add_fact(self, example: str) -> None:
+        """
+        Append a fact to the list of facts.
+        """
         self.facts.append(example)

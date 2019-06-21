@@ -1,6 +1,6 @@
 # Copyright 2017, 2018, 2019 Alexander L. Hayes
 
-from .database import database
+from .database import Database
 from .database import pathlib
 
 
