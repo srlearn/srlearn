@@ -10,8 +10,8 @@ import subprocess
 # Check that train_bk and test_bk exist, and both point to background.txt
 
 
-# sys.path.append('./boostsrl')
-sys.path.append('..')
+#sys.path.append('./boostsrl')
+sys.path.append('.')
 from boostsrl import boostsrl
 
 class sample_data_functions:
@@ -108,7 +108,7 @@ class MyTest(unittest.TestCase):
     def test_data_sampling(self):
         '''Ensures that example_data function is returning the proper results.'''
         f = sample_data_functions()
-        self.assertEqual(f.sample('background'), ['friends(+Person, -Person).', 'friends(-Person, +Person).', 'smokes(+Person).', 'cancer(+Person).'])
+        self.assertEqual(f.sample('background'), ['friends(+Person,-Person).', 'friends(-Person,+Person).', 'smokes(+Person).', 'cancer(+Person).'])
         self.assertEqual(f.sample('train_pos'), ['cancer(Alice).', 'cancer(Bob).', 'cancer(Chuck).', 'cancer(Fred).'])
         self.assertEqual(f.sample('train_neg'), ['cancer(Dan).','cancer(Earl).'])
         self.assertEqual(f.sample('train_facts'), ['friends(Alice, Bob).', 'friends(Alice, Fred).', 'friends(Chuck, Bob).', 'friends(Chuck, Fred).', 'friends(Dan, Bob).', 'friends(Earl, Bob).','friends(Bob, Alice).', 'friends(Fred, Alice).', 'friends(Bob, Chuck).', 'friends(Fred, Chuck).', 'friends(Bob, Dan).', 'friends(Bob, Earl).', 'smokes(Alice).', 'smokes(Chuck).', 'smokes(Bob).'])
