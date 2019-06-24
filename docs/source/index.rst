@@ -1,5 +1,6 @@
-``boostsrl``
-============
+########
+boostsrl
+########
 
 |License|_ |Travis|_ |Codecov|_
 
@@ -14,67 +15,42 @@
 
 .. toctree::
    :hidden:
-   :maxdepth: 1
-   :caption: API
+   :maxdepth: 2
+   :caption: Getting Started
 
-   boostsrl.rdn
-   boostsrl.boostsrl
-   boostsrl.database
-   boostsrl.example_data
+   getting_started
 
 .. toctree::
    :hidden:
-   :glob:
+   :maxdepth: 2
+   :caption: Documentation
+
+   user_guide
+   api
+
+.. toctree::
+   :hidden:
    :maxdepth: 1
-   :caption: Examples
+   :caption: Tutorial - Examples
 
    auto_examples/index
 
-Getting Started
----------------
+`Getting started <getting_started.html>`_
+-----------------------------------------
 
-**Prerequisites**:
+Getting started with this package.
 
-- Java (1.8)
-- Python (3.5, 3.6, 3.7)
+`User Guide <user_guide.html>`_
+-------------------------------
 
-**Installation**
+An example of narrative documentation.
 
-.. code-block:: bash
+`API Documentation <api.html>`_
+-------------------------------
 
-   pip install boostsrl
+API documentation.
 
-Basic Usage
------------
+`Examples <auto_examples/index.html>`_
+--------------------------------------
 
-.. code-block:: python
-
-   from boostsrl import boostsrl
-
-   bk = boostsrl.example_data("background")
-   background = boostsrl.modes(
-	bk,
-	["cancer"],
-	useStdLogicVariables=True,
-	treeDepth=4,
-	nodeSize=2,
-	numOfClauses=8
-   )
-
-   # Example Training Data
-   train_pos = boostsrl.example_data("train_pos")
-   train_neg = boostsrl.example_data("train_neg")
-   train_facts = boostsrl.example_data("train_facts")
-
-   model = boostsrl.train(background, train_pos, train_neg, train_facts)
-
-   # Example Test Data
-   test_pos = boostsrl.example_data("test_pos")
-   test_neg = boostsrl.example_data("test_neg")
-   test_facts = boostsrl.example_data("test_facts")
-   
-   test = boostsrl.test(model, test_pos, test_neg, test_facts)
-
-   print("Training Time (s)", model.traintime())
-   print("Results Summary  ", test.summarize_results())
-   print("Inference Results", test.inference_results("cancer"))
+A set of examples. It complements the `User Guide <user_guide.html>`_.

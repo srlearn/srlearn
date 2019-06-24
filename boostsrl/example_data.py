@@ -1,36 +1,33 @@
 # Copyright 2017, 2018, 2019 Alexander L. Hayes
 
 """
-Populate a BoostSRL database with the "Toy-Cancer" dataset.
+A BoostSRL database with the "Toy-Cancer" dataset.
 
-Importing this module makes a ``train`` and ``test`` database available.
+Importing this module makes ``example_data.train`` and ``example_data.test`` available
+in the namespace.
 
 Examples
 --------
 
-.. code-block:: python
-
-    >>> from boostsrl import example_data
-    >>> print(example_data.train)
-    Positive Examples:
-    ['cancer(Alice).', 'cancer(Bob).', 'cancer(Chuck).', 'cancer(Fred).']
-    Negative Examples:
-    ['cancer(Dan).', 'cancer(Earl).']
-    Facts:
-    ['friends(Alice, Bob).', 'friends(Alice, Fred).', ..., 'smokes(Bob).']
+>>> from boostsrl import example_data
+>>> print(example_data.train)
+Positive Examples:
+['cancer(Alice).', 'cancer(Bob).', 'cancer(Chuck).', 'cancer(Fred).']
+Negative Examples:
+['cancer(Dan).', 'cancer(Earl).']
+Facts:
+['friends(Alice, Bob).', 'friends(Alice, Fred).', ..., 'smokes(Bob).']
 
 Ellipsis added to the facts for easier reading.
 
-.. code-block:: python
-
-    >>> from boostsrl import example_data
-    >>> print(example_data.test)
-    Positive Examples:
-    ['cancer(Zod).', 'cancer(Xena).', 'cancer(Yoda).']
-    Negative Examples:
-    ['cancer(Voldemort).', 'cancer(Watson).']
-    Facts:
-    ['friends(Zod, Xena).', 'friends(Xena, Watson).', ..., 'smokes(Yoda).']
+>>> from boostsrl import example_data
+>>> print(example_data.test)
+Positive Examples:
+['cancer(Zod).', 'cancer(Xena).', 'cancer(Yoda).']
+Negative Examples:
+['cancer(Voldemort).', 'cancer(Watson).']
+Facts:
+['friends(Zod, Xena).', 'friends(Xena, Watson).', ..., 'smokes(Yoda).']
 
 """
 

@@ -1,10 +1,9 @@
 """
-==========================
-Plotting a Matplotlib Plot
-==========================
+========================
+Using the Database class
+========================
 
-An example using :class:`boostsrl.rdn.RDN`, and the Toy-Cancer
-data from :class:`boostsrl.example_data`
+An example using :class:`boostsrl.Database`
 """
 
 from boostsrl.rdn import RDN
