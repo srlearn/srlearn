@@ -76,7 +76,7 @@ def test_tree_property(test_input, expected):
 
 
 @pytest.mark.parametrize(
-    "test_input", [(1.5), (15 / 4), (10 / 3), (None), ("0"), ("None"), ("1")]
+    "test_input", [1.5, (15 / 4), (10 / 3), None, "0", "None", "1"]
 )
 def test_tree_property_raises(test_input):
     """

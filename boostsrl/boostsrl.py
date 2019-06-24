@@ -1,7 +1,10 @@
 # Copyright 2017, 2018, 2019 Alexander L. Hayes
 
 """
-boostsrl object for training and testing.
+(Deprecated) boostsrl class for training and testing.
+
+.. warning:: This module is deprecated, pending removal in 0.6.0.
+    See :class:`boostsrl.RDN` instead.
 """
 
 import os
@@ -16,7 +19,7 @@ print(
     "'boostsrl.rdn' will replace this functionality."
 )
 
-# Mode definitions and predicate logic examples can be verified with regular expressions.
+# Mode definitions and examples can be verified with regular expressions.
 mode_re = re.compile(
     r"[a-zA-Z0-9]*\(((\+|\-|\#)[a-zA-Z0-9]*,( )*)*(\+|\-|\#)[a-zA-Z0-9]*\)\."
 )
@@ -31,10 +34,12 @@ def example_data(example):
     For demo purposes, include some sample data.
 
     .. code-block:: python
-    
+
+        from boostsrl.boostsrl import example_data
         train_pos = example_data('train_pos')
         train_neg = example_data('train_neg')
         train_facts = example_data('train_facts')
+
     """
 
     # TODO: Phase out this function
@@ -84,15 +89,16 @@ def inspect_mode_syntax(example):
     .. deprecated:: 0.5.0
        Not intended as a public method.
 
-    Uses a regular expression to check whether all of the examples in a list are in the correct form.
+    Uses a regular expression to check whether all of the examples in a list
+    are in the correct form.
     """
     if not mode_re.search(example):
         raise (
             Exception(
                 "Error when checking background knowledge; incorrect syntax: "
                 + example
-                + "\nBackground knowledge should only contain letters and numbers, of the form: "
-                + "predicate(+var1, -var2)."
+                + "\nBackground knowledge should only contain letters and numbers, "
+                + "of the form: predicate(+var1, -var2)."
             )
         )
 
@@ -101,8 +107,9 @@ def inspect_example_syntax(example):
     """
     .. deprecated:: 0.5.0
        Not intended as a public method.
-    
-    Uses a regular expression to check whether all of the examples in a list are in the correct form.
+
+    Uses a regular expression to check whether all of the examples in a list are
+    in the correct form.
     """
     if not exam_re.search(example):
         raise (Exception("Error when checking example; incorrect syntax: " + example))
@@ -113,7 +120,7 @@ def write_to_file(content, path):
     .. deprecated:: 0.5.0
        Not intended as a public method.
 
-    Takes a list (content) and a path/file (path) and 
+    Takes a list (content) and a path/file (path) and
     writes each line of the list to the file location.
     """
     with open(path, "w") as f:
@@ -124,24 +131,24 @@ def write_to_file(content, path):
 
 class modes(object):
     def __init__(
-        self,
-        background,
-        target,
-        bridgers=None,
-        precomputes=None,
-        loadAllLibraries=False,
-        useStdLogicVariables=False,
-        usePrologVariables=False,
-        recursion=False,
-        lineSearch=False,
-        resampleNegs=False,
-        treeDepth=None,
-        maxTreeDepth=None,
-        nodeSize=None,
-        numOfClauses=None,
-        numOfCycles=None,
-        minLCTrees=None,
-        incrLCTrees=None,
+            self,
+            background,
+            target,
+            bridgers=None,
+            precomputes=None,
+            loadAllLibraries=False,
+            useStdLogicVariables=False,
+            usePrologVariables=False,
+            recursion=False,
+            lineSearch=False,
+            resampleNegs=False,
+            treeDepth=None,
+            maxTreeDepth=None,
+            nodeSize=None,
+            numOfClauses=None,
+            numOfCycles=None,
+            minLCTrees=None,
+            incrLCTrees=None,
     ):
         """
         target: a list of predicate heads that learning/inference will be performed on.
@@ -160,7 +167,7 @@ class modes(object):
         self.loadAllLibraries = loadAllLibraries
         self.useStdLogicVariables = useStdLogicVariables
         self.usePrologVariables = usePrologVariables
-        # Note to self: check further into the difference between treeDepth and maxTreeDepth
+        # TODO: treeDepth vs. maxTreeDepth
         self.treeDepth = treeDepth
         self.maxTreeDepth = maxTreeDepth
         self.nodeSize = nodeSize
@@ -173,15 +180,16 @@ class modes(object):
         self.resampleNegs = resampleNegs
         # self.queryPred = 'advisedby/2'
 
-        # Many of the arguments in the modes object are optional this shows us the values of the ones that are neither false nor none
+        # Many of the arguments in the modes object are optional this shows
+        # us the values of the ones that are neither false nor none.
 
         types = {
             "background should be a list.": isinstance(background, list),
             "target should be a list.": isinstance(target, list),
             "bridgers should be a list.": isinstance(bridgers, list)
-            or bridgers is None,
+                                          or bridgers is None,
             "precomputes should be a dictionary.": isinstance(precomputes, dict)
-            or precomputes is None,
+                                                   or precomputes is None,
             "loadAllLibraries should be boolean.": isinstance(loadAllLibraries, bool),
             "useStdLogicVariables should be boolean.": isinstance(
                 useStdLogicVariables, bool
@@ -193,18 +201,18 @@ class modes(object):
             "lineSearch should be boolean.": isinstance(lineSearch, bool),
             "resampleNegs should be boolean.": isinstance(resampleNegs, bool),
             "treeDepth should be an int.": isinstance(treeDepth, int)
-            or treeDepth is None,
+                                           or treeDepth is None,
             "maxTreeDepth should be an int.": isinstance(maxTreeDepth, int)
-            or maxTreeDepth is None,
+                                              or maxTreeDepth is None,
             "nodeSize should be an int.": isinstance(nodeSize, int) or nodeSize is None,
             "numOfClause should be an int.": isinstance(numOfClauses, int)
-            or numOfClauses is None,
+                                             or numOfClauses is None,
             "numOfCycles should be an int.": isinstance(numOfCycles, int)
-            or numOfCycles is None,
+                                             or numOfCycles is None,
             "minLCTrees should be an int.": isinstance(minLCTrees, int)
-            or minLCTrees is None,
+                                            or minLCTrees is None,
             "incrLCTrees should be an int.": isinstance(incrLCTrees, int)
-            or incrLCTrees is None,
+                                             or incrLCTrees is None,
         }
 
         # Force type checking for input validation Issue #5
@@ -221,12 +229,12 @@ class modes(object):
 
         background_knowledge = []
         for a, v in relevant:
-            if a in ["useStdLogicVariables", "usePrologVariables"] and v == True:
+            if a in ["useStdLogicVariables", "usePrologVariables"] and v:
                 s = a + ": " + str(v).lower() + "."
                 background_knowledge.append(s)
             elif a in ["target", "bridgers", "precomputes"]:
                 pass
-            elif v == True:
+            elif v:
                 s = "setParam: " + a + "=" + str(v).lower() + "."
                 background_knowledge.append(s)
             else:
@@ -252,23 +260,24 @@ class modes(object):
 
 
 class train(object):
+    """
+    .. deprecated:: 0.5.0
+       Use :class:`boostsrl.RDN` instead.
+    """
+
     def __init__(
-        self,
-        background,
-        train_pos,
-        train_neg,
-        train_facts,
-        save=False,
-        advice=False,
-        softm=False,
-        alpha=0.5,
-        beta=-2,
-        trees=10,
+            self,
+            background,
+            train_pos,
+            train_neg,
+            train_facts,
+            save=False,
+            advice=False,
+            softm=False,
+            alpha=0.5,
+            beta=-2,
+            trees=10,
     ):
-        """
-        .. deprecated:: 0.5.0
-           Use :class:`boostsrl.rdn` instead.
-        """
         print(
             "Deprecation Warning: "
             "'boostsrl.boostsrl' is deprecated and will be removed in 0.6.0. "
@@ -298,11 +307,11 @@ class train(object):
         write_to_file(self.train_facts, "boostsrl/train/train_facts.txt")
 
         CALL = (
-            "(cd boostsrl; java -jar v1-0.jar -l -train train/ -target "
-            + ",".join(self.target)
-            + " -trees "
-            + str(self.trees)
-            + " > train_output.txt 2>&1)"
+                "(cd boostsrl; java -jar v1-0.jar -l -train train/ -target "
+                + ",".join(self.target)
+                + " -trees "
+                + str(self.trees)
+                + " > train_output.txt 2>&1)"
         )
         call_process(CALL)
 
@@ -319,10 +328,10 @@ class train(object):
             from graphviz import Source
 
             tree_file = (
-                "boostsrl/train/models/bRDNs/dotFiles/WILLTreeFor_"
-                + target
-                + str(treenumber)
-                + ".dot"
+                    "boostsrl/train/models/bRDNs/dotFiles/WILLTreeFor_"
+                    + target
+                    + str(treenumber)
+                    + ".dot"
             )
             with open(tree_file, "r") as f:
                 tree_output = "".join(f.read().splitlines())
@@ -330,11 +339,11 @@ class train(object):
             return src
         else:
             tree_file = (
-                "boostsrl/train/models/bRDNs/Trees/"
-                + target
-                + "Tree"
-                + str(treenumber)
-                + ".tree"
+                    "boostsrl/train/models/bRDNs/Trees/"
+                    + target
+                    + "Tree"
+                    + str(treenumber)
+                    + ".tree"
             )
             with open(tree_file, "r") as f:
                 tree_output = f.read()
@@ -342,7 +351,8 @@ class train(object):
 
     def _get_training_time(self):
         """
-        Return the training time as a float representing the total number of seconds seconds.
+        Return the training time as a float representing the total number of
+        seconds seconds.
         """
         with open("boostsrl/train_output.txt", "r") as f:
             text = f.read()
@@ -353,7 +363,8 @@ class train(object):
 
     def _training_time_to_float(self, splitline):
         """
-        Convert the string representing training time into a float representing total seconds.
+        Convert the string representing training time into a float representing
+        total seconds.
         """
         seconds = []
         if "milliseconds" in splitline:
@@ -381,7 +392,7 @@ class train(object):
 class test(object):
     """
     .. deprecated:: 0.5.0
-       Use :class:`boostsrl.rdn` instead.
+       Use :class:`boostsrl.RDN` instead.
     """
 
     # Possibly a partial fix to Issue #3: checking for the .aucTemp.txt.lock
@@ -403,11 +414,12 @@ class test(object):
         self.target = model.target
 
         CALL = (
-            "(cd boostsrl; java -jar v1-0.jar -i -model train/models/ -test test/ -target "
-            + ",".join(self.target)
-            + " -trees "
-            + str(trees)
-            + " -aucJarPath . > test_output.txt 2>&1)"
+                "(cd boostsrl; java -jar v1-0.jar -i -model train/models/ "
+                + "-test test/ -target "
+                + ",".join(self.target)
+                + " -trees "
+                + str(trees)
+                + " -aucJarPath . > test_output.txt 2>&1)"
         )
         call_process(CALL)
 
@@ -420,29 +432,32 @@ class test(object):
         )
         line = [
             word.replace(" ", "")
-            .replace("\t", "")
-            .replace("%", "")
-            .replace("atthreshold=", ",")
+                .replace("\t", "")
+                .replace("%", "")
+                .replace("atthreshold=", ",")
             for word in line
         ]
 
         results = {
-            "AUC ROC": line[0][line[0].index("=") + 1 :],
-            "AUC PR": line[1][line[1].index("=") + 1 :],
-            "CLL": line[2][line[2].index("=") + 1 :],
-            "Precision": line[3][line[3].index("=") + 1 :],
-            "Recall": line[4][line[4].index("=") + 1 :],
-            "F1": line[5][line[5].index("=") + 1 :],
+            "AUC ROC": line[0][line[0].index("=") + 1:],
+            "AUC PR": line[1][line[1].index("=") + 1:],
+            "CLL": line[2][line[2].index("=") + 1:],
+            "Precision": line[3][line[3].index("=") + 1:],
+            "Recall": line[4][line[4].index("=") + 1:],
+            "F1": line[5][line[5].index("=") + 1:],
         }
         return results
 
     def _float_split(self, line):
         """Returns a list where the first item is a string and the second is a float.
-           Used when returning inference results.
+
+        Used when returning inference results.
         
-        Example:
-           >>> test._float_split('target(pred1, pred2, pred3). 0.85691')
-           ['target(pred1, pred2, pred3).', 0.85691]"""
+        Examples
+        --------
+
+        >>> test._float_split('target(pred1, pred2, pred3). 0.85691')
+        ['target(pred1, pred2, pred3).', 0.85691]"""
         intermediate = line.rsplit(None, 1)
         return [intermediate[0], float(intermediate[1])]
 

@@ -18,25 +18,26 @@ Examples
 
 Create a new instance of a database, add examples, and write them to the filesystem.
 
->>> from boostsrl.database import database
->>> db = database()
+>>> from boostsrl.database import Database
+>>> db = Database()
 >>> db.add_pos("student(alexander).")
 >>> db.add_neg("student(sriraam).")
 >>> db.add_fact("advises(alexander, sriraam).")
->>> db.write()
 
 Create an instance of the database from an existing set of files.
 
->>> from boostsrl.database import database
->>> db = database()
+>>> from boostsrl.database import Database
+>>> db = Database()
 """
 
 import pathlib
 
 
 class Database:
-    """
-    Base object that BoostSRL learning and inference are derived from.
+    """Database of examples and facts.
+
+    A database (in this respect) contains positive examples, negative examples,
+    facts, and augmented with background knowledge.
     """
 
     # pylint: disable=too-many-instance-attributes
@@ -64,13 +65,13 @@ class Database:
 
         Examples:
 
-        >>> from boostsrl.database import database
-        >>> db = database()
+        >>> from boostsrl.database import Database
+        >>> db = Database()
         >>> db.target
-        None
+        'None'
         >>> db.target = "student"
         >>> db.target
-        student
+        'student'
         """
         return self._target
 
