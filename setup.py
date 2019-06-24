@@ -44,7 +44,7 @@ setup(
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
     ],
     keywords="machine-learning-algorithms machine-learning statistical-learning pattern-classification artificial-intelligence",
-    install_requires=["subprocess32", "graphviz"],
+    install_requires=["graphviz"],
     extras_require={
         "tests": ["coverage"],
         "docs": ["sphinx", "starling_theme", "sphinx_gallery"],

@@ -1,4 +1,4 @@
-# Alexander here, adding a few things to the gitignore.
+.idea/
 *~
 *.pyc
 
