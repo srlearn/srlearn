@@ -106,9 +106,9 @@ def test_write_to_location_1(tmpdir):
     _db.add_neg("a(c).")
     _db.add_fact("d(b,c).")
     _db.write(location=tmpdir)
-    assert tmpdir.join(f"{_db.file_prefix}_pos.txt").read() == "a(b).\n"
-    assert tmpdir.join(f"{_db.file_prefix}_neg.txt").read() == "a(c).\n"
-    assert tmpdir.join(f"{_db.file_prefix}_facts.txt").read() == "d(b,c).\n"
+    assert tmpdir.join("{0}_pos.txt".format(_db.file_prefix)).read() == "a(b).\n"
+    assert tmpdir.join("{0}_neg.txt".format(_db.file_prefix)).read() == "a(c).\n"
+    assert tmpdir.join("{0}_facts.txt".format(_db.file_prefix)).read() == "d(b,c).\n"
 
 
 def test_write_to_location_2(tmpdir):
@@ -120,6 +120,6 @@ def test_write_to_location_2(tmpdir):
     _db.neg = ["a(c)."]
     _db.facts = ["d(b,c)."]
     _db.write(location=tmpdir)
-    assert tmpdir.join(f"{_db.file_prefix}_pos.txt").read() == "a(b).\n"
-    assert tmpdir.join(f"{_db.file_prefix}_neg.txt").read() == "a(c).\n"
-    assert tmpdir.join(f"{_db.file_prefix}_facts.txt").read() == "d(b,c).\n"
+    assert tmpdir.join("{0}_pos.txt".format(_db.file_prefix)).read() == "a(b).\n"
+    assert tmpdir.join("{0}_neg.txt".format(_db.file_prefix)).read() == "a(c).\n"
+    assert tmpdir.join("{0}_facts.txt".format(_db.file_prefix)).read() == "d(b,c).\n"
