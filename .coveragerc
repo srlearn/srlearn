@@ -7,6 +7,7 @@ source = boostsrl
 include = */boostsrl/*
 omit =
     */setup.py
+    boostsrl/boostsrl.py
 
 [report]
 exclude_lines =
