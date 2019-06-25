@@ -49,7 +49,7 @@ class Database:
         self.pos = []
         self.neg = []
         self.facts = []
-        self.background = []
+        self.modes = []
 
         self.location = location
         self.file_prefix = target

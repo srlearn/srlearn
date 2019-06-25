@@ -37,7 +37,7 @@ from .database import Database
 train = Database()
 test = Database()
 
-train.background = [
+train.modes = [
     "friends(+Person,-Person).",
     "friends(-Person,+Person).",
     "smokes(+Person).",
@@ -63,7 +63,7 @@ train.facts = [
     "smokes(Bob).",
 ]
 
-test.background = [
+test.modes = [
     "friends(+Person,-Person).",
     "friends(-Person,+Person).",
     "smokes(+Person).",
