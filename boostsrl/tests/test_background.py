@@ -4,6 +4,7 @@
 Tests for boostsrl.background.Background
 """
 
+import pathlib
 import pytest
 from boostsrl.background import Background
 from boostsrl import example_data
@@ -66,15 +67,15 @@ def test_initializing_example_background_knowledge_2():
 def test_write_background_to_file_1(tmpdir):
     """Test writing Background object to a file with default parameters."""
     _bk = Background()
-    _bk.write(location=tmpdir)
-    assert tmpdir.join("background.txt").read() == str(_bk)
+    _bk.write(filename="train", location=pathlib.Path(tmpdir))
+    assert tmpdir.join("train_bk.txt").read() == str(_bk)
 
 
 def test_write_background_to_file_2(tmpdir):
     """Test writing Background object to a file with extra parameters."""
     _bk = Background(modes=example_data.train.modes, node_size=1, max_tree_depth=5)
-    _bk.write(location=tmpdir)
-    assert tmpdir.join("background.txt").read() == str(_bk)
+    _bk.write(filename="train", location=pathlib.Path(tmpdir))
+    assert tmpdir.join("train_bk.txt").read() == str(_bk)
 
 
 def test_string_conversion_no_modes():

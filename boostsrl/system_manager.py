@@ -70,11 +70,12 @@ class FileSystem:
         class Files(Enum):
             DIRECTORY = _directory
             BOOST_JAR = _here.joinpath("v1-0.jar")
-            AUC_JAR = _here.joinpath("auc.jar")
+            AUC_JAR = _here
             TRAIN_LOG = _directory.joinpath("train_output.txt")
             TEST_LOG = _directory.joinpath("test_output.txt")
             TRAIN_DIR = _directory.joinpath("train")
             TEST_DIR = _directory.joinpath("test")
+            MODELS_DIR = _directory.joinpath("train/models/")
             TREES_DIR = _directory.joinpath("train/models/bRDNs/Trees")
 
         # Create directories

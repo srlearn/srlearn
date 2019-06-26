@@ -94,37 +94,31 @@ class Database:
             raise Exception("Tree must be an integer.")
         self._n_trees = n_trees
 
-    def write(self, location="train/") -> None:
+    def write(self, filename="train", location=pathlib.Path("train")) -> None:
         """
         Write the database to disk.
+
+        Parameters
+        ----------
+        filename : str
+            Name of the file to write to: 'train' or 'test'
+        location : :class:`pathlib.Path`
+            Path where data should be written to.
         """
 
         # TODO: Different behavior will be necessary if the files are already
         #       stored on disk: they can be copied to self.location
         #       with sys
 
-        self.location = pathlib.Path(location)
-
-        if not self.location.exists():
-            self.location.mkdir(parents=True, exist_ok=True)
-
-        self.file_prefix = self.location.parts[-1]
-
-        with open(
-            self.location.joinpath("{0}_pos.txt".format(self.file_prefix)), "w"
-        ) as _fh:
+        with open(location.joinpath("{0}_pos.txt".format(filename)), "w") as _fh:
             for pos_example in self.pos:
                 _fh.write(str(pos_example) + "\n")
 
-        with open(
-            self.location.joinpath("{0}_neg.txt".format(self.file_prefix)), "w"
-        ) as _fh:
+        with open(location.joinpath("{0}_neg.txt".format(filename)), "w") as _fh:
             for neg_example in self.neg:
                 _fh.write(str(neg_example) + "\n")
 
-        with open(
-            self.location.joinpath("{0}_facts.txt".format(self.file_prefix)), "w"
-        ) as _fh:
+        with open(location.joinpath("{0}_facts.txt".format(filename)), "w") as _fh:
             for fact in self.facts:
                 _fh.write(str(fact) + "\n")
 

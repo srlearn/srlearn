@@ -5,6 +5,7 @@ Tests for boostsrl.database.Database
 """
 
 import pytest
+import pathlib
 from boostsrl.database import Database
 
 
@@ -105,10 +106,10 @@ def test_write_to_location_1(tmpdir):
     _db.add_pos("a(b).")
     _db.add_neg("a(c).")
     _db.add_fact("d(b,c).")
-    _db.write(location=tmpdir)
-    assert tmpdir.join("{0}_pos.txt".format(_db.file_prefix)).read() == "a(b).\n"
-    assert tmpdir.join("{0}_neg.txt".format(_db.file_prefix)).read() == "a(c).\n"
-    assert tmpdir.join("{0}_facts.txt".format(_db.file_prefix)).read() == "d(b,c).\n"
+    _db.write(filename="train", location=pathlib.Path(tmpdir))
+    assert tmpdir.join("train_pos.txt").read() == "a(b).\n"
+    assert tmpdir.join("train_neg.txt").read() == "a(c).\n"
+    assert tmpdir.join("train_facts.txt").read() == "d(b,c).\n"
 
 
 def test_write_to_location_2(tmpdir):
@@ -119,7 +120,7 @@ def test_write_to_location_2(tmpdir):
     _db.pos = ["a(b)."]
     _db.neg = ["a(c)."]
     _db.facts = ["d(b,c)."]
-    _db.write(location=tmpdir)
-    assert tmpdir.join("{0}_pos.txt".format(_db.file_prefix)).read() == "a(b).\n"
-    assert tmpdir.join("{0}_neg.txt".format(_db.file_prefix)).read() == "a(c).\n"
-    assert tmpdir.join("{0}_facts.txt".format(_db.file_prefix)).read() == "d(b,c).\n"
+    _db.write(filename="train", location=pathlib.Path(tmpdir))
+    assert tmpdir.join("train_pos.txt").read() == "a(b).\n"
+    assert tmpdir.join("train_neg.txt").read() == "a(c).\n"
+    assert tmpdir.join("train_facts.txt").read() == "d(b,c).\n"

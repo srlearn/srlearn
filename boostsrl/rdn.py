@@ -4,14 +4,17 @@
 Relational Dependency Networks
 """
 
+import os
+import re
+import subprocess
 import numpy as np
 from sklearn.base import BaseEstimator
 from sklearn.base import ClassifierMixin
 from sklearn.utils.validation import check_X_y
 from sklearn.utils.validation import check_is_fitted
 
-from .database import pathlib
 from .background import Background
+from .system_manager import FileSystem
 
 
 class RDN(BaseEstimator, ClassifierMixin):
@@ -28,31 +31,54 @@ class RDN(BaseEstimator, ClassifierMixin):
     --------
 
     >>> from boostsrl.rdn import RDN
+    >>> from boostsrl import Background
     >>> from boostsrl import example_data
-    >>> dn = RDN(target="cancer")
+    >>> bk = Background(modes=example_data.train.modes)
+    >>> dn = RDN(background=bk, target="cancer")
     >>> dn.fit(example_data.train)
-    RDN(background=Modes(), n_estimators=10, target='cancer')
+    RDN(background=useStdLogicVariables: true.
+    setParam: nodeSize=2.
+    setParam: maxTreeDepth=3.
+    setParam: numberOfClauses=100.
+    setParam: numberOfCycles=100.
+    mode: friends(+Person,-Person).
+    mode: friends(-Person,+Person).
+    mode: smokes(+Person).
+    mode: cancer(+Person).
+    ,
+        max_tree_depth=3, n_estimators=10, node_size=2, target='cancer')
     >>> dn.predict(example_data.test)
+    array([ True,  True,  True, False, False])
+
     """
 
     # pylint: disable=too-many-instance-attributes
 
-    def __init__(self, background=Background(), target="None", n_estimators=10):
+    def __init__(
+        self,
+        background=None,
+        target="None",
+        n_estimators=10,
+        node_size=2,
+        max_tree_depth=3,
+    ):
         """Initialize an RDN
 
         Parameters
         ----------
-        background : :class:`boostsrl.background.Background`
-            Background knowledge with respect to the database (default=Background())
-        target : str
+        background : :class:`boostsrl.background.Background` (default: None)
+            Background knowledge with respect to the database
+        target : str (default: "None")
             Target predicate to learn
-        n_estimators : int, optional (default=10)
+        n_estimators : int, optional (default: 10)
             Number of trees to fit
+        node_size : int, optional (default: 2)
+            Maximum number of literals in each node.
+        max_tree_depth : int, optional (default: 3)
+            Maximum number of nodes from root to leaf (height) in the tree.
 
         Attributes
         ----------
-        background_: Background
-            Background object.
         estimators_ : array, shape (n_estimators)
             Return the boosted regression trees
         feature_importances_ : array, shape (n_features)
@@ -61,24 +87,24 @@ class RDN(BaseEstimator, ClassifierMixin):
         self.background = background
         self.target = target
         self.n_estimators = n_estimators
+        self.node_size = node_size
+        self.max_tree_depth = max_tree_depth
 
-        # TODO: A better path manager would help in running multiple instances in
-        #  parallel. This might be fixed by using the 'location' parameter here.
-
-        self._train_log = "train_log.txt"
-        self._test_log = "test_log.txt"
-
-        # .jar file locations will be relative to this __file__
-        self._here = pathlib.Path(__file__).parent
-        self._boostsrl_jar = str(self._here.joinpath("v1-0.jar"))
-        self._auc_jar = str(self._here.joinpath("auc.jar"))
-
-        self.is_fitted = False
+        # Initialize the _FILE_SYSTEM to None. Replace if parameters are valid.
+        self._FILE_SYSTEM = None
 
     def _check_params(self):
-        """Check validity of parameters and raise ValueError if invalid."""
+        """Check validity of parameters and raise ValueError if invalid.
+
+        If all parameters are valid, instantiate ``self._FILE_SYSTEM`` by
+        instantiating it with a :class:`boostsrl.system_manager.FileSystem`
+        """
         if self.target == "None":
             raise ValueError("target must be set, cannot be {0}".format(self.target))
+        if self.background is None:
+            raise ValueError(
+                "background must be set, cannot be {0}".format(self.background)
+            )
         if self.n_estimators <= 0:
             raise ValueError(
                 "n_estimators must be greater than 0, cannot be {0}".format(
@@ -86,9 +112,40 @@ class RDN(BaseEstimator, ClassifierMixin):
                 )
             )
 
+        # If all params are valid, allocate a FileSystem:
+        self.FILE_SYSTEM = FileSystem()
+
     def _check_initialized(self):
         """Check for the estimator(s), raise an error if not found."""
         check_is_fitted(self, "estimators_")
+
+    @staticmethod
+    def _call_shell_command(shell_command):
+        """Start a new process to execute a shell command.
+
+        This is intended for use in calling jar files. It opens a new process and
+        waits for it to return 0.
+
+        Parameters
+        ----------
+        shell_command : str
+            A string representing a shell command.
+
+        Returns
+        -------
+        None
+        """
+
+        # TODO: Explore other ways to interface with BoostSRL or the JVM.
+        #   https://wiki.python.org/moin/IntegratingPythonWithOtherLanguages#Java
+
+        try:
+            _pid = subprocess.Popen(shell_command, shell=True)
+            os.waitpid(_pid.pid, 0)
+        except OSError:
+            raise RuntimeError(
+                "Error when running shell command: {0}".format(shell_command)
+            )
 
     def fit(self, database):
         """Learn structure and parameters.
@@ -101,8 +158,6 @@ class RDN(BaseEstimator, ClassifierMixin):
         ----------
         database : :class:`boostsrl.database.Database`
             Database containing examples and facts.
-        location : str
-            A relative path for storing training data.
 
         Returns
         -------
@@ -127,42 +182,46 @@ class RDN(BaseEstimator, ClassifierMixin):
 
         self._check_params()
 
-        # TODO: On error, collect log files.
+        # Write the background to file.
+        self.background.write(
+            filename="train", location=self.FILE_SYSTEM.files.TRAIN_DIR.value
+        )
 
-        location = "train"
+        # Write the data to files.
+        database.write(
+            filename="train", location=self.FILE_SYSTEM.files.TRAIN_DIR.value
+        )
 
         _CALL = (
             "java -jar "
-            + self._boostsrl_jar
+            + str(self.FILE_SYSTEM.files.BOOST_JAR.value)
             + " -l -train "
-            + str(self._here.joinpath(location))
+            + str(self.FILE_SYSTEM.files.TRAIN_DIR.value)
             + " -target "
             + self.target
             + " -trees "
             + str(self.n_estimators)
             + " > "
-            + str(self._here.joinpath(self._train_log))
-            + " 2>&1"
+            + str(self.FILE_SYSTEM.files.TRAIN_LOG.value)
         )
 
-        self.estimators_ = ["something"]
+        # Call the constructed command.
+        self._call_shell_command(_CALL)
 
-        # print(_CALL)
+        # Read the trees from files.
+        _estimators = []
+        for _tree_number in range(self.n_estimators):
+            with open(
+                self.FILE_SYSTEM.files.TREES_DIR.value.joinpath(
+                    "{0}Tree{1}.tree".format(self.target, _tree_number)
+                )
+            ) as _fh:
+                _estimators.append(_fh.read())
+
+        self.estimators_ = _estimators
+
+        # TODO: On error, collect log files.
         return self
-
-    @property
-    def background_(self):
-        """Set the background knowledge
-        """
-        return self._background
-
-    @background_.setter
-    def background_(self, Background):
-        """Set the background knowledge.
-
-        :return:
-        """
-        self._background = Background
 
     @property
     def feature_importances_(self):
@@ -177,45 +236,115 @@ class RDN(BaseEstimator, ClassifierMixin):
         self._check_initialized()
         return np.array([0, 1])
 
-    def predict(self, database) -> None:
-        """Use the learned model to predict on new data.
+    def _run_inference(self, database) -> None:
+        """Run inference mode on the BoostSRL Jar files.
 
-        Parameters
-        ----------
-        database : :class:`boostsrl.database.Database`
-            Database containing examples and facts.
-        location : str
-            A relative path for storing test data.
+        This is a helper method for ``self.predict`` and ``self.predict_proba``
         """
 
         self._check_initialized()
 
-        location = "test"
+        # Write the background to file.
+        self.background.write(
+            filename="test", location=self.FILE_SYSTEM.files.TEST_DIR.value
+        )
+
+        # Write the data to files.
+        database.write(filename="test", location=self.FILE_SYSTEM.files.TEST_DIR.value)
 
         _CALL = (
             "java -jar "
-            + self._boostsrl_jar
+            + str(self.FILE_SYSTEM.files.BOOST_JAR.value)
             + " -i -test "
-            + str(self._here.joinpath(location))
+            + str(self.FILE_SYSTEM.files.TEST_DIR.value)
+            + " -model "
+            + str(self.FILE_SYSTEM.files.MODELS_DIR.value)
             + " -target "
             + self.target
             + " -trees "
             + str(self.n_estimators)
             + " -aucJarPath "
-            + self._auc_jar
+            + str(self.FILE_SYSTEM.files.AUC_JAR.value)
             + " > "
-            + str(self._here.joinpath(self._test_log))
-            + " 2>&1"
+            + str(self.FILE_SYSTEM.files.TEST_LOG.value)
         )
 
         # print(_CALL)
 
-    def predict_proba(self, database, location="test") -> None:
-        """
-        Return probabilities instead.
+        self._call_shell_command(_CALL)
 
-        :param database:
-        :param location:
+        # Read the threshold
+        with open(self.FILE_SYSTEM.files.TEST_LOG.value, "r") as _fh:
+            _threshold = re.findall("% Threshold = \\d*.\\d*", _fh.read())
+        self.threshold_ = float(_threshold[0].split(" = ")[1])
+
+    def predict(self, database):
+        """Use the learned model to predict on new data.
+
+        Parameters
+        ----------
+        database : :class:`boostsrl.Database`
+            Database containing examples and facts.
+
+        Returns
+        -------
+        results : array
+            Positive or negative class.
         """
 
-        check_is_fitted(self, "is_fitted_")
+        self._run_inference(database)
+
+        # Collect the classifications.
+        _results_db = self.FILE_SYSTEM.files.TEST_DIR.value.joinpath(
+            "results_" + self.target + ".db"
+        )
+        _classes, _results = np.loadtxt(
+            _results_db,
+            delimiter=" ",
+            usecols=(0, 1),
+            converters={0: lambda s: 0 if s[0] == 33 else 1},
+            unpack=True,
+        )
+
+        self.classes_ = _classes
+
+        _neg = _results[_classes == 0]
+        _pos = _results[_classes == 1]
+        _results2 = np.greater(np.concatenate((_pos, 1 - _neg), axis=0), self.threshold_)
+
+        return _results2
+
+    def predict_proba(self, database):
+        """Return class probabilities.
+
+        Parameters
+        ----------
+        database : :class:`boostsrl.Database`
+            Database containing examples and facts.
+
+        Returns
+        -------
+        results : array
+            Probability of belonging to the positive class
+        """
+
+        self._run_inference(database)
+
+        _results_db = self.FILE_SYSTEM.files.TEST_DIR.value.joinpath(
+            "results_" + self.target + ".db"
+        )
+        _classes, _results = np.loadtxt(
+            _results_db,
+            delimiter=" ",
+            usecols=(0, 1),
+            converters={0: lambda s: 0 if s[0] == 33 else 1},
+            unpack=True,
+        )
+
+        _neg = _results[_classes == 0]
+        _pos = _results[_classes == 1]
+        _results2 = np.concatenate((_pos, 1 - _neg), axis=0)
+
+        self.classes_ = _classes
+
+        return _results2

@@ -4,7 +4,7 @@
 background.py
 """
 
-from .database import pathlib
+import pathlib
 
 
 class Background:
@@ -36,8 +36,8 @@ class Background:
         max_tree_depth=3,
         recursion=False,
         line_search=False,
-        load_all_libraries=True,
-        load_all_basic_modes=True,
+        load_all_libraries=False,
+        load_all_basic_modes=False,
     ):
         """Initialize a set of background knowledge
 
@@ -59,13 +59,56 @@ class Background:
             Use lineSearch
         recursion : bool, optional (default: False)
             Use recursion
-        load_all_libraries : bool, optional (default: True)
+        load_all_libraries : bool, optional (default: False)
             Load libraries: ``arithmeticInLogic``, ``comparisonInLogic``,
             ``differentInLogic``, ``listsInLogic``
-        load_all_basic_modes : bool, optional (default: True)
+        load_all_basic_modes : bool, optional (default: False)
             Load ``modes_arithmeticInLogic``, ``modes_comparisonInLogic``,
             ``modes_differentInLogic``, ``modes_listsInLogic``
             These may require many cycles while proving.
+
+        Examples
+        --------
+
+        This demonstrates how to add parameters to the Background object.
+        The main thing to take note of is the ``modes`` parameter, where
+        background knowledge of the Toy-Cancer domain is specified.
+
+        >>> from boostsrl import Background
+        >>> bk = Background(
+        ...     modes=[
+        ...         "cancer(+Person).",
+        ...         "smokes(+Person).",
+        ...         "friends(+Person,-Person).",
+        ...         "friends(-Person,+Person).",
+        ...     ],
+        ...     max_tree_depth=2,
+        ... )
+        >>> print(bk)
+        useStdLogicVariables: true.
+        setParam: nodeSize=2.
+        setParam: maxTreeDepth=2.
+        setParam: numberOfClauses=100.
+        setParam: numberOfCycles=100.
+        mode: cancer(+Person).
+        mode: smokes(+Person).
+        mode: friends(+Person,-Person).
+        mode: friends(-Person,+Person).
+        <BLANKLINE>
+
+        This Background object is used by the :class:`boostsrl.rdn.RDN` class to
+        write the parameters to a ``background.txt`` file before running BoostSRL.
+
+        .. code-block:: python
+
+            >>> from boostsrl import Background
+            >>> from boostsrl import example_data
+            >>> bk = Background(
+            ...     modes=example_data.train.modes,
+            ...     max_tree_depth=2,
+            ...     node_size=1,
+            ... )
+            >>> bk.write("training/")
 
         Notes
         -----
@@ -162,21 +205,18 @@ class Background:
                 )
             )
 
-    def write(self, location="train") -> None:
+    def write(self, filename="train", location=pathlib.Path("train")) -> None:
         """Write the background to disk for learning.
 
         Parameters
         ----------
-        location : str
+        filename : str
+            Name of the file to write to: 'train_bk.txt' or 'test_bk.txt'
+        location : :class:`pathlib.Path`
             This should be handled by a manager to ensure locations do not overlap.
         """
 
-        _location = pathlib.Path(location)
-
-        if not _location.exists():
-            _location.mkdir(parents=True, exist_ok=True)
-
-        with open(_location.joinpath("background.txt"), "w") as _fh:
+        with open(location.joinpath("{0}_bk.txt".format(filename)), "w") as _fh:
             _fh.write(str(self))
 
     def _to_background_string(self) -> str:
@@ -221,7 +261,7 @@ class Background:
             "load_all_basic_modes": "setParam: loadAllBasicModes = {0}.\n",
         }
 
-        _background = ""
+        _background = "useStdLogicVariables: true.\n"
         for _attr, _val in _relevant:
             if _attr in ["modes"]:
                 pass

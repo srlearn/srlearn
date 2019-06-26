@@ -8,19 +8,24 @@ data from :class:`boostsrl.example_data`
 """
 
 from boostsrl.rdn import RDN
+from boostsrl import Background
 from boostsrl import example_data
 
 import numpy as np
 from matplotlib import pyplot as plt
 
-for n_trees in np.arange(1, 11):
-    pass
-
 # Toy-Cancer set from boostsrl.example_data
-dn = RDN(target="cancer")
+bk = Background(
+    modes=example_data.train.modes
+)
+dn = RDN(background=bk, target="cancer")
 dn.fit(example_data.train)
-dn.predict(example_data.test)
 
+for n_trees in np.arange(1, 11):
+
+    # Set the number of trees.
+    dn.set_params(n_estimators=n_trees)
+    print(dn.predict(example_data.test))
 
 X = np.arange(50, dtype=np.float).reshape(-1, 1)
 X /= 50
