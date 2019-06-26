@@ -1,50 +1,9 @@
 .idea/
 *~
 *.pyc
-
-# background.txt gets updated in minute ways, ignore any changes.
-background.txt
-
-# ignore to rst readme
-README
-tests/setupscript.sh
-
-# log files
-boostsrl/train_output.txt
-boostsrl/test_output.txt
-boostsrl/train/train_gleaner.txt
-boostsrl/train/train_learn_dribble.txt
-boostsrl/test/test_infer_dribble.txt
-boostsrl/test/query_*.txt
-*_gleaner.txt
-boostsrl/backup-background.txt
-boostsrl/background.txt
-
-*/boostsrl/train_output.txt
-*/boostsrl/test_output.txt
-*/boostsrl/train/train_gleaner.txt
-*/boostsrl/train/train_learn_dribble.txt
-*/boostsrl/test/test_infer_dribble.txt
-*/boostsrl/test/query_*.txt
-*/*_gleaner.txt
-*/boostsrl/backup-background.txt
-*/boostsrl/background.txt
-
-# positives, negatives, and facts.
-boostsrl/*/*_pos.txt
-boostsrl/*/*_neg.txt
-boostsrl/*/*_facts.txt
-*/boostsrl/*/*_pos.txt
-*/boostsrl/*/*_neg.txt
-*/boostsrl/*/*_facts.txt
-
-# results
-boostsrl/test/results_*.db
-boostsrl/train/models/*
-boostsrl/test/AUC/*
-*/boostsrl/test/results_*.db
-*/boostsrl/train/models/*
-*/boostsrl/test/AUC/*
+boostsrl/train/
+boostsrl/test/
+boostsrl/bsrl_data/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
