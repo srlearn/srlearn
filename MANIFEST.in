@@ -1,0 +1,5 @@
+include README.rst
+include boostsrl/v1-0.jar
+include boostsrl/auc.jar
+include boostsrl/train/train_bk.txt
+include boostsrl/test/test_bk.txt

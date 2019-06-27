@@ -1,27 +1,22 @@
 sudo: false
-
+dist: xenial
 language: python
 
 env:
   - SH=bash
 
 python:
-  - "2.7"
-  - "3.3"
-  - "3.4"
-  - "3.5"
-  - "3.5-dev"
   - "3.6"
-  - "3.6-dev"
+  - "3.7"
 
-cache: pip
+cache:
+  pip: true
 
 install:
-  - if [[ $TRAVIS_PYTHON_VERSION == 2* ]]; then pip install subprocess32; fi
-  - "pip install -r tests/requirements.txt"
+  - "pip install -r requirements.txt"
 
 script:
-  - coverage run tests/tests.py
+  - make test
 
 before_install:
   pip install codecov

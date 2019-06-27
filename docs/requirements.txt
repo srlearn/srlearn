@@ -1,0 +1,4 @@
+sphinx
+starling_theme
+sphinx_gallery
+numpydoc

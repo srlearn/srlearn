@@ -1,0 +1,23 @@
+# Configuration for coverage, based on:
+# scikit-learn-contrib/project-template
+
+[run]
+branch = True
+source = boostsrl
+include = */boostsrl/*
+omit =
+    */setup.py
+    boostsrl/boostsrl.py
+
+[report]
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    if self.debug:
+    if settings.DEBUG
+    raise AssertionError
+    raise NotImplementedError
+    if 0:
+    if __name__ == .__main__.:
+    if self.verbose:
+show_missing = True

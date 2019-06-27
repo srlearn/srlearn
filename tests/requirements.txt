@@ -1,5 +1,0 @@
-coverage
-graphviz
-pytest
-pytest-cov
-unittest2
