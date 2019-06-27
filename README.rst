@@ -1,6 +1,6 @@
-========
+########
 boostsrl
-========
+########
 
 |License|_ |Travis|_ |Codecov|_
 
@@ -14,7 +14,9 @@ boostsrl
 .. _Codecov: https://codecov.io/github/starling-lab/boostsrl-python-package?branch=master
 
 **boostsrl** is a set of Python wrappers around
-`BoostSRL <https://starling.utdallas.edu/software/BoostSRL>`_
+`BoostSRL <https://starling.utdallas.edu/software/BoostSRL>`_ with a scikit-learn interface.
+
+Questions? Contact `Alexander L. Hayes  <https://hayesall.com>`_ (`hayesall <https://github.com/hayesall>`_)
 
 Getting Started
 ---------------
@@ -22,9 +24,7 @@ Getting Started
 **Prerequisites**:
 
 - Java 1.8
-- Python (3.5, 3.6, 3.7)
-- subprocess
-- graphviz
+- Python (3.6, 3.7)
 
 **Installation**
 
@@ -35,37 +35,36 @@ Getting Started
 Basic Usage
 -----------
 
+The general setup should be similar to scikit-learn. But there are a few extra requirements in terms of setting
+background knowledge and formatting the data.
+
+A minimal working example (using the Toy-Cancer data set imported with 'example_data') is:
+
 .. code-block:: python
 
-   from boostsrl import boostsrl
+    >>> from boostsrl.rdn import RDN
+    >>> from boostsrl import Background
+    >>> from boostsrl import example_data
+    >>> bk = Background(
+    ...     modes=example_data.train.modes,
+    ... )
+    >>> clf = RDN(
+    ...     background=bk,
+    ...     target='cancer',
+    ...     max_tree_depth=2,
+    ...     node_size=1,
+    ... )
+    >>> clf.fit(example_data.train)
+    >>> clf.predict_proba(example_data.test)
+    array([0.88079619, 0.88079619, 0.88079619, 0.3075821 , 0.3075821 ])
+    >>> clf.classes_
+    array([1., 1., 1., 0., 0.])
 
-   bk = boostsrl.example_data("background")
-   background = boostsrl.modes(
-	bk,
-	["cancer"],
-	useStdLogicVariables=True,
-	treeDepth=4,
-	nodeSize=2,
-	numOfClauses=8
-   )
+``example_data.train`` and ``example_data.test`` are each ``boostsrl.Database`` objects, so this hides some of
+the complexity behind the scenes.
 
-   # Example Training Data
-   train_pos = boostsrl.example_data("train_pos")
-   train_neg = boostsrl.example_data("train_neg")
-   train_facts = boostsrl.example_data("train_facts")
-
-   model = boostsrl.train(background, train_pos, train_neg, train_facts)
-
-   # Example Test Data
-   test_pos = boostsrl.example_data("test_pos")
-   test_neg = boostsrl.example_data("test_neg")
-   test_facts = boostsrl.example_data("test_facts")
-   
-   test = boostsrl.test(model, test_pos, test_neg, test_facts)
-
-   print("Training Time (s)", model.traintime())
-   print("Results Summary  ", test.summarize_results())
-   print("Inference Results", test.inference_results("cancer"))
+This example abstracts away some complexity in exchange for compactness.
+For more thorough examples, see the `'docs/examples/' <https://github.com/starling-lab/boostsrl-python-package/tree/master/docs/examples>`_ directory.
 
 Contributing
 ------------

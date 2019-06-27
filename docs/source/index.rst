@@ -31,26 +31,38 @@ boostsrl
 .. toctree::
    :hidden:
    :maxdepth: 1
-   :caption: Tutorial - Examples
+   :caption: Example Gallery
 
    auto_examples/index
+
+.. toctree::
+  :hidden:
+  :caption: Links
+
+  StARLinG Lab <https://starling.utdallas.edu/>
+  GitHub <https://github.com/starling-lab/boostsrl-python-package/>
+  PyPi <https://pypi.org/project/boostsrl/>
+
+Questions? Contact `Alexander L. Hayes <https://hayeasll.com>`_ (hayesall@iu.edu)
 
 `Getting started <getting_started.html>`_
 -----------------------------------------
 
-Getting started with this package.
+Prerequisites and installation instructions for getting started with
+this package.
 
-`User Guide <user_guide.html>`_
+`User guide <user_guide.html>`_
 -------------------------------
 
-An example of narrative documentation.
+Guide to instantiate, parametrize, and invoke the core methods using a built-in data set.
 
-`API Documentation <api.html>`_
+`API documentation <api.html>`_
 -------------------------------
 
-API documentation.
+Full documentation for the modules.
 
-`Examples <auto_examples/index.html>`_
---------------------------------------
+`Example gallery <auto_examples/index.html>`_
+---------------------------------------------
 
-A set of examples. It complements the `User Guide <user_guide.html>`_.
+A gallery of examples with figures and expected outputs.
+It complements and extends past the basic example from the `User Guide <user_guide.html>`_.

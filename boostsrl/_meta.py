@@ -8,3 +8,5 @@ boostsrl metadata
 
 __author__ = "Alexander L. Hayes (hayesall)"
 __version__ = "0.4.0"
+
+DEBUG = False
