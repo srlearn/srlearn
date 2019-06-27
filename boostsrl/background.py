@@ -36,6 +36,8 @@ class Background:
         max_tree_depth=3,
         recursion=False,
         line_search=False,
+        use_std_logic_variables=False,
+        use_prolog_variables=False,
         load_all_libraries=False,
         load_all_basic_modes=False,
     ):
@@ -43,7 +45,7 @@ class Background:
 
         Parameters
         ----------
-        modes : None or list of str (default: None)
+        modes : list of str (default: None)
             Modes constrain the search space for hypotheses. If None, this will
             attempt to set the modes automatically at learning time.
         node_size : int, optional (default: 2)
@@ -59,6 +61,10 @@ class Background:
             Use lineSearch
         recursion : bool, optional (default: False)
             Use recursion
+        use_std_logic_variables : bool, optional (default: False)
+            Set the stdLogicVariables parameter to True
+        use_prolog_variables : bool, optional (default: False)
+            Set the usePrologVariables parameter to True
         load_all_libraries : bool, optional (default: False)
             Load libraries: ``arithmeticInLogic``, ``comparisonInLogic``,
             ``differentInLogic``, ``listsInLogic``
@@ -83,13 +89,14 @@ class Background:
         ...         "friends(-Person,+Person).",
         ...     ],
         ...     max_tree_depth=2,
+        ...     use_std_logic_variables=True,
         ... )
         >>> print(bk)
-        useStdLogicVariables: true.
         setParam: nodeSize=2.
         setParam: maxTreeDepth=2.
         setParam: numberOfClauses=100.
         setParam: numberOfCycles=100.
+        useStdLogicVariables: true.
         mode: cancer(+Person).
         mode: smokes(+Person).
         mode: friends(+Person,-Person).
@@ -130,6 +137,8 @@ class Background:
         self.number_of_cycles = number_of_cycles
         self.line_search = line_search
         self.recursion = recursion
+        self.use_std_logic_variables = use_std_logic_variables
+        self.use_prolog_variables = use_prolog_variables
         self.load_all_libraries = load_all_libraries
         self.load_all_basic_modes = load_all_basic_modes
 
@@ -204,6 +213,18 @@ class Background:
                     self.load_all_basic_modes
                 )
             )
+        if not isinstance(self.use_std_logic_variables, bool):
+            raise ValueError(
+                "use_std_logic_variables should be a bool, found {0}".format(
+                    self.use_std_logic_variables
+                )
+            )
+        if not isinstance(self.use_prolog_variables, bool):
+            raise ValueError(
+                "use_prolog_variables should be a bool, found {0}".format(
+                    self.use_prolog_variables
+                )
+            )
 
     def write(self, filename="train", location=pathlib.Path("train")) -> None:
         """Write the background to disk for learning.
@@ -259,9 +280,11 @@ class Background:
             "number_of_cycles": "setParam: numberOfCycles={0}.\n",
             "load_all_libraries": "setParam: loadAllLibraries = {0}.\n",
             "load_all_basic_modes": "setParam: loadAllBasicModes = {0}.\n",
+            "use_std_logic_variables": "useStdLogicVariables: {0}.\n",
+            "use_prolog_variables": "usePrologVariables: {0}.\n",
         }
 
-        _background = "useStdLogicVariables: true.\n"
+        _background = ""
         for _attr, _val in _relevant:
             if _attr in ["modes"]:
                 pass

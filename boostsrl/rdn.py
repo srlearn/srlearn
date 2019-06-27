@@ -10,11 +10,14 @@ import subprocess
 import numpy as np
 from sklearn.base import BaseEstimator
 from sklearn.base import ClassifierMixin
-from sklearn.utils.validation import check_X_y
 from sklearn.utils.validation import check_is_fitted
 
 from .background import Background
 from .system_manager import FileSystem
+from ._meta import DEBUG
+
+
+# TODO: @property: feature_importances_
 
 
 class RDN(BaseEstimator, ClassifierMixin):
@@ -33,14 +36,14 @@ class RDN(BaseEstimator, ClassifierMixin):
     >>> from boostsrl.rdn import RDN
     >>> from boostsrl import Background
     >>> from boostsrl import example_data
-    >>> bk = Background(modes=example_data.train.modes)
+    >>> bk = Background(modes=example_data.train.modes, use_std_logic_variables=True)
     >>> dn = RDN(background=bk, target="cancer")
     >>> dn.fit(example_data.train)
-    RDN(background=useStdLogicVariables: true.
-    setParam: nodeSize=2.
+    RDN(background=setParam: nodeSize=2.
     setParam: maxTreeDepth=3.
     setParam: numberOfClauses=100.
     setParam: numberOfCycles=100.
+    useStdLogicVariables: true.
     mode: friends(+Person,-Person).
     mode: friends(-Person,+Person).
     mode: smokes(+Person).
@@ -89,6 +92,7 @@ class RDN(BaseEstimator, ClassifierMixin):
         self.n_estimators = n_estimators
         self.node_size = node_size
         self.max_tree_depth = max_tree_depth
+        self.debug = DEBUG
 
         # Initialize the _FILE_SYSTEM to None. Replace if parameters are valid.
         self._FILE_SYSTEM = None
@@ -101,9 +105,27 @@ class RDN(BaseEstimator, ClassifierMixin):
         """
         if self.target == "None":
             raise ValueError("target must be set, cannot be {0}".format(self.target))
+        if not isinstance(self.target, str):
+            raise ValueError(
+                "target must be a string, cannot be {0}".format(self.target)
+            )
         if self.background is None:
             raise ValueError(
                 "background must be set, cannot be {0}".format(self.background)
+            )
+        if not isinstance(self.background, Background):
+            raise ValueError(
+                "background should be a boostsrl.Background object, cannot be {0}".format(
+                    self.background
+                )
+            )
+        if not isinstance(self.n_estimators, int) or isinstance(
+            self.n_estimators, bool
+        ):
+            raise ValueError(
+                "n_estimators must be an integer, cannot be {0}".format(
+                    self.n_estimators
+                )
             )
         if self.n_estimators <= 0:
             raise ValueError(
@@ -139,10 +161,9 @@ class RDN(BaseEstimator, ClassifierMixin):
         # TODO: Explore other ways to interface with BoostSRL or the JVM.
         #   https://wiki.python.org/moin/IntegratingPythonWithOtherLanguages#Java
 
-        try:
-            _pid = subprocess.Popen(shell_command, shell=True)
-            os.waitpid(_pid.pid, 0)
-        except OSError:
+        _pid = subprocess.Popen(shell_command, shell=True)
+        _id, _status = os.waitpid(_pid.pid, 0)
+        if _status != 0:
             raise RuntimeError(
                 "Error when running shell command: {0}".format(shell_command)
             )
@@ -205,6 +226,9 @@ class RDN(BaseEstimator, ClassifierMixin):
             + str(self.FILE_SYSTEM.files.TRAIN_LOG.value)
         )
 
+        if self.debug:
+            print(_CALL)
+
         # Call the constructed command.
         self._call_shell_command(_CALL)
 
@@ -222,19 +246,6 @@ class RDN(BaseEstimator, ClassifierMixin):
 
         # TODO: On error, collect log files.
         return self
-
-    @property
-    def feature_importances_(self):
-        """Return the feature importances (the higher, the more important the feature).
-
-        This is calculated based on how often a feature appears in the learned trees.
-
-        Returns
-        -------
-        feature_importances_ : array, shape (n_features,)
-        """
-        self._check_initialized()
-        return np.array([0, 1])
 
     def _run_inference(self, database) -> None:
         """Run inference mode on the BoostSRL Jar files.
@@ -269,7 +280,8 @@ class RDN(BaseEstimator, ClassifierMixin):
             + str(self.FILE_SYSTEM.files.TEST_LOG.value)
         )
 
-        # print(_CALL)
+        if self.debug:
+            print(_CALL)
 
         self._call_shell_command(_CALL)
 
@@ -288,7 +300,7 @@ class RDN(BaseEstimator, ClassifierMixin):
 
         Returns
         -------
-        results : array
+        results : ndarray
             Positive or negative class.
         """
 
@@ -310,7 +322,9 @@ class RDN(BaseEstimator, ClassifierMixin):
 
         _neg = _results[_classes == 0]
         _pos = _results[_classes == 1]
-        _results2 = np.greater(np.concatenate((_pos, 1 - _neg), axis=0), self.threshold_)
+        _results2 = np.greater(
+            np.concatenate((_pos, 1 - _neg), axis=0), self.threshold_
+        )
 
         return _results2
 
@@ -324,7 +338,7 @@ class RDN(BaseEstimator, ClassifierMixin):
 
         Returns
         -------
-        results : array
+        results : ndarray
             Probability of belonging to the positive class
         """
 

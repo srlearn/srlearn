@@ -153,3 +153,21 @@ def test_initialize_bad_background_knowledge_load_all_basic_modes(test_input):
     """Incorrect load_all_basic_modes arguments."""
     with pytest.raises(ValueError):
         _bk = Background(load_all_basic_modes=test_input)
+
+
+@pytest.mark.parametrize(
+    "test_input", [0, -1, 1, 4, None, "True", "False", bool, int, 1.5]
+)
+def test_initialize_bad_logic_variables(test_input):
+    """Initialize use_std_logic_variables with input which raises error."""
+    with pytest.raises(ValueError):
+        _bk = Background(use_std_logic_variables=test_input)
+
+
+@pytest.mark.parametrize(
+    "test_input", [0, -1, 1, 4, None, "True", "False", bool, int, 1.5]
+)
+def test_initialize_bad_prolog_variables(test_input):
+    """Initialize use_prolog_variables with input which raises error."""
+    with pytest.raises(ValueError):
+        _bk = Background(use_prolog_variables=test_input)
