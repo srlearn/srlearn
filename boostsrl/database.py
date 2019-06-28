@@ -45,54 +45,11 @@ class Database:
     # TODO: Currently disabling linter warnings, trimming attributes may be wise
     #       e.g. file_prefix and target should typically be the same variable
 
-    def __init__(self, target="None", location="bsrl_data"):
+    def __init__(self):
         self.pos = []
         self.neg = []
         self.facts = []
         self.modes = []
-
-        self.location = location
-        self.file_prefix = target
-
-        self._target = target
-        self._n_trees = 10
-        self._trees = []
-
-    @property
-    def target(self) -> str:
-        """
-        Target predicate for learning and inference.
-
-        Examples:
-
-        >>> from boostsrl.database import Database
-        >>> db = Database()
-        >>> db.target
-        'None'
-        >>> db.target = "student"
-        >>> db.target
-        'student'
-        """
-        return self._target
-
-    @target.setter
-    def target(self, target: str) -> None:
-        if not isinstance(target, str):
-            raise Exception("Target must be a string.")
-        self._target = target
-
-    @property
-    def trees(self) -> int:
-        """
-        Number of trees that will be learned to represent the concept.
-        """
-        return self._n_trees
-
-    @trees.setter
-    def trees(self, n_trees: int) -> None:
-        if not isinstance(n_trees, int):
-            raise Exception("Tree must be an integer.")
-        self._n_trees = n_trees
 
     def write(self, filename="train", location=pathlib.Path("train")) -> None:
         """

@@ -131,24 +131,24 @@ def write_to_file(content, path):
 
 class modes(object):
     def __init__(
-            self,
-            background,
-            target,
-            bridgers=None,
-            precomputes=None,
-            loadAllLibraries=False,
-            useStdLogicVariables=False,
-            usePrologVariables=False,
-            recursion=False,
-            lineSearch=False,
-            resampleNegs=False,
-            treeDepth=None,
-            maxTreeDepth=None,
-            nodeSize=None,
-            numOfClauses=None,
-            numOfCycles=None,
-            minLCTrees=None,
-            incrLCTrees=None,
+        self,
+        background,
+        target,
+        bridgers=None,
+        precomputes=None,
+        loadAllLibraries=False,
+        useStdLogicVariables=False,
+        usePrologVariables=False,
+        recursion=False,
+        lineSearch=False,
+        resampleNegs=False,
+        treeDepth=None,
+        maxTreeDepth=None,
+        nodeSize=None,
+        numOfClauses=None,
+        numOfCycles=None,
+        minLCTrees=None,
+        incrLCTrees=None,
     ):
         """
         target: a list of predicate heads that learning/inference will be performed on.
@@ -187,9 +187,9 @@ class modes(object):
             "background should be a list.": isinstance(background, list),
             "target should be a list.": isinstance(target, list),
             "bridgers should be a list.": isinstance(bridgers, list)
-                                          or bridgers is None,
+            or bridgers is None,
             "precomputes should be a dictionary.": isinstance(precomputes, dict)
-                                                   or precomputes is None,
+            or precomputes is None,
             "loadAllLibraries should be boolean.": isinstance(loadAllLibraries, bool),
             "useStdLogicVariables should be boolean.": isinstance(
                 useStdLogicVariables, bool
@@ -201,18 +201,18 @@ class modes(object):
             "lineSearch should be boolean.": isinstance(lineSearch, bool),
             "resampleNegs should be boolean.": isinstance(resampleNegs, bool),
             "treeDepth should be an int.": isinstance(treeDepth, int)
-                                           or treeDepth is None,
+            or treeDepth is None,
             "maxTreeDepth should be an int.": isinstance(maxTreeDepth, int)
-                                              or maxTreeDepth is None,
+            or maxTreeDepth is None,
             "nodeSize should be an int.": isinstance(nodeSize, int) or nodeSize is None,
             "numOfClause should be an int.": isinstance(numOfClauses, int)
-                                             or numOfClauses is None,
+            or numOfClauses is None,
             "numOfCycles should be an int.": isinstance(numOfCycles, int)
-                                             or numOfCycles is None,
+            or numOfCycles is None,
             "minLCTrees should be an int.": isinstance(minLCTrees, int)
-                                            or minLCTrees is None,
+            or minLCTrees is None,
             "incrLCTrees should be an int.": isinstance(incrLCTrees, int)
-                                             or incrLCTrees is None,
+            or incrLCTrees is None,
         }
 
         # Force type checking for input validation Issue #5
@@ -266,17 +266,17 @@ class train(object):
     """
 
     def __init__(
-            self,
-            background,
-            train_pos,
-            train_neg,
-            train_facts,
-            save=False,
-            advice=False,
-            softm=False,
-            alpha=0.5,
-            beta=-2,
-            trees=10,
+        self,
+        background,
+        train_pos,
+        train_neg,
+        train_facts,
+        save=False,
+        advice=False,
+        softm=False,
+        alpha=0.5,
+        beta=-2,
+        trees=10,
     ):
         print(
             "Deprecation Warning: "
@@ -307,11 +307,11 @@ class train(object):
         write_to_file(self.train_facts, "boostsrl/train/train_facts.txt")
 
         CALL = (
-                "(cd boostsrl; java -jar v1-0.jar -l -train train/ -target "
-                + ",".join(self.target)
-                + " -trees "
-                + str(self.trees)
-                + " > train_output.txt 2>&1)"
+            "(cd boostsrl; java -jar v1-0.jar -l -train train/ -target "
+            + ",".join(self.target)
+            + " -trees "
+            + str(self.trees)
+            + " > train_output.txt 2>&1)"
         )
         call_process(CALL)
 
@@ -328,10 +328,10 @@ class train(object):
             from graphviz import Source
 
             tree_file = (
-                    "boostsrl/train/models/bRDNs/dotFiles/WILLTreeFor_"
-                    + target
-                    + str(treenumber)
-                    + ".dot"
+                "boostsrl/train/models/bRDNs/dotFiles/WILLTreeFor_"
+                + target
+                + str(treenumber)
+                + ".dot"
             )
             with open(tree_file, "r") as f:
                 tree_output = "".join(f.read().splitlines())
@@ -339,11 +339,11 @@ class train(object):
             return src
         else:
             tree_file = (
-                    "boostsrl/train/models/bRDNs/Trees/"
-                    + target
-                    + "Tree"
-                    + str(treenumber)
-                    + ".tree"
+                "boostsrl/train/models/bRDNs/Trees/"
+                + target
+                + "Tree"
+                + str(treenumber)
+                + ".tree"
             )
             with open(tree_file, "r") as f:
                 tree_output = f.read()
@@ -414,12 +414,12 @@ class test(object):
         self.target = model.target
 
         CALL = (
-                "(cd boostsrl; java -jar v1-0.jar -i -model train/models/ "
-                + "-test test/ -target "
-                + ",".join(self.target)
-                + " -trees "
-                + str(trees)
-                + " -aucJarPath . > test_output.txt 2>&1)"
+            "(cd boostsrl; java -jar v1-0.jar -i -model train/models/ "
+            + "-test test/ -target "
+            + ",".join(self.target)
+            + " -trees "
+            + str(trees)
+            + " -aucJarPath . > test_output.txt 2>&1)"
         )
         call_process(CALL)
 
@@ -432,19 +432,19 @@ class test(object):
         )
         line = [
             word.replace(" ", "")
-                .replace("\t", "")
-                .replace("%", "")
-                .replace("atthreshold=", ",")
+            .replace("\t", "")
+            .replace("%", "")
+            .replace("atthreshold=", ",")
             for word in line
         ]
 
         results = {
-            "AUC ROC": line[0][line[0].index("=") + 1:],
-            "AUC PR": line[1][line[1].index("=") + 1:],
-            "CLL": line[2][line[2].index("=") + 1:],
-            "Precision": line[3][line[3].index("=") + 1:],
-            "Recall": line[4][line[4].index("=") + 1:],
-            "F1": line[5][line[5].index("=") + 1:],
+            "AUC ROC": line[0][line[0].index("=") + 1 :],
+            "AUC PR": line[1][line[1].index("=") + 1 :],
+            "CLL": line[2][line[2].index("=") + 1 :],
+            "Precision": line[3][line[3].index("=") + 1 :],
+            "Recall": line[4][line[4].index("=") + 1 :],
+            "F1": line[5][line[5].index("=") + 1 :],
         }
         return results
 

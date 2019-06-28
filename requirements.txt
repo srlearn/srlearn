@@ -1,7 +1,20 @@
 scikit-learn
 scipy
 numpy
+
+# Style
+black
+pylint
+
+# Testing
 coverage
 codecov
 pytest
 pytest-cov
+
+# Documentation
+sphinx
+starling_theme
+sphinx_rtd_theme
+sphinx_gallery
+numpydoc
