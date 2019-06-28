@@ -2,16 +2,26 @@
 boostsrl
 ########
 
-|License|_ |Travis|_ |Codecov|_
+|License|_ |Travis|_  |Codecov|_ |CircleCi|_ |ReadTheDocs|_
 
 .. |License| image:: https://img.shields.io/github/license/starling-lab/boostsrl-python-package.svg
+    :alt: License
 .. _License: LICENSE
 
 .. |Travis| image:: https://travis-ci.org/starling-lab/boostsrl-python-package.svg?branch=master
+    :alt: Travis CI continuous integration build status
 .. _Travis: https://travis-ci.org/starling-lab/boostsrl-python-package
 
 .. |Codecov| image:: https://codecov.io/gh/starling-lab/boostsrl-python-package/branch/master/graphs/badge.svg?branch=master
+    :alt: Code coverage status
 .. _Codecov: https://codecov.io/github/starling-lab/boostsrl-python-package?branch=master
+
+.. |CircleCI| image:: https://circleci.com/gh/starling-lab/boostsrl-python-package.svg?style=svg
+.. _CircleCi: https://circleci.com/gh/starling-lab/boostsrl-python-package
+
+.. |ReadTheDocs| image:: https://readthedocs.org/projects/boostsrl/badge/?version=latest
+    :alt: Documentation status
+.. _ReadTheDocs: https://boostsrl.readthedocs.io/en/latest/
 
 .. toctree::
    :hidden:
