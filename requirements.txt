@@ -4,6 +4,7 @@ numpy
 
 # Style
 black
+pycodestyle
 pylint
 
 # Testing
@@ -18,3 +19,4 @@ starling_theme
 sphinx_rtd_theme
 sphinx_gallery
 numpydoc
+matplotlib

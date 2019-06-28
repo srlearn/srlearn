@@ -20,7 +20,7 @@ with open(path.join(_here, "README.rst"), encoding="utf-8") as f:
 setup(
     name="boostsrl",
     packages=find_packages(exclude=["tests"]),
-    package_dir={"boostsrl": "boostsrl/"},
+    package_dir={"boostsrl": "boostsrl"},
     author="Alexander L. Hayes (hayesall)",
     author_email="alexander@batflyer.net",
     version=__version__,
@@ -43,9 +43,9 @@ setup(
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
     ],
     keywords="machine-learning-algorithms machine-learning statistical-learning pattern-classification artificial-intelligence",
-    install_requires=["graphviz"],
+    install_requires=["graphviz", "numpy", "scipy", "scikit-learn"],
     extras_require={
-        "tests": ["coverage"],
-        "docs": ["sphinx", "starling_theme", "sphinx_gallery"],
+        "tests": ["coverage", "pytest"],
+        "docs": ["sphinx", "sphinx_rtd_theme", "sphinx_gallery", "numpydoc", "matplotlib"],
     },
 )
