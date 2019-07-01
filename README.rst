@@ -16,7 +16,7 @@ boostsrl
     :alt: Code coverage status
 .. _Codecov: https://codecov.io/github/starling-lab/boostsrl-python-package?branch=master
 
-.. |CircleCI| image:: https://circleci.com/gh/starling-lab/boostsrl-python-package.svg?style=svg
+.. |CircleCI| image:: https://circleci.com/gh/starling-lab/boostsrl-python-package.svg?style=shield
 .. _CircleCi: https://circleci.com/gh/starling-lab/boostsrl-python-package
 
 .. |ReadTheDocs| image:: https://readthedocs.org/projects/boostsrl/badge/?version=latest
