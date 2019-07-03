@@ -22,7 +22,7 @@ def test_soft_reset_with_dirs():
     _there.joinpath("data2").mkdir(parents=True)
 
     result = system_manager.reset(soft=True)
-    assert result == ["data1", "data2"]
+    assert sorted(result) == sorted(["data1", "data2"])
     result = system_manager.reset()
     assert result == []
     result = system_manager.reset(soft=True)
