@@ -6,6 +6,75 @@ from enum import Enum
 from enum import unique
 import pathlib
 import shutil
+import os
+
+__all__ = ["reset", "FileSystem"]
+
+
+def reset(soft=False):
+    """Reset the FileSystem
+
+    In some circumstances, a :class:`FileSystem` object may not properly clean up
+    temporary files on object deallocation. This function performs a hard reset
+    by explicitly removing the directory tree from the operating system.
+
+    Parameters
+    ----------
+    soft : bool (Default: False)
+        A *soft reset* reports the contents without removing.
+
+    Returns
+    -------
+    results : list
+        A "soft reset" returns a list of the contents.
+        A "hard reset" returns an empty list.
+
+    Notes
+    -----
+
+    Since the FileSystem object reads and writes from a location alongside
+    the package, these files are also removed when the package is uninstalled.
+    But uninstalling and reinstalling is overkill when a solution like this
+    is available.
+
+    Examples
+    --------
+
+    This method has a few uses. This could be used for cleaning up your
+    operating system in the event of failure. It could be a shorthand
+    method for triggering behavior when the data directory is/not empty.
+    Or the obvious case where you need to ensure temporary files are gone.
+
+    1. Use a "soft reset" to list contents without removing:
+
+    .. code-block:: bash
+
+        $ python -c "from boostsrl import system_manager; print(system_manager.reset(soft=True))"
+        ['data0', 'data1']
+
+    2. Trigger conditional behavior. Here we report that the directory is empty.
+
+    >>> from boostsrl import system_manager
+    >>> if not system_manager.reset(soft=True):
+    ...     print("Currently Empty")
+    Currently Empty
+
+    3. Use a hard reset to remove any temporary files.
+
+    >>> from boostsrl import system_manager
+    >>> system_manager.reset()
+    []
+    """
+    _here = pathlib.Path(__file__).parent
+    _data = _here.joinpath(FileSystem.boostsrl_data_directory)
+
+    if not _data.exists():
+        return []
+    if soft:
+        return os.listdir(_data)
+
+    shutil.rmtree(_data)
+    return []
 
 
 class FileSystem:
