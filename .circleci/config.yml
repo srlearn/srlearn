@@ -38,6 +38,7 @@ jobs:
           command: |
             . venv/bin/activate
             cd docs
+            make html
             make doctest
 
       - store_artifacts:

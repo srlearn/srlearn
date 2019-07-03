@@ -53,7 +53,7 @@ boostsrl
   GitHub <https://github.com/starling-lab/boostsrl-python-package/>
   PyPi <https://pypi.org/project/boostsrl/>
 
-Questions? Contact `Alexander L. Hayes <https://hayeasll.com>`_ (hayesall@iu.edu)
+Questions? Contact `Alexander L. Hayes <https://hayesall.com>`_ (hayesall@iu.edu)
 
 `Getting started <getting_started.html>`_
 -----------------------------------------
