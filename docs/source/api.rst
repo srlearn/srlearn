@@ -27,6 +27,24 @@ Data Sets
 
    example_data
 
+Utilities
+=========
+
+These modules are generally for behind-the-scenes operations or things that
+should typically be handled on your behalf.
+
+.. autosummary::
+   :toctree: generated/
+   :template: class.rst
+
+   system_manager.FileSystem
+
+.. autosummary::
+   :toctree: generated/
+   :template: function.rst
+
+   system_manager.reset
+
 Deprecated boostsrl objects
 ===========================
 
@@ -37,15 +55,3 @@ actively developed and is pending removal in 0.6.0.
    :toctree: generated/
 
    boostsrl.boostsrl
-
-Advanced
-========
-
-These features are generally for behind-the-scenes operations or things that
-should typically be handled on your behalf.
-
-.. autosummary::
-   :toctree: generated/
-   :template: class.rst
-
-   system_manager.FileSystem
