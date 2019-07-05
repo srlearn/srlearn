@@ -1,0 +1,11 @@
+male(mrbennet).
+male(mrlucas).
+male(darcy).
+childof(mrbennet,elizabeth).
+childof(mrsbennet,elizabeth).
+childof(mrbennet,jane).
+childof(mrsbennet,jane).
+childof(mrlucas,charlotte).
+childof(mrslucas,charlotte).
+siblingof(jane,elizabeth).
+siblingof(elizabeth,jane).

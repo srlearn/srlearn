@@ -30,6 +30,7 @@ Create an instance of the database from an existing set of files.
 >>> db = Database()
 """
 
+from shutil import copyfile
 import pathlib
 
 
@@ -52,8 +53,7 @@ class Database:
         self.modes = []
 
     def write(self, filename="train", location=pathlib.Path("train")) -> None:
-        """
-        Write the database to disk.
+        """Write the database to disk
 
         Parameters
         ----------
@@ -61,23 +61,30 @@ class Database:
             Name of the file to write to: 'train' or 'test'
         location : :class:`pathlib.Path`
             Path where data should be written to.
+
+        Notes
+        -----
+
+        This function has polymorphic behavior. When attributes (``self.pos``,
+        ``self.neg``, ``self.facts``) are lists of strings, the lists are
+        written to files. When the attributes are (path-like) strings or
+        pathlib Paths (:class:`pathlib.Path`), the files are copied.
         """
 
-        # TODO: Different behavior will be necessary if the files are already
-        #       stored on disk: they can be copied to self.location
-        #       with sys
+        def _write(_filename, _location, _object, _type):
+            if isinstance(_object, list):
+                with open(_location.joinpath("{0}_{1}.txt".format(_filename, _type)), "w") as _fh:
+                    for example in _object:
+                        _fh.write(example + "\n")
+            else:
+                copyfile(
+                    str(_object),
+                    str(_location.joinpath("{0}_{1}.txt".format(_filename, _type))),
+                )
 
-        with open(location.joinpath("{0}_pos.txt".format(filename)), "w") as _fh:
-            for pos_example in self.pos:
-                _fh.write(str(pos_example) + "\n")
-
-        with open(location.joinpath("{0}_neg.txt".format(filename)), "w") as _fh:
-            for neg_example in self.neg:
-                _fh.write(str(neg_example) + "\n")
-
-        with open(location.joinpath("{0}_facts.txt".format(filename)), "w") as _fh:
-            for fact in self.facts:
-                _fh.write(str(fact) + "\n")
+        _write(filename, location, self.pos, "pos")
+        _write(filename, location, self.neg, "neg")
+        _write(filename, location, self.facts, "facts")
 
     def __repr__(self) -> str:
         return (
@@ -88,6 +95,47 @@ class Database:
             + "\nFacts:\n"
             + str(self.facts)
         )
+
+    @staticmethod
+    def from_files(pos="pos.pl", neg="neg.pl", facts="facts.pl", lazy_load=True):
+        """Load files into a Database
+
+        Return an instance of a Database with pos, neg, and facts set to the
+        contents of files. By default this performs a "lazy load," where the
+        files are not loaded into Python lists, but copied at learning time.
+
+        Parameters
+        ----------
+        pos : str or pathlib.Path
+            Location of positive examples
+        neg : str or pathlib.Path
+            Location of negative examples
+        facts : str or pathlib.Path
+            Location of facts
+        lazy_load : bool (default: True)
+            Skip loading the files into a list
+
+        Returns
+        -------
+        db : boostsrl.Database
+            Instance of a Database object
+        """
+
+        _db = Database()
+
+        if lazy_load:
+            _db.pos = pos
+            _db.neg = neg
+            _db.facts = facts
+        else:
+            with open(pos, "r") as _fh:
+               _db.pos = _fh.read().splitlines()
+            with open(neg, "r") as _fh:
+                _db.neg = _fh.read().splitlines()
+            with open(facts, "r") as _fh:
+                _db.facts = _fh.read().splitlines()
+
+        return _db
 
     def add_pos(self, example: str) -> None:
         """
