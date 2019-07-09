@@ -161,10 +161,8 @@ class RDN(BaseEstimator, ClassifierMixin):
         # TODO: Explore other ways to interface with BoostSRL or the JVM.
         #   https://wiki.python.org/moin/IntegratingPythonWithOtherLanguages#Java
 
-        # TODO: This works on Windows
         _pid = subprocess.Popen(shell_command, shell=True)
         _status = _pid.wait()
-        # _id, _status = os.waitpid(_pid.pid, 0)
         if _status != 0:
             raise RuntimeError(
                 "Error when running shell command: {0}".format(shell_command)
