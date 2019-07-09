@@ -70,7 +70,7 @@ def test_initialize_from_files_not_lazy():
     assert _db.facts == open(_facts).read().splitlines()
 
 
-def test_initialize_mix(tmpdir):
+def test_initialize_mix():
     """Test initializing from a mix of lazy and lists."""
 
     _pos = "datasets/ToyFather/train/pos.pl"

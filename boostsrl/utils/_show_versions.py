@@ -12,14 +12,7 @@ import sys
 import importlib
 
 
-_deps = [
-    "boostsrl",
-    "pip",
-    "setuptools",
-    "sklearn",
-    "numpy",
-    "scipy",
-]
+DEPS = ["boostsrl", "pip", "setuptools", "sklearn", "numpy", "scipy"]
 
 
 def _get_deps_info(dependency_list):
@@ -64,14 +57,11 @@ def show_versions(github=True):
         If true, wrap system info with GitHub markup.
     """
 
-    from sklearn.utils._show_versions import (
-        _get_sys_info,
-        _get_blas_info,
-    )
+    from sklearn.utils._show_versions import _get_sys_info, _get_blas_info
 
     _sys_info = _get_sys_info()
     _blas_info = _get_blas_info()
-    _deps_info = _get_deps_info(_deps)
+    _deps_info = _get_deps_info(DEPS)
     _github_markup = (
         "<details>"
         "<summary>System, BLAS, and Dependencies</summary>\n\n"

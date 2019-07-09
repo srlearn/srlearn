@@ -35,11 +35,7 @@ import pathlib
 
 
 class Database:
-    """Database of examples and facts.
-
-    A database (in this respect) contains positive examples, negative examples,
-    facts, and augmented with background knowledge.
-    """
+    """Database of examples and facts."""
 
     # pylint: disable=too-many-instance-attributes
 
@@ -47,6 +43,24 @@ class Database:
     #       e.g. file_prefix and target should typically be the same variable
 
     def __init__(self):
+        """Initialize a Database object
+
+        A database (in this respect) contains positive examples, negative examples,
+        facts, and is augmented with background knowledge.
+
+        The implementation is done with four attributes: ``pos``, ``neg``,
+        ``facts``, and ``modes``. Each attribute is a list that may be set by
+        mutating, or loaded from files with :func:`Database.from_files`.
+
+        Examples
+        --------
+
+        This initializes a Database object, then sets the ``pos`` attribute.
+
+        >>> from boostsrl import Database
+        >>> db = Database()
+        >>> db.pos = ["student(alexander)."]
+        """
         self.pos = []
         self.neg = []
         self.facts = []
@@ -73,7 +87,9 @@ class Database:
 
         def _write(_filename, _location, _object, _type):
             if isinstance(_object, list):
-                with open(_location.joinpath("{0}_{1}.txt".format(_filename, _type)), "w") as _fh:
+                with open(
+                    _location.joinpath("{0}_{1}.txt".format(_filename, _type)), "w"
+                ) as _fh:
                     for example in _object:
                         _fh.write(example + "\n")
             else:
@@ -129,7 +145,7 @@ class Database:
             _db.facts = facts
         else:
             with open(pos, "r") as _fh:
-               _db.pos = _fh.read().splitlines()
+                _db.pos = _fh.read().splitlines()
             with open(neg, "r") as _fh:
                 _db.neg = _fh.read().splitlines()
             with open(facts, "r") as _fh:
