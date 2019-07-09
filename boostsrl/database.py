@@ -87,7 +87,9 @@ class Database:
 
         def _write(_filename, _location, _object, _type):
             if isinstance(_object, list):
-                with open(_location.joinpath("{0}_{1}.txt".format(_filename, _type)), "w") as _fh:
+                with open(
+                    _location.joinpath("{0}_{1}.txt".format(_filename, _type)), "w"
+                ) as _fh:
                     for example in _object:
                         _fh.write(example + "\n")
             else:
@@ -143,7 +145,7 @@ class Database:
             _db.facts = facts
         else:
             with open(pos, "r") as _fh:
-               _db.pos = _fh.read().splitlines()
+                _db.pos = _fh.read().splitlines()
             with open(neg, "r") as _fh:
                 _db.neg = _fh.read().splitlines()
             with open(facts, "r") as _fh:

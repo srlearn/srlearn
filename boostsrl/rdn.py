@@ -4,7 +4,6 @@
 Relational Dependency Networks
 """
 
-import os
 import re
 import subprocess
 import numpy as np
@@ -95,12 +94,13 @@ class RDN(BaseEstimator, ClassifierMixin):
         self.debug = DEBUG
 
         # Initialize the _FILE_SYSTEM to None. Replace if parameters are valid.
-        self._FILE_SYSTEM = None
+        # self._FILE_SYSTEM = None
+        self.file_system = None
 
     def _check_params(self):
         """Check validity of parameters and raise ValueError if invalid.
 
-        If all parameters are valid, instantiate ``self._FILE_SYSTEM`` by
+        If all parameters are valid, instantiate ``self.file_system`` by
         instantiating it with a :class:`boostsrl.system_manager.FileSystem`
         """
         if self.target == "None":
@@ -135,7 +135,7 @@ class RDN(BaseEstimator, ClassifierMixin):
             )
 
         # If all params are valid, allocate a FileSystem:
-        self.FILE_SYSTEM = FileSystem()
+        self.file_system = FileSystem()
 
     def _check_initialized(self):
         """Check for the estimator(s), raise an error if not found."""
@@ -205,25 +205,25 @@ class RDN(BaseEstimator, ClassifierMixin):
 
         # Write the background to file.
         self.background.write(
-            filename="train", location=self.FILE_SYSTEM.files.TRAIN_DIR.value
+            filename="train", location=self.file_system.files.TRAIN_DIR.value
         )
 
         # Write the data to files.
         database.write(
-            filename="train", location=self.FILE_SYSTEM.files.TRAIN_DIR.value
+            filename="train", location=self.file_system.files.TRAIN_DIR.value
         )
 
         _CALL = (
             "java -jar "
-            + str(self.FILE_SYSTEM.files.BOOST_JAR.value)
+            + str(self.file_system.files.BOOST_JAR.value)
             + " -l -train "
-            + str(self.FILE_SYSTEM.files.TRAIN_DIR.value)
+            + str(self.file_system.files.TRAIN_DIR.value)
             + " -target "
             + self.target
             + " -trees "
             + str(self.n_estimators)
             + " > "
-            + str(self.FILE_SYSTEM.files.TRAIN_LOG.value)
+            + str(self.file_system.files.TRAIN_LOG.value)
         )
 
         if self.debug:
@@ -236,7 +236,7 @@ class RDN(BaseEstimator, ClassifierMixin):
         _estimators = []
         for _tree_number in range(self.n_estimators):
             with open(
-                self.FILE_SYSTEM.files.TREES_DIR.value.joinpath(
+                self.file_system.files.TREES_DIR.value.joinpath(
                     "{0}Tree{1}.tree".format(self.target, _tree_number)
                 )
             ) as _fh:
@@ -257,27 +257,27 @@ class RDN(BaseEstimator, ClassifierMixin):
 
         # Write the background to file.
         self.background.write(
-            filename="test", location=self.FILE_SYSTEM.files.TEST_DIR.value
+            filename="test", location=self.file_system.files.TEST_DIR.value
         )
 
         # Write the data to files.
-        database.write(filename="test", location=self.FILE_SYSTEM.files.TEST_DIR.value)
+        database.write(filename="test", location=self.file_system.files.TEST_DIR.value)
 
         _CALL = (
             "java -jar "
-            + str(self.FILE_SYSTEM.files.BOOST_JAR.value)
+            + str(self.file_system.files.BOOST_JAR.value)
             + " -i -test "
-            + str(self.FILE_SYSTEM.files.TEST_DIR.value)
+            + str(self.file_system.files.TEST_DIR.value)
             + " -model "
-            + str(self.FILE_SYSTEM.files.MODELS_DIR.value)
+            + str(self.file_system.files.MODELS_DIR.value)
             + " -target "
             + self.target
             + " -trees "
             + str(self.n_estimators)
             + " -aucJarPath "
-            + str(self.FILE_SYSTEM.files.AUC_JAR.value)
+            + str(self.file_system.files.AUC_JAR.value)
             + " > "
-            + str(self.FILE_SYSTEM.files.TEST_LOG.value)
+            + str(self.file_system.files.TEST_LOG.value)
         )
 
         if self.debug:
@@ -286,7 +286,7 @@ class RDN(BaseEstimator, ClassifierMixin):
         self._call_shell_command(_CALL)
 
         # Read the threshold
-        with open(self.FILE_SYSTEM.files.TEST_LOG.value, "r") as _fh:
+        with open(self.file_system.files.TEST_LOG.value, "r") as _fh:
             _threshold = re.findall("% Threshold = \\d*.\\d*", _fh.read())
         self.threshold_ = float(_threshold[0].split(" = ")[1])
 
@@ -307,7 +307,7 @@ class RDN(BaseEstimator, ClassifierMixin):
         self._run_inference(database)
 
         # Collect the classifications.
-        _results_db = self.FILE_SYSTEM.files.TEST_DIR.value.joinpath(
+        _results_db = self.file_system.files.TEST_DIR.value.joinpath(
             "results_" + self.target + ".db"
         )
         _classes, _results = np.loadtxt(
@@ -344,7 +344,7 @@ class RDN(BaseEstimator, ClassifierMixin):
 
         self._run_inference(database)
 
-        _results_db = self.FILE_SYSTEM.files.TEST_DIR.value.joinpath(
+        _results_db = self.file_system.files.TEST_DIR.value.joinpath(
             "results_" + self.target + ".db"
         )
         _classes, _results = np.loadtxt(

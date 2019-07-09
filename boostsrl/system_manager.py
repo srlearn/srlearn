@@ -137,6 +137,8 @@ class FileSystem:
 
         @unique
         class Files(Enum):
+            """Pointers to all file locations required by BoostSRL"""
+
             DIRECTORY = _directory
             BOOST_JAR = _here.joinpath("v1-0.jar")
             AUC_JAR = _here
