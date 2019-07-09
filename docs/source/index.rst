@@ -2,7 +2,10 @@
 boostsrl
 ########
 
-|License|_ |Travis|_  |Codecov|_ |CircleCi|_ |ReadTheDocs|_
+.. image:: _static/preview.png
+    :alt:  Repository preview image: "boostsrl. Python wrappers around BoostSRL with a scikit-learn-style interface. pip install boostsrl."
+
+|License|_ |Travis|_ |AppVeyor|_ |Codecov|_ |CircleCi|_ |ReadTheDocs|_
 
 .. |License| image:: https://img.shields.io/github/license/starling-lab/boostsrl-python-package.svg
     :alt: License
@@ -11,6 +14,10 @@ boostsrl
 .. |Travis| image:: https://travis-ci.org/starling-lab/boostsrl-python-package.svg?branch=master
     :alt: Travis CI continuous integration build status
 .. _Travis: https://travis-ci.org/starling-lab/boostsrl-python-package
+
+.. |AppVeyor| image:: https://ci.appveyor.com/api/projects/status/mxi2kffhr7a14rpt?svg=true
+    :alt: AppVeyor Windows build status
+.. _AppVeyor: https://ci.appveyor.com/project/hayesall/boostsrl-python-package
 
 .. |Codecov| image:: https://codecov.io/gh/starling-lab/boostsrl-python-package/branch/master/graphs/badge.svg?branch=master
     :alt: Code coverage status

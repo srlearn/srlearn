@@ -35,11 +35,7 @@ import pathlib
 
 
 class Database:
-    """Database of examples and facts.
-
-    A database (in this respect) contains positive examples, negative examples,
-    facts, and augmented with background knowledge.
-    """
+    """Database of examples and facts."""
 
     # pylint: disable=too-many-instance-attributes
 
@@ -47,6 +43,24 @@ class Database:
     #       e.g. file_prefix and target should typically be the same variable
 
     def __init__(self):
+        """Initialize a Database object
+
+        A database (in this respect) contains positive examples, negative examples,
+        facts, and is augmented with background knowledge.
+
+        The implementation is done with four attributes: ``pos``, ``neg``,
+        ``facts``, and ``modes``. Each attribute is a list that may be set by
+        mutating, or loaded from files with :func:`Database.from_files`.
+
+        Examples
+        --------
+
+        This initializes a Database object, then sets the ``pos`` attribute.
+
+        >>> from boostsrl import Database
+        >>> db = Database()
+        >>> db.pos = ["student(alexander)."]
+        """
         self.pos = []
         self.neg = []
         self.facts = []

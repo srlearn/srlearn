@@ -2,7 +2,10 @@
 boostsrl
 ########
 
-|License|_ |Travis|_  |Codecov|_ |CircleCi|_ |ReadTheDocs|_
+.. image:: docs/source/_static/preview.png
+    :alt:  Repository preview image: "boostsrl. Python wrappers around BoostSRL with a scikit-learn-style interface. pip install boostsrl."
+
+|License|_ |Travis|_ |AppVeyor|_ |Codecov|_ |CircleCi|_ |ReadTheDocs|_
 
 .. |License| image:: https://img.shields.io/github/license/starling-lab/boostsrl-python-package.svg
     :alt: License
@@ -11,6 +14,10 @@ boostsrl
 .. |Travis| image:: https://travis-ci.org/starling-lab/boostsrl-python-package.svg?branch=master
     :alt: Travis CI continuous integration build status
 .. _Travis: https://travis-ci.org/starling-lab/boostsrl-python-package
+
+.. |AppVeyor| image:: https://ci.appveyor.com/api/projects/status/mxi2kffhr7a14rpt?svg=true
+    :alt: AppVeyor Windows build status
+.. _AppVeyor: https://ci.appveyor.com/project/hayesall/boostsrl-python-package
 
 .. |Codecov| image:: https://codecov.io/gh/starling-lab/boostsrl-python-package/branch/master/graphs/badge.svg?branch=master
     :alt: Code coverage status
@@ -79,11 +86,14 @@ For more thorough examples, see the `'docs/examples/' <https://github.com/starli
 Contributing
 ------------
 
-Please refer to `CONTRIBUTING.md <.github/CONTRIBUTING.md>`_ for information on
-submitting issues and pull requests.
+We have adopted the `Contributor Covenant Code of Conduct <.github/CODE_OF_CONDUCT.md>`_ version 1.4. Please read,
+follow, and report any incidents which violate this.
 
-Versioning
-----------
+Questions, Issues, and Pull Requests are welcome. Please refer to `CONTRIBUTING.md <.github/CONTRIBUTING.md>`_ for
+information on submitting issues and pull requests.
+
+Versioning and Releases
+-----------------------
 
 We use `SemVer <https://semver.org>`_ for versioning.
 See `Releases <https://github.com/starling-lab/boostsrl-python-package/releases>`_
