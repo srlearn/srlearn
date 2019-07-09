@@ -162,7 +162,7 @@ class RDN(BaseEstimator, ClassifierMixin):
         #   https://wiki.python.org/moin/IntegratingPythonWithOtherLanguages#Java
 
         _pid = subprocess.Popen(shell_command, shell=True)
-        _id, _status = os.waitpid(_pid.pid, 0)
+        _status = _pid.wait()
         if _status != 0:
             raise RuntimeError(
                 "Error when running shell command: {0}".format(shell_command)
