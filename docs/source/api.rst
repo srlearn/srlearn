@@ -30,13 +30,15 @@ Data Sets
 Utilities
 =========
 
-These modules are generally for behind-the-scenes operations or things that
-should typically be handled on your behalf.
+Some of these are for behind-the-scenes operations, but tend to
+be useful for further development
+(`contributions are welcome! <https://github.com/starling-lab/boostsrl-python-package/blob/master/.github/CONTRIBUTING.md>`_).
 
 .. autosummary::
    :toctree: generated/
    :template: class.rst
 
+   base.BaseBoostedRelationalModel
    system_manager.FileSystem
 
 .. autosummary::
