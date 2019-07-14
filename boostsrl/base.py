@@ -17,7 +17,38 @@ from ._meta import DEBUG
 class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
     """Base class for deriving boosted relational models
 
-    Wrappers around BoostSRL for instantiating and running the jar files.
+    This class extends :class:`sklearn.base.BaseEstimator` and
+    :class:`sklearn.base.ClassifierMixin` while providing several utilities
+    for instantiating a model and performing learning/inference with the
+    BoostSRL jar files.
+
+    .. note:: This is not a complete treatment of *how to derive estimators*.
+        Contributions would be appreciated.
+
+    Examples
+    --------
+
+    The actual :class:`boostsrl.rdn.RDN` is derived from this class, so this
+    example is similar to the implementation (but the actual implementation
+    passes model parameters instead of leaving them with the defaults).
+    This example derives a new class ``RDN``, which inherits the default
+    values of the superclass while also setting a 'special_parameter' which
+    may be unique to this model.
+
+    All that remains is to implement the specific cases of ``fit()``,
+    ``predict()``, and ``predict_proba()``.
+
+    >>> from boostsrl.base import BaseBoostedRelationalModel
+    >>> class RDN(BaseBoostedRelationalModel):
+    ...     def __init__(self, special_parameter=5):
+    ...         super().__init__(self)
+    ...         self.special_parameter = special_parameter
+    ...
+    >>> dn = RDN(special_parameter=8)
+    >>> print(dn)
+    RDN(special_parameter=8)
+    >>> print(dn.n_estimators)
+    10
     """
 
     # pylint: disable=too-many-instance-attributes
@@ -29,7 +60,6 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
         n_estimators=10,
         node_size=2,
         max_tree_depth=3,
-
     ):
         """Initialize a BaseEstimator"""
         self.background = background
