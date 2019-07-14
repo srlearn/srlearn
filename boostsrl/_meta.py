@@ -14,6 +14,6 @@ boostsrl metadata
 """
 
 __author__ = "Alexander L. Hayes (hayesall)"
-__version__ = "0.4.3"
+__version__ = "0.4.4.dev"
 
 DEBUG = False
