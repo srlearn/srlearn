@@ -2,7 +2,7 @@
 boostsrl
 ########
 
-.. image:: docs/source/_static/preview.png
+.. image:: https://raw.githubusercontent.com/starling-lab/boostsrl-python-package/master/docs/source/_static/preview.png
     :alt:  Repository preview image: "boostsrl. Python wrappers around BoostSRL with a scikit-learn-style interface. pip install boostsrl."
 
 |License|_ |Travis|_ |AppVeyor|_ |Codecov|_ |CircleCi|_ |ReadTheDocs|_
