@@ -1,16 +1,16 @@
-# boostsrl-python-package Contributing Guidelines
+# boostsrl Contributing Guidelines
 
-Our goal is to make BoostSRL more accessible to the Python community by creating general-purpose wrappers 
+Our goal is to make BoostSRL more accessible to the Python community by creating general-purpose wrappers
 for the existing software. Any suggestions or contributions which further this goal are welcome.
 
 ## Code of Conduct
 
 We have adopted the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). Please read, follow,
-and report any incidents which violate this. 
+and report any incidents which violate this.
 
 ## Submitting Issues (bugs and new features):
 
-We use GitHub issues for tracking all bugs and feature requests; feel free to 
+We use GitHub issues for tracking all bugs and feature requests; feel free to
 open an issue if you have found a bug or wish to see a feature implemented.
 
 It is recommended to check that your issue complies with the following guidelines
@@ -58,18 +58,18 @@ This guide is adapted from [imbalanced-learn](https://github.com/scikit-learn/sc
 
 ### How to contribute
 
-The preferred way to contribute to `boostsrl-python-package` is to fork the
-[main repository](https://github.com/starling-lab/boostsrl-python-package) on
+The preferred way to contribute to `boostsrl` is to fork the
+[main repository](https://github.com/hayesall/boostsrl) on
 GitHub:
 
-1. Fork the [project repository](https://github.com/starling-lab/boostsrl-python-package):
+1. Fork the [project repository](https://github.com/hayesall/boostsrl):
    click on the 'Fork' button near the top of the page. This creates
    a copy of the code under your account on the GitHub server.
 
 2. Clone this copy to your local disk:
 
-        $ git clone git@github.com:YourLogin/boostsrl-python-package.git
-        $ cd boostsrl-python-package
+        $ git clone git@github.com:YourLogin/boostsrl.git
+        $ cd boostsrl
 
 3. Create a branch to hold your changes:
 
@@ -87,7 +87,7 @@ GitHub:
 
         $ git push -u origin my-feature
 
-Finally, go to the web page of your fork of the boostsrl-python-package repo,
+Finally, go to the web page of your fork of the boostsrl repo,
 and click 'Pull request' to send your changes to the maintainers for
 review.
 

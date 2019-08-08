@@ -1,7 +1,7 @@
 """
 Setup file for boostsrl
 
-Refer to https://github.com/starling-lab/boostsrl-python-package
+Refer to https://github.com/hayesall/boostsrl
 """
 
 from setuptools import setup
@@ -28,8 +28,8 @@ setup(
     long_description=LONG_DESCRIPTION,
     include_package_data=True,
     package_data={"boostsrl": ["*.jar"]},
-    url="https://starling.utdallas.edu/software/boostsrl-python-wrappers/",
-    download_url="https://github.com/starling-lab/boostsrl-python-package",
+    url="https://hayesall.com",
+    download_url="https://github.com/hayesall/boostsrl",
     license="GPL-3.0",
     zip_safe=False,
     classifiers=[

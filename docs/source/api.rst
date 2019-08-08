@@ -32,7 +32,7 @@ Utilities
 
 Some of these are for behind-the-scenes operations, but tend to
 be useful for further development
-(`contributions are welcome! <https://github.com/starling-lab/boostsrl-python-package/blob/master/.github/CONTRIBUTING.md>`_).
+(`contributions are welcome! <https://github.com/hayesall/boostsrl/blob/master/.github/CONTRIBUTING.md>`_).
 
 .. autosummary::
    :toctree: generated/
