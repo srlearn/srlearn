@@ -34,9 +34,6 @@ def test_show_versions_no_github(capsys):
     assert "python" in out
     assert "executable" in out
     assert "machine" in out
-    assert "macros" in out
-    assert "lib_dirs" in out
-    assert "cblas_libs" in out
     assert "boostsrl" in out
     assert "pip" in out
     assert "setuptools" in out
@@ -49,15 +46,11 @@ def test_show_versions_github(capsys):
     """Assert that GitHub markdown is wrapped when github=True"""
     show_versions(github=True)
     out, _ = capsys.readouterr()
-    assert "<details><summary>System, BLAS, and Dependencies</summary>" in out
+    assert "<details><summary>System and Dependency Information</summary>" in out
     assert "**System Information**" in out
     assert "* python" in out
     assert "* executable" in out
     assert "* machine" in out
-    assert "**BLAS**" in out
-    assert "* macros" in out
-    assert "* lib_dirs" in out
-    assert "* cblas_libs" in out
     assert "**Python Dependencies**" in out
     assert "* boostsrl" in out
     assert "* pip" in out

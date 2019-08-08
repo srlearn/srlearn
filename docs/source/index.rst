@@ -7,24 +7,24 @@ boostsrl
 
 |License|_ |Travis|_ |AppVeyor|_ |Codecov|_ |CircleCi|_ |ReadTheDocs|_
 
-.. |License| image:: https://img.shields.io/github/license/starling-lab/boostsrl-python-package.svg
+.. |License| image:: https://img.shields.io/github/license/hayesall/boostsrl.svg
     :alt: License
 .. _License: LICENSE
 
-.. |Travis| image:: https://travis-ci.org/starling-lab/boostsrl-python-package.svg?branch=master
+.. |Travis| image:: https://travis-ci.org/hayesall/boostsrl.svg?branch=master
     :alt: Travis CI continuous integration build status
-.. _Travis: https://travis-ci.org/starling-lab/boostsrl-python-package
+.. _Travis: https://travis-ci.org/hayesall/boostsrl
 
 .. |AppVeyor| image:: https://ci.appveyor.com/api/projects/status/mxi2kffhr7a14rpt?svg=true
     :alt: AppVeyor Windows build status
-.. _AppVeyor: https://ci.appveyor.com/project/hayesall/boostsrl-python-package
+.. _AppVeyor: https://ci.appveyor.com/project/hayesall/boostsrl
 
-.. |Codecov| image:: https://codecov.io/gh/starling-lab/boostsrl-python-package/branch/master/graphs/badge.svg?branch=master
+.. |Codecov| image:: https://codecov.io/gh/hayesall/boostsrl/branch/master/graphs/badge.svg?branch=master
     :alt: Code coverage status
-.. _Codecov: https://codecov.io/github/starling-lab/boostsrl-python-package?branch=master
+.. _Codecov: https://codecov.io/github/hayesall/boostsrl?branch=master
 
-.. |CircleCI| image:: https://circleci.com/gh/starling-lab/boostsrl-python-package.svg?style=shield
-.. _CircleCi: https://circleci.com/gh/starling-lab/boostsrl-python-package
+.. |CircleCI| image:: https://circleci.com/gh/hayesall/boostsrl.svg?style=shield
+.. _CircleCi: https://circleci.com/gh/hayesall/boostsrl
 
 .. |ReadTheDocs| image:: https://readthedocs.org/projects/boostsrl/badge/?version=latest
     :alt: Documentation status
@@ -57,7 +57,7 @@ boostsrl
   :caption: Links
 
   StARLinG Lab <https://starling.utdallas.edu/>
-  GitHub <https://github.com/starling-lab/boostsrl-python-package/>
+  GitHub <https://github.com/hayesall/boostsrl/>
   PyPi <https://pypi.org/project/boostsrl/>
 
 Questions? Contact `Alexander L. Hayes <https://hayesall.com>`_ (hayesall@iu.edu)
