@@ -5,11 +5,15 @@ boostsrl
 .. image:: _static/preview.png
     :alt:  Repository preview image: "boostsrl. Python wrappers around BoostSRL with a scikit-learn-style interface. pip install boostsrl."
 
-|License|_ |Travis|_ |AppVeyor|_ |Codecov|_ |CircleCi|_ |ReadTheDocs|_
+|License|_ |LGTM|_ |Travis|_ |AppVeyor|_ |Codecov|_ |CircleCi|_ |ReadTheDocs|_
 
 .. |License| image:: https://img.shields.io/github/license/hayesall/boostsrl.svg
     :alt: License
 .. _License: LICENSE
+
+.. |LGTM| image:: https://img.shields.io/lgtm/grade/python/github/hayesall/boostsrl?label=code%20quality&logo=lgtm
+    :alt: LGTM code quality analysis
+.. _LGTM: https://lgtm.com/projects/g/hayesall/boostsrl/context:python
 
 .. |Travis| image:: https://travis-ci.org/hayesall/boostsrl.svg?branch=master
     :alt: Travis CI continuous integration build status

@@ -9,8 +9,6 @@
 
 import os
 import re
-import sys
-import pathlib
 import subprocess
 
 print(
