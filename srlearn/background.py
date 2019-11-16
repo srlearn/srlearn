@@ -103,7 +103,7 @@ class Background:
         mode: friends(-Person,+Person).
         <BLANKLINE>
 
-        This Background object is used by the :class:`srlearn.rdn.RDN` class to
+        This Background object is used by the :class:`srlearn.rdn.BoostedRDN` class to
         write the parameters to a ``background.txt`` file before running BoostSRL.
 
         .. code-block:: python

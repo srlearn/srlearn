@@ -4,7 +4,7 @@ Smokes-Friends-Cancer
 =====================
 
 The smokes-friends-cancer example is a common first example in probabilistic relational models, here
-we use this set to learn a Relational Dependency Network (:class:`srlearn.rdn.RDN`).
+we use this set to learn a Relational Dependency Network (:class:`srlearn.rdn.BoostedRDN`).
 
 This makes use of :class:`srlearn.example_data`, which provides two `srlearn.Database` objects named
 ``example_data.train`` and ``example_data.test``.
@@ -13,7 +13,7 @@ This shows how the margin between positive and negative examples is maximized as
 iterations of boosting increases.
 """
 
-from srlearn.rdn import RDN
+from srlearn.rdn import BoostedRDN
 from srlearn import Background
 from srlearn import example_data
 
@@ -25,7 +25,7 @@ bk = Background(
     use_std_logic_variables=True,
 )
 
-clf = RDN(
+clf = BoostedRDN(
     background=bk,
     target='cancer',
     max_tree_depth=2,

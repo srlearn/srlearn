@@ -4,7 +4,7 @@
 (Deprecated) boostsrl class for training and testing.
 
 .. warning:: This module is deprecated, pending removal in 0.6.0.
-    See :class:`srlearn.RDN` instead.
+    See :class:`srlearn.rdn` instead.
 """
 
 import os
@@ -260,7 +260,7 @@ class modes(object):
 class train(object):
     """
     .. deprecated:: 0.5.0
-       Use :class:`srlearn.RDN` instead.
+       Use :class:`srlearn.rdn` instead.
     """
 
     def __init__(
@@ -390,7 +390,7 @@ class train(object):
 class test(object):
     """
     .. deprecated:: 0.5.0
-       Use :class:`srlearn.RDN` instead.
+       Use :class:`srlearn.rdn` instead.
     """
 
     # Possibly a partial fix to Issue #3: checking for the .aucTemp.txt.lock

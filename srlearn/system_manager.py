@@ -100,7 +100,7 @@ class FileSystem:
     Notes
     -----
 
-    Ideally, each instance of a :class:`srlearn.rdn.RDN` should have its own directory
+    Ideally, each instance of a :class:`srlearn.rdn.BoostedRDN` should have its own directory
     where it can operate independently. But this can be problematic and will often
     lead to duplicated data and other problems if multiple models are learned in
     parallel on the same database.

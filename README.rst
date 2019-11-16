@@ -64,14 +64,14 @@ A minimal working example (using the Toy-Cancer data set imported with 'example_
 
 .. code-block:: python
 
-    >>> from srlearn.rdn import RDN
+    >>> from srlearn.rdn import BoostedRDN
     >>> from srlearn import Background
     >>> from srlearn import example_data
     >>> bk = Background(
     ...     modes=example_data.train.modes,
     ...     use_std_logic_variables=True,
     ... )
-    >>> clf = RDN(
+    >>> clf = BoostedRDN(
     ...     background=bk,
     ...     target='cancer',
     ... )

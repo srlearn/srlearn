@@ -16,7 +16,7 @@ background knowledge, and learning.
 
    Database
    Background
-   rdn.RDN
+   rdn.BoostedRDN
 
 Data Sets
 =========
@@ -56,4 +56,4 @@ actively developed and is pending removal in 0.6.0.
 .. autosummary::
    :toctree: generated/
 
-   boostsrl.boostsrl
+   srlearn.boostsrl

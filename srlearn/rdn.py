@@ -12,7 +12,7 @@ from .base import BaseBoostedRelationalModel
 # TODO: @property: feature_importances_
 
 
-class RDN(BaseBoostedRelationalModel):
+class BoostedRDN(BaseBoostedRelationalModel):
     """Relational Dependency Networks Estimator
 
     Wrappers around BoostSRL for learning and inference with Relational Dependency
@@ -25,13 +25,13 @@ class RDN(BaseBoostedRelationalModel):
     Examples
     --------
 
-    >>> from srlearn.rdn import RDN
+    >>> from srlearn.rdn import BoostedRDN
     >>> from srlearn import Background
     >>> from srlearn import example_data
     >>> bk = Background(modes=example_data.train.modes, use_std_logic_variables=True)
-    >>> dn = RDN(background=bk, target="cancer")
+    >>> dn = BoostedRDN(background=bk, target="cancer")
     >>> dn.fit(example_data.train)
-    RDN(background=setParam: nodeSize=2.
+    BoostedRDN(background=setParam: nodeSize=2.
     setParam: maxTreeDepth=3.
     setParam: numberOfClauses=100.
     setParam: numberOfCycles=100.
@@ -57,7 +57,7 @@ class RDN(BaseBoostedRelationalModel):
         node_size=2,
         max_tree_depth=3,
     ):
-        """Initialize an RDN
+        """Initialize a BoostedRDN
 
         Parameters
         ----------
