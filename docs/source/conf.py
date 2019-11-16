@@ -18,11 +18,11 @@ import sphinx_gallery
 
 # -- Project information -----------------------------------------------------
 
-project = 'boostsrl'
+project = 'srlearn'
 copyright = '2019, Alexander L. Hayes'
 author = 'Alexander L. Hayes'
 
-from boostsrl._meta import __version__
+from srlearn._meta import __version__
 
 version = __version__
 # The full version, including alpha/beta/rc tags
@@ -89,8 +89,8 @@ intersphinx_mapping = {
 # sphinx-gallery configuration
 
 sphinx_gallery_conf = {
-    'doc_module': 'boostsrl',
+    'doc_module': 'srlearn',
     'backreferences_dir': os.path.join('generated'),
     'reference_url': {
-        'boostsrl': None}
+        'srlearn': None}
 }

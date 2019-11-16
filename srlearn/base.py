@@ -28,7 +28,7 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
     Examples
     --------
 
-    The actual :class:`boostsrl.rdn.RDN` is derived from this class, so this
+    The actual :class:`srlearn.rdn.RDN` is derived from this class, so this
     example is similar to the implementation (but the actual implementation
     passes model parameters instead of leaving them with the defaults).
     This example derives a new class ``RDN``, which inherits the default
@@ -38,7 +38,7 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
     All that remains is to implement the specific cases of ``fit()``,
     ``predict()``, and ``predict_proba()``.
 
-    >>> from boostsrl.base import BaseBoostedRelationalModel
+    >>> from srlearn.base import BaseBoostedRelationalModel
     >>> class RDN(BaseBoostedRelationalModel):
     ...     def __init__(self, special_parameter=5):
     ...         super().__init__(self)
@@ -73,7 +73,7 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
         """Check validity of parameters. Raise ValueError if errors are detected.
 
         If all parameters are valid, instantiate ``self.file_system`` by
-        instantiating it with a :class:`boostsrl.system_manager.FileSystem`
+        instantiating it with a :class:`srlearn.system_manager.FileSystem`
         """
         if self.target == "None":
             raise ValueError("target must be set, cannot be {0}".format(self.target))
@@ -87,7 +87,7 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
             )
         if not isinstance(self.background, Background):
             raise ValueError(
-                "background should be a boostsrl.Background object, cannot be {0}".format(
+                "background should be a srlearn.Background object, cannot be {0}".format(
                     self.background
                 )
             )

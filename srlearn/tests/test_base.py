@@ -1,11 +1,11 @@
 # Copyright © 2017, 2018, 2019 Alexander L. Hayes
 
 """
-Tests for boostsrl.base.BaseBoostedRelationalModel
+Tests for srlearn.base.BaseBoostedRelationalModel
 """
 
 import pytest
-from boostsrl.base import BaseBoostedRelationalModel
+from srlearn.base import BaseBoostedRelationalModel
 
 
 def test_initialize_base_classifier():

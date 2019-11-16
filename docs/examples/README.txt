@@ -3,4 +3,4 @@
 Basic Examples
 ==============
 
-These are some simple examples demonstrating ``boostsrl``.
+These are some simple examples demonstrating ``srlearn``.

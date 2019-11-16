@@ -12,7 +12,7 @@ import sys
 import importlib
 
 
-DEPS = ["boostsrl", "pip", "setuptools", "sklearn", "numpy", "scipy"]
+DEPS = ["srlearn", "pip", "setuptools", "sklearn", "numpy", "scipy"]
 
 
 def _get_deps_info(dependency_list):

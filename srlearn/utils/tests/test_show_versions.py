@@ -2,24 +2,24 @@
 # Author: Alexander L. Hayes <hayesall@iu.edu>
 # License: MIT
 
-from boostsrl.utils._show_versions import _get_deps_info
-from boostsrl.utils._show_versions import show_versions
+from srlearn.utils._show_versions import _get_deps_info
+from srlearn.utils._show_versions import show_versions
 
 
-DEPENDENCIES = ["boostsrl", "pip", "setuptools", "sklearn", "numpy", "scipy"]
+DEPENDENCIES = ["srlearn", "pip", "setuptools", "sklearn", "numpy", "scipy"]
 
 
 def test_get_missing_deps_inf():
     """Check that something is produced when a package doesn't exist."""
-    _deps_info = _get_deps_info(["bad_package_name", "boostsrl"])
-    assert "boostsrl" in _deps_info
+    _deps_info = _get_deps_info(["bad_package_name", "srlearn"])
+    assert "srlearn" in _deps_info
     assert "bad_package_name" in _deps_info
 
 
 def test_get_deps_info():
     """Assert that strings are in the output of _get_deps_info()"""
     _deps_info = _get_deps_info(DEPENDENCIES)
-    assert "boostsrl" in _deps_info
+    assert "srlearn" in _deps_info
     assert "pip" in _deps_info
     assert "setuptools" in _deps_info
     assert "sklearn" in _deps_info
@@ -34,7 +34,7 @@ def test_show_versions_no_github(capsys):
     assert "python" in out
     assert "executable" in out
     assert "machine" in out
-    assert "boostsrl" in out
+    assert "srlearn" in out
     assert "pip" in out
     assert "setuptools" in out
     assert "sklearn" in out
@@ -52,7 +52,7 @@ def test_show_versions_github(capsys):
     assert "* executable" in out
     assert "* machine" in out
     assert "**Python Dependencies**" in out
-    assert "* boostsrl" in out
+    assert "* srlearn" in out
     assert "* pip" in out
     assert "* setuptools" in out
     assert "* sklearn" in out

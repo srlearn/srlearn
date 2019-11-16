@@ -1,16 +1,16 @@
 # Copyright © 2017, 2018, 2019 Alexander L. Hayes
 
 """
-Tests for boostsrl.rdn.RDN
+Tests for srlearn.rdn.RDN
 """
 
 import pytest
 import numpy as np
 from numpy.testing import assert_array_almost_equal
 from numpy.testing import assert_array_equal
-from boostsrl.rdn import RDN
-from boostsrl.background import Background
-from boostsrl import example_data
+from srlearn.rdn import RDN
+from srlearn.background import Background
+from srlearn import example_data
 
 
 def test_initialize_rdn_1():

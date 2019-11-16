@@ -27,4 +27,4 @@ install:
   - pip install .
 
 test_script:
-  - pytest -v --cov=boostsrl
+  - pytest -v --cov=srlearn

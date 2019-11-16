@@ -1,7 +1,7 @@
 # Copyright 2017, 2018, 2019 Alexander L. Hayes
 
 """
-boostsrl metadata
+srlearn metadata
 
 - Versioning should follow SemVer (https://semver.org)
 - DEBUG flag is a global setting for debug information that should be False at
@@ -14,6 +14,6 @@ boostsrl metadata
 """
 
 __author__ = "Alexander L. Hayes (hayesall)"
-__version__ = "0.4.4.dev"
+__version__ = "0.5.0.dev"
 
 DEBUG = False

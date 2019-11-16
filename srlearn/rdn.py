@@ -25,9 +25,9 @@ class RDN(BaseBoostedRelationalModel):
     Examples
     --------
 
-    >>> from boostsrl.rdn import RDN
-    >>> from boostsrl import Background
-    >>> from boostsrl import example_data
+    >>> from srlearn.rdn import RDN
+    >>> from srlearn import Background
+    >>> from srlearn import example_data
     >>> bk = Background(modes=example_data.train.modes, use_std_logic_variables=True)
     >>> dn = RDN(background=bk, target="cancer")
     >>> dn.fit(example_data.train)
@@ -61,7 +61,7 @@ class RDN(BaseBoostedRelationalModel):
 
         Parameters
         ----------
-        background : :class:`boostsrl.background.Background` (default: None)
+        background : :class:`srlearn.background.Background` (default: None)
             Background knowledge with respect to the database
         target : str (default: "None")
             Target predicate to learn
@@ -97,7 +97,7 @@ class RDN(BaseBoostedRelationalModel):
 
         Parameters
         ----------
-        database : :class:`boostsrl.database.Database`
+        database : :class:`srlearn.database.Database`
             Database containing examples and facts.
 
         Returns
@@ -216,7 +216,7 @@ class RDN(BaseBoostedRelationalModel):
 
         Parameters
         ----------
-        database : :class:`boostsrl.Database`
+        database : :class:`srlearn.Database`
             Database containing examples and facts.
 
         Returns
@@ -254,7 +254,7 @@ class RDN(BaseBoostedRelationalModel):
 
         Parameters
         ----------
-        database : :class:`boostsrl.Database`
+        database : :class:`srlearn.Database`
             Database containing examples and facts.
 
         Returns
