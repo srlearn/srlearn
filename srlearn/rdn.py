@@ -41,7 +41,7 @@ class BoostedRDN(BaseBoostedRelationalModel):
     mode: smokes(+Person).
     mode: cancer(+Person).
     ,
-        max_tree_depth=3, n_estimators=10, node_size=2, target='cancer')
+               max_tree_depth=3, n_estimators=10, node_size=2, target='cancer')
     >>> dn.predict(example_data.test)
     array([ True,  True,  True, False, False])
 

@@ -115,7 +115,7 @@ person in this fictional data set will develop cancer.
 >>> clf = BoostedRDN()
 >>> print(clf)
 BoostedRDN(background=None, max_tree_depth=3, n_estimators=10, node_size=2,
-    target='None')
+           target='None')
 
 This pattern should begin to look familiar if you've worked with scikit-learn before.
 This classifier is built on top of
@@ -161,7 +161,7 @@ mode: friends(-person,+person).
 mode: cancer(+person).
 mode: smokes(+person).
 ,
-    max_tree_depth=3, n_estimators=10, node_size=2, target='cancer')
+           max_tree_depth=3, n_estimators=10, node_size=2, target='cancer')
 >>> clf.predict(example_data.test)
 array([ True,  True,  True, False, False])
 
