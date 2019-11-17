@@ -19,7 +19,7 @@ srlearn
     :alt: Travis CI continuous integration build status
 .. _Travis: https://travis-ci.org/hayesall/srlearn
 
-.. |AppVeyor| image:: https://ci.appveyor.com/api/projects/status/mxi2kffhr7a14rpt?svg=true
+.. |AppVeyor| image:: https://ci.appveyor.com/api/projects/status/obwfhyrjfnfilfce?svg=true
     :alt: AppVeyor Windows build status
 .. _AppVeyor: https://ci.appveyor.com/project/hayesall/srlearn
 
