@@ -8,9 +8,9 @@ This guide walks through how to initialize, parametrize, and invoke the core met
 It may be helpful to consult the `API documentation <api.html>`_ for the following modules
 as you progress:
 
-- :class:`boostsrl.Database`
-- :class:`boostsrl.Background`
-- :class:`boostsrl.rdn.RDN`
+- :class:`srlearn.Database`
+- :class:`srlearn.Background`
+- :class:`srlearn.rdn.BoostedRDN`
 
 Parametrize the core classes
 ============================
@@ -27,7 +27,7 @@ represent arbitrary social networks in a vector representation.
 
 In order to get around this, we adopt Prolog clauses to represent our data:
 
->>> from boostsrl import example_data
+>>> from srlearn import example_data
 >>> for predicate in example_data.train.pos:
 ...     print(predicate)
 ...
@@ -36,7 +36,7 @@ cancer(Bob).
 cancer(Chuck).
 cancer(Fred).
 
->>> from boostsrl import example_data
+>>> from srlearn import example_data
 >>> for predicate in example_data.train.facts:
 ...    print(predicate)
 ...
@@ -56,18 +56,18 @@ smokes(Alice).
 smokes(Chuck).
 smokes(Bob).
 
-Since this differs from the vector representation, this uses a :class:`boostsrl.Database` object
+Since this differs from the vector representation, this uses a :class:`srlearn.Database` object
 to represent positive examples, negative examples, and facts.
 
 2. Declaring our Backround Knowledge
 ------------------------------------
 
-The :class:`boostsrl.Background` object helps declare background knowledge for a domain, as well as
+The :class:`srlearn.Background` object helps declare background knowledge for a domain, as well as
 some parameters for model learning (this last point may seem strange, but it is designed in order
 to remain compatible with how
 `BoostSRL <https://starling.utdallas.edu/software/boostsrl/>`_ accepts background as input).
 
->>> from boostsrl import Background
+>>> from srlearn import Background
 >>> bk = Background()
 >>> print(bk)
 setParam: nodeSize=2.
@@ -81,7 +81,7 @@ However, it is missing mode declarations [1]_.
 
 We can declare modes as a list of strings:
 
->>> from boostsrl import Background
+>>> from srlearn import Background
 >>> bk = Background(
 ...     modes=[
 ...         "friends(+person,-person).",
@@ -101,8 +101,8 @@ here, but further reading may be warranted [1]_.
 Here we will learn Relational Dependency Networks (RDNs) [2]_ [3]_ as classifiers for predicting if a
 person in this fictional data set will develop cancer.
 
->>> from boostsrl.rdn import RDN
->>> from boostsrl import Background
+>>> from srlearn.rdn import BoostedRDN
+>>> from srlearn import Background
 >>> bk = Background(
 ...     modes=[
 ...         "friends(+person,-person).",
@@ -112,16 +112,16 @@ person in this fictional data set will develop cancer.
 ...     ],
 ...     use_std_logic_variables=True,
 ... )
->>> clf = RDN()
+>>> clf = BoostedRDN()
 >>> print(clf)
-RDN(background=None, max_tree_depth=3, n_estimators=10, node_size=2,
-    target='None')
+BoostedRDN(background=None, max_tree_depth=3, n_estimators=10, node_size=2,
+           target='None')
 
 This pattern should begin to look familiar if you've worked with scikit-learn before.
 This classifier is built on top of
 :class:`sklearn.base.BaseEstimator` and :class:`sklearn.base.ClassifierMixin`,
 but there are still a few things we need to declare before invoking
-:func:`boostsrl.rdn.RDN.fit`.
+:func:`srlearn.rdn.BoostedRDN.fit`.
 
 Specifically, we need to include a "target" and "background" as parameters.
 The "background" is what we described above, and the "target" is what we
@@ -129,7 +129,7 @@ aim to learn about: the **cancer** predicate.
 
 .. code-block:: python
 
-    >>> clf = RDN(background=bk, target="cancer")
+    >>> clf = BoostedRDN(background=bk, target="cancer")
 
 Putting the pieces together
 ===========================
@@ -137,9 +137,9 @@ Putting the pieces together
 Now that we have seen each of the examples, we can put them together to learn
 a series of trees.
 
->>> from boostsrl.rdn import RDN
->>> from boostsrl import Background
->>> from boostsrl import example_data
+>>> from srlearn.rdn import BoostedRDN
+>>> from srlearn import Background
+>>> from srlearn import example_data
 >>> bk = Background(
 ...     modes=[
 ...         "friends(+person,-person).",
@@ -149,9 +149,9 @@ a series of trees.
 ...     ],
 ...     use_std_logic_variables=True,
 ... )
->>> clf = RDN(background=bk, target="cancer")
+>>> clf = BoostedRDN(background=bk, target="cancer")
 >>> clf.fit(example_data.train)
-RDN(background=setParam: nodeSize=2.
+BoostedRDN(background=setParam: nodeSize=2.
 setParam: maxTreeDepth=3.
 setParam: numberOfClauses=100.
 setParam: numberOfCycles=100.
@@ -161,7 +161,7 @@ mode: friends(-person,+person).
 mode: cancer(+person).
 mode: smokes(+person).
 ,
-    max_tree_depth=3, n_estimators=10, node_size=2, target='cancer')
+           max_tree_depth=3, n_estimators=10, node_size=2, target='cancer')
 >>> clf.predict(example_data.test)
 array([ True,  True,  True, False, False])
 

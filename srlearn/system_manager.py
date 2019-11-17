@@ -49,19 +49,19 @@ def reset(soft=False):
 
     .. code-block:: bash
 
-        $ python -c "from boostsrl import system_manager; print(system_manager.reset(soft=True))"
+        $ python -c "from srlearn import system_manager; print(system_manager.reset(soft=True))"
         ['data0', 'data1']
 
     2. Trigger conditional behavior. Here we report that the directory is empty.
 
-    >>> from boostsrl import system_manager
+    >>> from srlearn import system_manager
     >>> if not system_manager.reset(soft=True):
     ...     print("Currently Empty")
     Currently Empty
 
     3. Use a hard reset to remove any temporary files.
 
-    >>> from boostsrl import system_manager
+    >>> from srlearn import system_manager
     >>> system_manager.reset()
     []
     """
@@ -92,7 +92,7 @@ class FileSystem:
     creating directories for each instance of ``FileSystem``, and removing
     them upon ``exit()``.
 
-    >>> from boostsrl.system_manager import FileSystem
+    >>> from srlearn.system_manager import FileSystem
     >>> systems = []
     >>> for _ in range(5):
     ...     systems.append(FileSystem())
@@ -100,7 +100,7 @@ class FileSystem:
     Notes
     -----
 
-    Ideally, each instance of a :class:`boostsrl.rdn.RDN` should have its own directory
+    Ideally, each instance of a :class:`srlearn.rdn.BoostedRDN` should have its own directory
     where it can operate independently. But this can be problematic and will often
     lead to duplicated data and other problems if multiple models are learned in
     parallel on the same database.

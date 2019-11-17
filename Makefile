@@ -4,15 +4,15 @@
 
 # Rules for testing, code style, and linting
 test:
-	pytest --cov=boostsrl boostsrl/
+	pytest --cov=srlearn srlearn/
 	coverage html
 	@echo "Generating coverage report: htmlcov/index.html"
 
 lint:
-	pylint boostsrl/
+	pylint srlearn/
 
 style:
-	black boostsrl/
+	black srlearn/
 
 # Distribution
 distribution:

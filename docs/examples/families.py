@@ -7,9 +7,9 @@ This example motivates learning about family relationships from examples of *Har
 those rules to characters from *Pride and Prejudice*.
 """
 
-from boostsrl.rdn import RDN
-from boostsrl import Background
-from boostsrl import Database
+from srlearn.rdn import BoostedRDN
+from srlearn import Background
+from srlearn import Database
 
 train_db = Database()
 train_db.pos = [
@@ -97,7 +97,7 @@ bk = Background(
     use_prolog_variables=True,
 )
 
-clf = RDN(
+clf = BoostedRDN(
     background=bk,
     target="father",
     n_estimators=5,

@@ -1,8 +1,8 @@
 ############
-boostsrl API
+srlearn API
 ############
 
-.. currentmodule:: boostsrl
+.. currentmodule:: srlearn
 
 Core Classes
 ============
@@ -16,7 +16,7 @@ background knowledge, and learning.
 
    Database
    Background
-   rdn.RDN
+   rdn.BoostedRDN
 
 Data Sets
 =========
@@ -32,7 +32,7 @@ Utilities
 
 Some of these are for behind-the-scenes operations, but tend to
 be useful for further development
-(`contributions are welcome! <https://github.com/hayesall/boostsrl/blob/master/.github/CONTRIBUTING.md>`_).
+(`contributions are welcome! <https://github.com/hayesall/srlearn/blob/master/.github/CONTRIBUTING.md>`_).
 
 .. autosummary::
    :toctree: generated/
@@ -56,4 +56,4 @@ actively developed and is pending removal in 0.6.0.
 .. autosummary::
    :toctree: generated/
 
-   boostsrl.boostsrl
+   srlearn.boostsrl

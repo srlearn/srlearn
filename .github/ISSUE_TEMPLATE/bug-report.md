@@ -14,14 +14,14 @@ A clear and concise description of what the bug is.
 Copy the output of the following command:
 
 ```bash
-python -c "import boostsrl; boostsrl.show_versions()"
+python -c "import srlearn; srlearn.show_versions()"
 ```
 
 **To Reproduce**
 Include an example to reproduce the unexpected behavior.
 
 ```python
-import boostsrl
+import srlearn
 ...
 ```
 

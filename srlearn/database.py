@@ -18,7 +18,7 @@ Examples
 
 Create a new instance of a database, add examples, and write them to the filesystem.
 
->>> from boostsrl.database import Database
+>>> from srlearn.database import Database
 >>> db = Database()
 >>> db.add_pos("student(alexander).")
 >>> db.add_neg("student(sriraam).")
@@ -26,7 +26,7 @@ Create a new instance of a database, add examples, and write them to the filesys
 
 Create an instance of the database from an existing set of files.
 
->>> from boostsrl.database import Database
+>>> from srlearn.database import Database
 >>> db = Database()
 """
 
@@ -57,7 +57,7 @@ class Database:
 
         This initializes a Database object, then sets the ``pos`` attribute.
 
-        >>> from boostsrl import Database
+        >>> from srlearn import Database
         >>> db = Database()
         >>> db.pos = ["student(alexander)."]
         """
@@ -133,7 +133,7 @@ class Database:
 
         Returns
         -------
-        db : boostsrl.Database
+        db : srlearn.Database
             Instance of a Database object
         """
 

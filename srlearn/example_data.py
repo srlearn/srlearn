@@ -9,7 +9,7 @@ in the namespace.
 Examples
 --------
 
->>> from boostsrl import example_data
+>>> from srlearn import example_data
 >>> print(example_data.train)
 Positive Examples:
 ['cancer(Alice).', 'cancer(Bob).', 'cancer(Chuck).', 'cancer(Fred).']
@@ -20,7 +20,7 @@ Facts:
 
 Ellipsis added to the facts for easier reading.
 
->>> from boostsrl import example_data
+>>> from srlearn import example_data
 >>> print(example_data.test)
 Positive Examples:
 ['cancer(Zod).', 'cancer(Xena).', 'cancer(Yoda).']

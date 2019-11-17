@@ -1,11 +1,11 @@
 # Copyright 2017, 2018, 2019 Alexander L. Hayes
 
 """
-Tests for boostsrl.database.Database
+Tests for srlearn.database.Database
 """
 
 import pathlib
-from boostsrl.database import Database
+from srlearn.database import Database
 
 
 def test_initialize_database_1():

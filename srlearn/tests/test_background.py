@@ -1,13 +1,13 @@
 # Copyright © 2017, 2018, 2019 Alexander L. Hayes
 
 """
-Tests for boostsrl.background.Background
+Tests for srlearn.background.Background
 """
 
 import pathlib
 import pytest
-from boostsrl.background import Background
-from boostsrl import example_data
+from srlearn.background import Background
+from srlearn import example_data
 
 
 def test_initialize_background_knowledge_1():

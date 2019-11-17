@@ -4,7 +4,7 @@
 (Deprecated) boostsrl class for training and testing.
 
 .. warning:: This module is deprecated, pending removal in 0.6.0.
-    See :class:`boostsrl.RDN` instead.
+    See :class:`srlearn.rdn` instead.
 """
 
 import os
@@ -13,8 +13,8 @@ import subprocess
 
 print(
     "Deprecation Warning: "
-    "'boostsrl.boostsrl' is deprecated and will be removed in 0.6.0. "
-    "'boostsrl.rdn' will replace this functionality."
+    "'srlearn.boostsrl' is deprecated and will be removed in 0.6.0. "
+    "'srlearn.rdn' will replace this functionality."
 )
 
 # Mode definitions and examples can be verified with regular expressions.
@@ -27,13 +27,13 @@ exam_re = re.compile(r"[a-zA-Z0-9]*\(([a-zA-Z0-9]*,( )*)*[a-zA-Z0-9]*\)\.")
 def example_data(example):
     """
     .. deprecated:: 0.5.0
-       Use :class:`boostsrl.example_data` instead.
+       Use :class:`srlearn.example_data` instead.
 
     For demo purposes, include some sample data.
 
     .. code-block:: python
 
-        from boostsrl.boostsrl import example_data
+        from srlearn.boostsrl import example_data
         train_pos = example_data('train_pos')
         train_neg = example_data('train_neg')
         train_facts = example_data('train_facts')
@@ -43,8 +43,8 @@ def example_data(example):
     # TODO: Phase out this function
     print(
         "Deprecation Warning: "
-        "'boostsrl.boostsrl.example_data' will be removed in 0.6.0. "
-        "'boostsrl.example_data' will replace this functionality."
+        "'srlearn.boostsrl.example_data' will be removed in 0.6.0. "
+        "'srlearn.example_data' will replace this functionality."
     )
 
     from . import example_data as ex_data
@@ -153,8 +153,8 @@ class modes(object):
         """
         print(
             "Deprecation Warning: "
-            "'boostsrl.boostsrl' is deprecated and will be removed in 0.6.0. "
-            "'boostsrl.rdn' will replace this functionality."
+            "'srlearn.boostsrl' is deprecated and will be removed in 0.6.0. "
+            "'srlearn.rdn' will replace this functionality."
         )
 
         self.target = target
@@ -260,7 +260,7 @@ class modes(object):
 class train(object):
     """
     .. deprecated:: 0.5.0
-       Use :class:`boostsrl.RDN` instead.
+       Use :class:`srlearn.rdn` instead.
     """
 
     def __init__(
@@ -278,8 +278,8 @@ class train(object):
     ):
         print(
             "Deprecation Warning: "
-            "'boostsrl.boostsrl' is deprecated and will be removed in 0.6.0. "
-            "'boostsrl.rdn' will replace this functionality."
+            "'srlearn.boostsrl' is deprecated and will be removed in 0.6.0. "
+            "'srlearn.rdn' will replace this functionality."
         )
 
         self.target = background.target
@@ -300,12 +300,12 @@ class train(object):
         for example in self.train_facts:
             inspect_example_syntax(example)
 
-        write_to_file(self.train_pos, "boostsrl/train/train_pos.txt")
-        write_to_file(self.train_neg, "boostsrl/train/train_neg.txt")
-        write_to_file(self.train_facts, "boostsrl/train/train_facts.txt")
+        write_to_file(self.train_pos, "srlearn/train/train_pos.txt")
+        write_to_file(self.train_neg, "srlearn/train/train_neg.txt")
+        write_to_file(self.train_facts, "srlearn/train/train_facts.txt")
 
         CALL = (
-            "(cd boostsrl; java -jar v1-0.jar -l -train train/ -target "
+            "(cd srlearn; java -jar v1-0.jar -l -train train/ -target "
             + ",".join(self.target)
             + " -trees "
             + str(self.trees)
@@ -326,7 +326,7 @@ class train(object):
             from graphviz import Source
 
             tree_file = (
-                "boostsrl/train/models/bRDNs/dotFiles/WILLTreeFor_"
+                "srlearn/train/models/bRDNs/dotFiles/WILLTreeFor_"
                 + target
                 + str(treenumber)
                 + ".dot"
@@ -337,7 +337,7 @@ class train(object):
             return src
         else:
             tree_file = (
-                "boostsrl/train/models/bRDNs/Trees/"
+                "srlearn/train/models/bRDNs/Trees/"
                 + target
                 + "Tree"
                 + str(treenumber)
@@ -352,7 +352,7 @@ class train(object):
         Return the training time as a float representing the total number of
         seconds seconds.
         """
-        with open("boostsrl/train_output.txt", "r") as f:
+        with open("srlearn/train_output.txt", "r") as f:
             text = f.read()
         line = re.findall(r"% Total learning time \(\d* trees\):.*", text)
         # Remove the last character "." from the line and split it on spaces.
@@ -390,29 +390,29 @@ class train(object):
 class test(object):
     """
     .. deprecated:: 0.5.0
-       Use :class:`boostsrl.RDN` instead.
+       Use :class:`srlearn.rdn` instead.
     """
 
     # Possibly a partial fix to Issue #3: checking for the .aucTemp.txt.lock
-    if os.path.isfile("boostsrl/test/AUC/.aucTemp.txt.lock"):
-        print("Found lock file boostsrl/test/AUC/.aucTemp.txt.lock, removing it:")
-        os.remove("boostsrl/test/AUC/.aucTemp.txt.lock")
+    if os.path.isfile("srlearn/test/AUC/.aucTemp.txt.lock"):
+        print("Found lock file srlearn/test/AUC/.aucTemp.txt.lock, removing it:")
+        os.remove("srlearn/test/AUC/.aucTemp.txt.lock")
 
     def __init__(self, model, test_pos, test_neg, test_facts, trees=10):
-        write_to_file(test_pos, "boostsrl/test/test_pos.txt")
-        write_to_file(test_neg, "boostsrl/test/test_neg.txt")
-        write_to_file(test_facts, "boostsrl/test/test_facts.txt")
+        write_to_file(test_pos, "srlearn/test/test_pos.txt")
+        write_to_file(test_neg, "srlearn/test/test_neg.txt")
+        write_to_file(test_facts, "srlearn/test/test_facts.txt")
 
         print(
             "Deprecation Warning: "
-            "'boostsrl.boostsrl' is deprecated and will be removed in 0.6.0. "
-            "'boostsrl.rdn' will replace this functionality."
+            "'srlearn.boostsrl' is deprecated and will be removed in 0.6.0. "
+            "'srlearn.rdn' will replace this functionality."
         )
 
         self.target = model.target
 
         CALL = (
-            "(cd boostsrl; java -jar v1-0.jar -i -model train/models/ "
+            "(cd srlearn; java -jar v1-0.jar -i -model train/models/ "
             + "-test test/ -target "
             + ",".join(self.target)
             + " -trees "
@@ -422,7 +422,7 @@ class test(object):
         call_process(CALL)
 
     def summarize_results(self):
-        with open("boostsrl/test_output.txt", "r") as f:
+        with open("srlearn/test_output.txt", "r") as f:
             text = f.read()
         line = re.findall(
             r"%   AUC ROC.*|%   AUC PR.*|%   CLL.*|%   Precision.*|%   Recall.*|%   F1.*",
@@ -450,7 +450,7 @@ class test(object):
         """Returns a list where the first item is a string and the second is a float.
 
         Used when returning inference results.
-        
+
         Examples
         --------
 
@@ -461,7 +461,7 @@ class test(object):
 
     def inference_results(self, target):
         """Converts BoostSRL results into a Python dictionary."""
-        results_file = "boostsrl/test/results_" + target + ".db"
+        results_file = "srlearn/test/results_" + target + ".db"
         inference_dict = {}
 
         with open(results_file, "r") as f:

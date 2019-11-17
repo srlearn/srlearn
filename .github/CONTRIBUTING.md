@@ -1,4 +1,4 @@
-# boostsrl Contributing Guidelines
+# srlearn Contributing Guidelines
 
 Our goal is to make BoostSRL more accessible to the Python community by creating general-purpose wrappers
 for the existing software. Any suggestions or contributions which further this goal are welcome.
@@ -43,7 +43,7 @@ following rules before submitting:
    can be found by running the following code snippet:
 
    ```bash
-   python -c "import boostsrl; boostsrl.show_versions()"
+   python -c "import srlearn; srlearn.show_versions()"
    ```
 
 -  Please be specific about what estimators and/or functions are involved
@@ -58,18 +58,18 @@ This guide is adapted from [imbalanced-learn](https://github.com/scikit-learn/sc
 
 ### How to contribute
 
-The preferred way to contribute to `boostsrl` is to fork the
-[main repository](https://github.com/hayesall/boostsrl) on
+The preferred way to contribute to `srlearn` is to fork the
+[main repository](https://github.com/hayesall/srlearn) on
 GitHub:
 
-1. Fork the [project repository](https://github.com/hayesall/boostsrl):
+1. Fork the [project repository](https://github.com/hayesall/srlearn):
    click on the 'Fork' button near the top of the page. This creates
    a copy of the code under your account on the GitHub server.
 
 2. Clone this copy to your local disk:
 
-        $ git clone git@github.com:YourLogin/boostsrl.git
-        $ cd boostsrl
+        $ git clone git@github.com:YourLogin/srlearn.git
+        $ cd srlearn
 
 3. Create a branch to hold your changes:
 
@@ -87,7 +87,7 @@ GitHub:
 
         $ git push -u origin my-feature
 
-Finally, go to the web page of your fork of the boostsrl repo,
+Finally, go to the web page of your fork of the srlearn repo,
 and click 'Pull request' to send your changes to the maintainers for
 review.
 
@@ -125,7 +125,7 @@ following rules before submitting a pull request:
    example script in the `docs/examples/` folder. Have a look at other
    examples for reference. Examples should demonstrate why the new
    functionality is useful in practice and, if possible, compare it
-   to other methods available in boostsrl.
+   to other methods available in srlearn.
 
 -  Documentation and high-coverage tests are necessary for enhancements
    to be accepted.
@@ -140,23 +140,23 @@ tools:
 - Code with good unittest coverage (at least 80%), check with:
 
         $ pip install pytest pytest-cov
-        $ pytest --cov=boostsrl boostsrl
+        $ pytest --cov=srlearn srlearn
 
 - Code *style* is formatted automatically with `black`
 
         $ pip install black
-        $ black boostsrl/
+        $ black srlearn/
 
 - But `black` cannot automatically fix all style problems, see `pycodestyle`
   for pep8 compliance
 
         $ pip install pycodestyle
-        $ pycodestyle boostsrl/
+        $ pycodestyle srlearn/
 
 - Linting with `pylint` helps catch common issues (keep rating above 9.0).
 
         $ pip install pylint
-        $ pylint boostsrl/
+        $ pylint srlearn/
 
 ### Documentation
 

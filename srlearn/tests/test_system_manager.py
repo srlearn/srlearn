@@ -1,13 +1,13 @@
 # Copyright © 2017, 2018, 2019 Alexander L. Hayes
 
 """
-Tests for boostsrl.system_manager.FileSystem
+Tests for srlearn.system_manager.FileSystem
 """
 
 # TODO: How to test behavior if FileSystem() is allocated and de-allocated
 #   around the same time?
 
-from boostsrl.system_manager import FileSystem
+from srlearn.system_manager import FileSystem
 
 
 def test_initialize_file_system():

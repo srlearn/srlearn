@@ -80,7 +80,7 @@ class Background:
         The main thing to take note of is the ``modes`` parameter, where
         background knowledge of the Toy-Cancer domain is specified.
 
-        >>> from boostsrl import Background
+        >>> from srlearn import Background
         >>> bk = Background(
         ...     modes=[
         ...         "cancer(+Person).",
@@ -103,13 +103,13 @@ class Background:
         mode: friends(-Person,+Person).
         <BLANKLINE>
 
-        This Background object is used by the :class:`boostsrl.rdn.RDN` class to
+        This Background object is used by the :class:`srlearn.rdn.BoostedRDN` class to
         write the parameters to a ``background.txt`` file before running BoostSRL.
 
         .. code-block:: python
 
-            >>> from boostsrl import Background
-            >>> from boostsrl import example_data
+            >>> from srlearn import Background
+            >>> from srlearn import example_data
             >>> bk = Background(
             ...     modes=example_data.train.modes,
             ...     max_tree_depth=2,

@@ -27,15 +27,15 @@ The package can be installed from the Python Package Index (PyPi) with ``pip``.
 
 .. code-block:: python
 
-    pip install boostsrl
+    pip install srlearn
 
 3. Test Installation
 --------------------
 
-A simple test should be whether ``boostsrl`` can be imported:
+A simple test should be whether ``srlearn`` can be imported:
 
 .. code-block:: python
 
-    >>> import boostsrl
+    >>> import srlearn
 
 If you've reached this point, you should be ready for the `User Guide <user_guide.html>`_.

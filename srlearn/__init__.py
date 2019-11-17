@@ -1,13 +1,13 @@
 # Copyright © 2017, 2018, 2019 Alexander L. Hayes
 
 """
-boostsrl: A set of Python wrappers for BoostSRL jar files.
+srlearn: A Python Library for Gradient-Boosted Statistical Relational Models.
 
 Submodules
 ----------
 
 utils
-    Utility modules for developing with the boostsrl package.
+    Utility modules for developing with the srlearn package.
 """
 
 from .background import Background

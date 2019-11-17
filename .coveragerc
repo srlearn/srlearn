@@ -3,11 +3,11 @@
 
 [run]
 branch = True
-source = boostsrl
-include = */boostsrl/*
+source = srlearn
+include = */srlearn/*
 omit =
     */setup.py
-    boostsrl/boostsrl.py
+    srlearn/boostsrl.py
 
 [report]
 exclude_lines =

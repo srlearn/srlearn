@@ -1,11 +1,11 @@
 # Copyright © 2017, 2018, 2019 Alexander L. Hayes
 
 """
-Tests for boostsrl.system_manager.reset
+Tests for srlearn.system_manager.reset
 """
 
 import pathlib
-from boostsrl import system_manager
+from srlearn import system_manager
 
 
 def test_soft_reset():

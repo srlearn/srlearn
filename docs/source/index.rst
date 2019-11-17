@@ -1,38 +1,38 @@
 ########
-boostsrl
+srlearn
 ########
 
 .. image:: _static/preview.png
-    :alt:  Repository preview image: "boostsrl. Python wrappers around BoostSRL with a scikit-learn-style interface. pip install boostsrl."
+    :alt:  Repository preview image: "srlearn. Python wrappers around BoostSRL with a scikit-learn-style interface. pip install srlearn."
 
 |License|_ |LGTM|_ |Travis|_ |AppVeyor|_ |Codecov|_ |CircleCi|_ |ReadTheDocs|_
 
-.. |License| image:: https://img.shields.io/github/license/hayesall/boostsrl.svg
+.. |License| image:: https://img.shields.io/github/license/hayesall/srlearn.svg
     :alt: License
 .. _License: LICENSE
 
-.. |LGTM| image:: https://img.shields.io/lgtm/grade/python/github/hayesall/boostsrl?label=code%20quality&logo=lgtm
+.. |LGTM| image:: https://img.shields.io/lgtm/grade/python/github/hayesall/srlearn?label=code%20quality&logo=lgtm
     :alt: LGTM code quality analysis
-.. _LGTM: https://lgtm.com/projects/g/hayesall/boostsrl/context:python
+.. _LGTM: https://lgtm.com/projects/g/hayesall/srlearn/context:python
 
-.. |Travis| image:: https://travis-ci.org/hayesall/boostsrl.svg?branch=master
+.. |Travis| image:: https://travis-ci.org/hayesall/srlearn.svg?branch=master
     :alt: Travis CI continuous integration build status
-.. _Travis: https://travis-ci.org/hayesall/boostsrl
+.. _Travis: https://travis-ci.org/hayesall/srlearn
 
 .. |AppVeyor| image:: https://ci.appveyor.com/api/projects/status/mxi2kffhr7a14rpt?svg=true
     :alt: AppVeyor Windows build status
-.. _AppVeyor: https://ci.appveyor.com/project/hayesall/boostsrl
+.. _AppVeyor: https://ci.appveyor.com/project/hayesall/srlearn
 
-.. |Codecov| image:: https://codecov.io/gh/hayesall/boostsrl/branch/master/graphs/badge.svg?branch=master
+.. |Codecov| image:: https://codecov.io/gh/hayesall/srlearn/branch/master/graphs/badge.svg?branch=master
     :alt: Code coverage status
-.. _Codecov: https://codecov.io/github/hayesall/boostsrl?branch=master
+.. _Codecov: https://codecov.io/github/hayesall/srlearn?branch=master
 
-.. |CircleCI| image:: https://circleci.com/gh/hayesall/boostsrl.svg?style=shield
-.. _CircleCi: https://circleci.com/gh/hayesall/boostsrl
+.. |CircleCI| image:: https://circleci.com/gh/hayesall/srlearn.svg?style=shield
+.. _CircleCi: https://circleci.com/gh/hayesall/srlearn
 
-.. |ReadTheDocs| image:: https://readthedocs.org/projects/boostsrl/badge/?version=latest
+.. |ReadTheDocs| image:: https://readthedocs.org/projects/srlearn/badge/?version=latest
     :alt: Documentation status
-.. _ReadTheDocs: https://boostsrl.readthedocs.io/en/latest/
+.. _ReadTheDocs: https://srlearn.readthedocs.io/en/latest/
 
 .. toctree::
    :hidden:
@@ -61,8 +61,8 @@ boostsrl
   :caption: Links
 
   StARLinG Lab <https://starling.utdallas.edu/>
-  GitHub <https://github.com/hayesall/boostsrl/>
-  PyPi <https://pypi.org/project/boostsrl/>
+  GitHub <https://github.com/hayesall/srlearn/>
+  PyPi <https://pypi.org/project/srlearn/>
 
 Questions? Contact `Alexander L. Hayes <https://hayesall.com>`_ (hayesall@iu.edu)
 

@@ -12,7 +12,7 @@ import sys
 import importlib
 
 
-DEPS = ["boostsrl", "pip", "setuptools", "sklearn", "numpy", "scipy"]
+DEPS = ["srlearn", "pip", "setuptools", "sklearn", "numpy", "scipy"]
 
 
 def _get_deps_info(dependency_list):
@@ -66,8 +66,8 @@ def show_versions(github=True):
         "<summary>System and Dependency Information</summary>\n\n"
         "**System Information**\n\n"
         "{0}\n"
-        #"**BLAS**\n\n"
-        #"{1}\n"
+        # "**BLAS**\n\n"
+        # "{1}\n"
         "**Python Dependencies**\n\n"
         "{1}\n"
         "</details>"
