@@ -14,6 +14,6 @@ srlearn metadata
 """
 
 __author__ = "Alexander L. Hayes (hayesall)"
-__version__ = "0.5.0.dev"
+__version__ = "0.5.0"
 
 DEBUG = False
