@@ -130,9 +130,6 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
         None
         """
 
-        # TODO: Explore other ways to interface with BoostSRL or the JVM.
-        #   https://wiki.python.org/moin/IntegratingPythonWithOtherLanguages#Java
-
         _pid = subprocess.Popen(shell_command, shell=True)
         _status = _pid.wait()
         if _status != 0:

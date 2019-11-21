@@ -115,8 +115,6 @@ class FileSystem:
         Enum providing key,value pairs for a BoostSRL database
     """
 
-    # TODO: Resistance to concurrency, race conditions, and asynchronous problems.
-
     # Prefix is the master directory that all databases will reside in.
     # In case of failure, this directory should be safe to delete.
     boostsrl_data_directory = "bsrl_data"

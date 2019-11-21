@@ -13,18 +13,6 @@ class Background:
     Background knowledge expressed in the form of modes.
     """
 
-    # TODO: Some parameters that would normally be in the background file might
-    #  make more sense as classifier parameters. e.g.: maxTreeDepth,
-    #  nodeSize, numOfClauses
-
-    # TODO:
-    #   - precomputes
-    #   - bridgers
-    #   - useStdLogicVariables
-    #   - usePrologVariables
-    #   - okIfUnknown
-    #   - range
-
     # pylint: disable=too-many-instance-attributes,too-many-arguments
 
     def __init__(

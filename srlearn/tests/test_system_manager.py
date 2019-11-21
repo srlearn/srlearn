@@ -4,8 +4,6 @@
 Tests for srlearn.system_manager.FileSystem
 """
 
-# TODO: How to test behavior if FileSystem() is allocated and de-allocated
-#   around the same time?
 
 from srlearn.system_manager import FileSystem
 

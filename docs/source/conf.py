@@ -70,8 +70,6 @@ exclude_patterns = ["build", "_templates"]
 #
 html_theme = "sphinx_rtd_theme"
 
-# TODO: 'monokai' style seems to cause display issues with sphinx_gallery
-#   when an example script prints to stdout.
 pygments_style = "sphinx"
 
 # Add any paths that contain custom static files (such as style sheets) here,

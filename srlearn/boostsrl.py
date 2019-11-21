@@ -40,7 +40,6 @@ def example_data(example):
 
     """
 
-    # TODO: Phase out this function
     print(
         "Deprecation Warning: "
         "'srlearn.boostsrl.example_data' will be removed in 0.6.0. "
@@ -165,7 +164,6 @@ class modes(object):
         self.loadAllLibraries = loadAllLibraries
         self.useStdLogicVariables = useStdLogicVariables
         self.usePrologVariables = usePrologVariables
-        # TODO: treeDepth vs. maxTreeDepth
         self.treeDepth = treeDepth
         self.maxTreeDepth = maxTreeDepth
         self.nodeSize = nodeSize

@@ -9,8 +9,6 @@ import numpy as np
 
 from .base import BaseBoostedRelationalModel
 
-# TODO: @property: feature_importances_
-
 
 class BoostedRDN(BaseBoostedRelationalModel):
     """Relational Dependency Networks Estimator
@@ -164,10 +162,8 @@ class BoostedRDN(BaseBoostedRelationalModel):
 
         self.estimators_ = _estimators
 
-        # TODO: On error, collect log files.
         return self
 
-    # TODO: This may be possible to set in the base class.
     def _run_inference(self, database) -> None:
         """Run inference mode on the BoostSRL Jar files.
 

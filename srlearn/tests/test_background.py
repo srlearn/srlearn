@@ -81,9 +81,6 @@ def test_write_background_to_file_2(tmpdir):
 def test_string_conversion_no_modes():
     """Test initializing when no modes are provided."""
 
-    # TODO: This should check for exact string matches,
-    #  re-evaluate when the parameters are stabilized.
-
     _bk = Background()
     _capture = str(_bk)
     assert "smokes(+Person)." not in _capture
