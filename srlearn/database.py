@@ -39,9 +39,6 @@ class Database:
 
     # pylint: disable=too-many-instance-attributes
 
-    # TODO: Currently disabling linter warnings, trimming attributes may be wise
-    #       e.g. file_prefix and target should typically be the same variable
-
     def __init__(self):
         """Initialize a Database object
 
