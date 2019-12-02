@@ -60,9 +60,9 @@ srlearn
   :hidden:
   :caption: Links
 
-  StARLinG Lab <https://starling.utdallas.edu/>
-  GitHub <https://github.com/hayesall/srlearn/>
-  PyPi <https://pypi.org/project/srlearn/>
+  StARLinG Lab 🔗 <https://starling.utdallas.edu/>
+  GitHub 🔗 <https://github.com/hayesall/srlearn/>
+  PyPi 🔗 <https://pypi.org/project/srlearn/>
 
 Questions? Contact `Alexander L. Hayes <https://hayesall.com>`_ (hayesall@iu.edu)
 
