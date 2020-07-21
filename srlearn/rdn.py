@@ -229,7 +229,7 @@ class BoostedRDN(BaseBoostedRelationalModel):
         )
         _classes, _results = np.loadtxt(
             _results_db,
-            delimiter=" ",
+            delimiter=") ",
             usecols=(0, 1),
             converters={0: lambda s: 0 if s[0] == 33 else 1},
             unpack=True,
@@ -266,7 +266,7 @@ class BoostedRDN(BaseBoostedRelationalModel):
         )
         _classes, _results = np.loadtxt(
             _results_db,
-            delimiter=" ",
+            delimiter=") ",
             usecols=(0, 1),
             converters={0: lambda s: 0 if s[0] == 33 else 1},
             unpack=True,
