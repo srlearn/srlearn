@@ -1,4 +1,4 @@
-name: Package Tests
+name: Ubuntu Build
 on: [push]
 
 jobs:

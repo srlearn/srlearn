@@ -5,7 +5,7 @@ srlearn
 .. image:: https://raw.githubusercontent.com/hayesall/srlearn/master/docs/source/_static/preview.png
     :alt:  Repository preview image: "srlearn. Python wrappers around BoostSRL with a scikit-learn-style interface. pip install srlearn."
 
-|License|_ |LGTM|_ |Travis|_ |AppVeyor|_ |Codecov|_ |CircleCi|_ |ReadTheDocs|_
+|License|_ |LGTM|_ |GitHubBuilds|_ |AppVeyor|_ |Codecov|_ |ReadTheDocs|_
 
 .. |License| image:: https://img.shields.io/github/license/hayesall/srlearn.svg
     :alt: License
@@ -15,9 +15,9 @@ srlearn
     :alt: LGTM code quality analysis
 .. _LGTM: https://lgtm.com/projects/g/hayesall/srlearn/context:python
 
-.. |Travis| image:: https://travis-ci.org/hayesall/srlearn.svg?branch=master
-    :alt: Travis CI continuous integration build status
-.. _Travis: https://travis-ci.org/hayesall/srlearn
+.. |GitHubBuilds| image:: https://github.com/hayesall/srlearn/workflows/Package%20Tests/badge.svg
+    :alt: GitHub CI Builds
+.. _GitHubBuilds: https://github.com/hayesall/srlearn/actions?query=workflow%3A%22Package+Tests%22
 
 .. |AppVeyor| image:: https://ci.appveyor.com/api/projects/status/obwfhyrjfnfilfce?svg=true
     :alt: AppVeyor Windows build status
@@ -26,9 +26,6 @@ srlearn
 .. |Codecov| image:: https://codecov.io/gh/hayesall/srlearn/branch/master/graphs/badge.svg?branch=master
     :alt: Code coverage status
 .. _Codecov: https://codecov.io/github/hayesall/srlearn?branch=master
-
-.. |CircleCI| image:: https://circleci.com/gh/hayesall/srlearn.svg?style=shield
-.. _CircleCi: https://circleci.com/gh/hayesall/srlearn
 
 .. |ReadTheDocs| image:: https://readthedocs.org/projects/srlearn/badge/?version=latest
     :alt: Documentation status
