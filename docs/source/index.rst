@@ -5,7 +5,7 @@ srlearn
 .. image:: _static/preview.png
     :alt:  Repository preview image: "srlearn. Python wrappers around BoostSRL with a scikit-learn-style interface. pip install srlearn."
 
-|License|_ |LGTM|_ |GitHubBuilds|_ |AppVeyor|_ |Codecov|_|ReadTheDocs|_
+|License|_ |LGTM|_ |GitHubBuilds|_ |AppVeyor|_ |Codecov|_ |ReadTheDocs|_
 
 .. |License| image:: https://img.shields.io/github/license/hayesall/srlearn.svg
     :alt: License
