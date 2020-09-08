@@ -4,6 +4,8 @@
 Base class for Boosted Relational Models
 """
 
+from collections import Counter
+
 from sklearn.base import BaseEstimator
 from sklearn.base import ClassifierMixin
 from sklearn.utils.validation import check_is_fitted
@@ -11,6 +13,7 @@ import subprocess
 
 from .background import Background
 from .system_manager import FileSystem
+from .utils._parse_trees import parse_tree
 from ._meta import DEBUG
 
 
@@ -108,6 +111,24 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
 
         # If all params are valid, allocate a FileSystem:
         self.file_system = FileSystem()
+
+    def feature_importance(self):
+        """
+        Return the features contained in a tree.
+
+        Parameters
+        ----------
+
+        tree_number: int
+            Index of the tree to read.
+        """
+
+        features = []
+
+        for tree_number in range(self.n_estimators):
+            _rules_string = self.estimators_[tree_number]
+            features += parse_tree(_rules_string)
+        return Counter(features)
 
     def _check_initialized(self):
         """Check for the estimator(s), raise an error if not found."""
