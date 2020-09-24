@@ -112,7 +112,8 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
         # If all params are valid, allocate a FileSystem:
         self.file_system = FileSystem()
 
-    def feature_importance(self):
+    @property
+    def feature_importances_(self):
         """
         Return the features contained in a tree.
 
@@ -122,12 +123,13 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
         tree_number: int
             Index of the tree to read.
         """
+        check_is_fitted(self, "estimators_")
 
         features = []
 
         for tree_number in range(self.n_estimators):
             _rules_string = self.estimators_[tree_number]
-            features += parse_tree(_rules_string)
+            features += parse_tree(_rules_string, (not self.background.use_std_logic_variables))
         return Counter(features)
 
     def _check_initialized(self):
