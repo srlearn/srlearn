@@ -17,6 +17,7 @@ background knowledge, and learning.
    Database
    Background
    rdn.BoostedRDN
+   rdn.BoostedRDNRegressor
 
 Data Sets
 =========
