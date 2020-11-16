@@ -296,7 +296,7 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
     >>> from srlearn import Background
     >>> from srlearn import Database
     >>> train = Database.from_files(
-         pos="./datasets/Boston/train/pos.pl",
+            pos="./datasets/Boston/train/pos.pl",
             neg="./datasets/Boston/train/neg.pl",
             facts="./datasets/Boston/train/facts.pl",
             lazy_load=False
@@ -322,7 +322,7 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
             "lstat(+id,#varlstat).",
             "medv(+id)."]
     >>> bk = Background(modes=train.modes)
-    >>> reg = BoostedRDNRegressor(background=bk, target="medv")
+    >>> reg = BoostedRDNRegressor(background=bk, target="medv", n_estimators=20)
     >>> reg.fit(train)
     BoostedRegressionTrees(background=setParam: nodeSize=2.
     setParam: maxTreeDepth=3.
@@ -350,7 +350,6 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
          19.21966845])
 
     """
-
 
     # pylint: disable=too-many-instance-attributes
 
@@ -530,11 +529,10 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
         _results_db = self.file_system.files.TEST_DIR.value.joinpath(
             "results_" + self.target + ".db"
         )
-        _pred,  _true = np.loadtxt(
+        _pred, _true = np.loadtxt(
             _results_db,
             delimiter="\t",
-            usecols=(1,2),
-            converters={0: lambda s: 0 if s[0] == 33 else 1},
+            usecols=(1, 2),
             unpack=True,
         )
 
