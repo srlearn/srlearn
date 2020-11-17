@@ -145,6 +145,7 @@ class FileSystem:
             TRAIN_DIR = _directory.joinpath("train")
             TEST_DIR = _directory.joinpath("test")
             MODELS_DIR = _directory.joinpath("train/models/")
+            BRDNS_DIR = _directory.joinpath("train/models/bRDNs/")
             TREES_DIR = _directory.joinpath("train/models/bRDNs/Trees")
 
         # Create directories
