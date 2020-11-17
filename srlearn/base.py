@@ -114,7 +114,18 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
         self.file_system = FileSystem()
 
     def to_json(self, file_name) -> None:
-        """"""
+        """Serialize a learned model to json.
+
+        Parameters
+        ----------
+        file_name : str (or pathlike)
+            Path to a saved json file.
+
+        .. warning:: This feature is experimental.
+
+            There could be major changes between releases, causing old model
+            files to break.
+        """
         check_is_fitted(self, "estimators_")
 
         import json
@@ -139,7 +150,19 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
             _fh.write(json.dumps([__version__, _model, self.estimators_, model_params]))
 
     def from_json(self, file_name):
-        """"""
+        """Load a learned model from json.
+
+        Parameters
+        ----------
+        file_name : str (or pathlike)
+            Path to a saved json file.
+
+        .. warning:: This feature is experimental.
+
+            There could be major changes between releases, causing old model
+            files to break. There are also *no checks* to ensure you are
+            loading the correct object type.
+        """
 
         import json
 
