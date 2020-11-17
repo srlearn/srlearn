@@ -1,5 +1,10 @@
 name: Ubuntu Build
-on: [push]
+
+on:
+  push:
+    branches: [ $default-branch ]
+  pull_request:
+    branches: [ $default-branch ]
 
 jobs:
   build:
