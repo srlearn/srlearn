@@ -160,6 +160,7 @@ class BoostedRDN(BaseBoostedRelationalModel):
             ) as _fh:
                 _estimators.append(_fh.read())
 
+        self._get_dotfiles()
         self.estimators_ = _estimators
 
         return self
@@ -467,6 +468,7 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
             ) as _fh:
                 _estimators.append(_fh.read())
 
+        self._get_dotfiles()
         self.estimators_ = _estimators
 
         return self
