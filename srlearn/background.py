@@ -144,7 +144,9 @@ class Background:
             )
         if not (isinstance(self.ok_if_unknown, list) or self.ok_if_unknown is None):
             raise ValueError(
-                "ok_if_unknown should be None or a list, found {0}".format(self.ok_if_unknown)
+                "ok_if_unknown should be None or a list, found {0}".format(
+                    self.ok_if_unknown
+                )
             )
         if not isinstance(self.line_search, bool):
             raise ValueError(
@@ -293,7 +295,7 @@ class Background:
         try:
             if getattr(self, "ok_if_unknown"):
                 for _unknown in self.ok_if_unknown:
-                    _background += "okIfUnknown: " + _unknown + "\n"
+                    _background += "okIfUnknown: " + _unknown + ".\n"
         except AttributeError:
             pass
 
