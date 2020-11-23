@@ -290,9 +290,12 @@ class Background:
             for _mode in self.modes:
                 _background += "mode: " + _mode + "\n"
 
-        if self.ok_if_unknown:
-            for _unknown in self.ok_if_unknown:
-                _background += "okIfUnknown: " + _unknown + "\n"
+        try:
+            if getattr(self, "ok_if_unknown"):
+                for _unknown in self.ok_if_unknown:
+                    _background += "okIfUnknown: " + _unknown + "\n"
+        except AttributeError:
+            pass
 
         return _background
 
