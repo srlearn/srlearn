@@ -12,20 +12,23 @@ from srlearn.database import Database
 from srlearn import example_data
 from numpy.testing import assert_array_equal
 import numpy as np
+import pytest
 
 
-def test_toy_cancer_predict_after_load():
+@pytest.mark.parametrize("test_input", ["0.5.2", "0.5.3"])
+def test_toy_cancer_predict_after_load(test_input):
     """Load a 0.5.2 ToyCancer json file and predict."""
     clf = BoostedRDN()
-    clf.from_json("srlearn/tests/regression_tests/json/toy_cancer_0.5.2.json")
+    clf.from_json("srlearn/tests/regression_tests/json/toy_cancer_{0}.json".format(test_input))
     _predictions = clf.predict(example_data.test)
     assert_array_equal(_predictions, np.array([1.0, 1.0, 1.0, 0.0, 0.0]))
 
 
-def test_boston_predict_after_load():
+@pytest.mark.parametrize("test_input", ["0.5.2", "0.5.3"])
+def test_boston_predict_after_load(test_input):
     """Load a 0.5.2 BostonHousing json file and predict."""
     clf = BoostedRDNRegressor()
-    clf.from_json("srlearn/tests/regression_tests/json/boston_0.5.2.json")
+    clf.from_json("srlearn/tests/regression_tests/json/boston_{0}.json".format(test_input))
 
     test = Database.from_files(
         pos="datasets/Boston/test/pos.pl",
