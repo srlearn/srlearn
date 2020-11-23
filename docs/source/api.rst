@@ -46,6 +46,8 @@ be useful for further development
    :toctree: generated/
    :template: function.rst
 
+   plotting.export_digraph
+   plotting.plot_digraph
    system_manager.reset
 
 Deprecated boostsrl objects
