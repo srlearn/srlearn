@@ -238,6 +238,17 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
             )
         return Counter(features)
 
+    def _get_dotfiles(self):
+        dotfiles = []
+        for i in range(self.n_estimators):
+            with open(
+                self.file_system.files.DOT_DIR.value.joinpath(
+                    "WILLTreeFor_" + self.target + str(i) + ".dot"
+                )
+            ) as _fh:
+                dotfiles.append(_fh.read())
+        self._dotfiles = dotfiles
+
     def _check_initialized(self):
         """Check for the estimator(s), raise an error if not found."""
         check_is_fitted(self, "estimators_")
