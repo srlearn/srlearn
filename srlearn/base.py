@@ -4,6 +4,7 @@
 Base class for Boosted Relational Models
 """
 
+import logging
 from collections import Counter
 
 from sklearn.base import BaseEstimator
@@ -175,7 +176,7 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
         _model_parameters = params[3]
 
         if _read_version != __version__:
-            print(
+            logging.warning(
                 "Version of loaded model ({0}) does not match srlearn version ({1}).".format(
                     params[0], __version__
                 )
