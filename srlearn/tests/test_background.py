@@ -64,6 +64,35 @@ def test_initializing_example_background_knowledge_2():
     assert "cancer(+Person)." in _capture
 
 
+def test_initializing_example_background_knowledge_3():
+    """Test initializing with example_data modes and extra parameters."""
+    _bk = Background(
+        modes=example_data.train.modes,
+        line_search=True,
+        recursion=True,
+        node_size=3,
+        max_tree_depth=4,
+        number_of_clauses=8,
+        number_of_cycles=10,
+        ok_if_unknown=["smokes/1", "friends/2"],
+    )
+    assert _bk.modes == example_data.train.modes
+
+    _capture = str(_bk)
+    assert "setParam: nodeSize=3." in _capture
+    assert "setParam: maxTreeDepth=4." in _capture
+    assert "setParam: numberOfCycles=10." in _capture
+    assert "setParam: numberOfClauses=8." in _capture
+    assert "setParam: lineSearch=true." in _capture
+    assert "setParam: recursion=true." in _capture
+    assert "friends(+Person,-Person)." in _capture
+    assert "friends(-Person,+Person)." in _capture
+    assert "smokes(+Person)." in _capture
+    assert "cancer(+Person)." in _capture
+    assert "okIfUnknown: smokes/1." in _capture
+    assert "okIfUnknown: friends/2." in _capture
+
+
 def test_write_background_to_file_1(tmpdir):
     """Test writing Background object to a file with default parameters."""
     _bk = Background()
@@ -168,3 +197,12 @@ def test_initialize_bad_prolog_variables(test_input):
     """Initialize use_prolog_variables with input which raises error."""
     with pytest.raises(ValueError):
         _bk = Background(use_prolog_variables=test_input)
+
+
+@pytest.mark.parametrize(
+    "test_input", [0, -1, 1, 4, "True", "False", bool, int, 1.5]
+)
+def test_initialize_bad_ok_if_unknown_variables(test_input):
+    """Initialize ok_if_unknown with input that should raise error."""
+    with pytest.raises(ValueError):
+        _bk = Background(ok_if_unknown=test_input)

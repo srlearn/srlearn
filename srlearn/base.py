@@ -5,6 +5,8 @@ Base class for Boosted Relational Models
 """
 
 from collections import Counter
+import json
+import logging
 
 from sklearn.base import BaseEstimator
 from sklearn.base import ClassifierMixin
@@ -121,14 +123,14 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
         file_name : str (or pathlike)
             Path to a saved json file.
 
-        .. warning:: This feature is experimental.
+        Notes / Warnings
+        ----------------
 
-            There could be major changes between releases, causing old model
-            files to break.
+        This feature is *experimental*.
+        There could be major changes between releases, causing old model
+        files to break.
         """
         check_is_fitted(self, "estimators_")
-
-        import json
 
         with open(
             self.file_system.files.BRDNS_DIR.value.joinpath(
@@ -147,7 +149,7 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
         }
 
         with open(file_name, "w") as _fh:
-            _fh.write(json.dumps([__version__, _model, self.estimators_, model_params]))
+            _fh.write(json.dumps([__version__, _model, self.estimators_, model_params, self._dotfiles]))
 
     def from_json(self, file_name):
         """Load a learned model from json.
@@ -157,29 +159,34 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
         file_name : str (or pathlike)
             Path to a saved json file.
 
-        .. warning:: This feature is experimental.
+        Notes / Warnings
+        ----------------
 
-            There could be major changes between releases, causing old model
-            files to break. There are also *no checks* to ensure you are
-            loading the correct object type.
+        This feature is *experimental*.
+        There could be major changes between releases, causing old model
+        files to break. There are also *no checks* to ensure you are
+        loading the correct object type.
         """
-
-        import json
 
         with open(file_name, "r") as _fh:
             params = json.loads(_fh.read())
 
-        _read_version = params[0]
-        _model = params[1]
-        _estimators = params[2]
-        _model_parameters = params[3]
-
-        if _read_version != __version__:
-            print(
+        if params[0] != __version__:
+            logging.warning(
                 "Version of loaded model ({0}) does not match srlearn version ({1}).".format(
                     params[0], __version__
                 )
             )
+
+        _model = params[1]
+        _estimators = params[2]
+        _model_parameters = params[3]
+
+        try:
+            self._dotfiles = params[4]
+        except IndexError:
+            self._dotfiles = None
+            logging.warning("Did not find dotfiles during load, srlearn.plotting may not work.")
 
         _bkg = Background()
         _bkg.__dict__ = _model_parameters['background']
