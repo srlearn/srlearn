@@ -18,6 +18,7 @@ class Background:
     def __init__(
         self,
         modes=None,
+        ok_if_unknown=None,
         node_size=2,
         number_of_clauses=100,
         number_of_cycles=100,
@@ -34,8 +35,9 @@ class Background:
         Parameters
         ----------
         modes : list of str (default: None)
-            Modes constrain the search space for hypotheses. If None, this will
-            attempt to set the modes automatically at learning time.
+            Modes constrain the search space for hypotheses.
+        ok_if_unknown : list of str (default: None)
+            Okay if not known.
         node_size : int, optional (default: 2)
             Maximum number of literals in each node.
         max_tree_depth : int, optional (default: 3)
@@ -119,6 +121,7 @@ class Background:
         .. [1] https://starling.utdallas.edu/software/boostsrl/wiki/advanced-parameters/
         """
         self.modes = modes
+        self.ok_if_unknown = ok_if_unknown
         self.node_size = node_size
         self.max_tree_depth = max_tree_depth
         self.number_of_clauses = number_of_clauses
@@ -138,6 +141,10 @@ class Background:
         if not (isinstance(self.modes, list) or self.modes is None):
             raise ValueError(
                 "modes parameter should be None or a list, found {0}".format(self.modes)
+            )
+        if not (isinstance(self.ok_if_unknown, list) or self.ok_if_unknown is None):
+            raise ValueError(
+                "ok_if_unknown should be None or a list, found {0}".format(self.ok_if_unknown)
             )
         if not isinstance(self.line_search, bool):
             raise ValueError(
@@ -274,7 +281,7 @@ class Background:
 
         _background = ""
         for _attr, _val in _relevant:
-            if _attr in ["modes"]:
+            if _attr in ["modes", "ok_if_unknown"]:
                 pass
             else:
                 _background += _background_syntax[_attr].format(str(_val).lower())
@@ -282,6 +289,10 @@ class Background:
         if self.modes:
             for _mode in self.modes:
                 _background += "mode: " + _mode + "\n"
+
+        if self.ok_if_unknown:
+            for _unknown in self.ok_if_unknown:
+                _background += "okIfUnknown: " + _unknown + "\n"
 
         return _background
 
