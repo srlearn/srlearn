@@ -23,9 +23,9 @@ srlearn
     :alt: AppVeyor Windows build status
 .. _AppVeyor: https://ci.appveyor.com/project/hayesall/srlearn
 
-.. |Codecov| image:: https://codecov.io/gh/hayesall/srlearn/branch/master/graphs/badge.svg?branch=master
+.. |Codecov| image:: https://codecov.io/gh/hayesall/srlearn/branch/main/graphs/badge.svg?branch=main
     :alt: Code coverage status
-.. _Codecov: https://codecov.io/github/hayesall/srlearn?branch=master
+.. _Codecov: https://codecov.io/github/hayesall/srlearn?branch=main
 
 .. |ReadTheDocs| image:: https://readthedocs.org/projects/srlearn/badge/?version=latest
     :alt: Documentation status

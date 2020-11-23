@@ -115,7 +115,7 @@ class FileSystem:
         Enum providing key,value pairs for a BoostSRL database
     """
 
-    # Prefix is the master directory that all databases will reside in.
+    # Prefix is the main directory that all databases will reside in.
     # In case of failure, this directory should be safe to delete.
     boostsrl_data_directory = "bsrl_data"
 

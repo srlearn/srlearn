@@ -2,7 +2,7 @@
 srlearn
 ########
 
-.. image:: https://raw.githubusercontent.com/hayesall/srlearn/master/docs/source/_static/preview.png
+.. image:: https://raw.githubusercontent.com/hayesall/srlearn/main/docs/source/_static/preview.png
     :alt:  Repository preview image: "srlearn. Python wrappers around BoostSRL with a scikit-learn-style interface. pip install srlearn."
 
 |License|_ |LGTM|_ |GitHubBuilds|_ |AppVeyor|_ |Codecov|_ |ReadTheDocs|_
@@ -23,9 +23,9 @@ srlearn
     :alt: AppVeyor Windows build status
 .. _AppVeyor: https://ci.appveyor.com/project/hayesall/srlearn
 
-.. |Codecov| image:: https://codecov.io/gh/hayesall/srlearn/branch/master/graphs/badge.svg?branch=master
+.. |Codecov| image:: https://codecov.io/gh/hayesall/srlearn/branch/main/graphs/badge.svg?branch=main
     :alt: Code coverage status
-.. _Codecov: https://codecov.io/github/hayesall/srlearn?branch=master
+.. _Codecov: https://codecov.io/github/hayesall/srlearn?branch=main
 
 .. |ReadTheDocs| image:: https://readthedocs.org/projects/srlearn/badge/?version=latest
     :alt: Documentation status
@@ -87,10 +87,10 @@ For more examples, see the `Example Gallery <https://srlearn.readthedocs.io/en/l
 Contributing
 ------------
 
-We have adopted the `Contributor Covenant Code of Conduct <https://github.com/hayesall/srlearn/blob/master/.github/CODE_OF_CONDUCT.md>`_ version 1.4. Please read,
+We have adopted the `Contributor Covenant Code of Conduct <https://github.com/hayesall/srlearn/blob/main/.github/CODE_OF_CONDUCT.md>`_ version 1.4. Please read,
 follow, and report any incidents which violate this.
 
-Questions, Issues, and Pull Requests are welcome. Please refer to `CONTRIBUTING.md <https://github.com/hayesall/srlearn/blob/master/.github/CONTRIBUTING.md>`_ for
+Questions, Issues, and Pull Requests are welcome. Please refer to `CONTRIBUTING.md <https://github.com/hayesall/srlearn/blob/main/.github/CONTRIBUTING.md>`_ for
 information on submitting issues and pull requests.
 
 Versioning and Releases
