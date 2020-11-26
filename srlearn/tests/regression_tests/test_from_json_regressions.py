@@ -15,7 +15,7 @@ import numpy as np
 import pytest
 
 
-@pytest.mark.parametrize("test_input", ["0.5.2", "0.5.3", "0.5.4"])
+@pytest.mark.parametrize("test_input", ["0.5.2", "0.5.3", "0.5.4", "0.5.5-dev"])
 def test_toy_cancer_predict_after_load(test_input):
     """Load a 0.5.2 ToyCancer json file and predict."""
     clf = BoostedRDN()
@@ -24,7 +24,7 @@ def test_toy_cancer_predict_after_load(test_input):
     assert_array_equal(_predictions, np.array([1.0, 1.0, 1.0, 0.0, 0.0]))
 
 
-@pytest.mark.parametrize("test_input", ["0.5.2", "0.5.3", "0.5.4"])
+@pytest.mark.parametrize("test_input", ["0.5.2", "0.5.3", "0.5.4", "0.5.5-dev"])
 def test_boston_predict_after_load(test_input):
     """Load a 0.5.2 BostonHousing json file and predict."""
     clf = BoostedRDNRegressor()

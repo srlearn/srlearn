@@ -75,6 +75,7 @@ def test_initializing_example_background_knowledge_3():
         number_of_clauses=8,
         number_of_cycles=10,
         ok_if_unknown=["smokes/1", "friends/2"],
+        bridgers=["friends/2"],
     )
     assert _bk.modes == example_data.train.modes
 
@@ -91,6 +92,7 @@ def test_initializing_example_background_knowledge_3():
     assert "cancer(+Person)." in _capture
     assert "okIfUnknown: smokes/1." in _capture
     assert "okIfUnknown: friends/2." in _capture
+    assert "bridger: friends/2." in _capture
 
 
 def test_write_background_to_file_1(tmpdir):
@@ -206,3 +208,12 @@ def test_initialize_bad_ok_if_unknown_variables(test_input):
     """Initialize ok_if_unknown with input that should raise error."""
     with pytest.raises(ValueError):
         _bk = Background(ok_if_unknown=test_input)
+
+
+@pytest.mark.parametrize(
+    "test_input", [0, -1, 1, 4, "True", "False", bool, int, 1.5]
+)
+def test_initialize_bad_bridgers(test_input):
+    """Initialize bridgers with input that should raise an error."""
+    with pytest.raises(ValueError):
+        _bk = Background(bridgers=test_input)

@@ -19,6 +19,7 @@ class Background:
         self,
         modes=None,
         ok_if_unknown=None,
+        bridgers=None,
         node_size=2,
         number_of_clauses=100,
         number_of_cycles=100,
@@ -38,6 +39,8 @@ class Background:
             Modes constrain the search space for hypotheses.
         ok_if_unknown : list of str (default: None)
             Okay if not known.
+        bridgers : list of str (default: None)
+            List of bridger predicates.
         node_size : int, optional (default: 2)
             Maximum number of literals in each node.
         max_tree_depth : int, optional (default: 3)
@@ -132,6 +135,7 @@ class Background:
         self.use_prolog_variables = use_prolog_variables
         self.load_all_libraries = load_all_libraries
         self.load_all_basic_modes = load_all_basic_modes
+        self.bridgers = bridgers
 
         # Check params are correct at the tail of initialization.
         self._check_params()
@@ -147,6 +151,10 @@ class Background:
                 "ok_if_unknown should be None or a list, found {0}".format(
                     self.ok_if_unknown
                 )
+            )
+        if not (isinstance(self.bridgers, list) or self.bridgers is None):
+            raise ValueError(
+                "bridgers should be None or a list, found {0}".format(self.bridgers)
             )
         if not isinstance(self.line_search, bool):
             raise ValueError(
@@ -283,7 +291,7 @@ class Background:
 
         _background = ""
         for _attr, _val in _relevant:
-            if _attr in ["modes", "ok_if_unknown"]:
+            if _attr in ["modes", "ok_if_unknown", "bridgers"]:
                 pass
             else:
                 _background += _background_syntax[_attr].format(str(_val).lower())
@@ -296,6 +304,13 @@ class Background:
             if getattr(self, "ok_if_unknown"):
                 for _unknown in self.ok_if_unknown:
                     _background += "okIfUnknown: " + _unknown + ".\n"
+        except AttributeError:
+            pass
+
+        try:
+            if getattr(self, "bridgers"):
+                for _bridger in self.bridgers:
+                    _background += "bridger: "  + _bridger + ".\n"
         except AttributeError:
             pass
 
