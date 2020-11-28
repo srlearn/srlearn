@@ -27,7 +27,7 @@ class Background:
         recursion=False,
         line_search=False,
         use_std_logic_variables=False,
-        use_prolog_variables=False,
+        use_prolog_variables=True,
         load_all_libraries=False,
         load_all_basic_modes=False,
     ):
@@ -56,7 +56,7 @@ class Background:
             Use recursion
         use_std_logic_variables : bool, optional (default: False)
             Set the stdLogicVariables parameter to True
-        use_prolog_variables : bool, optional (default: False)
+        use_prolog_variables : bool, optional (default: True)
             Set the usePrologVariables parameter to True
         load_all_libraries : bool, optional (default: False)
             Load libraries: ``arithmeticInLogic``, ``comparisonInLogic``,
@@ -82,7 +82,6 @@ class Background:
         ...         "friends(-Person,+Person).",
         ...     ],
         ...     max_tree_depth=2,
-        ...     use_std_logic_variables=True,
         ... )
         >>> print(bk)
         setParam: nodeSize=2.
@@ -229,6 +228,10 @@ class Background:
                 "use_prolog_variables should be a bool, found {0}".format(
                     self.use_prolog_variables
                 )
+            )
+        if self.use_std_logic_variables == self.use_prolog_variables:
+            raise ValueError(
+                "Cannot be equal: {0} == {1}".format(self.use_std_logic_variables, self.use_prolog_variables)
             )
 
     def write(self, filename="train", location=pathlib.Path("train")) -> None:

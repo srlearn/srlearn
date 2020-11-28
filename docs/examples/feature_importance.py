@@ -34,7 +34,6 @@ bkg = Background(
         "student(+Person).",
     ],
     number_of_clauses=8,
-    use_std_logic_variables=False,
 )
 
 clf = BoostedRDN(

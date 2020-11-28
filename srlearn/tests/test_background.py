@@ -10,6 +10,26 @@ from srlearn.background import Background
 from srlearn import example_data
 
 
+@pytest.mark.parametrize("std", [False, True])
+@pytest.mark.parametrize("pro", [False, True])
+def test_iff_variables(std, pro):
+    """Variable representation cannot be equal."""
+    if std == pro:
+        with pytest.raises(ValueError):
+            _bk = Background(
+                use_std_logic_variables=std,
+                use_prolog_variables=pro,
+            )
+    else:
+        _bk = Background(
+            use_std_logic_variables=std,
+            use_prolog_variables=pro,
+        )
+
+        assert _bk.use_std_logic_variables == std
+        assert _bk.use_prolog_variables == pro
+
+
 def test_initialize_background_knowledge_1():
     """
     Test initializing a Background object with default settings.
@@ -32,10 +52,10 @@ def test_initialize_example_background_knowledge_1():
     assert "setParam: maxTreeDepth=3." in _capture
     assert "setParam: numberOfCycles=100." in _capture
     assert "setParam: numberOfClauses=100." in _capture
-    assert "friends(+Person,-Person)." in _capture
-    assert "friends(-Person,+Person)." in _capture
-    assert "smokes(+Person)." in _capture
-    assert "cancer(+Person)." in _capture
+    assert "friends(+person,-person)." in _capture
+    assert "friends(-person,+person)." in _capture
+    assert "smokes(+person)." in _capture
+    assert "cancer(+person)." in _capture
 
 
 def test_initializing_example_background_knowledge_2():
@@ -58,10 +78,10 @@ def test_initializing_example_background_knowledge_2():
     assert "setParam: numberOfClauses=8." in _capture
     assert "setParam: lineSearch=true." in _capture
     assert "setParam: recursion=true." in _capture
-    assert "friends(+Person,-Person)." in _capture
-    assert "friends(-Person,+Person)." in _capture
-    assert "smokes(+Person)." in _capture
-    assert "cancer(+Person)." in _capture
+    assert "friends(+person,-person)." in _capture
+    assert "friends(-person,+person)." in _capture
+    assert "smokes(+person)." in _capture
+    assert "cancer(+person)." in _capture
 
 
 def test_initializing_example_background_knowledge_3():
@@ -86,10 +106,10 @@ def test_initializing_example_background_knowledge_3():
     assert "setParam: numberOfClauses=8." in _capture
     assert "setParam: lineSearch=true." in _capture
     assert "setParam: recursion=true." in _capture
-    assert "friends(+Person,-Person)." in _capture
-    assert "friends(-Person,+Person)." in _capture
-    assert "smokes(+Person)." in _capture
-    assert "cancer(+Person)." in _capture
+    assert "friends(+person,-person)." in _capture
+    assert "friends(-person,+person)." in _capture
+    assert "smokes(+person)." in _capture
+    assert "cancer(+person)." in _capture
     assert "okIfUnknown: smokes/1." in _capture
     assert "okIfUnknown: friends/2." in _capture
     assert "bridger: friends/2." in _capture
@@ -114,7 +134,7 @@ def test_string_conversion_no_modes():
 
     _bk = Background()
     _capture = str(_bk)
-    assert "smokes(+Person)." not in _capture
+    assert "smokes(+person)." not in _capture
 
 
 @pytest.mark.parametrize("test_input", [1.5, 4, "True", "False", bool, int, 0, 1])

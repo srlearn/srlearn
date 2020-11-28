@@ -26,7 +26,7 @@ class BoostedRDN(BaseBoostedRelationalModel):
     >>> from srlearn.rdn import BoostedRDN
     >>> from srlearn import Background
     >>> from srlearn import example_data
-    >>> bk = Background(modes=example_data.train.modes, use_std_logic_variables=True)
+    >>> bk = Background(modes=example_data.train.modes)
     >>> dn = BoostedRDN(background=bk, target="cancer")
     >>> dn.fit(example_data.train)
     BoostedRDN(background=setParam: nodeSize=2.

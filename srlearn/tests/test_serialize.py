@@ -18,7 +18,7 @@ from srlearn import example_data
 def test_serialize_BoostedRDN(tmpdir):
     output_json = tmpdir.join("ToyCancerRDN.json")
 
-    bkg = Background(modes=example_data.train.modes, use_std_logic_variables=True)
+    bkg = Background(modes=example_data.train.modes)
     rdn = BoostedRDN(background=bkg, target="cancer", n_estimators=5)
     rdn.fit(example_data.train)
     rdn.to_json(output_json)
