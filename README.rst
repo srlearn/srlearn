@@ -66,7 +66,6 @@ A minimal working example (using the Toy-Cancer data set imported with 'example_
     >>> from srlearn import example_data
     >>> bk = Background(
     ...     modes=example_data.train.modes,
-    ...     use_std_logic_variables=True,
     ... )
     >>> clf = BoostedRDN(
     ...     background=bk,

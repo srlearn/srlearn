@@ -18,7 +18,7 @@ def test_cannot_export_bad_data(test_input):
 
 
 def test_cannot_read_outside_length_of_dotfiles():
-    bkg = Background(modes=example_data.train.modes, use_std_logic_variables=True)
+    bkg = Background(modes=example_data.train.modes)
     clf = BoostedRDN(target="cancer", background=bkg)
     clf.fit(example_data.train)
     for test_input in [-10, -5, -1, 10]:

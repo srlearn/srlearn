@@ -68,7 +68,7 @@ def test_bad_shell_command():
 @pytest.mark.parametrize("test_input", [1, 2, 3, 4, 5])
 def test_learn_example_dataset_1(test_input):
     """Learn from the example database."""
-    _bk = Background(modes=example_data.train.modes, use_std_logic_variables=True)
+    _bk = Background(modes=example_data.train.modes)
     _dn = BoostedRDN(background=_bk, target="cancer", n_estimators=test_input)
     _dn.fit(example_data.train)
     assert len(_dn.estimators_) == test_input
@@ -77,7 +77,7 @@ def test_learn_example_dataset_1(test_input):
 @pytest.mark.parametrize("test_input", [1, 2, 3, 4, 5])
 def test_predict_example_data(test_input):
     """Test learn and predict."""
-    _bk = Background(modes=example_data.train.modes, use_std_logic_variables=True)
+    _bk = Background(modes=example_data.train.modes)
     _dn = BoostedRDN(background=_bk, target="cancer", n_estimators=test_input)
     _dn.fit(example_data.train)
     assert_array_equal(
@@ -87,7 +87,7 @@ def test_predict_example_data(test_input):
 
 def test_predict_proba_test_data():
     """Assert arrays are almost equal on output of predict_proba()"""
-    _bk = Background(modes=example_data.train.modes, use_std_logic_variables=True)
+    _bk = Background(modes=example_data.train.modes)
     _dn = BoostedRDN(background=_bk, target="cancer", n_estimators=5)
     _dn.fit(example_data.train)
     assert_array_almost_equal(

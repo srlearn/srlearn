@@ -89,7 +89,6 @@ We can declare modes as a list of strings:
 ...         "cancer(+person).",
 ...         "smokes(+person).",
 ...     ],
-...     use_std_logic_variables=True,
 ... )
 
 A full description of modes and how they constrain the search space is beyond the scope of the discussion
@@ -110,7 +109,6 @@ person in this fictional data set will develop cancer.
 ...         "cancer(+person).",
 ...         "smokes(+person).",
 ...     ],
-...     use_std_logic_variables=True,
 ... )
 >>> clf = BoostedRDN()
 >>> print(clf)
@@ -147,7 +145,6 @@ a series of trees.
 ...         "cancer(+person).",
 ...         "smokes(+person).",
 ...     ],
-...     use_std_logic_variables=True,
 ... )
 >>> clf = BoostedRDN(background=bk, target="cancer")
 >>> clf.fit(example_data.train)

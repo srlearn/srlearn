@@ -94,7 +94,6 @@ bk = Background(
         "siblingof(+name,+name)."
     ],
     number_of_clauses=8,
-    use_prolog_variables=True,
 )
 
 clf = BoostedRDN(

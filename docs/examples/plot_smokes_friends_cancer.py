@@ -22,12 +22,11 @@ import matplotlib.pyplot as plt
 
 bk = Background(
     modes=example_data.train.modes,
-    use_std_logic_variables=True,
 )
 
 clf = BoostedRDN(
     background=bk,
-    target='cancer',
+    target="cancer",
     max_tree_depth=2,
     node_size=2,
     n_estimators=20,

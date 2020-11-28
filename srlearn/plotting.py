@@ -57,7 +57,6 @@ def export_digraph(booster, tree_index=0, out_file=None):
 
         bkg = Background(
             modes=example_data.train.modes,
-            use_std_logic_variables=True,
         )
 
         clf = BoostedRDN(

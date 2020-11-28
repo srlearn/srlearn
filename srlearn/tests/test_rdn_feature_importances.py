@@ -19,7 +19,7 @@ def test_feature_importances_before_fit():
 
 def test_feature_importances_toy_cancer():
     """Test getting the feature importances from the Toy-Cancer set."""
-    bkg = Background(modes=example_data.train.modes, use_std_logic_variables=True)
+    bkg = Background(modes=example_data.train.modes)
     rdn = BoostedRDN(
         target="cancer",
         background=bkg,
