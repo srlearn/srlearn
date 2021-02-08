@@ -45,4 +45,4 @@ clf = BoostedRDN(
 )
 
 clf.fit(webkb_train)
-print(clf.feature_importance())
+print(clf.feature_importances_)
