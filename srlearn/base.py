@@ -16,7 +16,6 @@ import subprocess
 from .background import Background
 from .system_manager import FileSystem
 from .utils._parse_trees import parse_tree
-from ._meta import DEBUG
 from ._meta import __version__
 
 
@@ -58,6 +57,11 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
     """
 
     # pylint: disable=too-many-instance-attributes
+    background = None
+    target = "None"
+    n_estimators = 10
+    node_size = 2
+    max_tree_depth = 3
 
     def __init__(
         self,
@@ -73,7 +77,6 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
         self.n_estimators = n_estimators
         self.node_size = node_size
         self.max_tree_depth = max_tree_depth
-        self.debug = DEBUG
 
     def _check_params(self):
         """Check validity of parameters. Raise ValueError if errors are detected.
@@ -149,7 +152,17 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
         }
 
         with open(file_name, "w") as _fh:
-            _fh.write(json.dumps([__version__, _model, self.estimators_, model_params, self._dotfiles]))
+            _fh.write(
+                json.dumps(
+                    [
+                        __version__,
+                        _model,
+                        self.estimators_,
+                        model_params,
+                        self._dotfiles,
+                    ]
+                )
+            )
 
     def from_json(self, file_name):
         """Load a learned model from json.
@@ -186,18 +199,20 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
             self._dotfiles = params[4]
         except IndexError:
             self._dotfiles = None
-            logging.warning("Did not find dotfiles during load, srlearn.plotting may not work.")
+            logging.warning(
+                "Did not find dotfiles during load, srlearn.plotting may not work."
+            )
 
         _bkg = Background()
-        _bkg.__dict__ = _model_parameters['background']
+        _bkg.__dict__ = _model_parameters["background"]
 
-        self.__init__(
-            background=_bkg,
-            target=_model_parameters['target'],
-            n_estimators=_model_parameters['n_estimators'],
-            node_size=_model_parameters['node_size'],
-            max_tree_depth=_model_parameters["max_tree_depth"],
-        )
+        _attributes = {"background": _bkg}
+        for key in BaseBoostedRelationalModel().__dict__.keys() - {"background"}:
+            _attributes[key] = _model_parameters.get(
+                key,
+                BaseBoostedRelationalModel().__dict__[key],
+            )
+        self.__init__(**_attributes)
 
         self.estimators_ = _estimators
 
@@ -219,7 +234,7 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
                 self.file_system.files.TREES_DIR.value.joinpath(
                     "{0}Tree{1}.tree".format(self.target, i)
                 ),
-                "w"
+                "w",
             ) as _fh:
                 _fh.write(_tree)
 
