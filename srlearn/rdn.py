@@ -144,9 +144,6 @@ class BoostedRDN(BaseBoostedRelationalModel):
             + str(self.file_system.files.TRAIN_LOG.value)
         )
 
-        if self.debug:
-            print(_CALL)
-
         # Call the constructed command.
         self._call_shell_command(_CALL)
 
@@ -197,9 +194,6 @@ class BoostedRDN(BaseBoostedRelationalModel):
             + " > "
             + str(self.file_system.files.TEST_LOG.value)
         )
-
-        if self.debug:
-            print(_CALL)
 
         self._call_shell_command(_CALL)
 
@@ -452,9 +446,6 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
             + str(self.file_system.files.TRAIN_LOG.value)
         )
 
-        if self.debug:
-            print(_CALL)
-
         # Call the constructed command.
         self._call_shell_command(_CALL)
 
@@ -505,9 +496,6 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
             + " > "
             + str(self.file_system.files.TEST_LOG.value)
         )
-
-        if self.debug:
-            print(_CALL)
 
         self._call_shell_command(_CALL)
 
