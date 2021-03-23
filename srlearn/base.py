@@ -62,6 +62,7 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
     n_estimators = 10
     node_size = 2
     max_tree_depth = 3
+    neg_pos_ratio = 2
 
     def __init__(
         self,
@@ -70,6 +71,7 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
         n_estimators=10,
         node_size=2,
         max_tree_depth=3,
+        neg_pos_ratio=2,
     ):
         """Initialize a BaseEstimator"""
         self.background = background
@@ -77,6 +79,7 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
         self.n_estimators = n_estimators
         self.node_size = node_size
         self.max_tree_depth = max_tree_depth
+        self.neg_pos_ratio = neg_pos_ratio
 
     def _check_params(self):
         """Check validity of parameters. Raise ValueError if errors are detected.
@@ -114,6 +117,18 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
                     self.n_estimators
                 )
             )
+        if (
+            not isinstance(self.neg_pos_ratio, int)
+            and not isinstance(self.neg_pos_ratio, float)
+            or isinstance(self.neg_pos_ratio, bool)
+        ):
+            raise ValueError("neg_pos_ratio must be an integer or float")
+        if self.neg_pos_ratio < 1:
+            raise ValueError(
+                "neg_pos_ratio must be greater than 1, cannot be {0}".format(
+                    self.neg_pos_ratio
+                )
+            )
 
         # If all params are valid, allocate a FileSystem:
         self.file_system = FileSystem()
@@ -149,6 +164,7 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
             "n_estimators": self.n_estimators,
             "node_size": self.node_size,
             "max_tree_depth": self.max_tree_depth,
+            "neg_pos_ratio": self.neg_pos_ratio,
         }
 
         with open(file_name, "w") as _fh:
