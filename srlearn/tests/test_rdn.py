@@ -57,6 +57,16 @@ def test_initialize_bad_n_estimators(test_input):
         _dn.fit(example_data.train)
 
 
+@pytest.mark.parametrize(
+    "test_input", [0, -1, None, bool, int, "None", "True", True]
+)
+def test_initialize_bad_neg_pos_ratio(test_input):
+    """Tests bad values for neg_pos_ratio"""
+    _dn = BoostedRDN(target="cancer", background=Background(), neg_pos_ratio=test_input)
+    with pytest.raises(ValueError):
+        _dn.fit(example_data.train)
+
+
 def test_bad_shell_command():
     """Test running a shell command which cannot exit 0"""
     _dn = BoostedRDN()
