@@ -222,6 +222,11 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
         _bkg = Background()
         _bkg.__dict__ = _model_parameters["background"]
 
+        # 1. Loop over all class attributes of `BaseBoostedRelationalModel`
+        #    except `background`, which has been handled as a special case.
+        # 2. Update an `_attributes` dictionary mapping attributes from JSON
+        # 3. *If a key was not present in the JSON*: set it to the default value.
+        # 4. Initialize self by unpacking the dictionary into arguments.
         _attributes = {"background": _bkg}
         for key in BaseBoostedRelationalModel().__dict__.keys() - {"background"}:
             _attributes[key] = _model_parameters.get(
