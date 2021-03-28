@@ -15,9 +15,9 @@ import numpy as np
 import pytest
 
 
-@pytest.mark.parametrize("test_input", ["0.5.5-dev"])
+@pytest.mark.parametrize("test_input", ["0.5.5-dev", "0.5.5a-dev"])
 def test_toy_cancer_predict_after_load(test_input):
-    """Load a 0.5.2 ToyCancer json file and predict."""
+    """Load a ToyCancer json file and predict."""
     clf = BoostedRDN()
     clf.from_json("srlearn/tests/regression_tests/json/toy_cancer_{0}.json".format(test_input))
     _predictions = clf.predict(example_data.test)

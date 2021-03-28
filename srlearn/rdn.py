@@ -54,6 +54,7 @@ class BoostedRDN(BaseBoostedRelationalModel):
         n_estimators=10,
         node_size=2,
         max_tree_depth=3,
+        neg_pos_ratio=2,
     ):
         """Initialize a BoostedRDN
 
@@ -69,6 +70,8 @@ class BoostedRDN(BaseBoostedRelationalModel):
             Maximum number of literals in each node.
         max_tree_depth : int, optional (default: 3)
             Maximum number of nodes from root to leaf (height) in the tree.
+        neg_pos_ratio : int or float, optional (default: 2)
+            Ratio of negative to positive examples used during learning.
 
         Attributes
         ----------
@@ -84,6 +87,7 @@ class BoostedRDN(BaseBoostedRelationalModel):
             n_estimators=n_estimators,
             node_size=node_size,
             max_tree_depth=max_tree_depth,
+            neg_pos_ratio=neg_pos_ratio,
         )
 
     def fit(self, database):
@@ -140,12 +144,11 @@ class BoostedRDN(BaseBoostedRelationalModel):
             + self.target
             + " -trees "
             + str(self.n_estimators)
+            + " -negPosRatio "
+            + str(self.neg_pos_ratio)
             + " > "
             + str(self.file_system.files.TRAIN_LOG.value)
         )
-
-        if self.debug:
-            print(_CALL)
 
         # Call the constructed command.
         self._call_shell_command(_CALL)
@@ -197,9 +200,6 @@ class BoostedRDN(BaseBoostedRelationalModel):
             + " > "
             + str(self.file_system.files.TEST_LOG.value)
         )
-
-        if self.debug:
-            print(_CALL)
 
         self._call_shell_command(_CALL)
 
@@ -361,6 +361,7 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
         n_estimators=10,
         node_size=2,
         max_tree_depth=3,
+        neg_pos_ratio=2,
     ):
         """Initialize a BoostedRDN
 
@@ -376,6 +377,8 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
             Maximum number of literals in each node.
         max_tree_depth : int, optional (default: 3)
             Maximum number of nodes from root to leaf (height) in the tree.
+        neg_pos_ratio : int or float, optional (default: 2)
+            Ratio of negative to positive examples used during learning.
 
         Attributes
         ----------
@@ -391,6 +394,7 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
             n_estimators=n_estimators,
             node_size=node_size,
             max_tree_depth=max_tree_depth,
+            neg_pos_ratio=neg_pos_ratio,
         )
 
     def fit(self, database):
@@ -448,12 +452,11 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
             + self.target
             + " -trees "
             + str(self.n_estimators)
+            + " -negPosRatio "
+            + str(self.neg_pos_ratio)
             + " > "
             + str(self.file_system.files.TRAIN_LOG.value)
         )
-
-        if self.debug:
-            print(_CALL)
 
         # Call the constructed command.
         self._call_shell_command(_CALL)
@@ -505,9 +508,6 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
             + " > "
             + str(self.file_system.files.TEST_LOG.value)
         )
-
-        if self.debug:
-            print(_CALL)
 
         self._call_shell_command(_CALL)
 
