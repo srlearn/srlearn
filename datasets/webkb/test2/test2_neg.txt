@@ -1,168 +1,167 @@
-// Negative examples, including created ones.
-faculty(ahttpwwwcswisceduallexallexhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedulukelukehtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedunatassanatassahtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduhastihastihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedutwangtwanghtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedujqjqhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduandytandythtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedugidgidhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumilomilohtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedualainalainhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduchilimbichilimbihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedulloydlloydhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduprockprockhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduramasamyramasamyhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusubbaraosubbaraohtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduyinyinhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedutoonentoonenhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduschoinasschoinashtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduramanramanhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduweizweizhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusosohtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusamitsamithtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedurcarlrcarlhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedushubushubuhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduaguptaaguptahtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduskrentnyskrentnyhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusaeedsaeedhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedukrungkrunghtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedubenbenhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedunaimnaimhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduzhezhehtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedunspnsphtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduejhazenejhazenhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumelskimelskihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedupmdpmdhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusodanisodanihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumyuinmyuinhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumanuvirmanuvirhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduschnarrschnarrhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusashwinsashwinhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumreamesmreameshtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduglewglewhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduratnakarratnakarhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduashrafashrafhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedupaulbpaulbhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedubreachbreachhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusastrysastryhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduledermanledermanhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduzeidenzeidenhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedukaxiraskaxirashtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedujonbjonbhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduticktickhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduguangshuguangshuhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedurajirajihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedupoosalapoosalahtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedudaileydaileyhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduvgantivgantihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduzmudzinzmudzinhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusecsechtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduscalscalhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedunhallnhallhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedukeeperkeeperhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduweirucweiruchtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedukmurlikmurlihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduissuseridhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedujshabeljshabelhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedudzimmdzimmhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedubradbradhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedugviswanagviswanahtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedujglarsonjglarsonhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedujiebingjiebinghtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedukrisnakrisnahtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedufintonfintonhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedukaravankaravanhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedulzhenglzhenghtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduwatrouswatroushtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduturnidgeturnidgehtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusiffsiffhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedueneumaneneumanhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusowmyasowmyahtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusuhuisuhuihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduirelandirelandhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedukristintkristinthtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduatkinsonatkinsonhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduwengerwengerhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduflisakowflisakowhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumoymoyhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduswanderbswanderbhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduschandraschandrahtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedunavinnavinhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedulukaslukashtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduseaveyseaveyhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduericroericrohtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedugreggreghtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceducychancychanhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedubeyerbeyerhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedujigneshjigneshhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedustengleistengleihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduminosminoshtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduashishtashishthtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduiigoriigorhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduweaverweaverhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduglasereaglasereahtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusteversteverhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedujussijussihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceducsashicsashihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumorganmorganhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceducchincchinhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceducaolcaolhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduburnettburnetthtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduhertherthtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedujereljerelhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduhclhclhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedunewhallnewhallhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduratliffratliffhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedujyothijyothihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumellenmellenhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedubestorbestorhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduvijayvijayhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduleavyleavyhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedutamchestamcheshtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedugeerygeeryhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduplakalplakalhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduzjzjhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduhornhornhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedutmunsontmunsonhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedufalsafifalsafihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedubolobolohtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedurahulrahulhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduhoghoghtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduqwqwhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceducurtcurthtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduharitharithtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedupdevriespdevrieshtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedujoevjoevhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedudburgerdburgerhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduammonsammonshtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumsteelemsteelehtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumcauliffmcauliffhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumjrgmjrghtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedutsiolistsiolishtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedubockrathbockrathhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedubsribsrihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduzhichenzhichenhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduzhangzhanghtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedujohannesjohanneshtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduxuelinxuelinhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduparkerparkerhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduarvindarvindhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedueliassieliassihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedubezenekbezenekhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusslsslhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusundaramsundaramhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedujbasneyjbasneyhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduzhaozhaohtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedujherrojherrohtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduchandrachandrahtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduseitzseitzhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumdsmdshtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduamiramirhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduyinongyinonghtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduhummerthummerthtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduuriurihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumbirkmbirkhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedugsrigsrihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumoshovosmoshovoshtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumarkosmarkoshtml). % Provenance: a randomly generated negative example.
+faculty(ahttpwwwcswisceduallexallexhtml).
+faculty(ahttpwwwcswiscedulukelukehtml).
+faculty(ahttpwwwcswiscedunatassanatassahtml).
+faculty(ahttpwwwcswisceduhastihastihtml).
+faculty(ahttpwwwcswiscedutwangtwanghtml).
+faculty(ahttpwwwcswiscedujqjqhtml).
+faculty(ahttpwwwcswisceduandytandythtml).
+faculty(ahttpwwwcswiscedugidgidhtml).
+faculty(ahttpwwwcswiscedumilomilohtml).
+faculty(ahttpwwwcswiscedualainalainhtml).
+faculty(ahttpwwwcswisceduchilimbichilimbihtml).
+faculty(ahttpwwwcswiscedulloydlloydhtml).
+faculty(ahttpwwwcswisceduprockprockhtml).
+faculty(ahttpwwwcswisceduramasamyramasamyhtml).
+faculty(ahttpwwwcswiscedusubbaraosubbaraohtml).
+faculty(ahttpwwwcswisceduyinyinhtml).
+faculty(ahttpwwwcswiscedutoonentoonenhtml).
+faculty(ahttpwwwcswisceduschoinasschoinashtml).
+faculty(ahttpwwwcswisceduramanramanhtml).
+faculty(ahttpwwwcswisceduweizweizhtml).
+faculty(ahttpwwwcswiscedusosohtml).
+faculty(ahttpwwwcswiscedusamitsamithtml).
+faculty(ahttpwwwcswiscedurcarlrcarlhtml).
+faculty(ahttpwwwcswiscedushubushubuhtml).
+faculty(ahttpwwwcswisceduaguptaaguptahtml).
+faculty(ahttpwwwcswisceduskrentnyskrentnyhtml).
+faculty(ahttpwwwcswiscedusaeedsaeedhtml).
+faculty(ahttpwwwcswiscedukrungkrunghtml).
+faculty(ahttpwwwcswiscedubenbenhtml).
+faculty(ahttpwwwcswiscedunaimnaimhtml).
+faculty(ahttpwwwcswisceduzhezhehtml).
+faculty(ahttpwwwcswiscedunspnsphtml).
+faculty(ahttpwwwcswisceduejhazenejhazenhtml).
+faculty(ahttpwwwcswiscedumelskimelskihtml).
+faculty(ahttpwwwcswiscedupmdpmdhtml).
+faculty(ahttpwwwcswiscedusodanisodanihtml).
+faculty(ahttpwwwcswiscedumyuinmyuinhtml).
+faculty(ahttpwwwcswiscedumanuvirmanuvirhtml).
+faculty(ahttpwwwcswisceduschnarrschnarrhtml).
+faculty(ahttpwwwcswiscedusashwinsashwinhtml).
+faculty(ahttpwwwcswiscedumreamesmreameshtml).
+faculty(ahttpwwwcswisceduglewglewhtml).
+faculty(ahttpwwwcswisceduratnakarratnakarhtml).
+faculty(ahttpwwwcswisceduashrafashrafhtml).
+faculty(ahttpwwwcswiscedupaulbpaulbhtml).
+faculty(ahttpwwwcswiscedubreachbreachhtml).
+faculty(ahttpwwwcswiscedusastrysastryhtml).
+faculty(ahttpwwwcswisceduledermanledermanhtml).
+faculty(ahttpwwwcswisceduzeidenzeidenhtml).
+faculty(ahttpwwwcswiscedukaxiraskaxirashtml).
+faculty(ahttpwwwcswiscedujonbjonbhtml).
+faculty(ahttpwwwcswisceduticktickhtml).
+faculty(ahttpwwwcswisceduguangshuguangshuhtml).
+faculty(ahttpwwwcswiscedurajirajihtml).
+faculty(ahttpwwwcswiscedupoosalapoosalahtml).
+faculty(ahttpwwwcswiscedudaileydaileyhtml).
+faculty(ahttpwwwcswisceduvgantivgantihtml).
+faculty(ahttpwwwcswisceduzmudzinzmudzinhtml).
+faculty(ahttpwwwcswiscedusecsechtml).
+faculty(ahttpwwwcswisceduscalscalhtml).
+faculty(ahttpwwwcswiscedunhallnhallhtml).
+faculty(ahttpwwwcswiscedukeeperkeeperhtml).
+faculty(ahttpwwwcswisceduweirucweiruchtml).
+faculty(ahttpwwwcswiscedukmurlikmurlihtml).
+faculty(ahttpwwwcswisceduissuseridhtml).
+faculty(ahttpwwwcswiscedujshabeljshabelhtml).
+faculty(ahttpwwwcswiscedudzimmdzimmhtml).
+faculty(ahttpwwwcswiscedubradbradhtml).
+faculty(ahttpwwwcswiscedugviswanagviswanahtml).
+faculty(ahttpwwwcswiscedujglarsonjglarsonhtml).
+faculty(ahttpwwwcswiscedujiebingjiebinghtml).
+faculty(ahttpwwwcswiscedukrisnakrisnahtml).
+faculty(ahttpwwwcswiscedufintonfintonhtml).
+faculty(ahttpwwwcswiscedukaravankaravanhtml).
+faculty(ahttpwwwcswiscedulzhenglzhenghtml).
+faculty(ahttpwwwcswisceduwatrouswatroushtml).
+faculty(ahttpwwwcswisceduturnidgeturnidgehtml).
+faculty(ahttpwwwcswiscedusiffsiffhtml).
+faculty(ahttpwwwcswiscedueneumaneneumanhtml).
+faculty(ahttpwwwcswiscedusowmyasowmyahtml).
+faculty(ahttpwwwcswiscedusuhuisuhuihtml).
+faculty(ahttpwwwcswisceduirelandirelandhtml).
+faculty(ahttpwwwcswiscedukristintkristinthtml).
+faculty(ahttpwwwcswisceduatkinsonatkinsonhtml).
+faculty(ahttpwwwcswisceduwengerwengerhtml).
+faculty(ahttpwwwcswisceduflisakowflisakowhtml).
+faculty(ahttpwwwcswiscedumoymoyhtml).
+faculty(ahttpwwwcswisceduswanderbswanderbhtml).
+faculty(ahttpwwwcswisceduschandraschandrahtml).
+faculty(ahttpwwwcswiscedunavinnavinhtml).
+faculty(ahttpwwwcswiscedulukaslukashtml).
+faculty(ahttpwwwcswisceduseaveyseaveyhtml).
+faculty(ahttpwwwcswisceduericroericrohtml).
+faculty(ahttpwwwcswiscedugreggreghtml).
+faculty(ahttpwwwcswisceducychancychanhtml).
+faculty(ahttpwwwcswiscedubeyerbeyerhtml).
+faculty(ahttpwwwcswiscedujigneshjigneshhtml).
+faculty(ahttpwwwcswiscedustengleistengleihtml).
+faculty(ahttpwwwcswisceduminosminoshtml).
+faculty(ahttpwwwcswisceduashishtashishthtml).
+faculty(ahttpwwwcswisceduiigoriigorhtml).
+faculty(ahttpwwwcswisceduweaverweaverhtml).
+faculty(ahttpwwwcswisceduglasereaglasereahtml).
+faculty(ahttpwwwcswiscedusteversteverhtml).
+faculty(ahttpwwwcswiscedujussijussihtml).
+faculty(ahttpwwwcswisceducsashicsashihtml).
+faculty(ahttpwwwcswiscedumorganmorganhtml).
+faculty(ahttpwwwcswisceducchincchinhtml).
+faculty(ahttpwwwcswisceducaolcaolhtml).
+faculty(ahttpwwwcswisceduburnettburnetthtml).
+faculty(ahttpwwwcswisceduhertherthtml).
+faculty(ahttpwwwcswiscedujereljerelhtml).
+faculty(ahttpwwwcswisceduhclhclhtml).
+faculty(ahttpwwwcswiscedunewhallnewhallhtml).
+faculty(ahttpwwwcswisceduratliffratliffhtml).
+faculty(ahttpwwwcswiscedujyothijyothihtml).
+faculty(ahttpwwwcswiscedumellenmellenhtml).
+faculty(ahttpwwwcswiscedubestorbestorhtml).
+faculty(ahttpwwwcswisceduvijayvijayhtml).
+faculty(ahttpwwwcswisceduleavyleavyhtml).
+faculty(ahttpwwwcswiscedutamchestamcheshtml).
+faculty(ahttpwwwcswiscedugeerygeeryhtml).
+faculty(ahttpwwwcswisceduplakalplakalhtml).
+faculty(ahttpwwwcswisceduzjzjhtml).
+faculty(ahttpwwwcswisceduhornhornhtml).
+faculty(ahttpwwwcswiscedutmunsontmunsonhtml).
+faculty(ahttpwwwcswiscedufalsafifalsafihtml).
+faculty(ahttpwwwcswiscedubolobolohtml).
+faculty(ahttpwwwcswiscedurahulrahulhtml).
+faculty(ahttpwwwcswisceduhoghoghtml).
+faculty(ahttpwwwcswisceduqwqwhtml).
+faculty(ahttpwwwcswisceducurtcurthtml).
+faculty(ahttpwwwcswisceduharitharithtml).
+faculty(ahttpwwwcswiscedupdevriespdevrieshtml).
+faculty(ahttpwwwcswiscedujoevjoevhtml).
+faculty(ahttpwwwcswiscedudburgerdburgerhtml).
+faculty(ahttpwwwcswisceduammonsammonshtml).
+faculty(ahttpwwwcswiscedumsteelemsteelehtml).
+faculty(ahttpwwwcswiscedumcauliffmcauliffhtml).
+faculty(ahttpwwwcswiscedumjrgmjrghtml).
+faculty(ahttpwwwcswiscedutsiolistsiolishtml).
+faculty(ahttpwwwcswiscedubockrathbockrathhtml).
+faculty(ahttpwwwcswiscedubsribsrihtml).
+faculty(ahttpwwwcswisceduzhichenzhichenhtml).
+faculty(ahttpwwwcswisceduzhangzhanghtml).
+faculty(ahttpwwwcswiscedujohannesjohanneshtml).
+faculty(ahttpwwwcswisceduxuelinxuelinhtml).
+faculty(ahttpwwwcswisceduparkerparkerhtml).
+faculty(ahttpwwwcswisceduarvindarvindhtml).
+faculty(ahttpwwwcswiscedueliassieliassihtml).
+faculty(ahttpwwwcswiscedubezenekbezenekhtml).
+faculty(ahttpwwwcswiscedusslsslhtml).
+faculty(ahttpwwwcswiscedusundaramsundaramhtml).
+faculty(ahttpwwwcswiscedujbasneyjbasneyhtml).
+faculty(ahttpwwwcswisceduzhaozhaohtml).
+faculty(ahttpwwwcswiscedujherrojherrohtml).
+faculty(ahttpwwwcswisceduchandrachandrahtml).
+faculty(ahttpwwwcswisceduseitzseitzhtml).
+faculty(ahttpwwwcswiscedumdsmdshtml).
+faculty(ahttpwwwcswisceduamiramirhtml).
+faculty(ahttpwwwcswisceduyinongyinonghtml).
+faculty(ahttpwwwcswisceduhummerthummerthtml).
+faculty(ahttpwwwcswisceduuriurihtml).
+faculty(ahttpwwwcswiscedumbirkmbirkhtml).
+faculty(ahttpwwwcswiscedugsrigsrihtml).
+faculty(ahttpwwwcswiscedumoshovosmoshovoshtml).
+faculty(ahttpwwwcswiscedumarkosmarkoshtml).

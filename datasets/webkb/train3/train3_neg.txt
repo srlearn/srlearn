@@ -1,451 +1,451 @@
 // Negative examples, including created ones.
-faculty(ahttpwwwcswashingtoneduhomesvirgil). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomessparekh). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesmernst). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomeseric). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserssunghee). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduandytandythtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesmatthai). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserspahardin). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedugsrigsrihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedutoonentoonenhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduhornhornhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesforman). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumorganmorganhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedudburgerdburgerhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumdsmdshtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserstumlin). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesmikew). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusastrysastryhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesnick). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesajb). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedugidgidhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumoshovosmoshovoshtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduseaveyseaveyhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusashwinsashwinhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduuriurihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedueneumaneneumanhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesfriedman). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesredstone). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesedhong). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersmecaliff). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersdastuart). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesjovan). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersclancy). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesschweitz). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusershqliu). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduhoghoghtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduprockprockhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesortega). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesdewey). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduturnidgeturnidgehtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusershudson). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedubolobolohtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersestlin). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersykpei). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersesteban). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersmallory). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersashis). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomeszamir). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomeskingsum). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesyasushi). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomestlau). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersecamahor). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedujqjqhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomeskapu). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomeskepart). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserssammy). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomescorin). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduratliffratliffhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedubeyerbeyerhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesvivek). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersnimar). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesrex). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomestracyk). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesglinden). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedutamchestamcheshtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesbobd). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumarkosmarkoshtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduvijayvijayhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduhummerthummerthtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduflisakowflisakowhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesspeed). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserskornerup). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduzeidenzeidenhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserscanfield). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedudaileydaileyhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesfisher). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersulf). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedujiebingjiebinghtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserskharker). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesdarrenc). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesori). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumellenmellenhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduiigoriigorhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesskoga). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomeswendy). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersoguer). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersmartym). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedukrisnakrisnahtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesmckenzie). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersmoriarty). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesamir). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersckpoon). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserstwang). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduatkinsonatkinsonhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduhclhclhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduzhezhehtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedutmunsontmunsonhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomestian). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedupaulbpaulbhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserssfkaplan). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedukeeperkeeperhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersdane). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomeswolman). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserschaput). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusodanisodanihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesmap). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedutsiolistsiolishtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersssinha). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesgmurphy). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduissuseridhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomeskgolden). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedustengleistengleihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesechris). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersbhanu). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumbirkmbirkhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedukrungkrunghtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduratnakarratnakarhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomescarlson). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesmarla). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomestullsen). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduskrentnyskrentnyhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserseremolin). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusowmyasowmyahtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduburnettburnetthtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersmarkj). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersshma). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedushubushubuhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedujyothijyothihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesgeorgew). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesaberman). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesrgrimm). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedufintonfintonhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomeskayee). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduweizweizhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedujereljerelhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserscthomp). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduamiramirhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserswchen). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesjdreese). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedubenbenhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusecsechtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduglewglewhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduticktickhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusershaosun). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesjbuhler). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedueliassieliassihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduschandraschandrahtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduswanderbswanderbhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduschoinasschoinashtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduhertherthtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersvurgun). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumjrgmjrghtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersmwbarnes). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedubreachbreachhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesvass). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserszhuqing). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesdberman). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedukaravankaravanhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedunavinnavinhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduharitharithtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduirelandirelandhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceducychancychanhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesbrad). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedudzimmdzimmhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersngk). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersrraj). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedupmdpmdhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedurajirajihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersxie). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedujherrojherrohtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedubestorbestorhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesmenghee). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersruweihu). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesbam). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesfeeley). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersgooty). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomessavage). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomespardo). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersmccain). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumyuinmyuinhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedualainalainhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomescertain). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesjosh). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersliugt). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomestravis). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersrtan). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersdwip). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserssouther). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersanthony). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduashishtashishthtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedugeerygeeryhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesbp). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomeszmason). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersjbednar). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesmadani). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomeswaynew). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomessalisbur). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomeschou). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersagapito). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomespaul). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduqwqwhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersisheldon). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedunatassanatassahtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserswarshaw). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesmel). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesadam). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomessungeun). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesjasons). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserskedar). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedujigneshjigneshhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduwengerwengerhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedujussijussihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceducsashicsashihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserszchen). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusershaizhou). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedulukaslukashtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduwatrouswatroushtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumelskimelskihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedujbasneyjbasneyhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersluxue). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedulzhenglzhenghtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesnautiyal). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduzhaozhaohtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesbricker). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduzhangzhanghtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserscpg). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesjuanito). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomestiwary). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduweirucweiruchtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesanhai). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersshenoy). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesmontgmry). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesgarrett). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesxqin). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersrupert). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusaeedsaeedhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersdianelaw). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedukristintkristinthtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserstarun). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersotu). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceducurtcurthtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesmock). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusershiep). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedurcarlrcarlhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesdlee). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersvipin). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserschjwang). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusslsslhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumcauliffmcauliffhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserszhouxiao). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesahrens). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceducchincchinhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduglasereaglasereahtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduammonsammonshtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduschnarrschnarrhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesshuntak). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusosohtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesvanhilst). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduxuelinxuelinhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduallexallexhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesnara). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersgzhang). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduledermanledermanhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesderrick). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesjpower). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesjdean). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomeshinshaw). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserswylee). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersleekk). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserslandrum). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduhastihastihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduplakalplakalhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesegs). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusershewett). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduchandrachandrahtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduaguptaaguptahtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesmef). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersaruna). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesdylan). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduyinyinhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesfix). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersemmawu). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesjlo). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersyangyang). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserskistler). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersvsr). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomeskwb). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusiffsiffhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesbecker). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomespighin). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesvoelker). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersrou). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduarvindarvindhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesdfasulo). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersobrien). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesrrogers). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumanuvirmanuvirhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersajohn). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedubsribsrihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesctkwok). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedugreggreghtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumilomilohtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersmarkus). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersxguo). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersclsy). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedutwangtwanghtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedupdevriespdevrieshtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduashrafashrafhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedunewhallnewhallhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomessds). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomessoha). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedupoosalapoosalahtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersybliu). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersunicron). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesrea). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedujshabeljshabelhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserspecina). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesjbaer). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomespardy). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduguangshuguangshuhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesddion). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusteversteverhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserserkok). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesecrocke). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedubradbradhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersccp). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersgokul). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersfrancois). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserssriram). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersbayardo). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomeslarryindexhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserssmaragd). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserssawada). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomeshauck). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduramasamyramasamyhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersemery). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusershyanbin). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserscorrel). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersneerajm). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserswalbourn). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersgajit). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedukaxiraskaxirashtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedunspnsphtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersgeeta). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduminosminoshtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersgyx). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumoymoyhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersyau). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersbogo). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersson). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesgjb). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesdbc1). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesdougz). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduseitzseitzhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesbrendan). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduparkerparkerhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesian). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserscxh). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesgrove). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduzjzjhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersqiming). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserscdj). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedulukelukehtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersadams). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersyonglu). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesshade). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduericroericrohtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedujonbjonbhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduvgantivgantihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedufalsafifalsafihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomessgberg). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduramanramanhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesohlrich). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersdhs). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersmarco). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersgunther). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomeswchan). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesausland). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduzhichenzhichenhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersjadair). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersrhwang). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedunaimnaimhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersyschoe). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesromer). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedulloydlloydhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesjshakes). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesdbj). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomessegal). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedujoevjoevhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserschuang). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersdamani). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersjthomas). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersyuanjing). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedunhallnhallhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersqzuo). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedubezenekbezenekhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesthu). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersbert). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedubockrathbockrathhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersmarkng). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumsteelemsteelehtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceducaolcaolhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomeswhsieh). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersjyluo). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersejp). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersmadhukar). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserssyu). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedujohannesjohanneshtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusubbaraosubbaraohtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedumreamesmreameshtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduscalscalhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserscnchu). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserstewari). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserspaulmcq). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomescsk). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesgrant). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserssvkakkad). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersckwong). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserspawang). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusundaramsundaramhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersxfeng). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersesra). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedurahulrahulhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusamitsamithtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduyinongyinonghtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomeslopez). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedujglarsonjglarsonhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduleavyleavyhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedukmurlikmurlihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduzmudzinzmudzinhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserspadgett). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserscarruth). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduchilimbichilimbihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedugviswanagviswanahtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersjprior). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserstaowang). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswiscedusuhuisuhuihtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersskumar). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduejhazenejhazenhtml). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersjfang). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersvbb). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersdionisis). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesmarclang). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersgunnels). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserswkmak). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduusersyufeng). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserssak). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcsutexaseduuserssowmya). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswashingtoneduhomesjoebob). % Provenance: a randomly generated negative example.
-faculty(ahttpwwwcswisceduweaverweaverhtml). % Provenance: a randomly generated negative example.
+faculty(ahttpwwwcswashingtoneduhomesvirgil).
+faculty(ahttpwwwcswashingtoneduhomessparekh).
+faculty(ahttpwwwcswashingtoneduhomesmernst).
+faculty(ahttpwwwcswashingtoneduhomeseric).
+faculty(ahttpwwwcsutexaseduuserssunghee).
+faculty(ahttpwwwcswisceduandytandythtml).
+faculty(ahttpwwwcswashingtoneduhomesmatthai).
+faculty(ahttpwwwcsutexaseduuserspahardin).
+faculty(ahttpwwwcswiscedugsrigsrihtml).
+faculty(ahttpwwwcswiscedutoonentoonenhtml).
+faculty(ahttpwwwcswisceduhornhornhtml).
+faculty(ahttpwwwcswashingtoneduhomesforman).
+faculty(ahttpwwwcswiscedumorganmorganhtml).
+faculty(ahttpwwwcswiscedudburgerdburgerhtml).
+faculty(ahttpwwwcswiscedumdsmdshtml).
+faculty(ahttpwwwcsutexaseduuserstumlin).
+faculty(ahttpwwwcswashingtoneduhomesmikew).
+faculty(ahttpwwwcswiscedusastrysastryhtml).
+faculty(ahttpwwwcswashingtoneduhomesnick).
+faculty(ahttpwwwcswashingtoneduhomesajb).
+faculty(ahttpwwwcswiscedugidgidhtml).
+faculty(ahttpwwwcswiscedumoshovosmoshovoshtml).
+faculty(ahttpwwwcswisceduseaveyseaveyhtml).
+faculty(ahttpwwwcswiscedusashwinsashwinhtml).
+faculty(ahttpwwwcswisceduuriurihtml).
+faculty(ahttpwwwcswiscedueneumaneneumanhtml).
+faculty(ahttpwwwcswashingtoneduhomesfriedman).
+faculty(ahttpwwwcswashingtoneduhomesredstone).
+faculty(ahttpwwwcswashingtoneduhomesedhong).
+faculty(ahttpwwwcsutexaseduusersmecaliff).
+faculty(ahttpwwwcsutexaseduusersdastuart).
+faculty(ahttpwwwcswashingtoneduhomesjovan).
+faculty(ahttpwwwcsutexaseduusersclancy).
+faculty(ahttpwwwcswashingtoneduhomesschweitz).
+faculty(ahttpwwwcsutexaseduusershqliu).
+faculty(ahttpwwwcswisceduhoghoghtml).
+faculty(ahttpwwwcswisceduprockprockhtml).
+faculty(ahttpwwwcswashingtoneduhomesortega).
+faculty(ahttpwwwcswashingtoneduhomesdewey).
+faculty(ahttpwwwcswisceduturnidgeturnidgehtml).
+faculty(ahttpwwwcsutexaseduusershudson).
+faculty(ahttpwwwcswiscedubolobolohtml).
+faculty(ahttpwwwcsutexaseduusersestlin).
+faculty(ahttpwwwcsutexaseduusersykpei).
+faculty(ahttpwwwcsutexaseduusersesteban).
+faculty(ahttpwwwcsutexaseduusersmallory).
+faculty(ahttpwwwcsutexaseduusersashis).
+faculty(ahttpwwwcswashingtoneduhomeszamir).
+faculty(ahttpwwwcswashingtoneduhomeskingsum).
+faculty(ahttpwwwcswashingtoneduhomesyasushi).
+faculty(ahttpwwwcswashingtoneduhomestlau).
+faculty(ahttpwwwcsutexaseduusersecamahor).
+faculty(ahttpwwwcswiscedujqjqhtml).
+faculty(ahttpwwwcswashingtoneduhomeskapu).
+faculty(ahttpwwwcswashingtoneduhomeskepart).
+faculty(ahttpwwwcsutexaseduuserssammy).
+faculty(ahttpwwwcswashingtoneduhomescorin).
+faculty(ahttpwwwcswisceduratliffratliffhtml).
+faculty(ahttpwwwcswiscedubeyerbeyerhtml).
+faculty(ahttpwwwcswashingtoneduhomesvivek).
+faculty(ahttpwwwcsutexaseduusersnimar).
+faculty(ahttpwwwcswashingtoneduhomesrex).
+faculty(ahttpwwwcswashingtoneduhomestracyk).
+faculty(ahttpwwwcswashingtoneduhomesglinden).
+faculty(ahttpwwwcswiscedutamchestamcheshtml).
+faculty(ahttpwwwcswashingtoneduhomesbobd).
+faculty(ahttpwwwcswiscedumarkosmarkoshtml).
+faculty(ahttpwwwcswisceduvijayvijayhtml).
+faculty(ahttpwwwcswisceduhummerthummerthtml).
+faculty(ahttpwwwcswisceduflisakowflisakowhtml).
+faculty(ahttpwwwcswashingtoneduhomesspeed).
+faculty(ahttpwwwcsutexaseduuserskornerup).
+faculty(ahttpwwwcswisceduzeidenzeidenhtml).
+faculty(ahttpwwwcsutexaseduuserscanfield).
+faculty(ahttpwwwcswiscedudaileydaileyhtml).
+faculty(ahttpwwwcswashingtoneduhomesfisher).
+faculty(ahttpwwwcsutexaseduusersulf).
+faculty(ahttpwwwcswiscedujiebingjiebinghtml).
+faculty(ahttpwwwcsutexaseduuserskharker).
+faculty(ahttpwwwcswashingtoneduhomesdarrenc).
+faculty(ahttpwwwcswashingtoneduhomesori).
+faculty(ahttpwwwcswiscedumellenmellenhtml).
+faculty(ahttpwwwcswisceduiigoriigorhtml).
+faculty(ahttpwwwcswashingtoneduhomesskoga).
+faculty(ahttpwwwcswashingtoneduhomeswendy).
+faculty(ahttpwwwcsutexaseduusersoguer).
+faculty(ahttpwwwcsutexaseduusersmartym).
+faculty(ahttpwwwcswiscedukrisnakrisnahtml).
+faculty(ahttpwwwcswashingtoneduhomesmckenzie).
+faculty(ahttpwwwcsutexaseduusersmoriarty).
+faculty(ahttpwwwcswashingtoneduhomesamir).
+faculty(ahttpwwwcsutexaseduusersckpoon).
+faculty(ahttpwwwcsutexaseduuserstwang).
+faculty(ahttpwwwcswisceduatkinsonatkinsonhtml).
+faculty(ahttpwwwcswisceduhclhclhtml).
+faculty(ahttpwwwcswisceduzhezhehtml).
+faculty(ahttpwwwcswiscedutmunsontmunsonhtml).
+faculty(ahttpwwwcswashingtoneduhomestian).
+faculty(ahttpwwwcswiscedupaulbpaulbhtml).
+faculty(ahttpwwwcsutexaseduuserssfkaplan).
+faculty(ahttpwwwcswiscedukeeperkeeperhtml).
+faculty(ahttpwwwcsutexaseduusersdane).
+faculty(ahttpwwwcswashingtoneduhomeswolman).
+faculty(ahttpwwwcsutexaseduuserschaput).
+faculty(ahttpwwwcswiscedusodanisodanihtml).
+faculty(ahttpwwwcswashingtoneduhomesmap).
+faculty(ahttpwwwcswiscedutsiolistsiolishtml).
+faculty(ahttpwwwcsutexaseduusersssinha).
+faculty(ahttpwwwcswashingtoneduhomesgmurphy).
+faculty(ahttpwwwcswisceduissuseridhtml).
+faculty(ahttpwwwcswashingtoneduhomeskgolden).
+faculty(ahttpwwwcswiscedustengleistengleihtml).
+faculty(ahttpwwwcswashingtoneduhomesechris).
+faculty(ahttpwwwcsutexaseduusersbhanu).
+faculty(ahttpwwwcswiscedumbirkmbirkhtml).
+faculty(ahttpwwwcswiscedukrungkrunghtml).
+faculty(ahttpwwwcswisceduratnakarratnakarhtml).
+faculty(ahttpwwwcswashingtoneduhomescarlson).
+faculty(ahttpwwwcswashingtoneduhomesmarla).
+faculty(ahttpwwwcswashingtoneduhomestullsen).
+faculty(ahttpwwwcswisceduskrentnyskrentnyhtml).
+faculty(ahttpwwwcsutexaseduuserseremolin).
+faculty(ahttpwwwcswiscedusowmyasowmyahtml).
+faculty(ahttpwwwcswisceduburnettburnetthtml).
+faculty(ahttpwwwcsutexaseduusersmarkj).
+faculty(ahttpwwwcsutexaseduusersshma).
+faculty(ahttpwwwcswiscedushubushubuhtml).
+faculty(ahttpwwwcswiscedujyothijyothihtml).
+faculty(ahttpwwwcswashingtoneduhomesgeorgew).
+faculty(ahttpwwwcswashingtoneduhomesaberman).
+faculty(ahttpwwwcswashingtoneduhomesrgrimm).
+faculty(ahttpwwwcswiscedufintonfintonhtml).
+faculty(ahttpwwwcswashingtoneduhomeskayee).
+faculty(ahttpwwwcswisceduweizweizhtml).
+faculty(ahttpwwwcswiscedujereljerelhtml).
+faculty(ahttpwwwcsutexaseduuserscthomp).
+faculty(ahttpwwwcswisceduamiramirhtml).
+faculty(ahttpwwwcsutexaseduuserswchen).
+faculty(ahttpwwwcswashingtoneduhomesjdreese).
+faculty(ahttpwwwcswiscedubenbenhtml).
+faculty(ahttpwwwcswiscedusecsechtml).
+faculty(ahttpwwwcswisceduglewglewhtml).
+faculty(ahttpwwwcswisceduticktickhtml).
+faculty(ahttpwwwcsutexaseduusershaosun).
+faculty(ahttpwwwcswashingtoneduhomesjbuhler).
+faculty(ahttpwwwcswiscedueliassieliassihtml).
+faculty(ahttpwwwcswisceduschandraschandrahtml).
+faculty(ahttpwwwcswisceduswanderbswanderbhtml).
+faculty(ahttpwwwcswisceduschoinasschoinashtml).
+faculty(ahttpwwwcswisceduhertherthtml).
+faculty(ahttpwwwcsutexaseduusersvurgun).
+faculty(ahttpwwwcswiscedumjrgmjrghtml).
+faculty(ahttpwwwcsutexaseduusersmwbarnes).
+faculty(ahttpwwwcswiscedubreachbreachhtml).
+faculty(ahttpwwwcswashingtoneduhomesvass).
+faculty(ahttpwwwcsutexaseduuserszhuqing).
+faculty(ahttpwwwcswashingtoneduhomesdberman).
+faculty(ahttpwwwcswiscedukaravankaravanhtml).
+faculty(ahttpwwwcswiscedunavinnavinhtml).
+faculty(ahttpwwwcswisceduharitharithtml).
+faculty(ahttpwwwcswisceduirelandirelandhtml).
+faculty(ahttpwwwcswisceducychancychanhtml).
+faculty(ahttpwwwcswashingtoneduhomesbrad).
+faculty(ahttpwwwcswiscedudzimmdzimmhtml).
+faculty(ahttpwwwcsutexaseduusersngk).
+faculty(ahttpwwwcsutexaseduusersrraj).
+faculty(ahttpwwwcswiscedupmdpmdhtml).
+faculty(ahttpwwwcswiscedurajirajihtml).
+faculty(ahttpwwwcsutexaseduusersxie).
+faculty(ahttpwwwcswiscedujherrojherrohtml).
+faculty(ahttpwwwcswiscedubestorbestorhtml).
+faculty(ahttpwwwcswashingtoneduhomesmenghee).
+faculty(ahttpwwwcsutexaseduusersruweihu).
+faculty(ahttpwwwcswashingtoneduhomesbam).
+faculty(ahttpwwwcswashingtoneduhomesfeeley).
+faculty(ahttpwwwcsutexaseduusersgooty).
+faculty(ahttpwwwcswashingtoneduhomessavage).
+faculty(ahttpwwwcswashingtoneduhomespardo).
+faculty(ahttpwwwcsutexaseduusersmccain).
+faculty(ahttpwwwcswiscedumyuinmyuinhtml).
+faculty(ahttpwwwcswiscedualainalainhtml).
+faculty(ahttpwwwcswashingtoneduhomescertain).
+faculty(ahttpwwwcswashingtoneduhomesjosh).
+faculty(ahttpwwwcsutexaseduusersliugt).
+faculty(ahttpwwwcswashingtoneduhomestravis).
+faculty(ahttpwwwcsutexaseduusersrtan).
+faculty(ahttpwwwcsutexaseduusersdwip).
+faculty(ahttpwwwcsutexaseduuserssouther).
+faculty(ahttpwwwcsutexaseduusersanthony).
+faculty(ahttpwwwcswisceduashishtashishthtml).
+faculty(ahttpwwwcswiscedugeerygeeryhtml).
+faculty(ahttpwwwcswashingtoneduhomesbp).
+faculty(ahttpwwwcswashingtoneduhomeszmason).
+faculty(ahttpwwwcsutexaseduusersjbednar).
+faculty(ahttpwwwcswashingtoneduhomesmadani).
+faculty(ahttpwwwcswashingtoneduhomeswaynew).
+faculty(ahttpwwwcswashingtoneduhomessalisbur).
+faculty(ahttpwwwcswashingtoneduhomeschou).
+faculty(ahttpwwwcsutexaseduusersagapito).
+faculty(ahttpwwwcswashingtoneduhomespaul).
+faculty(ahttpwwwcswisceduqwqwhtml).
+faculty(ahttpwwwcsutexaseduusersisheldon).
+faculty(ahttpwwwcswiscedunatassanatassahtml).
+faculty(ahttpwwwcsutexaseduuserswarshaw).
+faculty(ahttpwwwcswashingtoneduhomesmel).
+faculty(ahttpwwwcswashingtoneduhomesadam).
+faculty(ahttpwwwcswashingtoneduhomessungeun).
+faculty(ahttpwwwcswashingtoneduhomesjasons).
+faculty(ahttpwwwcsutexaseduuserskedar).
+faculty(ahttpwwwcswiscedujigneshjigneshhtml).
+faculty(ahttpwwwcswisceduwengerwengerhtml).
+faculty(ahttpwwwcswiscedujussijussihtml).
+faculty(ahttpwwwcswisceducsashicsashihtml).
+faculty(ahttpwwwcsutexaseduuserszchen).
+faculty(ahttpwwwcsutexaseduusershaizhou).
+faculty(ahttpwwwcswiscedulukaslukashtml).
+faculty(ahttpwwwcswisceduwatrouswatroushtml).
+faculty(ahttpwwwcswiscedumelskimelskihtml).
+faculty(ahttpwwwcswiscedujbasneyjbasneyhtml).
+faculty(ahttpwwwcsutexaseduusersluxue).
+faculty(ahttpwwwcswiscedulzhenglzhenghtml).
+faculty(ahttpwwwcswashingtoneduhomesnautiyal).
+faculty(ahttpwwwcswisceduzhaozhaohtml).
+faculty(ahttpwwwcswashingtoneduhomesbricker).
+faculty(ahttpwwwcswisceduzhangzhanghtml).
+faculty(ahttpwwwcsutexaseduuserscpg).
+faculty(ahttpwwwcswashingtoneduhomesjuanito).
+faculty(ahttpwwwcswashingtoneduhomestiwary).
+faculty(ahttpwwwcswisceduweirucweiruchtml).
+faculty(ahttpwwwcswashingtoneduhomesanhai).
+faculty(ahttpwwwcsutexaseduusersshenoy).
+faculty(ahttpwwwcswashingtoneduhomesmontgmry).
+faculty(ahttpwwwcswashingtoneduhomesgarrett).
+faculty(ahttpwwwcswashingtoneduhomesxqin).
+faculty(ahttpwwwcsutexaseduusersrupert).
+faculty(ahttpwwwcswiscedusaeedsaeedhtml).
+faculty(ahttpwwwcsutexaseduusersdianelaw).
+faculty(ahttpwwwcswiscedukristintkristinthtml).
+faculty(ahttpwwwcsutexaseduuserstarun).
+faculty(ahttpwwwcsutexaseduusersotu).
+faculty(ahttpwwwcswisceducurtcurthtml).
+faculty(ahttpwwwcswashingtoneduhomesmock).
+faculty(ahttpwwwcsutexaseduusershiep).
+faculty(ahttpwwwcswiscedurcarlrcarlhtml).
+faculty(ahttpwwwcswashingtoneduhomesdlee).
+faculty(ahttpwwwcsutexaseduusersvipin).
+faculty(ahttpwwwcsutexaseduuserschjwang).
+faculty(ahttpwwwcswiscedusslsslhtml).
+faculty(ahttpwwwcswiscedumcauliffmcauliffhtml).
+faculty(ahttpwwwcsutexaseduuserszhouxiao).
+faculty(ahttpwwwcswashingtoneduhomesahrens).
+faculty(ahttpwwwcswisceducchincchinhtml).
+faculty(ahttpwwwcswisceduglasereaglasereahtml).
+faculty(ahttpwwwcswisceduammonsammonshtml).
+faculty(ahttpwwwcswisceduschnarrschnarrhtml).
+faculty(ahttpwwwcswashingtoneduhomesshuntak).
+faculty(ahttpwwwcswiscedusosohtml).
+faculty(ahttpwwwcswashingtoneduhomesvanhilst).
+faculty(ahttpwwwcswisceduxuelinxuelinhtml).
+faculty(ahttpwwwcswisceduallexallexhtml).
+faculty(ahttpwwwcswashingtoneduhomesnara).
+faculty(ahttpwwwcsutexaseduusersgzhang).
+faculty(ahttpwwwcswisceduledermanledermanhtml).
+faculty(ahttpwwwcswashingtoneduhomesderrick).
+faculty(ahttpwwwcswashingtoneduhomesjpower).
+faculty(ahttpwwwcswashingtoneduhomesjdean).
+faculty(ahttpwwwcswashingtoneduhomeshinshaw).
+faculty(ahttpwwwcsutexaseduuserswylee).
+faculty(ahttpwwwcsutexaseduusersleekk).
+faculty(ahttpwwwcsutexaseduuserslandrum).
+faculty(ahttpwwwcswisceduhastihastihtml).
+faculty(ahttpwwwcswisceduplakalplakalhtml).
+faculty(ahttpwwwcswashingtoneduhomesegs).
+faculty(ahttpwwwcsutexaseduusershewett).
+faculty(ahttpwwwcswisceduchandrachandrahtml).
+faculty(ahttpwwwcswisceduaguptaaguptahtml).
+faculty(ahttpwwwcswashingtoneduhomesmef).
+faculty(ahttpwwwcsutexaseduusersaruna).
+faculty(ahttpwwwcswashingtoneduhomesdylan).
+faculty(ahttpwwwcswisceduyinyinhtml).
+faculty(ahttpwwwcswashingtoneduhomesfix).
+faculty(ahttpwwwcsutexaseduusersemmawu).
+faculty(ahttpwwwcswashingtoneduhomesjlo).
+faculty(ahttpwwwcsutexaseduusersyangyang).
+faculty(ahttpwwwcsutexaseduuserskistler).
+faculty(ahttpwwwcsutexaseduusersvsr).
+faculty(ahttpwwwcswashingtoneduhomeskwb).
+faculty(ahttpwwwcswiscedusiffsiffhtml).
+faculty(ahttpwwwcswashingtoneduhomesbecker).
+faculty(ahttpwwwcswashingtoneduhomespighin).
+faculty(ahttpwwwcswashingtoneduhomesvoelker).
+faculty(ahttpwwwcsutexaseduusersrou).
+faculty(ahttpwwwcswisceduarvindarvindhtml).
+faculty(ahttpwwwcswashingtoneduhomesdfasulo).
+faculty(ahttpwwwcsutexaseduusersobrien).
+faculty(ahttpwwwcswashingtoneduhomesrrogers).
+faculty(ahttpwwwcswiscedumanuvirmanuvirhtml).
+faculty(ahttpwwwcsutexaseduusersajohn).
+faculty(ahttpwwwcswiscedubsribsrihtml).
+faculty(ahttpwwwcswashingtoneduhomesctkwok).
+faculty(ahttpwwwcswiscedugreggreghtml).
+faculty(ahttpwwwcswiscedumilomilohtml).
+faculty(ahttpwwwcsutexaseduusersmarkus).
+faculty(ahttpwwwcsutexaseduusersxguo).
+faculty(ahttpwwwcsutexaseduusersclsy).
+faculty(ahttpwwwcswiscedutwangtwanghtml).
+faculty(ahttpwwwcswiscedupdevriespdevrieshtml).
+faculty(ahttpwwwcswisceduashrafashrafhtml).
+faculty(ahttpwwwcswiscedunewhallnewhallhtml).
+faculty(ahttpwwwcswashingtoneduhomessds).
+faculty(ahttpwwwcswashingtoneduhomessoha).
+faculty(ahttpwwwcswiscedupoosalapoosalahtml).
+faculty(ahttpwwwcsutexaseduusersybliu).
+faculty(ahttpwwwcsutexaseduusersunicron).
+faculty(ahttpwwwcswashingtoneduhomesrea).
+faculty(ahttpwwwcswiscedujshabeljshabelhtml).
+faculty(ahttpwwwcsutexaseduuserspecina).
+faculty(ahttpwwwcswashingtoneduhomesjbaer).
+faculty(ahttpwwwcswashingtoneduhomespardy).
+faculty(ahttpwwwcswisceduguangshuguangshuhtml).
+faculty(ahttpwwwcswashingtoneduhomesddion).
+faculty(ahttpwwwcswiscedusteversteverhtml).
+faculty(ahttpwwwcsutexaseduuserserkok).
+faculty(ahttpwwwcswashingtoneduhomesecrocke).
+faculty(ahttpwwwcswiscedubradbradhtml).
+faculty(ahttpwwwcsutexaseduusersccp).
+faculty(ahttpwwwcsutexaseduusersgokul).
+faculty(ahttpwwwcsutexaseduusersfrancois).
+faculty(ahttpwwwcsutexaseduuserssriram).
+faculty(ahttpwwwcsutexaseduusersbayardo).
+faculty(ahttpwwwcswashingtoneduhomeslarryindexhtml).
+faculty(ahttpwwwcsutexaseduuserssmaragd).
+faculty(ahttpwwwcsutexaseduuserssawada).
+faculty(ahttpwwwcswashingtoneduhomeshauck).
+faculty(ahttpwwwcswisceduramasamyramasamyhtml).
+faculty(ahttpwwwcsutexaseduusersemery).
+faculty(ahttpwwwcsutexaseduusershyanbin).
+faculty(ahttpwwwcsutexaseduuserscorrel).
+faculty(ahttpwwwcsutexaseduusersneerajm).
+faculty(ahttpwwwcsutexaseduuserswalbourn).
+faculty(ahttpwwwcsutexaseduusersgajit).
+faculty(ahttpwwwcswiscedukaxiraskaxirashtml).
+faculty(ahttpwwwcswiscedunspnsphtml).
+faculty(ahttpwwwcsutexaseduusersgeeta).
+faculty(ahttpwwwcswisceduminosminoshtml).
+faculty(ahttpwwwcsutexaseduusersgyx).
+faculty(ahttpwwwcswiscedumoymoyhtml).
+faculty(ahttpwwwcsutexaseduusersyau).
+faculty(ahttpwwwcsutexaseduusersbogo).
+faculty(ahttpwwwcsutexaseduusersson).
+faculty(ahttpwwwcswashingtoneduhomesgjb).
+faculty(ahttpwwwcswashingtoneduhomesdbc1).
+faculty(ahttpwwwcswashingtoneduhomesdougz).
+faculty(ahttpwwwcswisceduseitzseitzhtml).
+faculty(ahttpwwwcswashingtoneduhomesbrendan).
+faculty(ahttpwwwcswisceduparkerparkerhtml).
+faculty(ahttpwwwcswashingtoneduhomesian).
+faculty(ahttpwwwcsutexaseduuserscxh).
+faculty(ahttpwwwcswashingtoneduhomesgrove).
+faculty(ahttpwwwcswisceduzjzjhtml).
+faculty(ahttpwwwcsutexaseduusersqiming).
+faculty(ahttpwwwcsutexaseduuserscdj).
+faculty(ahttpwwwcswiscedulukelukehtml).
+faculty(ahttpwwwcsutexaseduusersadams).
+faculty(ahttpwwwcsutexaseduusersyonglu).
+faculty(ahttpwwwcswashingtoneduhomesshade).
+faculty(ahttpwwwcswisceduericroericrohtml).
+faculty(ahttpwwwcswiscedujonbjonbhtml).
+faculty(ahttpwwwcswisceduvgantivgantihtml).
+faculty(ahttpwwwcswiscedufalsafifalsafihtml).
+faculty(ahttpwwwcswashingtoneduhomessgberg).
+faculty(ahttpwwwcswisceduramanramanhtml).
+faculty(ahttpwwwcswashingtoneduhomesohlrich).
+faculty(ahttpwwwcsutexaseduusersdhs).
+faculty(ahttpwwwcsutexaseduusersmarco).
+faculty(ahttpwwwcsutexaseduusersgunther).
+faculty(ahttpwwwcswashingtoneduhomeswchan).
+faculty(ahttpwwwcswashingtoneduhomesausland).
+faculty(ahttpwwwcswisceduzhichenzhichenhtml).
+faculty(ahttpwwwcsutexaseduusersjadair).
+faculty(ahttpwwwcsutexaseduusersrhwang).
+faculty(ahttpwwwcswiscedunaimnaimhtml).
+faculty(ahttpwwwcsutexaseduusersyschoe).
+faculty(ahttpwwwcswashingtoneduhomesromer).
+faculty(ahttpwwwcswiscedulloydlloydhtml).
+faculty(ahttpwwwcswashingtoneduhomesjshakes).
+faculty(ahttpwwwcswashingtoneduhomesdbj).
+faculty(ahttpwwwcswashingtoneduhomessegal).
+faculty(ahttpwwwcswiscedujoevjoevhtml).
+faculty(ahttpwwwcsutexaseduuserschuang).
+faculty(ahttpwwwcsutexaseduusersdamani).
+faculty(ahttpwwwcsutexaseduusersjthomas).
+faculty(ahttpwwwcsutexaseduusersyuanjing).
+faculty(ahttpwwwcswiscedunhallnhallhtml).
+faculty(ahttpwwwcsutexaseduusersqzuo).
+faculty(ahttpwwwcswiscedubezenekbezenekhtml).
+faculty(ahttpwwwcswashingtoneduhomesthu).
+faculty(ahttpwwwcsutexaseduusersbert).
+faculty(ahttpwwwcswiscedubockrathbockrathhtml).
+faculty(ahttpwwwcsutexaseduusersmarkng).
+faculty(ahttpwwwcswiscedumsteelemsteelehtml).
+faculty(ahttpwwwcswisceducaolcaolhtml).
+faculty(ahttpwwwcswashingtoneduhomeswhsieh).
+faculty(ahttpwwwcsutexaseduusersjyluo).
+faculty(ahttpwwwcsutexaseduusersejp).
+faculty(ahttpwwwcsutexaseduusersmadhukar).
+faculty(ahttpwwwcsutexaseduuserssyu).
+faculty(ahttpwwwcswiscedujohannesjohanneshtml).
+faculty(ahttpwwwcswiscedusubbaraosubbaraohtml).
+faculty(ahttpwwwcswiscedumreamesmreameshtml).
+faculty(ahttpwwwcswisceduscalscalhtml).
+faculty(ahttpwwwcsutexaseduuserscnchu).
+faculty(ahttpwwwcsutexaseduuserstewari).
+faculty(ahttpwwwcsutexaseduuserspaulmcq).
+faculty(ahttpwwwcswashingtoneduhomescsk).
+faculty(ahttpwwwcswashingtoneduhomesgrant).
+faculty(ahttpwwwcsutexaseduuserssvkakkad).
+faculty(ahttpwwwcsutexaseduusersckwong).
+faculty(ahttpwwwcsutexaseduuserspawang).
+faculty(ahttpwwwcswiscedusundaramsundaramhtml).
+faculty(ahttpwwwcsutexaseduusersxfeng).
+faculty(ahttpwwwcsutexaseduusersesra).
+faculty(ahttpwwwcswiscedurahulrahulhtml).
+faculty(ahttpwwwcswiscedusamitsamithtml).
+faculty(ahttpwwwcswisceduyinongyinonghtml).
+faculty(ahttpwwwcswashingtoneduhomeslopez).
+faculty(ahttpwwwcswiscedujglarsonjglarsonhtml).
+faculty(ahttpwwwcswisceduleavyleavyhtml).
+faculty(ahttpwwwcswiscedukmurlikmurlihtml).
+faculty(ahttpwwwcswisceduzmudzinzmudzinhtml).
+faculty(ahttpwwwcsutexaseduuserspadgett).
+faculty(ahttpwwwcsutexaseduuserscarruth).
+faculty(ahttpwwwcswisceduchilimbichilimbihtml).
+faculty(ahttpwwwcswiscedugviswanagviswanahtml).
+faculty(ahttpwwwcsutexaseduusersjprior).
+faculty(ahttpwwwcsutexaseduuserstaowang).
+faculty(ahttpwwwcswiscedusuhuisuhuihtml).
+faculty(ahttpwwwcsutexaseduusersskumar).
+faculty(ahttpwwwcswisceduejhazenejhazenhtml).
+faculty(ahttpwwwcsutexaseduusersjfang).
+faculty(ahttpwwwcsutexaseduusersvbb).
+faculty(ahttpwwwcsutexaseduusersdionisis).
+faculty(ahttpwwwcswashingtoneduhomesmarclang).
+faculty(ahttpwwwcsutexaseduusersgunnels).
+faculty(ahttpwwwcsutexaseduuserswkmak).
+faculty(ahttpwwwcsutexaseduusersyufeng).
+faculty(ahttpwwwcsutexaseduuserssak).
+faculty(ahttpwwwcsutexaseduuserssowmya).
+faculty(ahttpwwwcswashingtoneduhomesjoebob).
+faculty(ahttpwwwcswisceduweaverweaverhtml).
