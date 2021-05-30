@@ -6,7 +6,7 @@ Smokes-Friends-Cancer
 The smokes-friends-cancer example is a common first example in probabilistic relational models, here
 we use this set to learn a Relational Dependency Network (:class:`srlearn.rdn.BoostedRDN`).
 
-This makes use of :class:`srlearn.example_data`, which provides two `srlearn.Database` objects named
+This makes use of ``srlearn.example_data``, which provides two `srlearn.Database` objects named
 ``example_data.train`` and ``example_data.test``.
 
 This shows how the margin between positive and negative examples is maximized as the number of

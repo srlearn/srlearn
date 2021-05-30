@@ -11,6 +11,8 @@ features are used as splitting criteria.
 from srlearn.rdn import BoostedRDN
 from srlearn import Background
 from srlearn.database import Database
+from srlearn.plotting import export_digraph
+from srlearn.plotting import plot_digraph
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -45,4 +47,7 @@ clf = BoostedRDN(
 )
 
 clf.fit(webkb_train)
+
 print(clf.feature_importances_)
+
+plot_digraph(export_digraph(clf, 0), format='html')

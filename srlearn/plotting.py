@@ -7,6 +7,14 @@ Methods for plotting and visualization.
 from .base import BaseBoostedRelationalModel
 
 
+class _GVPlotter:
+    def __init__(self, dot_string):
+        self.dot_string = dot_string
+    def _repr_html_(self):
+        import graphviz
+        return graphviz.Source(self.dot_string)._repr_svg_()
+
+
 def plot_digraph(dot_string, format="png"):
     """Plot a digraph as an image.
 
@@ -24,9 +32,11 @@ def plot_digraph(dot_string, format="png"):
     """
     try:
         import graphviz
-    except ImportError:
-        raise ImportError("graphviz needs to be available to plot_digraph")
+    except ImportError as excep:
+        raise ImportError("graphviz needs to be available to plot_digraph") from excep
     from graphviz import Source
+    if format == "html":
+        return _GVPlotter(dot_string)
     return Source(dot_string, format=format)
 
 
@@ -73,7 +83,7 @@ def export_digraph(booster, tree_index=0, out_file=None):
         raise TypeError("booster must inherit from BaseBoostedRelationalModel.")
     dotfiles = booster._dotfiles
 
-    if not (0 <= tree_index < len(dotfiles)):
+    if not 0 <= tree_index < len(dotfiles):
         raise IndexError("tree_index is out of range.")
 
     if out_file:
