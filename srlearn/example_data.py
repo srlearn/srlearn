@@ -31,7 +31,10 @@ Facts:
 
 """
 
+import logging
 from .database import Database
+
+logging.warning("`example_data` moved to `srlearn.datasets.load_toy_cancer`, to be removed in 0.6")
 
 # pylint: disable=invalid-name
 train = Database()
