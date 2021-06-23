@@ -27,8 +27,9 @@ represent arbitrary social networks in a vector representation.
 
 In order to get around this, we adopt Prolog clauses to represent our data:
 
->>> from srlearn import example_data
->>> for predicate in example_data.train.pos:
+>>> from srlearn.datasets import load_toy_cancer
+>>> toy_cancer = load_toy_cancer()
+>>> for predicate in toy_cancer.train.pos:
 ...     print(predicate)
 ...
 cancer(Alice).
@@ -36,8 +37,9 @@ cancer(Bob).
 cancer(Chuck).
 cancer(Fred).
 
->>> from srlearn import example_data
->>> for predicate in example_data.train.facts:
+>>> from srlearn.datasets import load_toy_cancer
+>>> toy_cancer = load_toy_cancer()
+>>> for predicate in toy_cancer.train.facts:
 ...    print(predicate)
 ...
 friends(Alice, Bob).
@@ -59,7 +61,7 @@ smokes(Bob).
 Since this differs from the vector representation, this uses a :class:`srlearn.Database` object
 to represent positive examples, negative examples, and facts.
 
-2. Declaring our Backround Knowledge
+1. Declaring our Backround Knowledge
 ------------------------------------
 
 The :class:`srlearn.Background` object helps declare background knowledge for a domain, as well as
@@ -139,7 +141,8 @@ a series of trees.
 
 >>> from srlearn.rdn import BoostedRDN
 >>> from srlearn import Background
->>> from srlearn import example_data
+>>> from srlearn.datasets import load_toy_cancer
+>>> toy_cancer = load_toy_cancer()
 >>> bk = Background(
 ...     modes=[
 ...         "friends(+person,-person).",
@@ -150,7 +153,7 @@ a series of trees.
 ...     use_std_logic_variables=True,
 ... )
 >>> clf = BoostedRDN(background=bk, target="cancer")
->>> clf.fit(example_data.train)
+>>> clf.fit(toy_cancer.train)
 BoostedRDN(background=setParam: nodeSize=2.
 setParam: maxTreeDepth=3.
 setParam: numberOfClauses=100.
@@ -162,7 +165,7 @@ mode: cancer(+person).
 mode: smokes(+person).
 ,
            max_tree_depth=3, n_estimators=10, node_size=2, target='cancer')
->>> clf.predict(example_data.test)
+>>> clf.predict(toy_cancer.test)
 array([ True,  True,  True, False, False])
 
 Conclusion

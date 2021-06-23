@@ -23,9 +23,10 @@ Data Sets
 
 .. autosummary::
    :toctree: generated/
-   :template: dataset.rst
+   :template: function.rst 
 
-   example_data
+   datasets.load_toy_cancer
+   datasets.load_toy_father
 
 Utilities
 =========
