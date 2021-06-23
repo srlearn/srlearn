@@ -97,9 +97,10 @@ class Background:
         .. code-block:: python
 
             >>> from srlearn import Background
-            >>> from srlearn import example_data
+            >>> from srlearn.datasets import load_toy_cancer
+            >>> toy_cancer = load_toy_cancer()
             >>> bk = Background(
-            ...     modes=example_data.train.modes,
+            ...     modes=toy_cancer.train.modes,
             ...     max_tree_depth=2,
             ...     node_size=1,
             ... )
