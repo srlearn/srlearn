@@ -17,25 +17,44 @@ from ..database import Database
 
 def load_toy_father():
     """Load and return the Toy Father dataset.
+
+    Returns
+    -------
+    toy_father : Bunch
+        Bunch contains `train` and `test` Database objects.
+
+    Examples
+    --------
+
+    >>> from srlearn.datasets import load_toy_father
+    >>> toy_father = load_toy_father()
+    >>> print(toy_father.train)
+    Positive Examples:
+    ['father(harrypotter,jamespotter).', ..., 'father(fredweasley,arthurweasley).']
+    Negative Examples:
+    ['father(harrypotter,mrgranger).', ..., 'father(ginnyweasley,mollyweasley).']
+    Facts:
+    ['male(mrgranger).', ..., 'childof(cygnusblack,narcissamalfoy).']
+
     """
 
-    ToyFather = Bunch(train=Database(), test=Database(),)
+    toy_father = Bunch(train=Database(), test=Database(),)
 
-    ToyFather.train.modes = [
+    toy_father.train.modes = [
         "male(+name).",
         "father(+name,+name).",
         "childof(+name,+name).",
         "siblingof(+name,+name).",
     ]
 
-    ToyFather.train.pos = [
+    toy_father.train.pos = [
         "father(harrypotter,jamespotter).",
         "father(dracomalfoy,luciusmalfoy).",
         "father(ginnyweasley,arthurweasley).",
         "father(ronweasley,arthurweasley).",
         "father(fredweasley,arthurweasley).",
     ]
-    ToyFather.train.neg = [
+    toy_father.train.neg = [
         "father(harrypotter,mrgranger).",
         "father(harrypotter,mrsgranger).",
         "father(georgeweasley,xenophiliuslovegood).",
@@ -58,7 +77,7 @@ def load_toy_father():
         "father(hermione,mrsgranger).",
         "father(ginnyweasley,mollyweasley).",
     ]
-    ToyFather.train.facts = [
+    toy_father.train.facts = [
         "male(mrgranger).",
         "male(jamespotter).",
         "male(harrypotter).",
@@ -102,27 +121,27 @@ def load_toy_father():
         "childof(cygnusblack,narcissamalfoy).",
     ]
 
-    ToyFather.test.modes = [
+    toy_father.test.modes = [
         "male(+name).",
         "father(+name,+name).",
         "childof(+name,+name).",
         "siblingof(+name,+name).",
     ]
 
-    ToyFather.test.pos = [
+    toy_father.test.pos = [
         "father(elizabeth,mrbennet).",
         "father(jane,mrbennet).",
         "father(charlotte,mrlucas).",
     ]
 
-    ToyFather.test.neg = [
+    toy_father.test.neg = [
         "father(charlotte,mrsbennet).",
         "father(jane,mrlucas).",
         "father(mrsbennet,mrbennet).",
         "father(jane,elizabeth).",
     ]
 
-    ToyFather.test.facts = [
+    toy_father.test.facts = [
         "male(mrbennet).",
         "male(mrlucas).",
         "male(darcy).",
@@ -136,4 +155,4 @@ def load_toy_father():
         "siblingof(elizabeth,jane).",
     ]
 
-    return ToyFather
+    return toy_father

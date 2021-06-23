@@ -17,24 +17,43 @@ from ..database import Database
 
 def load_toy_cancer():
     """Load and return the Toy Cancer dataset.
+
+    Returns
+    -------
+    toy_cancer : Bunch
+        Bunch contains `train` and  `test` Database objects.
+    
+    Examples
+    --------
+
+    >>> from srlearn.datasets import load_toy_cancer
+    >>> toy_cancer = load_toy_cancer()
+    >>> print(toy_cancer.train)
+    Positive Examples:
+    ['cancer(Alice).', 'cancer(Bob).', 'cancer(Chuck).', 'cancer(Fred).']
+    Negative Examples:
+    ['cancer(Dan).', 'cancer(Earl).']
+    Facts:
+    ['friends(Alice, Bob).', 'friends(Alice, Fred).', ..., 'smokes(Bob).']
+
     """
 
-    ToyCancer = Bunch(train=Database(), test=Database(),)
+    toy_cancer = Bunch(train=Database(), test=Database(),)
 
-    ToyCancer.train.modes = [
+    toy_cancer.train.modes = [
         "friends(+Person,-Person).",
         "friends(-Person,+Person).",
         "smokes(+Person).",
         "cancer(+Person).",
     ]
-    ToyCancer.train.pos = [
+    toy_cancer.train.pos = [
         "cancer(Alice).",
         "cancer(Bob).",
         "cancer(Chuck).",
         "cancer(Fred).",
     ]
-    ToyCancer.train.neg = ["cancer(Dan).", "cancer(Earl)."]
-    ToyCancer.train.facts = [
+    toy_cancer.train.neg = ["cancer(Dan).", "cancer(Earl)."]
+    toy_cancer.train.facts = [
         "friends(Alice, Bob).",
         "friends(Alice, Fred).",
         "friends(Chuck, Bob).",
@@ -52,15 +71,15 @@ def load_toy_cancer():
         "smokes(Bob).",
     ]
 
-    ToyCancer.test.modes = [
+    toy_cancer.test.modes = [
         "friends(+Person,-Person).",
         "friends(-Person,+Person).",
         "smokes(+Person).",
         "cancer(+Person).",
     ]
-    ToyCancer.test.pos = ["cancer(Zod).", "cancer(Xena).", "cancer(Yoda)."]
-    ToyCancer.test.neg = ["cancer(Voldemort).", "cancer(Watson)."]
-    ToyCancer.test.facts = [
+    toy_cancer.test.pos = ["cancer(Zod).", "cancer(Xena).", "cancer(Yoda)."]
+    toy_cancer.test.neg = ["cancer(Voldemort).", "cancer(Watson)."]
+    toy_cancer.test.facts = [
         "friends(Zod, Xena).",
         "friends(Xena, Watson).",
         "friends(Watson, Voldemort).",
@@ -76,4 +95,4 @@ def load_toy_cancer():
         "smokes(Yoda).",
     ]
 
-    return ToyCancer
+    return toy_cancer
