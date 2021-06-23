@@ -4,6 +4,10 @@
 Base class for Boosted Relational Models
 """
 
+from collections import Counter
+import json
+import logging
+
 from sklearn.base import BaseEstimator
 from sklearn.base import ClassifierMixin
 from sklearn.utils.validation import check_is_fitted
@@ -11,7 +15,8 @@ import subprocess
 
 from .background import Background
 from .system_manager import FileSystem
-from ._meta import DEBUG
+from .utils._parse_trees import parse_tree
+from ._meta import __version__
 
 
 class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
@@ -52,6 +57,12 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
     """
 
     # pylint: disable=too-many-instance-attributes
+    background = None
+    target = "None"
+    n_estimators = 10
+    node_size = 2
+    max_tree_depth = 3
+    neg_pos_ratio = 2
 
     def __init__(
         self,
@@ -60,6 +71,7 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
         n_estimators=10,
         node_size=2,
         max_tree_depth=3,
+        neg_pos_ratio=2,
     ):
         """Initialize a BaseEstimator"""
         self.background = background
@@ -67,7 +79,7 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
         self.n_estimators = n_estimators
         self.node_size = node_size
         self.max_tree_depth = max_tree_depth
-        self.debug = DEBUG
+        self.neg_pos_ratio = neg_pos_ratio
 
     def _check_params(self):
         """Check validity of parameters. Raise ValueError if errors are detected.
@@ -105,9 +117,180 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
                     self.n_estimators
                 )
             )
+        if (
+            not isinstance(self.neg_pos_ratio, int)
+            and not isinstance(self.neg_pos_ratio, float)
+            or isinstance(self.neg_pos_ratio, bool)
+        ):
+            raise ValueError("neg_pos_ratio must be an integer or float")
+        if self.neg_pos_ratio < 1:
+            raise ValueError(
+                "neg_pos_ratio must be greater than 1, cannot be {0}".format(
+                    self.neg_pos_ratio
+                )
+            )
 
         # If all params are valid, allocate a FileSystem:
         self.file_system = FileSystem()
+
+    def to_json(self, file_name) -> None:
+        """Serialize a learned model to json.
+
+        Parameters
+        ----------
+        file_name : str (or pathlike)
+            Path to a saved json file.
+
+        Notes / Warnings
+        ----------------
+
+        This feature is *experimental*.
+        There could be major changes between releases, causing old model
+        files to break.
+        """
+        check_is_fitted(self, "estimators_")
+
+        with open(
+            self.file_system.files.BRDNS_DIR.value.joinpath(
+                "{0}.model".format(self.target)
+            ),
+            "r",
+        ) as _fh:
+            _model = _fh.read().splitlines()
+
+        model_params = {
+            "background": dict(self.background.__dict__.items()),
+            "target": self.target,
+            "n_estimators": self.n_estimators,
+            "node_size": self.node_size,
+            "max_tree_depth": self.max_tree_depth,
+            "neg_pos_ratio": self.neg_pos_ratio,
+        }
+
+        with open(file_name, "w") as _fh:
+            _fh.write(
+                json.dumps(
+                    [
+                        __version__,
+                        _model,
+                        self.estimators_,
+                        model_params,
+                        self._dotfiles,
+                    ]
+                )
+            )
+
+    def from_json(self, file_name):
+        """Load a learned model from json.
+
+        Parameters
+        ----------
+        file_name : str (or pathlike)
+            Path to a saved json file.
+
+        Notes / Warnings
+        ----------------
+
+        This feature is *experimental*.
+        There could be major changes between releases, causing old model
+        files to break. There are also *no checks* to ensure you are
+        loading the correct object type.
+        """
+
+        with open(file_name, "r") as _fh:
+            params = json.loads(_fh.read())
+
+        if params[0] != __version__:
+            logging.warning(
+                "Version of loaded model ({0}) does not match srlearn version ({1}).".format(
+                    params[0], __version__
+                )
+            )
+
+        _model = params[1]
+        _estimators = params[2]
+        _model_parameters = params[3]
+
+        try:
+            self._dotfiles = params[4]
+        except IndexError:
+            self._dotfiles = None
+            logging.warning(
+                "Did not find dotfiles during load, srlearn.plotting may not work."
+            )
+
+        _bkg = Background()
+        _bkg.__dict__ = _model_parameters["background"]
+
+        # 1. Loop over all class attributes of `BaseBoostedRelationalModel`
+        #    except `background`, which has been handled as a special case.
+        # 2. Update an `_attributes` dictionary mapping attributes from JSON
+        # 3. *If a key was not present in the JSON*: set it to the default value.
+        # 4. Initialize self by unpacking the dictionary into arguments.
+        _attributes = {"background": _bkg}
+        for key in BaseBoostedRelationalModel().__dict__.keys() - {"background"}:
+            _attributes[key] = _model_parameters.get(
+                key,
+                BaseBoostedRelationalModel().__dict__[key],
+            )
+        self.__init__(**_attributes)
+
+        self.estimators_ = _estimators
+
+        # Currently allocates the File System.
+        self._check_params()
+
+        self.file_system.files.TREES_DIR.value.mkdir(parents=True)
+
+        with open(
+            self.file_system.files.BRDNS_DIR.value.joinpath(
+                "{0}.model".format(self.target)
+            ),
+            "w",
+        ) as _fh:
+            _fh.write("\n".join(_model))
+
+        for i, _tree in enumerate(_estimators):
+            with open(
+                self.file_system.files.TREES_DIR.value.joinpath(
+                    "{0}Tree{1}.tree".format(self.target, i)
+                ),
+                "w",
+            ) as _fh:
+                _fh.write(_tree)
+
+    @property
+    def feature_importances_(self):
+        """
+        Return the features contained in a tree.
+
+        Parameters
+        ----------
+
+        tree_number: int
+            Index of the tree to read.
+        """
+        check_is_fitted(self, "estimators_")
+
+        features = []
+
+        for tree_number in range(self.n_estimators):
+            _rules_string = self.estimators_[tree_number]
+            features += parse_tree(
+                _rules_string, (not self.background.use_std_logic_variables)
+            )
+        return Counter(features)
+
+    def _get_dotfiles(self):
+        dotfiles = []
+        for i in range(self.n_estimators):
+            with open(
+                self.file_system.files.DOT_DIR.value.joinpath(
+                    "WILLTreeFor_" + self.target + str(i) + ".dot"
+                )
+            ) as _fh:
+                dotfiles.append(_fh.read())
+        self._dotfiles = dotfiles
 
     def _check_initialized(self):
         """Check for the estimator(s), raise an error if not found."""

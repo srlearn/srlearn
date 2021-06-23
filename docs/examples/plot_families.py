@@ -94,7 +94,6 @@ bk = Background(
         "siblingof(+name,+name)."
     ],
     number_of_clauses=8,
-    use_prolog_variables=True,
 )
 
 clf = BoostedRDN(
@@ -134,4 +133,10 @@ test_db.facts = [
     "siblingof(elizabeth,jane).",
 ]
 
-print(clf.predict_proba(test_db))
+predictions = clf.predict_proba(test_db)
+
+print("{:<35} {}".format("Predicate", "Probability of being True"))
+print("-" * 61)
+
+for predicate, prob in zip(test_db.pos + test_db.neg, predictions):
+    print("{:<35} {:.2f}".format(predicate, prob))

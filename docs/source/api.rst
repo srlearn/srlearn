@@ -17,6 +17,7 @@ background knowledge, and learning.
    Database
    Background
    rdn.BoostedRDN
+   rdn.BoostedRDNRegressor
 
 Data Sets
 =========
@@ -33,7 +34,7 @@ Utilities
 
 Some of these are for behind-the-scenes operations, but tend to
 be useful for further development
-(`contributions are welcome! <https://github.com/hayesall/srlearn/blob/master/.github/CONTRIBUTING.md>`_).
+(`contributions are welcome! <https://github.com/hayesall/srlearn/blob/main/.github/CONTRIBUTING.md>`_).
 
 .. autosummary::
    :toctree: generated/
@@ -46,6 +47,8 @@ be useful for further development
    :toctree: generated/
    :template: function.rst
 
+   plotting.export_digraph
+   plotting.plot_digraph
    system_manager.reset
 
 Deprecated boostsrl objects

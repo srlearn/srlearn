@@ -12,22 +12,22 @@ Examples
 >>> from srlearn import example_data
 >>> print(example_data.train)
 Positive Examples:
-['cancer(Alice).', 'cancer(Bob).', 'cancer(Chuck).', 'cancer(Fred).']
+['cancer(alice).', 'cancer(bob).', 'cancer(chuck).', 'cancer(fred).']
 Negative Examples:
-['cancer(Dan).', 'cancer(Earl).']
+['cancer(dan).', 'cancer(earl).']
 Facts:
-['friends(Alice, Bob).', 'friends(Alice, Fred).', ..., 'smokes(Bob).']
+['friends(alice, bob).', 'friends(alice, fred).', ..., 'smokes(bob).']
 
 Ellipsis added to the facts for easier reading.
 
 >>> from srlearn import example_data
 >>> print(example_data.test)
 Positive Examples:
-['cancer(Zod).', 'cancer(Xena).', 'cancer(Yoda).']
+['cancer(zod).', 'cancer(xena).', 'cancer(yoda).']
 Negative Examples:
-['cancer(Voldemort).', 'cancer(Watson).']
+['cancer(voldemort).', 'cancer(watson).']
 Facts:
-['friends(Zod, Xena).', 'friends(Xena, Watson).', ..., 'smokes(Yoda).']
+['friends(zod, xena).', 'friends(xena, watson).', ..., 'smokes(yoda).']
 
 """
 
@@ -41,51 +41,51 @@ train = Database()
 test = Database()
 
 train.modes = [
-    "friends(+Person,-Person).",
-    "friends(-Person,+Person).",
-    "smokes(+Person).",
-    "cancer(+Person).",
+    "friends(+person,-person).",
+    "friends(-person,+person).",
+    "smokes(+person).",
+    "cancer(+person).",
 ]
-train.pos = ["cancer(Alice).", "cancer(Bob).", "cancer(Chuck).", "cancer(Fred)."]
-train.neg = ["cancer(Dan).", "cancer(Earl)."]
+train.pos = ["cancer(alice).", "cancer(bob).", "cancer(chuck).", "cancer(fred)."]
+train.neg = ["cancer(dan).", "cancer(earl)."]
 train.facts = [
-    "friends(Alice, Bob).",
-    "friends(Alice, Fred).",
-    "friends(Chuck, Bob).",
-    "friends(Chuck, Fred).",
-    "friends(Dan, Bob).",
-    "friends(Earl, Bob).",
-    "friends(Bob, Alice).",
-    "friends(Fred, Alice).",
-    "friends(Bob, Chuck).",
-    "friends(Fred, Chuck).",
-    "friends(Bob, Dan).",
-    "friends(Bob, Earl).",
-    "smokes(Alice).",
-    "smokes(Chuck).",
-    "smokes(Bob).",
+    "friends(alice, bob).",
+    "friends(alice, fred).",
+    "friends(chuck, bob).",
+    "friends(chuck, fred).",
+    "friends(dan, bob).",
+    "friends(earl, bob).",
+    "friends(bob, alice).",
+    "friends(fred, alice).",
+    "friends(bob, chuck).",
+    "friends(fred, chuck).",
+    "friends(bob, dan).",
+    "friends(bob, earl).",
+    "smokes(alice).",
+    "smokes(chuck).",
+    "smokes(bob).",
 ]
 
 test.modes = [
-    "friends(+Person,-Person).",
-    "friends(-Person,+Person).",
-    "smokes(+Person).",
-    "cancer(+Person).",
+    "friends(+person,-person).",
+    "friends(-person,+person).",
+    "smokes(+person).",
+    "cancer(+person).",
 ]
-test.pos = ["cancer(Zod).", "cancer(Xena).", "cancer(Yoda)."]
-test.neg = ["cancer(Voldemort).", "cancer(Watson)."]
+test.pos = ["cancer(zod).", "cancer(xena).", "cancer(yoda)."]
+test.neg = ["cancer(voldemort).", "cancer(watson)."]
 test.facts = [
-    "friends(Zod, Xena).",
-    "friends(Xena, Watson).",
-    "friends(Watson, Voldemort).",
-    "friends(Voldemort, Yoda).",
-    "friends(Yoda, Zod).",
-    "friends(Xena, Zod).",
-    "friends(Watson, Xena).",
-    "friends(Voldemort, Watson).",
-    "friends(Yoda, Voldemort).",
-    "friends(Zod, Yoda).",
-    "smokes(Zod).",
-    "smokes(Xena).",
-    "smokes(Yoda).",
+    "friends(zod, xena).",
+    "friends(xena, watson).",
+    "friends(watson, voldemort).",
+    "friends(voldemort, yoda).",
+    "friends(yoda, zod).",
+    "friends(xena, zod).",
+    "friends(watson, xena).",
+    "friends(voldemort, watson).",
+    "friends(yoda, voldemort).",
+    "friends(zod, yoda).",
+    "smokes(zod).",
+    "smokes(xena).",
+    "smokes(yoda).",
 ]

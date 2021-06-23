@@ -26,7 +26,7 @@ bk = Background(
 
 clf = BoostedRDN(
     background=bk,
-    target='cancer',
+    target="cancer",
     max_tree_depth=2,
     node_size=2,
     n_estimators=20,

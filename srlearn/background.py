@@ -18,6 +18,8 @@ class Background:
     def __init__(
         self,
         modes=None,
+        ok_if_unknown=None,
+        bridgers=None,
         node_size=2,
         number_of_clauses=100,
         number_of_cycles=100,
@@ -25,7 +27,7 @@ class Background:
         recursion=False,
         line_search=False,
         use_std_logic_variables=False,
-        use_prolog_variables=False,
+        use_prolog_variables=True,
         load_all_libraries=False,
         load_all_basic_modes=False,
     ):
@@ -34,8 +36,11 @@ class Background:
         Parameters
         ----------
         modes : list of str (default: None)
-            Modes constrain the search space for hypotheses. If None, this will
-            attempt to set the modes automatically at learning time.
+            Modes constrain the search space for hypotheses.
+        ok_if_unknown : list of str (default: None)
+            Okay if not known.
+        bridgers : list of str (default: None)
+            List of bridger predicates.
         node_size : int, optional (default: 2)
             Maximum number of literals in each node.
         max_tree_depth : int, optional (default: 3)
@@ -51,7 +56,7 @@ class Background:
             Use recursion
         use_std_logic_variables : bool, optional (default: False)
             Set the stdLogicVariables parameter to True
-        use_prolog_variables : bool, optional (default: False)
+        use_prolog_variables : bool, optional (default: True)
             Set the usePrologVariables parameter to True
         load_all_libraries : bool, optional (default: False)
             Load libraries: ``arithmeticInLogic``, ``comparisonInLogic``,
@@ -77,7 +82,6 @@ class Background:
         ...         "friends(-Person,+Person).",
         ...     ],
         ...     max_tree_depth=2,
-        ...     use_std_logic_variables=True,
         ... )
         >>> print(bk)
         setParam: nodeSize=2.
@@ -120,6 +124,7 @@ class Background:
         .. [1] https://starling.utdallas.edu/software/boostsrl/wiki/advanced-parameters/
         """
         self.modes = modes
+        self.ok_if_unknown = ok_if_unknown
         self.node_size = node_size
         self.max_tree_depth = max_tree_depth
         self.number_of_clauses = number_of_clauses
@@ -130,6 +135,7 @@ class Background:
         self.use_prolog_variables = use_prolog_variables
         self.load_all_libraries = load_all_libraries
         self.load_all_basic_modes = load_all_basic_modes
+        self.bridgers = bridgers
 
         # Check params are correct at the tail of initialization.
         self._check_params()
@@ -139,6 +145,16 @@ class Background:
         if not (isinstance(self.modes, list) or self.modes is None):
             raise ValueError(
                 "modes parameter should be None or a list, found {0}".format(self.modes)
+            )
+        if not (isinstance(self.ok_if_unknown, list) or self.ok_if_unknown is None):
+            raise ValueError(
+                "ok_if_unknown should be None or a list, found {0}".format(
+                    self.ok_if_unknown
+                )
+            )
+        if not (isinstance(self.bridgers, list) or self.bridgers is None):
+            raise ValueError(
+                "bridgers should be None or a list, found {0}".format(self.bridgers)
             )
         if not isinstance(self.line_search, bool):
             raise ValueError(
@@ -214,6 +230,10 @@ class Background:
                     self.use_prolog_variables
                 )
             )
+        if self.use_std_logic_variables == self.use_prolog_variables:
+            raise ValueError(
+                "Cannot be equal: {0} == {1}".format(self.use_std_logic_variables, self.use_prolog_variables)
+            )
 
     def write(self, filename="train", location=pathlib.Path("train")) -> None:
         """Write the background to disk for learning.
@@ -275,7 +295,7 @@ class Background:
 
         _background = ""
         for _attr, _val in _relevant:
-            if _attr in ["modes"]:
+            if _attr in ["modes", "ok_if_unknown", "bridgers"]:
                 pass
             else:
                 _background += _background_syntax[_attr].format(str(_val).lower())
@@ -283,6 +303,20 @@ class Background:
         if self.modes:
             for _mode in self.modes:
                 _background += "mode: " + _mode + "\n"
+
+        try:
+            if getattr(self, "ok_if_unknown"):
+                for _unknown in self.ok_if_unknown:
+                    _background += "okIfUnknown: " + _unknown + ".\n"
+        except AttributeError:
+            pass
+
+        try:
+            if getattr(self, "bridgers"):
+                for _bridger in self.bridgers:
+                    _background += "bridger: "  + _bridger + ".\n"
+        except AttributeError:
+            pass
 
         return _background
 

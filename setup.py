@@ -43,7 +43,7 @@ setup(
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
     ],
     keywords="machine-learning-algorithms machine-learning statistical-learning pattern-classification artificial-intelligence",
-    install_requires=["graphviz", "numpy", "scipy", "scikit-learn"],
+    install_requires=["numpy", "scipy", "scikit-learn"],
     extras_require={
         "tests": ["coverage", "pytest"],
         "docs": ["sphinx", "sphinx_rtd_theme", "sphinx_gallery", "numpydoc", "matplotlib"],
