@@ -6,7 +6,7 @@ Tests for srlearn.plotting
 
 from srlearn.rdn import BoostedRDN
 from srlearn.background import Background
-from srlearn import example_data
+from srlearn.datasets import load_toy_cancer
 from srlearn.plotting import export_digraph
 import pytest
 
@@ -18,9 +18,10 @@ def test_cannot_export_bad_data(test_input):
 
 
 def test_cannot_read_outside_length_of_dotfiles():
-    bkg = Background(modes=example_data.train.modes)
+    toy_cancer = load_toy_cancer()
+    bkg = Background(modes=toy_cancer.train.modes)
     clf = BoostedRDN(target="cancer", background=bkg)
-    clf.fit(example_data.train)
+    clf.fit(toy_cancer.train)
     for test_input in [-10, -5, -1, 10]:
         with pytest.raises(IndexError):
             _ = export_digraph(clf, tree_index=test_input)

@@ -47,28 +47,28 @@ def load_toy_cancer():
         "cancer(+Person).",
     ]
     toy_cancer.train.pos = [
-        "cancer(Alice).",
-        "cancer(Bob).",
-        "cancer(Chuck).",
-        "cancer(Fred).",
+        "cancer(alice).",
+        "cancer(bob).",
+        "cancer(chuck).",
+        "cancer(fred).",
     ]
-    toy_cancer.train.neg = ["cancer(Dan).", "cancer(Earl)."]
+    toy_cancer.train.neg = ["cancer(dan).", "cancer(earl)."]
     toy_cancer.train.facts = [
-        "friends(Alice, Bob).",
-        "friends(Alice, Fred).",
-        "friends(Chuck, Bob).",
-        "friends(Chuck, Fred).",
-        "friends(Dan, Bob).",
-        "friends(Earl, Bob).",
-        "friends(Bob, Alice).",
-        "friends(Fred, Alice).",
-        "friends(Bob, Chuck).",
-        "friends(Fred, Chuck).",
-        "friends(Bob, Dan).",
-        "friends(Bob, Earl).",
-        "smokes(Alice).",
-        "smokes(Chuck).",
-        "smokes(Bob).",
+        "friends(alice, bob).",
+        "friends(alice, fred).",
+        "friends(chuck, bob).",
+        "friends(chuck, fred).",
+        "friends(dan, bob).",
+        "friends(earl, bob).",
+        "friends(bob, alice).",
+        "friends(fred, alice).",
+        "friends(bob, chuck).",
+        "friends(fred, chuck).",
+        "friends(bob, dan).",
+        "friends(bob, earl).",
+        "smokes(alice).",
+        "smokes(chuck).",
+        "smokes(bob).",
     ]
 
     toy_cancer.test.modes = [
@@ -77,22 +77,22 @@ def load_toy_cancer():
         "smokes(+Person).",
         "cancer(+Person).",
     ]
-    toy_cancer.test.pos = ["cancer(Zod).", "cancer(Xena).", "cancer(Yoda)."]
-    toy_cancer.test.neg = ["cancer(Voldemort).", "cancer(Watson)."]
+    toy_cancer.test.pos = ["cancer(zod).", "cancer(xena).", "cancer(yoda)."]
+    toy_cancer.test.neg = ["cancer(voldemort).", "cancer(watson)."]
     toy_cancer.test.facts = [
-        "friends(Zod, Xena).",
-        "friends(Xena, Watson).",
-        "friends(Watson, Voldemort).",
-        "friends(Voldemort, Yoda).",
-        "friends(Yoda, Zod).",
-        "friends(Xena, Zod).",
-        "friends(Watson, Xena).",
-        "friends(Voldemort, Watson).",
-        "friends(Yoda, Voldemort).",
-        "friends(Zod, Yoda).",
-        "smokes(Zod).",
-        "smokes(Xena).",
-        "smokes(Yoda).",
+        "friends(zod, xena).",
+        "friends(xena, watson).",
+        "friends(watson, voldemort).",
+        "friends(voldemort, yoda).",
+        "friends(yoda, zod).",
+        "friends(xena, zod).",
+        "friends(watson, xena).",
+        "friends(voldemort, watson).",
+        "friends(yoda, voldemort).",
+        "friends(zod, yoda).",
+        "smokes(zod).",
+        "smokes(xena).",
+        "smokes(yoda).",
     ]
 
     return toy_cancer

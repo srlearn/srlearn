@@ -12,22 +12,22 @@ from srlearn.rdn import BoostedRDN
 from srlearn.rdn import BoostedRDNRegressor
 from srlearn.background import Background
 from srlearn.database import Database
-from srlearn import example_data
+from srlearn.datasets import load_toy_cancer
 
 
 def test_serialize_BoostedRDN(tmpdir):
     output_json = tmpdir.join("ToyCancerRDN.json")
-
-    bkg = Background(modes=example_data.train.modes)
+    toy_cancer = load_toy_cancer()
+    bkg = Background(modes=toy_cancer.train.modes)
     rdn = BoostedRDN(background=bkg, target="cancer", n_estimators=5)
-    rdn.fit(example_data.train)
+    rdn.fit(toy_cancer.train)
     rdn.to_json(output_json)
 
     # New BoostedRDN instance, loading from file, and running.
     rdn2 = BoostedRDN()
     rdn2.from_json(output_json)
 
-    _predictions = rdn2.predict(example_data.test)
+    _predictions = rdn2.predict(toy_cancer.test)
     assert len(rdn2.estimators_) == 5
     assert_array_equal(
         _predictions, np.array([1.0, 1.0, 1.0, 0.0, 0.0])

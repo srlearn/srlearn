@@ -66,8 +66,9 @@ def test_initialize_bad_n_estimators(test_input):
 def test_initialize_bad_neg_pos_ratio(test_input):
     """Tests bad values for neg_pos_ratio"""
     _dn = BoostedRDN(target="cancer", background=Background(), neg_pos_ratio=test_input)
+    toy_cancer = load_toy_cancer()    
     with pytest.raises(ValueError):
-        _dn.fit(example_data.train)
+        _dn.fit(toy_cancer.train)
 
 
 def test_bad_shell_command():
@@ -82,7 +83,7 @@ def test_bad_shell_command():
 def test_learn_example_dataset_1(test_input):
     """Learn from the example database."""
     toy_cancer = load_toy_cancer()
-    _bk = Background(modes=toy_cancer.train.modes, use_std_logic_variables=True)
+    _bk = Background(modes=toy_cancer.train.modes)
     _dn = BoostedRDN(background=_bk, target="cancer", n_estimators=test_input)
     _dn.fit(toy_cancer.train)
     assert len(_dn.estimators_) == test_input
@@ -92,7 +93,7 @@ def test_learn_example_dataset_1(test_input):
 def test_predict_example_data(test_input):
     """Test learn and predict."""
     toy_cancer = load_toy_cancer()
-    _bk = Background(modes=toy_cancer.train.modes, use_std_logic_variables=True)
+    _bk = Background(modes=toy_cancer.train.modes)
     _dn = BoostedRDN(background=_bk, target="cancer", n_estimators=test_input)
     _dn.fit(toy_cancer.train)
     assert_array_equal(
@@ -103,7 +104,7 @@ def test_predict_example_data(test_input):
 def test_predict_proba_test_data():
     """Assert arrays are almost equal on output of predict_proba()"""
     toy_cancer = load_toy_cancer()
-    _bk = Background(modes=toy_cancer.train.modes, use_std_logic_variables=True)
+    _bk = Background(modes=toy_cancer.train.modes)
     _dn = BoostedRDN(background=_bk, target="cancer", n_estimators=5)
     _dn.fit(toy_cancer.train)
     assert_array_almost_equal(

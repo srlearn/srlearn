@@ -53,10 +53,10 @@ def test_initialize_example_background_knowledge_1():
     assert "setParam: maxTreeDepth=3." in _capture
     assert "setParam: numberOfCycles=100." in _capture
     assert "setParam: numberOfClauses=100." in _capture
-    assert "friends(+person,-person)." in _capture
-    assert "friends(-person,+person)." in _capture
-    assert "smokes(+person)." in _capture
-    assert "cancer(+person)." in _capture
+    assert "friends(+Person,-Person)." in _capture
+    assert "friends(-Person,+Person)." in _capture
+    assert "smokes(+Person)." in _capture
+    assert "cancer(+Person)." in _capture
 
 
 def test_initializing_example_background_knowledge_2():
@@ -80,16 +80,17 @@ def test_initializing_example_background_knowledge_2():
     assert "setParam: numberOfClauses=8." in _capture
     assert "setParam: lineSearch=true." in _capture
     assert "setParam: recursion=true." in _capture
-    assert "friends(+person,-person)." in _capture
-    assert "friends(-person,+person)." in _capture
-    assert "smokes(+person)." in _capture
-    assert "cancer(+person)." in _capture
+    assert "friends(+Person,-Person)." in _capture
+    assert "friends(-Person,+Person)." in _capture
+    assert "smokes(+Person)." in _capture
+    assert "cancer(+Person)." in _capture
 
 
 def test_initializing_example_background_knowledge_3():
-    """Test initializing with example_data modes and extra parameters."""
+    """Test initializing with example data modes and extra parameters."""
+    toy_cancer = load_toy_cancer()
     _bk = Background(
-        modes=example_data.train.modes,
+        modes=toy_cancer.train.modes,
         line_search=True,
         recursion=True,
         node_size=3,
@@ -99,7 +100,7 @@ def test_initializing_example_background_knowledge_3():
         ok_if_unknown=["smokes/1", "friends/2"],
         bridgers=["friends/2"],
     )
-    assert _bk.modes == example_data.train.modes
+    assert _bk.modes == toy_cancer.train.modes
 
     _capture = str(_bk)
     assert "setParam: nodeSize=3." in _capture
@@ -108,10 +109,10 @@ def test_initializing_example_background_knowledge_3():
     assert "setParam: numberOfClauses=8." in _capture
     assert "setParam: lineSearch=true." in _capture
     assert "setParam: recursion=true." in _capture
-    assert "friends(+person,-person)." in _capture
-    assert "friends(-person,+person)." in _capture
-    assert "smokes(+person)." in _capture
-    assert "cancer(+person)." in _capture
+    assert "friends(+Person,-Person)." in _capture
+    assert "friends(-Person,+Person)." in _capture
+    assert "smokes(+Person)." in _capture
+    assert "cancer(+Person)." in _capture
     assert "okIfUnknown: smokes/1." in _capture
     assert "okIfUnknown: friends/2." in _capture
     assert "bridger: friends/2." in _capture
