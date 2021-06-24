@@ -14,8 +14,6 @@ from srlearn.database import Database
 from srlearn.plotting import export_digraph
 from srlearn.plotting import plot_digraph
 
-import numpy as np
-import matplotlib.pyplot as plt
 
 webkb_train = Database.from_files(
     pos="../../datasets/webkb/train1/train1_pos.txt",

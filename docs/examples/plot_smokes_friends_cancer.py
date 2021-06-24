@@ -19,10 +19,7 @@ import matplotlib.pyplot as plt
 
 toy_cancer = load_toy_cancer()
 
-bk = Background(
-    modes=toy_cancer.train.modes,
-    use_std_logic_variables=True,
-)
+bk = Background(modes=toy_cancer.train.modes)
 
 clf = BoostedRDN(
     background=bk,
@@ -58,4 +55,3 @@ plt.title("Class Probability vs. Number Trees")
 plt.xlabel("Number of Trees")
 plt.ylabel("Probability of belonging to Positive Class")
 plt.legend(loc="best")
-plt.show()
