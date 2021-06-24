@@ -51,8 +51,8 @@ def test_initialize_example_background_knowledge_1():
     _capture = str(_bk)
     assert "setParam: nodeSize=2." in _capture
     assert "setParam: maxTreeDepth=3." in _capture
-    assert "setParam: numberOfCycles=100." in _capture
-    assert "setParam: numberOfClauses=100." in _capture
+    assert "setParam: numOfCycles=100." in _capture
+    assert "setParam: numOfClauses=100." in _capture
     assert "friends(+Person,-Person)." in _capture
     assert "friends(-Person,+Person)." in _capture
     assert "smokes(+Person)." in _capture
@@ -76,8 +76,8 @@ def test_initializing_example_background_knowledge_2():
     _capture = str(_bk)
     assert "setParam: nodeSize=3." in _capture
     assert "setParam: maxTreeDepth=4." in _capture
-    assert "setParam: numberOfCycles=10." in _capture
-    assert "setParam: numberOfClauses=8." in _capture
+    assert "setParam: numOfCycles=10." in _capture
+    assert "setParam: numOfClauses=8." in _capture
     assert "setParam: lineSearch=true." in _capture
     assert "setParam: recursion=true." in _capture
     assert "friends(+Person,-Person)." in _capture
@@ -105,8 +105,8 @@ def test_initializing_example_background_knowledge_3():
     _capture = str(_bk)
     assert "setParam: nodeSize=3." in _capture
     assert "setParam: maxTreeDepth=4." in _capture
-    assert "setParam: numberOfCycles=10." in _capture
-    assert "setParam: numberOfClauses=8." in _capture
+    assert "setParam: numOfCycles=10." in _capture
+    assert "setParam: numOfClauses=8." in _capture
     assert "setParam: lineSearch=true." in _capture
     assert "setParam: recursion=true." in _capture
     assert "friends(+Person,-Person)." in _capture
