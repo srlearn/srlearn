@@ -57,27 +57,29 @@ Basic Usage
 The general setup should be similar to scikit-learn. But there are a few extra requirements in terms of setting
 background knowledge and formatting the data.
 
-A minimal working example (using the Toy-Cancer data set imported with 'example_data') is:
+A minimal working example (using the Toy-Cancer data set imported with 'load_toy_cancer') is:
 
 .. code-block:: python
 
-    >>> from srlearn.rdn import BoostedRDN
-    >>> from srlearn import Background
-    >>> from srlearn import example_data
-    >>> bk = Background(
-    ...     modes=example_data.train.modes,
-    ... )
-    >>> clf = BoostedRDN(
-    ...     background=bk,
-    ...     target='cancer',
-    ... )
-    >>> clf.fit(example_data.train)
-    >>> clf.predict_proba(example_data.test)
-    array([0.88079619, 0.88079619, 0.88079619, 0.3075821 , 0.3075821 ])
-    >>> clf.classes_
-    array([1., 1., 1., 0., 0.])
+    from srlearn.rdn import BoostedRDN
+    from srlearn import Background
+    from srlearn.datasets import load_toy_cancer
+    toy_cancer = load_toy_cancer()
+    bk = Background(
+        modes=toy_cancer.train.modes,
+        use_std_logic_variables=True,
+    )
+    clf = BoostedRDN(
+        background=bk,
+        target='cancer',
+    )
+    clf.fit(toy_cancer.train)
+    clf.predict_proba(toy_cancer.test)
+    # array([0.88079619, 0.88079619, 0.88079619, 0.3075821 , 0.3075821 ])
+    print(clf.classes_)
+    # array([1., 1., 1., 0., 0.])
 
-``example_data.train`` and ``example_data.test`` are each ``srlearn.Database`` objects, so this hides some of
+``toy_cancer.train`` and ``toy_cancer.test`` are each ``srlearn.Database`` objects, so this hides some of
 the complexity behind the scenes.
 
 This example abstracts away some complexity in exchange for compactness.

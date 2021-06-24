@@ -1,11 +1,11 @@
-:mod:`{{module}}`.{{objname}}
+:mod:`{{module}}`
 {{ underline }}==============
 
 .. currentmodule:: {{ module }}
 
-.. automodule:: {{module}}.{{ objname }}
+.. automodule:: {{module}}
 
-.. include:: {{module}}.{{objname}}.examples
+.. include:: {{module}}.examples
 
 .. raw:: html
 

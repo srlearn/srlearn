@@ -7,7 +7,7 @@ Tests for srlearn.rdn.feature_importances_
 import pytest
 from srlearn.rdn import BoostedRDN
 from srlearn.background import Background
-from srlearn import example_data
+from srlearn.datasets import load_toy_cancer
 
 
 def test_feature_importances_before_fit():
@@ -19,12 +19,13 @@ def test_feature_importances_before_fit():
 
 def test_feature_importances_toy_cancer():
     """Test getting the feature importances from the Toy-Cancer set."""
-    bkg = Background(modes=example_data.train.modes)
+    toy_cancer = load_toy_cancer()
+    bkg = Background(modes=toy_cancer.train.modes)
     rdn = BoostedRDN(
         target="cancer",
         background=bkg,
         n_estimators=10,
     )
-    rdn.fit(example_data.train)
+    rdn.fit(toy_cancer.train)
     _features = rdn.feature_importances_
     assert _features.most_common(1)[0] == ("smokes", 10)

@@ -7,7 +7,7 @@ Tests for srlearn.background.Background
 import pathlib
 import pytest
 from srlearn.background import Background
-from srlearn import example_data
+from srlearn.datasets import load_toy_cancer
 
 
 @pytest.mark.parametrize("std", [False, True])
@@ -41,9 +41,10 @@ def test_initialize_background_knowledge_1():
 
 
 def test_initialize_example_background_knowledge_1():
-    """Test initializing with example_data modes"""
-    _bk = Background(modes=example_data.train.modes)
-    assert _bk.modes == example_data.train.modes
+    """Test initializing with example data modes"""
+    toy_cancer = load_toy_cancer()
+    _bk = Background(modes=toy_cancer.train.modes)
+    assert _bk.modes == toy_cancer.train.modes
     assert not _bk.line_search
     assert not _bk.recursion
 
@@ -52,16 +53,17 @@ def test_initialize_example_background_knowledge_1():
     assert "setParam: maxTreeDepth=3." in _capture
     assert "setParam: numberOfCycles=100." in _capture
     assert "setParam: numberOfClauses=100." in _capture
-    assert "friends(+person,-person)." in _capture
-    assert "friends(-person,+person)." in _capture
-    assert "smokes(+person)." in _capture
-    assert "cancer(+person)." in _capture
+    assert "friends(+Person,-Person)." in _capture
+    assert "friends(-Person,+Person)." in _capture
+    assert "smokes(+Person)." in _capture
+    assert "cancer(+Person)." in _capture
 
 
 def test_initializing_example_background_knowledge_2():
-    """Test initializing with example_data modes and extra parameters."""
+    """Test initializing with example data modes and extra parameters."""
+    toy_cancer = load_toy_cancer()
     _bk = Background(
-        modes=example_data.train.modes,
+        modes=toy_cancer.train.modes,
         line_search=True,
         recursion=True,
         node_size=3,
@@ -69,7 +71,7 @@ def test_initializing_example_background_knowledge_2():
         number_of_clauses=8,
         number_of_cycles=10,
     )
-    assert _bk.modes == example_data.train.modes
+    assert _bk.modes == toy_cancer.train.modes
 
     _capture = str(_bk)
     assert "setParam: nodeSize=3." in _capture
@@ -78,16 +80,17 @@ def test_initializing_example_background_knowledge_2():
     assert "setParam: numberOfClauses=8." in _capture
     assert "setParam: lineSearch=true." in _capture
     assert "setParam: recursion=true." in _capture
-    assert "friends(+person,-person)." in _capture
-    assert "friends(-person,+person)." in _capture
-    assert "smokes(+person)." in _capture
-    assert "cancer(+person)." in _capture
+    assert "friends(+Person,-Person)." in _capture
+    assert "friends(-Person,+Person)." in _capture
+    assert "smokes(+Person)." in _capture
+    assert "cancer(+Person)." in _capture
 
 
 def test_initializing_example_background_knowledge_3():
-    """Test initializing with example_data modes and extra parameters."""
+    """Test initializing with example data modes and extra parameters."""
+    toy_cancer = load_toy_cancer()
     _bk = Background(
-        modes=example_data.train.modes,
+        modes=toy_cancer.train.modes,
         line_search=True,
         recursion=True,
         node_size=3,
@@ -97,7 +100,7 @@ def test_initializing_example_background_knowledge_3():
         ok_if_unknown=["smokes/1", "friends/2"],
         bridgers=["friends/2"],
     )
-    assert _bk.modes == example_data.train.modes
+    assert _bk.modes == toy_cancer.train.modes
 
     _capture = str(_bk)
     assert "setParam: nodeSize=3." in _capture
@@ -106,10 +109,10 @@ def test_initializing_example_background_knowledge_3():
     assert "setParam: numberOfClauses=8." in _capture
     assert "setParam: lineSearch=true." in _capture
     assert "setParam: recursion=true." in _capture
-    assert "friends(+person,-person)." in _capture
-    assert "friends(-person,+person)." in _capture
-    assert "smokes(+person)." in _capture
-    assert "cancer(+person)." in _capture
+    assert "friends(+Person,-Person)." in _capture
+    assert "friends(-Person,+Person)." in _capture
+    assert "smokes(+Person)." in _capture
+    assert "cancer(+Person)." in _capture
     assert "okIfUnknown: smokes/1." in _capture
     assert "okIfUnknown: friends/2." in _capture
     assert "bridger: friends/2." in _capture
@@ -124,7 +127,8 @@ def test_write_background_to_file_1(tmpdir):
 
 def test_write_background_to_file_2(tmpdir):
     """Test writing Background object to a file with extra parameters."""
-    _bk = Background(modes=example_data.train.modes, node_size=1, max_tree_depth=5)
+    toy_cancer = load_toy_cancer()
+    _bk = Background(modes=toy_cancer.train.modes, node_size=1, max_tree_depth=5)
     _bk.write(filename="train", location=pathlib.Path(tmpdir))
     assert tmpdir.join("train_bk.txt").read() == str(_bk)
 

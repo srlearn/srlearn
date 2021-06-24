@@ -25,10 +25,11 @@ class BoostedRDN(BaseBoostedRelationalModel):
 
     >>> from srlearn.rdn import BoostedRDN
     >>> from srlearn import Background
-    >>> from srlearn import example_data
-    >>> bk = Background(modes=example_data.train.modes)
+    >>> from srlearn.datasets import load_toy_cancer
+    >>> toy_cancer = load_toy_cancer()
+    >>> bk = Background(modes=toy_cancer.train.modes, use_std_logic_variables=True)
     >>> dn = BoostedRDN(background=bk, target="cancer")
-    >>> dn.fit(example_data.train)
+    >>> dn.fit(toy_cancer.train)
     BoostedRDN(background=setParam: nodeSize=2.
     setParam: maxTreeDepth=3.
     setParam: numberOfClauses=100.
@@ -40,7 +41,7 @@ class BoostedRDN(BaseBoostedRelationalModel):
     mode: cancer(+Person).
     ,
                max_tree_depth=3, n_estimators=10, node_size=2, target='cancer')
-    >>> dn.predict(example_data.test)
+    >>> dn.predict(toy_cancer.test)
     array([ True,  True,  True, False, False])
 
     """

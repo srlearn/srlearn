@@ -62,11 +62,13 @@ def export_digraph(booster, tree_index=0, out_file=None):
 
         from srlearn.rdn import BoostedRDN
         from srlearn import Background
-        from srlearn import example_data
+        from srlearn.datasets import load_toy_cancer
         from srlearn.plotting import export_digraph
+        
+        toy_cancer = load_toy_cancer()
 
         bkg = Background(
-            modes=example_data.train.modes,
+            modes=toy_cancer.train.modes,
         )
 
         clf = BoostedRDN(
@@ -74,7 +76,7 @@ def export_digraph(booster, tree_index=0, out_file=None):
             target="cancer",
         )
 
-        clf.fit(example_data.train)
+        clf.fit(toy_cancer.train)
 
         print(export_digraph(clf, tree_index=0))
     """

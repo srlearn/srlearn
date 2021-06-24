@@ -6,23 +6,20 @@ Smokes-Friends-Cancer
 The smokes-friends-cancer example is a common first example in probabilistic relational models, here
 we use this set to learn a Relational Dependency Network (:class:`srlearn.rdn.BoostedRDN`).
 
-This makes use of ``srlearn.example_data``, which provides two `srlearn.Database` objects named
-``example_data.train`` and ``example_data.test``.
-
 This shows how the margin between positive and negative examples is maximized as the number of
 iterations of boosting increases.
 """
 
 from srlearn.rdn import BoostedRDN
 from srlearn import Background
-from srlearn import example_data
+from srlearn.datasets import load_toy_cancer
 
 import numpy as np
 import matplotlib.pyplot as plt
 
-bk = Background(
-    modes=example_data.train.modes,
-)
+toy_cancer = load_toy_cancer()
+
+bk = Background(modes=toy_cancer.train.modes)
 
 clf = BoostedRDN(
     background=bk,
@@ -32,7 +29,7 @@ clf = BoostedRDN(
     n_estimators=20,
 )
 
-clf.fit(example_data.train)
+clf.fit(toy_cancer.train)
 
 x = np.arange(1, 21)
 y_pos = []
@@ -41,7 +38,7 @@ thresholds = []
 
 for n_trees in x:
     clf.set_params(n_estimators=n_trees)
-    probs = clf.predict_proba(example_data.test)
+    probs = clf.predict_proba(toy_cancer.test)
 
     thresholds.append(clf.threshold_)
     y_pos.append(np.mean(probs[np.nonzero(clf.classes_)]))
@@ -58,4 +55,3 @@ plt.title("Class Probability vs. Number Trees")
 plt.xlabel("Number of Trees")
 plt.ylabel("Probability of belonging to Positive Class")
 plt.legend(loc="best")
-plt.show()
