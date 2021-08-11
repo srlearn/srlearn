@@ -8,6 +8,7 @@ import re
 import numpy as np
 
 from .base import BaseBoostedRelationalModel
+from .database import Database
 
 
 class BoostedRDN(BaseBoostedRelationalModel):
@@ -131,6 +132,13 @@ class BoostedRDN(BaseBoostedRelationalModel):
             filename="train", location=self.file_system.files.TRAIN_DIR.value
         )
 
+        if isinstance(database, tuple):
+            _db = Database()
+            _db.pos = database.pos
+            _db.neg = database.neg
+            _db.facts = database.facts
+            database = _db
+
         # Write the data to files.
         database.write(
             filename="train", location=self.file_system.files.TRAIN_DIR.value
@@ -176,6 +184,13 @@ class BoostedRDN(BaseBoostedRelationalModel):
         """
 
         self._check_initialized()
+
+        if isinstance(database, tuple):
+            _db = Database()
+            _db.pos = database.pos
+            _db.neg = database.neg
+            _db.facts = database.facts
+            database = _db
 
         # Write the background to file.
         self.background.write(
