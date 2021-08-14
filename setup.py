@@ -32,6 +32,7 @@ setup(
     download_url="https://github.com/hayesall/srlearn",
     license="GPL-3.0",
     zip_safe=False,
+    python_requires=">=3.7",
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Education",
