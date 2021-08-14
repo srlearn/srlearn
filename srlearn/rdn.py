@@ -454,6 +454,13 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
             filename="train", location=self.file_system.files.TRAIN_DIR.value
         )
 
+        if isinstance(database, tuple):
+            _db = Database()
+            _db.pos = database.pos
+            _db.neg = database.neg
+            _db.facts = database.facts
+            database = _db
+
         # Write the data to files.
         database.write(
             filename="train", location=self.file_system.files.TRAIN_DIR.value
@@ -504,6 +511,13 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
         self.background.write(
             filename="test", location=self.file_system.files.TEST_DIR.value
         )
+
+        if isinstance(database, tuple):
+            _db = Database()
+            _db.pos = database.pos
+            _db.neg = database.neg
+            _db.facts = database.facts
+            database = _db
 
         # Write the data to files.
         database.write(filename="test", location=self.file_system.files.TEST_DIR.value)
