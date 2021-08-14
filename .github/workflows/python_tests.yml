@@ -1,4 +1,4 @@
-name: Ubuntu Build
+name: Ubuntu/macOS/Windows
 
 on:
   push:
@@ -7,11 +7,14 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  test:
+    name: Python ${{ matrix.version }} - $${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         python-version: [3.7, 3.8, 3.9]
+        os: [ubuntu-latest, windows-latest, macOS-latest]
 
     steps:
     - uses: actions/checkout@v2
