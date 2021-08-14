@@ -1,7 +1,7 @@
 """
 Setup file for srlearn
 
-Refer to https://github.com/hayesall/srlearn
+Refer to https://github.com/srlearn/srlearn
 """
 
 from setuptools import setup
@@ -29,7 +29,7 @@ setup(
     include_package_data=True,
     package_data={"srlearn": ["*.jar"]},
     url="https://hayesall.com",
-    download_url="https://github.com/hayesall/srlearn",
+    download_url="https://github.com/srlearn/srlearn",
     license="GPL-3.0",
     zip_safe=False,
     python_requires=">=3.7",

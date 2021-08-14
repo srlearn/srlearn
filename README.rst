@@ -2,30 +2,26 @@
 srlearn
 ########
 
-.. image:: https://raw.githubusercontent.com/hayesall/srlearn/main/docs/source/_static/preview.png
+.. image:: https://raw.githubusercontent.com/srlearn/srlearn/main/docs/source/_static/preview.png
     :alt:  Repository preview image: "srlearn. Python wrappers around BoostSRL with a scikit-learn-style interface. pip install srlearn."
 
-|License|_ |LGTM|_ |GitHubBuilds|_ |AppVeyor|_ |Codecov|_ |ReadTheDocs|_
+|License|_ |LGTM|_ |GitHubBuilds|_ |Codecov|_ |ReadTheDocs|_
 
-.. |License| image:: https://img.shields.io/github/license/hayesall/srlearn.svg
+.. |License| image:: https://img.shields.io/github/license/srlearn/srlearn.svg
     :alt: License
 .. _License: LICENSE
 
-.. |LGTM| image:: https://img.shields.io/lgtm/grade/python/github/hayesall/srlearn?label=code%20quality&logo=lgtm
+.. |LGTM| image:: https://img.shields.io/lgtm/grade/python/github/srlearn/srlearn?label=code%20quality&logo=lgtm
     :alt: LGTM code quality analysis
-.. _LGTM: https://lgtm.com/projects/g/hayesall/srlearn/context:python
+.. _LGTM: https://lgtm.com/projects/g/srlearn/srlearn/context:python
 
-.. |GitHubBuilds| image:: https://github.com/hayesall/srlearn/workflows/Package%20Tests/badge.svg
-    :alt: GitHub CI Builds
-.. _GitHubBuilds: https://github.com/hayesall/srlearn/actions?query=workflow%3A%22Package+Tests%22
+.. |GitHubBuilds| image:: https://github.com/srlearn/srlearn/actions/workflows/python_tests.yml/badge.svg
+    :alt: GitHub CI Builds 
+.. _GitHubBuilds: https://github.com/srlearn/srlearn/actions/workflows/python_tests.yml
 
-.. |AppVeyor| image:: https://ci.appveyor.com/api/projects/status/obwfhyrjfnfilfce?svg=true
-    :alt: AppVeyor Windows build status
-.. _AppVeyor: https://ci.appveyor.com/project/hayesall/srlearn
-
-.. |Codecov| image:: https://codecov.io/gh/hayesall/srlearn/branch/main/graphs/badge.svg?branch=main
+.. |Codecov| image:: https://codecov.io/gh/srlearn/srlearn/branch/main/graphs/badge.svg?branch=main
     :alt: Code coverage status
-.. _Codecov: https://codecov.io/github/hayesall/srlearn?branch=main
+.. _Codecov: https://codecov.io/github/srlearn/srlearn?branch=main
 
 .. |ReadTheDocs| image:: https://readthedocs.org/projects/srlearn/badge/?version=latest
     :alt: Documentation status
@@ -88,16 +84,16 @@ For more examples, see the `Example Gallery <https://srlearn.readthedocs.io/en/l
 Contributing
 ------------
 
-We have adopted the `Contributor Covenant Code of Conduct <https://github.com/hayesall/srlearn/blob/main/.github/CODE_OF_CONDUCT.md>`_ version 1.4. Please read,
+We have adopted the `Contributor Covenant Code of Conduct <https://github.com/srlearn/srlearn/blob/main/.github/CODE_OF_CONDUCT.md>`_ version 1.4. Please read,
 follow, and report any incidents which violate this.
 
-Questions, Issues, and Pull Requests are welcome. Please refer to `CONTRIBUTING.md <https://github.com/hayesall/srlearn/blob/main/.github/CONTRIBUTING.md>`_ for
+Questions, Issues, and Pull Requests are welcome. Please refer to `CONTRIBUTING.md <https://github.com/srlearn/srlearn/blob/main/.github/CONTRIBUTING.md>`_ for
 information on submitting issues and pull requests.
 
 Versioning and Releases
 -----------------------
 
 We use `SemVer <https://semver.org>`_ for versioning.
-See `Releases <https://github.com/hayesall/srlearn/releases>`_
+See `Releases <https://github.com/srlearn/srlearn/releases>`_
 for stable versions that are available, or the
 `Project Page on PyPi <https://pypi.org/project/srlearn/>`_.
