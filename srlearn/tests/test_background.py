@@ -42,9 +42,9 @@ def test_initialize_background_knowledge_1():
 
 def test_initialize_example_background_knowledge_1():
     """Test initializing with example data modes"""
-    toy_cancer = load_toy_cancer()
-    _bk = Background(modes=toy_cancer.train.modes)
-    assert _bk.modes == toy_cancer.train.modes
+    train, _ = load_toy_cancer()
+    _bk = Background(modes=train.modes)
+    assert _bk.modes == train.modes
     assert not _bk.line_search
     assert not _bk.recursion
 
@@ -61,9 +61,9 @@ def test_initialize_example_background_knowledge_1():
 
 def test_initializing_example_background_knowledge_2():
     """Test initializing with example data modes and extra parameters."""
-    toy_cancer = load_toy_cancer()
+    train, _ = load_toy_cancer()
     _bk = Background(
-        modes=toy_cancer.train.modes,
+        modes=train.modes,
         line_search=True,
         recursion=True,
         node_size=3,
@@ -71,7 +71,7 @@ def test_initializing_example_background_knowledge_2():
         number_of_clauses=8,
         number_of_cycles=10,
     )
-    assert _bk.modes == toy_cancer.train.modes
+    assert _bk.modes == train.modes
 
     _capture = str(_bk)
     assert "setParam: nodeSize=3." in _capture
@@ -88,9 +88,9 @@ def test_initializing_example_background_knowledge_2():
 
 def test_initializing_example_background_knowledge_3():
     """Test initializing with example data modes and extra parameters."""
-    toy_cancer = load_toy_cancer()
+    train, _ = load_toy_cancer()
     _bk = Background(
-        modes=toy_cancer.train.modes,
+        modes=train.modes,
         line_search=True,
         recursion=True,
         node_size=3,
@@ -100,7 +100,7 @@ def test_initializing_example_background_knowledge_3():
         ok_if_unknown=["smokes/1", "friends/2"],
         bridgers=["friends/2"],
     )
-    assert _bk.modes == toy_cancer.train.modes
+    assert _bk.modes == train.modes
 
     _capture = str(_bk)
     assert "setParam: nodeSize=3." in _capture
@@ -127,8 +127,8 @@ def test_write_background_to_file_1(tmpdir):
 
 def test_write_background_to_file_2(tmpdir):
     """Test writing Background object to a file with extra parameters."""
-    toy_cancer = load_toy_cancer()
-    _bk = Background(modes=toy_cancer.train.modes, node_size=1, max_tree_depth=5)
+    train, _ = load_toy_cancer()
+    _bk = Background(modes=train.modes, node_size=1, max_tree_depth=5)
     _bk.write(filename="train", location=pathlib.Path(tmpdir))
     assert tmpdir.join("train_bk.txt").read() == str(_bk)
 
@@ -145,21 +145,21 @@ def test_string_conversion_no_modes():
 def test_initialize_bad_background_knowledge_modes(test_input):
     """Incorrect modes settings"""
     with pytest.raises(ValueError):
-        _bk = Background(modes=test_input)
+        _ = Background(modes=test_input)
 
 
 @pytest.mark.parametrize("test_input", [1.5, 4, None, "True", "False", bool, int, 0, 1])
 def test_initialize_bad_background_knowledge_recursion(test_input):
     """Incorrect recursion settings."""
     with pytest.raises(ValueError):
-        _bk = Background(recursion=test_input)
+        _ = Background(recursion=test_input)
 
 
 @pytest.mark.parametrize("test_input", [1.5, 4, None, "True", "False", bool, int, 0, 1])
 def test_initialize_bad_background_knowledge_line_search(test_input):
     """Incorrect line_search settings"""
     with pytest.raises(ValueError):
-        _bk = Background(line_search=test_input)
+        _ = Background(line_search=test_input)
 
 
 @pytest.mark.parametrize(
@@ -168,7 +168,7 @@ def test_initialize_bad_background_knowledge_line_search(test_input):
 def test_initialize_bad_background_knowledge_max_tree_depth(test_input):
     """Incorrect max_tree_depth settings."""
     with pytest.raises(ValueError):
-        _bk = Background(max_tree_depth=test_input)
+        _ = Background(max_tree_depth=test_input)
 
 
 @pytest.mark.parametrize(
@@ -177,7 +177,7 @@ def test_initialize_bad_background_knowledge_max_tree_depth(test_input):
 def test_initialize_bad_background_knowledge_number_of_cycles(test_input):
     """Incorrect number_of_cycles settings."""
     with pytest.raises(ValueError):
-        _bk = Background(number_of_cycles=test_input)
+        _ = Background(number_of_cycles=test_input)
 
 
 @pytest.mark.parametrize(
@@ -186,7 +186,7 @@ def test_initialize_bad_background_knowledge_number_of_cycles(test_input):
 def test_initialize_bad_background_knowledge_number_of_clauses(test_input):
     """Incorrect number_of_cycles settings."""
     with pytest.raises(ValueError):
-        _bk = Background(number_of_clauses=test_input)
+        _ = Background(number_of_clauses=test_input)
 
 
 @pytest.mark.parametrize(
@@ -195,7 +195,7 @@ def test_initialize_bad_background_knowledge_number_of_clauses(test_input):
 def test_initialize_bad_background_knowledge_load_all_libraries(test_input):
     """Incorrect load_all_libraries arguments."""
     with pytest.raises(ValueError):
-        _bk = Background(load_all_libraries=test_input)
+        _ = Background(load_all_libraries=test_input)
 
 
 @pytest.mark.parametrize(
@@ -204,7 +204,7 @@ def test_initialize_bad_background_knowledge_load_all_libraries(test_input):
 def test_initialize_bad_background_knowledge_load_all_basic_modes(test_input):
     """Incorrect load_all_basic_modes arguments."""
     with pytest.raises(ValueError):
-        _bk = Background(load_all_basic_modes=test_input)
+        _ = Background(load_all_basic_modes=test_input)
 
 
 @pytest.mark.parametrize(
@@ -213,7 +213,7 @@ def test_initialize_bad_background_knowledge_load_all_basic_modes(test_input):
 def test_initialize_bad_logic_variables(test_input):
     """Initialize use_std_logic_variables with input which raises error."""
     with pytest.raises(ValueError):
-        _bk = Background(use_std_logic_variables=test_input)
+        _ = Background(use_std_logic_variables=test_input)
 
 
 @pytest.mark.parametrize(
@@ -222,7 +222,7 @@ def test_initialize_bad_logic_variables(test_input):
 def test_initialize_bad_prolog_variables(test_input):
     """Initialize use_prolog_variables with input which raises error."""
     with pytest.raises(ValueError):
-        _bk = Background(use_prolog_variables=test_input)
+        _ = Background(use_prolog_variables=test_input)
 
 
 @pytest.mark.parametrize(
@@ -231,7 +231,7 @@ def test_initialize_bad_prolog_variables(test_input):
 def test_initialize_bad_ok_if_unknown_variables(test_input):
     """Initialize ok_if_unknown with input that should raise error."""
     with pytest.raises(ValueError):
-        _bk = Background(ok_if_unknown=test_input)
+        _ = Background(ok_if_unknown=test_input)
 
 
 @pytest.mark.parametrize(
@@ -240,4 +240,4 @@ def test_initialize_bad_ok_if_unknown_variables(test_input):
 def test_initialize_bad_bridgers(test_input):
     """Initialize bridgers with input that should raise an error."""
     with pytest.raises(ValueError):
-        _bk = Background(bridgers=test_input)
+        _ = Background(bridgers=test_input)

@@ -19,13 +19,13 @@ def test_feature_importances_before_fit():
 
 def test_feature_importances_toy_cancer():
     """Test getting the feature importances from the Toy-Cancer set."""
-    toy_cancer = load_toy_cancer()
-    bkg = Background(modes=toy_cancer.train.modes)
+    train, _ = load_toy_cancer()
+    bkg = Background(modes=train.modes)
     rdn = BoostedRDN(
         target="cancer",
         background=bkg,
         n_estimators=10,
     )
-    rdn.fit(toy_cancer.train)
+    rdn.fit(train)
     _features = rdn.feature_importances_
     assert _features.most_common(1)[0] == ("smokes", 10)
