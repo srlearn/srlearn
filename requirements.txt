@@ -3,6 +3,9 @@ scipy
 numpy
 graphviz
 
+# Optional for core functionality
+relational-datasets
+
 # Style
 black
 pycodestyle
