@@ -16,18 +16,19 @@ from srlearn.datasets import load_toy_cancer
 
 
 def test_serialize_BoostedRDN(tmpdir):
+    """Test that inference is possible after loading from json"""
     output_json = tmpdir.join("ToyCancerRDN.json")
-    toy_cancer = load_toy_cancer()
-    bkg = Background(modes=toy_cancer.train.modes)
+    train, test = load_toy_cancer()
+    bkg = Background(modes=train.modes)
     rdn = BoostedRDN(background=bkg, target="cancer", n_estimators=5)
-    rdn.fit(toy_cancer.train)
+    rdn.fit(train)
     rdn.to_json(output_json)
 
     # New BoostedRDN instance, loading from file, and running.
     rdn2 = BoostedRDN()
     rdn2.from_json(output_json)
 
-    _predictions = rdn2.predict(toy_cancer.test)
+    _predictions = rdn2.predict(test)
     assert len(rdn2.estimators_) == 5
     assert_array_equal(
         _predictions, np.array([1.0, 1.0, 1.0, 0.0, 0.0])
@@ -35,6 +36,7 @@ def test_serialize_BoostedRDN(tmpdir):
 
 
 def test_serialize_BoostedRDNRegressor(tmpdir):
+    """Test serializing and inference with a regressor object."""
     output_json = tmpdir.join("BostonHousingRDN.json")
 
     train = Database.from_files(

@@ -20,8 +20,8 @@ def test_toy_cancer_predict_after_load(test_input):
     """Load a ToyCancer json file and predict."""
     clf = BoostedRDN()
     clf.from_json("srlearn/tests/regression_tests/json/toy_cancer_{0}.json".format(test_input))
-    toy_cancer = load_toy_cancer()
-    _predictions = clf.predict(toy_cancer.test)
+    _, test = load_toy_cancer()
+    _predictions = clf.predict(test)
     assert_array_equal(_predictions, np.array([1.0, 1.0, 1.0, 0.0, 0.0]))
 
 
