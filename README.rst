@@ -60,7 +60,7 @@ A minimal working example (using the Toy-Cancer data set imported with 'load_toy
     from srlearn.rdn import BoostedRDN
     from srlearn import Background
     from srlearn.datasets import load_toy_cancer
-    toy_cancer = load_toy_cancer()
+    train, test = load_toy_cancer()
     bk = Background(
         modes=toy_cancer.train.modes,
         use_std_logic_variables=True,
@@ -69,8 +69,8 @@ A minimal working example (using the Toy-Cancer data set imported with 'load_toy
         background=bk,
         target='cancer',
     )
-    clf.fit(toy_cancer.train)
-    clf.predict_proba(toy_cancer.test)
+    clf.fit(train)
+    clf.predict_proba(test)
     # array([0.88079619, 0.88079619, 0.88079619, 0.3075821 , 0.3075821 ])
     print(clf.classes_)
     # array([1., 1., 1., 0., 0.])

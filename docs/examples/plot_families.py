@@ -1,3 +1,5 @@
+# Copyright © 2017-2021 Alexander L. Hayes
+
 """
 ===========================
 Family Relationships Domain
@@ -10,7 +12,7 @@ from *Pride and Prejudice*.
 
 from srlearn.datasets import load_toy_father
 
-toy_father = load_toy_father()
+train, test = load_toy_father()
 
 # %%
 # The training examples in the "*Toy Father*" dataset describes relationships and facts about
@@ -22,16 +24,14 @@ toy_father = load_toy_father()
 # The first *negative* example: ``father(harrypotter,mrgranger).`` can be interpreted as
 # "*Mr. Granger is not the father of Harry Potter.*"
 
-print(toy_father.train.pos[0], "→    James Potter is the father of Harry Potter.")
-print(toy_father.train.neg[0], "  → Mr. Granger is not the father of Harry Potter.")
+print(train.pos[0], "→    James Potter is the father of Harry Potter.")
+print(train.neg[0], "  → Mr. Granger is not the father of Harry Potter.")
 
 # %% 
 # The *facts* contain three additional predicates: describing ``children``, ``male``,
 # and who is a ``siblingof``.
 
-print(toy_father.train.facts[0])
-print(toy_father.train.facts[14])
-print(toy_father.train.facts[-2])
+train.facts
 
 # %%
 # Our aim is to learn about what a "*father*" is in terms of the facts we have available.
@@ -58,7 +58,7 @@ clf = BoostedRDN(
     n_estimators=5,
 )
 
-clf.fit(toy_father.train)
+clf.fit(train)
 
 # %%
 # It's important to check whether we actually learn something useful.
@@ -82,10 +82,10 @@ plot_digraph(export_digraph(clf, 1), format="html")
 # Let's apply our learned model to the test data, which includes facts
 # about characters from Jane Austen's *Pride and Prejudice.*
 
-predictions = clf.predict_proba(toy_father.test)
+predictions = clf.predict_proba(test)
 
 print("{:<35} {}".format("Predicate", "Probability of being True"), "\n", "-" * 60)
-for predicate, prob in zip(toy_father.test.pos + toy_father.test.neg, predictions):
+for predicate, prob in zip(test.pos + test.neg, predictions):
     print("{:<35} {:.2f}".format(predicate, prob))
 
 # %% 
@@ -116,7 +116,7 @@ clf = BoostedRDN(
     n_estimators=5,
 )
 
-clf.fit(toy_father.train)
+clf.fit(train)
 
 plot_digraph(export_digraph(clf, 0), format="html")
 
@@ -124,8 +124,8 @@ plot_digraph(export_digraph(clf, 0), format="html")
 # This seems to be much more stable, which should also be reflected in the
 # probabilities assigned on test examples.
 
-predictions = clf.predict_proba(toy_father.test)
+predictions = clf.predict_proba(test)
 
 print("{:<35} {}".format("Predicate", "Probability of being True"), "\n", "-" * 60)
-for predicate, prob in zip(toy_father.test.pos + toy_father.test.neg, predictions):
+for predicate, prob in zip(test.pos + test.neg, predictions):
     print("{:<35} {:.2f}".format(predicate, prob))

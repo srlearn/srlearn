@@ -1,3 +1,5 @@
+# Copyright © 2017-2021 Alexander L. Hayes
+
 """
 =====================
 Smokes-Friends-Cancer
@@ -17,9 +19,9 @@ from srlearn.datasets import load_toy_cancer
 import numpy as np
 import matplotlib.pyplot as plt
 
-toy_cancer = load_toy_cancer()
+train, test = load_toy_cancer()
 
-bk = Background(modes=toy_cancer.train.modes)
+bk = Background(modes=train.modes)
 
 clf = BoostedRDN(
     background=bk,
@@ -29,7 +31,7 @@ clf = BoostedRDN(
     n_estimators=20,
 )
 
-clf.fit(toy_cancer.train)
+clf.fit(train)
 
 x = np.arange(1, 21)
 y_pos = []
@@ -38,7 +40,7 @@ thresholds = []
 
 for n_trees in x:
     clf.set_params(n_estimators=n_trees)
-    probs = clf.predict_proba(toy_cancer.test)
+    probs = clf.predict_proba(test)
 
     thresholds.append(clf.threshold_)
     y_pos.append(np.mean(probs[np.nonzero(clf.classes_)]))

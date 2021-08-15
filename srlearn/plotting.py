@@ -1,4 +1,4 @@
-# Copyright © 2020 Alexander L. Hayes
+# Copyright © 2017-2021 Alexander L. Hayes
 
 """
 Methods for plotting and visualization.
@@ -13,7 +13,6 @@ class _GVPlotter:
     def _repr_html_(self):
         import graphviz
         return graphviz.Source(self.dot_string)._repr_svg_()
-
 
 def plot_digraph(dot_string, format="png"):
     """Plot a digraph as an image.

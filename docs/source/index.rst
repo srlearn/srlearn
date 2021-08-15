@@ -5,27 +5,23 @@ srlearn
 .. image:: _static/preview.png
     :alt:  Repository preview image: "srlearn. Python wrappers around BoostSRL with a scikit-learn-style interface. pip install srlearn."
 
-|License|_ |LGTM|_ |GitHubBuilds|_ |AppVeyor|_ |Codecov|_ |ReadTheDocs|_
+|License|_ |LGTM|_ |GitHubBuilds|_ |Codecov|_ |ReadTheDocs|_
 
-.. |License| image:: https://img.shields.io/github/license/hayesall/srlearn.svg
+.. |License| image:: https://img.shields.io/github/license/srlearn/srlearn.svg
     :alt: License
 .. _License: LICENSE
 
-.. |LGTM| image:: https://img.shields.io/lgtm/grade/python/github/hayesall/srlearn?label=code%20quality&logo=lgtm
+.. |LGTM| image:: https://img.shields.io/lgtm/grade/python/github/srlearn/srlearn?label=code%20quality&logo=lgtm
     :alt: LGTM code quality analysis
-.. _LGTM: https://lgtm.com/projects/g/hayesall/srlearn/context:python
+.. _LGTM: https://lgtm.com/projects/g/srlearn/srlearn/context:python
 
-.. |GitHubBuilds| image:: https://github.com/hayesall/srlearn/workflows/Package%20Tests/badge.svg
-    :alt: GitHub CI Builds
-.. _GitHubBuilds: https://github.com/hayesall/srlearn/actions?query=workflow%3A%22Package+Tests%22
+.. |GitHubBuilds| image:: https://github.com/srlearn/srlearn/actions/workflows/python_tests.yml/badge.svg
+    :alt: GitHub CI Builds 
+.. _GitHubBuilds: https://github.com/srlearn/srlearn/actions/workflows/python_tests.yml
 
-.. |AppVeyor| image:: https://ci.appveyor.com/api/projects/status/obwfhyrjfnfilfce?svg=true
-    :alt: AppVeyor Windows build status
-.. _AppVeyor: https://ci.appveyor.com/project/hayesall/srlearn
-
-.. |Codecov| image:: https://codecov.io/gh/hayesall/srlearn/branch/main/graphs/badge.svg?branch=main
+.. |Codecov| image:: https://codecov.io/gh/srlearn/srlearn/branch/main/graphs/badge.svg?branch=main
     :alt: Code coverage status
-.. _Codecov: https://codecov.io/github/hayesall/srlearn?branch=main
+.. _Codecov: https://codecov.io/github/srlearn/srlearn?branch=main
 
 .. |ReadTheDocs| image:: https://readthedocs.org/projects/srlearn/badge/?version=latest
     :alt: Documentation status

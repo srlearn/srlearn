@@ -22,6 +22,9 @@ background knowledge, and learning.
 Data Sets
 =========
 
+There are some toy datasets built into the srlearn package. For more datasets,
+see the `relational-datasets package <https://srlearn.github.io/relational-datasets/>`_.
+
 .. autosummary::
    :toctree: generated/
    :template: function.rst 
