@@ -27,22 +27,22 @@ class BoostedRDN(BaseBoostedRelationalModel):
     >>> from srlearn.rdn import BoostedRDN
     >>> from srlearn import Background
     >>> from srlearn.datasets import load_toy_cancer
-    >>> toy_cancer = load_toy_cancer()
-    >>> bk = Background(modes=toy_cancer.train.modes, use_std_logic_variables=True)
+    >>> train, test = load_toy_cancer()
+    >>> bk = Background(modes=train.modes)
     >>> dn = BoostedRDN(background=bk, target="cancer")
-    >>> dn.fit(toy_cancer.train)
+    >>> dn.fit(train)
     BoostedRDN(background=setParam: nodeSize=2.
     setParam: maxTreeDepth=3.
-    setParam: numberOfClauses=100.
-    setParam: numberOfCycles=100.
-    useStdLogicVariables: true.
+    setParam: numOfClauses=100.
+    setParam: numOfCycles=100.
+    usePrologVariables: true.
     mode: friends(+Person,-Person).
     mode: friends(-Person,+Person).
     mode: smokes(+Person).
     mode: cancer(+Person).
     ,
-               max_tree_depth=3, n_estimators=10, node_size=2, target='cancer')
-    >>> dn.predict(toy_cancer.test)
+               target='cancer')
+    >>> dn.predict(test)
     array([ True,  True,  True, False, False])
 
     """
@@ -313,38 +313,39 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
     >>> from srlearn import Background
     >>> from srlearn import Database
     >>> train = Database.from_files(
-            pos="./datasets/Boston/train/pos.pl",
-            neg="./datasets/Boston/train/neg.pl",
-            facts="./datasets/Boston/train/facts.pl",
-            lazy_load=False
-        )
+    ...     pos="../datasets/Boston/train/pos.pl",
+    ...     neg="../datasets/Boston/train/neg.pl",
+    ...     facts="../datasets/Boston/train/facts.pl",
+    ...     lazy_load=False,
+    ... )
     >>> test = Database.from_files(
-            pos="./datasets/Boston/test/pos.pl",
-            neg="./datasets/Boston/test/neg.pl",
-            facts="./datasets/Boston/test/facts.pl",
-            lazy_load=False
-        )
+    ...     pos="../datasets/Boston/test/pos.pl",
+    ...     neg="../datasets/Boston/test/neg.pl",
+    ...     facts="../datasets/Boston/test/facts.pl",
+    ...     lazy_load=False,
+    ... )
     >>> train.modes = ["crim(+id,#varsrim).",
-            "zn(+id,#varzn).",
-            "indus(+id,#varindus).",
-            "chas(+id,#varchas).",
-            "nox(+id,#varnox).",
-            "rm(+id,#varrm).",
-            "age(+id,#varage).",
-            "dis(+id,#vardis).",
-            "rad(+id,#varrad).",
-            "tax(+id,#vartax).",
-            "ptratio(+id,#varptrat).",
-            "b(+id,#varb).",
-            "lstat(+id,#varlstat).",
-            "medv(+id)."]
+    ...     "zn(+id,#varzn).",
+    ...     "indus(+id,#varindus).",
+    ...     "chas(+id,#varchas).",
+    ...     "nox(+id,#varnox).",
+    ...     "rm(+id,#varrm).",
+    ...     "age(+id,#varage).",
+    ...     "dis(+id,#vardis).",
+    ...     "rad(+id,#varrad).",
+    ...     "tax(+id,#vartax).",
+    ...     "ptratio(+id,#varptrat).",
+    ...     "b(+id,#varb).",
+    ...     "lstat(+id,#varlstat).",
+    ...     "medv(+id)."]
     >>> bk = Background(modes=train.modes)
-    >>> reg = BoostedRDNRegressor(background=bk, target="medv", n_estimators=20)
+    >>> reg = BoostedRDNRegressor(background=bk, target="medv", n_estimators=5)
     >>> reg.fit(train)
-    BoostedRegressionTrees(background=setParam: nodeSize=2.
+    BoostedRDNRegressor(background=setParam: nodeSize=2.
     setParam: maxTreeDepth=3.
-    setParam: numberOfClauses=100.
-    setParam: numberOfCycles=100.
+    setParam: numOfClauses=100.
+    setParam: numOfCycles=100.
+    usePrologVariables: true.
     mode: crim(+id,#varsrim).
     mode: zn(+id,#varzn).
     mode: indus(+id,#varindus).
@@ -360,8 +361,8 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
     mode: lstat(+id,#varlstat).
     mode: medv(+id).
     ,
-                           n_estimators=20, target='medv')
-    >>> reg.predict(test)
+                        n_estimators=5, target='medv')
+    >>> reg.predict(test)   # doctest: +SKIP
     array([10.04313307 13.55804603 20.549378   18.14681934 23.9393469  10.01292162
          29.83298024 20.34668817 27.81642572 32.04067867  9.41342835 20.975001
          19.21966845])

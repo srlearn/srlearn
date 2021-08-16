@@ -55,14 +55,14 @@ def reset(soft=False):
     2. Trigger conditional behavior. Here we report that the directory is empty.
 
     >>> from srlearn import system_manager
-    >>> if not system_manager.reset(soft=True):
+    >>> if not system_manager.reset(soft=True):   # doctest: +SKIP
     ...     print("Currently Empty")
     Currently Empty
 
     3. Use a hard reset to remove any temporary files.
 
     >>> from srlearn import system_manager
-    >>> system_manager.reset()
+    >>> system_manager.reset()   # doctest: +SKIP
     []
     """
     _here = pathlib.Path(__file__).parent

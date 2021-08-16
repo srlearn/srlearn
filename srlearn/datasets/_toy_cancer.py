@@ -9,7 +9,7 @@ Examples
 >>> from srlearn.datasets import load_toy_cancer
 >>> train, test = load_toy_cancer()
 >>> train.pos
-['cancer(Alice).', 'cancer(Bob).', 'cancer(Chuck).', 'cancer(Fred).']
+['cancer(alice).', 'cancer(bob).', 'cancer(chuck).', 'cancer(fred).']
 """
 
 from ..database import Database
@@ -30,11 +30,11 @@ def load_toy_cancer():
     >>> train, test = load_toy_cancer()
     >>> train
     Positive Examples:
-    ['cancer(Alice).', 'cancer(Bob).', 'cancer(Chuck).', 'cancer(Fred).']
+    ['cancer(alice).', 'cancer(bob).', 'cancer(chuck).', 'cancer(fred).']
     Negative Examples:
-    ['cancer(Dan).', 'cancer(Earl).']
+    ['cancer(dan).', 'cancer(earl).']
     Facts:
-    ['friends(Alice, Bob).', 'friends(Alice, Fred).', ..., 'smokes(Bob).']
+    ['friends(alice,bob).', 'friends(alice,fred).', ..., 'smokes(bob).']
 
     """
 

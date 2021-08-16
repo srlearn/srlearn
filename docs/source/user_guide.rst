@@ -28,35 +28,35 @@ represent arbitrary social networks in a vector representation.
 In order to get around this, we adopt Prolog clauses to represent our data:
 
 >>> from srlearn.datasets import load_toy_cancer
->>> toy_cancer = load_toy_cancer()
->>> for predicate in toy_cancer.train.pos:
+>>> train, _ = load_toy_cancer()
+>>> for predicate in train.pos:
 ...     print(predicate)
 ...
-cancer(Alice).
-cancer(Bob).
-cancer(Chuck).
-cancer(Fred).
+cancer(alice).
+cancer(bob).
+cancer(chuck).
+cancer(fred).
 
 >>> from srlearn.datasets import load_toy_cancer
->>> toy_cancer = load_toy_cancer()
->>> for predicate in toy_cancer.train.facts:
+>>> train, _ = load_toy_cancer()
+>>> for predicate in train.facts:
 ...    print(predicate)
 ...
-friends(Alice, Bob).
-friends(Alice, Fred).
-friends(Chuck, Bob).
-friends(Chuck, Fred).
-friends(Dan, Bob).
-friends(Earl, Bob).
-friends(Bob, Alice).
-friends(Fred, Alice).
-friends(Bob, Chuck).
-friends(Fred, Chuck).
-friends(Bob, Dan).
-friends(Bob, Earl).
-smokes(Alice).
-smokes(Chuck).
-smokes(Bob).
+friends(alice,bob).
+friends(alice,fred).
+friends(chuck,bob).
+friends(chuck,fred).
+friends(dan,bob).
+friends(earl,bob).
+friends(bob,alice).
+friends(fred,alice).
+friends(bob,chuck).
+friends(fred,chuck).
+friends(bob,dan).
+friends(bob,earl).
+smokes(alice).
+smokes(chuck).
+smokes(bob).
 
 Since this differs from the vector representation, this uses a :class:`srlearn.Database` object
 to represent positive examples, negative examples, and facts.
@@ -74,8 +74,9 @@ to remain compatible with how
 >>> print(bk)
 setParam: nodeSize=2.
 setParam: maxTreeDepth=3.
-setParam: numberOfClauses=100.
-setParam: numberOfCycles=100.
+setParam: numOfClauses=100.
+setParam: numOfCycles=100.
+usePrologVariables: true.
 <BLANKLINE>
 
 This gives us a view into some of the default parameters.
@@ -114,8 +115,7 @@ person in this fictional data set will develop cancer.
 ... )
 >>> clf = BoostedRDN()
 >>> print(clf)
-BoostedRDN(background=None, max_tree_depth=3, n_estimators=10, node_size=2,
-           target='None')
+BoostedRDN()
 
 This pattern should begin to look familiar if you've worked with scikit-learn before.
 This classifier is built on top of
@@ -140,7 +140,7 @@ a series of trees.
 >>> from srlearn.rdn import BoostedRDN
 >>> from srlearn import Background
 >>> from srlearn.datasets import load_toy_cancer
->>> toy_cancer = load_toy_cancer()
+>>> train, test = load_toy_cancer()
 >>> bk = Background(
 ...     modes=[
 ...         "friends(+person,-person).",
@@ -150,19 +150,19 @@ a series of trees.
 ...     ],
 ... )
 >>> clf = BoostedRDN(background=bk, target="cancer")
->>> clf.fit(toy_cancer.train)
+>>> clf.fit(train)
 BoostedRDN(background=setParam: nodeSize=2.
 setParam: maxTreeDepth=3.
-setParam: numberOfClauses=100.
-setParam: numberOfCycles=100.
-useStdLogicVariables: true.
+setParam: numOfClauses=100.
+setParam: numOfCycles=100.
+usePrologVariables: true.
 mode: friends(+person,-person).
 mode: friends(-person,+person).
 mode: cancer(+person).
 mode: smokes(+person).
 ,
-           max_tree_depth=3, n_estimators=10, node_size=2, target='cancer')
->>> clf.predict(toy_cancer.test)
+           target='cancer')
+>>> clf.predict(test)
 array([ True,  True,  True, False, False])
 
 Conclusion
