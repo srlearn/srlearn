@@ -32,6 +32,18 @@ see the `relational-datasets package <https://srlearn.github.io/relational-datas
    datasets.load_toy_cancer
    datasets.load_toy_father
 
+Plotting and Visualization
+==========================
+
+These may be helpful for visualizing trees.
+
+.. autosummary::
+   :toctree: generated/
+   :template: function.rst
+
+   plotting.export_digraph
+   plotting.plot_digraph
+
 Utilities
 =========
 
@@ -50,8 +62,6 @@ be useful for further development
    :toctree: generated/
    :template: function.rst
 
-   plotting.export_digraph
-   plotting.plot_digraph
    system_manager.reset
 
 Deprecated boostsrl objects
