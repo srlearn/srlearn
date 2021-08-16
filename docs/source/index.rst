@@ -27,6 +27,38 @@ srlearn
     :alt: Documentation status
 .. _ReadTheDocs: https://srlearn.readthedocs.io/en/latest/
 
+Introduction
+------------
+
+srlearn is a project and set of packages for 
+*statistical relational artificial intelligence.*
+
+*Standard* machine learning tends to focus on learning and inference inside of 
+a *feature-vector* (fit a model such that :math:`\boldsymbol{X}` predicts :math:`y`).
+*Statistical Relational Learning* attempts to generalize this to
+arbitrary graph and hypergraph data: where the prediction problem may include
+a set of objects with attributes and relations on those objects.
+
+.. code-block:: python
+
+    from srlearn.rdn import BoostedRDN
+    from srlearn import Background
+    from srlearn.datasets import load_toy_cancer
+    train, test = load_toy_cancer()
+    bk = Background(
+        modes=toy_cancer.train.modes,
+        use_std_logic_variables=True,
+    )
+    clf = BoostedRDN(
+        background=bk,
+        target='cancer',
+    )
+    clf.fit(train)
+    clf.predict_proba(test)
+    # array([0.88079619, 0.88079619, 0.88079619, 0.3075821 , 0.3075821 ])
+    print(clf.classes_)
+    # array([1., 1., 1., 0., 0.])
+
 .. toctree::
    :hidden:
    :maxdepth: 2
@@ -80,3 +112,18 @@ Full documentation for the modules.
 
 A gallery of examples with figures and expected outputs.
 It complements and extends past the basic example from the `User Guide <user_guide.html>`_.
+
+Contributing
+------------
+
+Many thanks to those who have already made contributions:
+
+- `Alexander L. Hayes <https://hayesall.com>`_, *Indiana University, Bloomington*
+- `Harsha Kokel <https://harshakokel.com/>`_, *The University of Texas at Dallas*
+- `Siwen Yan <https://dtrycode.github.io/>`_, *The University of Texas at Dallas*
+
+We have adopted the `Contributor Covenant Code of Conduct <https://github.com/srlearn/srlearn/blob/main/.github/CODE_OF_CONDUCT.md>`_ version 1.4. Please read,
+follow, and report any incidents which violate this.
+
+Questions, Issues, and Pull Requests are welcome. Please refer to `CONTRIBUTING.md <https://github.com/srlearn/srlearn/blob/main/.github/CONTRIBUTING.md>`_ for
+information on submitting issues and pull requests.

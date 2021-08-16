@@ -75,7 +75,7 @@ A minimal working example (using the Toy-Cancer data set imported with 'load_toy
     print(clf.classes_)
     # array([1., 1., 1., 0., 0.])
 
-``toy_cancer.train`` and ``toy_cancer.test`` are each ``srlearn.Database`` objects, so this hides some of
+``train`` and ``test`` are each ``srlearn.Database`` objects, so this hides some of
 the complexity behind the scenes.
 
 This example abstracts away some complexity in exchange for compactness.
@@ -83,6 +83,12 @@ For more examples, see the `Example Gallery <https://srlearn.readthedocs.io/en/l
 
 Contributing
 ------------
+
+Many thanks to those who have already made contributions:
+
+- `Alexander L. Hayes <https://hayesall.com>`_, *Indiana University, Bloomington*
+- `Harsha Kokel <https://harshakokel.com/>`_, *The University of Texas at Dallas*
+- `Siwen Yan <https://dtrycode.github.io/>`_, *The University of Texas at Dallas*
 
 We have adopted the `Contributor Covenant Code of Conduct <https://github.com/srlearn/srlearn/blob/main/.github/CODE_OF_CONDUCT.md>`_ version 1.4. Please read,
 follow, and report any incidents which violate this.
