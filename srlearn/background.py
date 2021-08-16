@@ -86,9 +86,9 @@ class Background:
         >>> print(bk)
         setParam: nodeSize=2.
         setParam: maxTreeDepth=2.
-        setParam: numberOfClauses=100.
-        setParam: numberOfCycles=100.
-        useStdLogicVariables: true.
+        setParam: numOfClauses=100.
+        setParam: numOfCycles=100.
+        usePrologVariables: true.
         mode: cancer(+Person).
         mode: smokes(+Person).
         mode: friends(+Person,-Person).
@@ -98,17 +98,15 @@ class Background:
         This Background object is used by the :class:`srlearn.rdn.BoostedRDN` class to
         write the parameters to a ``background.txt`` file before running BoostSRL.
 
-        .. code-block:: python
-
-            >>> from srlearn import Background
-            >>> from srlearn.datasets import load_toy_cancer
-            >>> toy_cancer = load_toy_cancer()
-            >>> bk = Background(
-            ...     modes=toy_cancer.train.modes,
-            ...     max_tree_depth=2,
-            ...     node_size=1,
-            ... )
-            >>> bk.write("training/")
+        >>> from srlearn import Background
+        >>> from srlearn.datasets import load_toy_cancer
+        >>> train, _ = load_toy_cancer()
+        >>> bk = Background(
+        ...     modes=train.modes,
+        ...     max_tree_depth=2,
+        ...     node_size=1,
+        ... )
+        >>> bk.write("training/")   # doctest: +SKIP
 
         Notes
         -----

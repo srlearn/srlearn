@@ -1,4 +1,4 @@
-# Copyright © 2020 Alexander L. Hayes
+# Copyright © 2017-2021 Alexander L. Hayes
 
 """
 Methods for plotting and visualization.
@@ -13,7 +13,6 @@ class _GVPlotter:
     def _repr_html_(self):
         import graphviz
         return graphviz.Source(self.dot_string)._repr_svg_()
-
 
 def plot_digraph(dot_string, format="png"):
     """Plot a digraph as an image.
@@ -65,10 +64,10 @@ def export_digraph(booster, tree_index=0, out_file=None):
         from srlearn.datasets import load_toy_cancer
         from srlearn.plotting import export_digraph
         
-        toy_cancer = load_toy_cancer()
+        train, _ = load_toy_cancer()
 
         bkg = Background(
-            modes=toy_cancer.train.modes,
+            modes=train.modes,
         )
 
         clf = BoostedRDN(
@@ -76,7 +75,7 @@ def export_digraph(booster, tree_index=0, out_file=None):
             target="cancer",
         )
 
-        clf.fit(toy_cancer.train)
+        clf.fit(train)
 
         print(export_digraph(clf, tree_index=0))
     """

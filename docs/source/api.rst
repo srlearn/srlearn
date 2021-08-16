@@ -22,12 +22,27 @@ background knowledge, and learning.
 Data Sets
 =========
 
+There are some toy datasets built into the srlearn package. For more datasets,
+see the `relational-datasets package <https://srlearn.github.io/relational-datasets/>`_.
+
 .. autosummary::
    :toctree: generated/
    :template: function.rst 
 
    datasets.load_toy_cancer
    datasets.load_toy_father
+
+Plotting and Visualization
+==========================
+
+These may be helpful for visualizing trees.
+
+.. autosummary::
+   :toctree: generated/
+   :template: function.rst
+
+   plotting.export_digraph
+   plotting.plot_digraph
 
 Utilities
 =========
@@ -47,8 +62,6 @@ be useful for further development
    :toctree: generated/
    :template: function.rst
 
-   plotting.export_digraph
-   plotting.plot_digraph
    system_manager.reset
 
 Deprecated boostsrl objects

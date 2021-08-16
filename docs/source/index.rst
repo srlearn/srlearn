@@ -5,31 +5,59 @@ srlearn
 .. image:: _static/preview.png
     :alt:  Repository preview image: "srlearn. Python wrappers around BoostSRL with a scikit-learn-style interface. pip install srlearn."
 
-|License|_ |LGTM|_ |GitHubBuilds|_ |AppVeyor|_ |Codecov|_ |ReadTheDocs|_
+|License|_ |LGTM|_ |GitHubBuilds|_ |Codecov|_ |ReadTheDocs|_
 
-.. |License| image:: https://img.shields.io/github/license/hayesall/srlearn.svg
+.. |License| image:: https://img.shields.io/github/license/srlearn/srlearn.svg
     :alt: License
 .. _License: LICENSE
 
-.. |LGTM| image:: https://img.shields.io/lgtm/grade/python/github/hayesall/srlearn?label=code%20quality&logo=lgtm
+.. |LGTM| image:: https://img.shields.io/lgtm/grade/python/github/srlearn/srlearn?label=code%20quality&logo=lgtm
     :alt: LGTM code quality analysis
-.. _LGTM: https://lgtm.com/projects/g/hayesall/srlearn/context:python
+.. _LGTM: https://lgtm.com/projects/g/srlearn/srlearn/context:python
 
-.. |GitHubBuilds| image:: https://github.com/hayesall/srlearn/workflows/Package%20Tests/badge.svg
-    :alt: GitHub CI Builds
-.. _GitHubBuilds: https://github.com/hayesall/srlearn/actions?query=workflow%3A%22Package+Tests%22
+.. |GitHubBuilds| image:: https://github.com/srlearn/srlearn/actions/workflows/python_tests.yml/badge.svg
+    :alt: GitHub CI Builds 
+.. _GitHubBuilds: https://github.com/srlearn/srlearn/actions/workflows/python_tests.yml
 
-.. |AppVeyor| image:: https://ci.appveyor.com/api/projects/status/obwfhyrjfnfilfce?svg=true
-    :alt: AppVeyor Windows build status
-.. _AppVeyor: https://ci.appveyor.com/project/hayesall/srlearn
-
-.. |Codecov| image:: https://codecov.io/gh/hayesall/srlearn/branch/main/graphs/badge.svg?branch=main
+.. |Codecov| image:: https://codecov.io/gh/srlearn/srlearn/branch/main/graphs/badge.svg?branch=main
     :alt: Code coverage status
-.. _Codecov: https://codecov.io/github/hayesall/srlearn?branch=main
+.. _Codecov: https://codecov.io/github/srlearn/srlearn?branch=main
 
 .. |ReadTheDocs| image:: https://readthedocs.org/projects/srlearn/badge/?version=latest
     :alt: Documentation status
 .. _ReadTheDocs: https://srlearn.readthedocs.io/en/latest/
+
+Introduction
+------------
+
+srlearn is a project and set of packages for 
+*statistical relational artificial intelligence.*
+
+*Standard* machine learning tends to focus on learning and inference inside of 
+a *feature-vector* (fit a model such that :math:`\boldsymbol{X}` predicts :math:`y`).
+*Statistical Relational Learning* attempts to generalize this to
+arbitrary graph and hypergraph data: where the prediction problem may include
+a set of objects with attributes and relations on those objects.
+
+.. code-block:: python
+
+    from srlearn.rdn import BoostedRDN
+    from srlearn import Background
+    from srlearn.datasets import load_toy_cancer
+    train, test = load_toy_cancer()
+    bk = Background(
+        modes=toy_cancer.train.modes,
+        use_std_logic_variables=True,
+    )
+    clf = BoostedRDN(
+        background=bk,
+        target='cancer',
+    )
+    clf.fit(train)
+    clf.predict_proba(test)
+    # array([0.88079619, 0.88079619, 0.88079619, 0.3075821 , 0.3075821 ])
+    print(clf.classes_)
+    # array([1., 1., 1., 0., 0.])
 
 .. toctree::
    :hidden:
@@ -84,3 +112,18 @@ Full documentation for the modules.
 
 A gallery of examples with figures and expected outputs.
 It complements and extends past the basic example from the `User Guide <user_guide.html>`_.
+
+Contributing
+------------
+
+Many thanks to those who have already made contributions:
+
+- `Alexander L. Hayes <https://hayesall.com>`_, *Indiana University, Bloomington*
+- `Harsha Kokel <https://harshakokel.com/>`_, *The University of Texas at Dallas*
+- `Siwen Yan <https://dtrycode.github.io/>`_, *The University of Texas at Dallas*
+
+We have adopted the `Contributor Covenant Code of Conduct <https://github.com/srlearn/srlearn/blob/main/.github/CODE_OF_CONDUCT.md>`_ version 1.4. Please read,
+follow, and report any incidents which violate this.
+
+Questions, Issues, and Pull Requests are welcome. Please refer to `CONTRIBUTING.md <https://github.com/srlearn/srlearn/blob/main/.github/CONTRIBUTING.md>`_ for
+information on submitting issues and pull requests.
