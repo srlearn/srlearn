@@ -16,7 +16,7 @@ srlearn
 .. _LGTM: https://lgtm.com/projects/g/srlearn/srlearn/context:python
 
 .. |GitHubBuilds| image:: https://github.com/srlearn/srlearn/actions/workflows/python_tests.yml/badge.svg
-    :alt: GitHub CI Builds 
+    :alt: GitHub CI Builds
 .. _GitHubBuilds: https://github.com/srlearn/srlearn/actions/workflows/python_tests.yml
 
 .. |Codecov| image:: https://codecov.io/gh/srlearn/srlearn/branch/main/graphs/badge.svg?branch=main
@@ -30,10 +30,10 @@ srlearn
 Introduction
 ------------
 
-srlearn is a project and set of packages for 
+srlearn is a project and set of packages for
 *statistical relational artificial intelligence.*
 
-*Standard* machine learning tends to focus on learning and inference inside of 
+*Standard* machine learning tends to focus on learning and inference inside of
 a *feature-vector* (fit a model such that :math:`\boldsymbol{X}` predicts :math:`y`).
 *Statistical Relational Learning* attempts to generalize this to
 arbitrary graph and hypergraph data: where the prediction problem may include
@@ -45,10 +45,7 @@ a set of objects with attributes and relations on those objects.
     from srlearn import Background
     from srlearn.datasets import load_toy_cancer
     train, test = load_toy_cancer()
-    bk = Background(
-        modes=toy_cancer.train.modes,
-        use_std_logic_variables=True,
-    )
+    bk = Background(modes=train.modes)
     clf = BoostedRDN(
         background=bk,
         target='cancer',
