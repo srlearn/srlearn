@@ -110,6 +110,22 @@ Full documentation for the modules.
 A gallery of examples with figures and expected outputs.
 It complements and extends past the basic example from the `User Guide <user_guide.html>`_.
 
+Citing
+------
+
+If you find this helpful in your work, please consider citing:
+
+.. code-block:: bibtex
+
+  @misc{hayes2019srlearn,
+    title={srlearn: A Python Library for Gradient-Boosted Statistical Relational Models},
+    author={Alexander L. Hayes},
+    year={2019},
+    eprint={1912.08198},
+    archivePrefix={arXiv},
+    primaryClass={cs.LG}
+  }
+
 Contributing
 ------------
 
@@ -118,6 +134,11 @@ Many thanks to those who have already made contributions:
 - `Alexander L. Hayes <https://hayesall.com>`_, *Indiana University, Bloomington*
 - `Harsha Kokel <https://harshakokel.com/>`_, *The University of Texas at Dallas*
 - `Siwen Yan <https://dtrycode.github.io/>`_, *The University of Texas at Dallas*
+
+Many thanks to the known and unknown contributors to WILL/BoostSRL/SRLBoost,
+including: Navdeep Kaur, Nandini Ramanan, Srijita Das, Mayukh Das, Kaushik Roy,
+Devendra Singh Dhami, Shuo Yang, Phillip Odom, Tushar Khot, Gautam Kunapuli,
+Sriraam Natarajan, Trevor Walker, and Jude W. Shavlik.
 
 We have adopted the `Contributor Covenant Code of Conduct <https://github.com/srlearn/srlearn/blob/main/.github/CODE_OF_CONDUCT.md>`_ version 1.4. Please read,
 follow, and report any incidents which violate this.
