@@ -66,7 +66,7 @@ def test_initialize_bad_n_estimators(test_input):
 def test_initialize_bad_neg_pos_ratio(test_input):
     """Tests bad values for neg_pos_ratio"""
     _dn = BoostedRDN(target="cancer", background=Background(), neg_pos_ratio=test_input)
-    train, _ = load_toy_cancer()    
+    train, _ = load_toy_cancer()
     with pytest.raises(ValueError):
         _dn.fit(train)
 
@@ -111,4 +111,14 @@ def test_predict_proba_test_data():
         _dn.predict_proba(test),
         np.array([0.74, 0.74, 0.74, 0.25, 0.25]),
         decimal=2,
+    )
+
+
+def test_classification_srlboost_backend():
+    train, test = load_toy_cancer()
+    _bk = Background(modes=train.modes)
+    _dn = BoostedRDN(background=_bk, target="cancer", n_estimators=5)
+    _dn.fit(train)
+    assert_array_equal(
+        _dn.predict(test), np.array([1.0, 1.0, 1.0, 0.0, 0.0])
     )
