@@ -138,7 +138,8 @@ class FileSystem:
             """Pointers to all file locations required by BoostSRL"""
 
             DIRECTORY = _directory
-            BOOST_JAR = _here.joinpath("v1-0.jar")
+            BOOSTSRL_BACKEND = _here.joinpath("BoostSRL.jar")
+            SRLBOOST_BACKEND = _here.joinpath("SRLBoost.jar")
             AUC_JAR = _here
             TRAIN_LOG = _directory.joinpath("train_output.txt")
             TEST_LOG = _directory.joinpath("test_output.txt")
