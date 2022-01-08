@@ -27,14 +27,14 @@ class BoostedRDNClassifier(BaseBoostedRelationalModel):
     Examples
     --------
 
-    >>> from srlearn.rdn import BoostedRDN
+    >>> from srlearn.rdn import BoostedRDNClassifier
     >>> from srlearn import Background
     >>> from srlearn.datasets import load_toy_cancer
     >>> train, test = load_toy_cancer()
     >>> bk = Background(modes=train.modes)
-    >>> dn = BoostedRDN(background=bk, target="cancer")
+    >>> dn = BoostedRDNClassifier(background=bk, target="cancer")
     >>> dn.fit(train)
-    BoostedRDN(background=setParam: nodeSize=2.
+    BoostedRDNClassifier(background=setParam: nodeSize=2.
     setParam: maxTreeDepth=3.
     setParam: numOfClauses=100.
     setParam: numOfCycles=100.
