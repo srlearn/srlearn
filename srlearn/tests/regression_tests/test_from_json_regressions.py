@@ -6,7 +6,7 @@
 This will hopefully help catch if backwards-incompatible changes occur.
 """
 
-from srlearn.rdn import BoostedRDN
+from srlearn.rdn import BoostedRDNClassifier
 from srlearn.rdn import BoostedRDNRegressor
 from srlearn.database import Database
 from srlearn.datasets import load_toy_cancer
@@ -18,7 +18,7 @@ import pytest
 @pytest.mark.parametrize("test_input", ["0.5.5-dev", "0.5.5a-dev"])
 def test_toy_cancer_predict_after_load(test_input):
     """Load a ToyCancer json file and predict."""
-    clf = BoostedRDN()
+    clf = BoostedRDNClassifier()
     clf.from_json("srlearn/tests/regression_tests/json/toy_cancer_{0}.json".format(test_input))
     _, test = load_toy_cancer()
     _predictions = clf.predict(test)
