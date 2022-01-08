@@ -117,7 +117,7 @@ def test_predict_proba_test_data():
 def test_classification_srlboost_backend():
     train, test = load_toy_cancer()
     _bk = Background(modes=train.modes)
-    _dn = BoostedRDN(background=_bk, target="cancer", n_estimators=5)
+    _dn = BoostedRDNClassifier(background=_bk, target="cancer", n_estimators=5)
     _dn.fit(train)
     assert_array_equal(
         _dn.predict(test), np.array([1.0, 1.0, 1.0, 0.0, 0.0])
