@@ -161,7 +161,7 @@ mode: friends(-person,+person).
 mode: cancer(+person).
 mode: smokes(+person).
 ,
-           target='cancer')
+                     target='cancer')
 >>> clf.predict(test)
 array([ True,  True,  True, False, False])
 
