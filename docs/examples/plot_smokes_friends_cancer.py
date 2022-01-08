@@ -12,7 +12,7 @@ This shows how the margin between positive and negative examples is maximized as
 iterations of boosting increases.
 """
 
-from srlearn.rdn import BoostedRDN
+from srlearn.rdn import BoostedRDNClassifier
 from srlearn import Background
 from srlearn.datasets import load_toy_cancer
 
@@ -23,7 +23,7 @@ train, test = load_toy_cancer()
 
 bk = Background(modes=train.modes)
 
-clf = BoostedRDN(
+clf = BoostedRDNClassifier(
     background=bk,
     target="cancer",
     max_tree_depth=2,

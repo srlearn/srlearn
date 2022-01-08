@@ -32,10 +32,10 @@ class BaseBoostedRelationalModel:
     Examples
     --------
 
-    The actual :class:`srlearn.rdn.BoostedRDN` is derived from this class, so this
+    The actual :class:`srlearn.rdn.BoostedRDNClassifier` is derived from this class, so this
     example is similar to the implementation (but the actual implementation
     passes model parameters instead of leaving them with the defaults).
-    This example derives a new class ``BoostedRDN``, which inherits the default
+    This example derives a new class ``BoostedRDNClassifier``, which inherits the default
     values of the superclass while also setting a 'special_parameter' which
     may be unique to this model.
 
@@ -43,14 +43,14 @@ class BaseBoostedRelationalModel:
     ``predict()``, and ``predict_proba()``.
 
     >>> from srlearn.base import BaseBoostedRelationalModel
-    >>> class BoostedRDN(BaseBoostedRelationalModel):
+    >>> class BoostedRDNClassifier(BaseBoostedRelationalModel):
     ...     def __init__(self, special_parameter=5):
     ...         super().__init__(self)
     ...         self.special_parameter = special_parameter
     ...
-    >>> dn = BoostedRDN(special_parameter=8)
+    >>> dn = BoostedRDNClassifier(special_parameter=8)
     >>> print(dn)
-    BoostedRDN(special_parameter=8)
+    BoostedRDNClassifier(special_parameter=8)
     >>> print(dn.n_estimators)
     10
     """

@@ -5,13 +5,16 @@ Relational Dependency Networks
 """
 
 import re
+import warnings
 import numpy as np
 
 from .base import BaseBoostedRelationalModel
 from .database import Database
 
+warnings.simplefilter("default")
 
-class BoostedRDN(BaseBoostedRelationalModel):
+
+class BoostedRDNClassifier(BaseBoostedRelationalModel):
     """Relational Dependency Networks Estimator
 
     Wrappers around BoostSRL for learning and inference with Relational Dependency
@@ -307,6 +310,16 @@ class BoostedRDN(BaseBoostedRelationalModel):
         self.classes_ = _classes
 
         return _results2
+
+
+class BoostedRDN(BoostedRDNClassifier):
+
+    def __init__(self, **args):
+        warnings.warn(
+            "Use 'BoostedRDNClassifier' instead of 'BoostedRDN'",
+            DeprecationWarning,
+        )
+        super().__init__(**args)
 
 
 class BoostedRDNRegressor(BaseBoostedRelationalModel):

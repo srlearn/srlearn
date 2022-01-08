@@ -11,7 +11,7 @@ from numpy.testing import assert_array_equal
 from srlearn.datasets import load_toy_cancer
 from srlearn.datasets import load_toy_father
 from srlearn.background import Background
-from srlearn.rdn import BoostedRDN
+from srlearn.rdn import BoostedRDNClassifier
 from srlearn.rdn import BoostedRDNRegressor
 
 relational_datasets = pytest.importorskip("relational_datasets")
@@ -50,7 +50,7 @@ def test_load_toy_cancer_boosted_rdn():
     train, test = relational_datasets.load("toy_cancer")
     modes, _ = load_toy_cancer()
     bk = Background(modes=modes.modes)
-    clf = BoostedRDN(target="cancer", background=bk, n_estimators=3)
+    clf = BoostedRDNClassifier(target="cancer", background=bk, n_estimators=3)
     clf.fit(train)
     pred = clf.predict(test)
     assert len(clf.estimators_) == 3

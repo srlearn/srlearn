@@ -6,7 +6,7 @@ Tests for srlearn.plotting
 
 import pytest
 
-from srlearn.rdn import BoostedRDN
+from srlearn.rdn import BoostedRDNClassifier
 from srlearn.background import Background
 from srlearn.datasets import load_toy_cancer
 from srlearn.plotting import export_digraph
@@ -23,7 +23,7 @@ def test_cannot_read_outside_length_of_dotfiles():
     """Test that invalid tree indexes raise errors."""
     train, _ = load_toy_cancer()
     bkg = Background(modes=train.modes)
-    clf = BoostedRDN(target="cancer", background=bkg)
+    clf = BoostedRDNClassifier(target="cancer", background=bkg)
     clf.fit(train)
     for test_input in [-10, -5, -1, 10]:
         with pytest.raises(IndexError):
