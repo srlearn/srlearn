@@ -57,12 +57,12 @@ A minimal working example (using the Toy-Cancer data set imported with 'load_toy
 
 .. code-block:: python
 
-    from srlearn.rdn import BoostedRDN
+    from srlearn.rdn import BoostedRDNClassifier
     from srlearn import Background
     from srlearn.datasets import load_toy_cancer
     train, test = load_toy_cancer()
     bk = Background(modes=train.modes)
-    clf = BoostedRDN(
+    clf = BoostedRDNClassifier(
         background=bk,
         target='cancer',
     )

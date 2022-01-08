@@ -9,11 +9,11 @@ features are used as splitting criteria.
 """
 
 # %%
-# ``webkb`` is available in the 
+# ``webkb`` is available in the
 # `relational-datasets package <https://srlearn.github.io/relational-datasets/>`_.
-# A `brief webkb overview <https://srlearn.github.io/relational-datasets/dataset_descriptions/webkb/>`_ 
+# A `brief webkb overview <https://srlearn.github.io/relational-datasets/dataset_descriptions/webkb/>`_
 # is available with the relational-datasets documentation.
-# 
+#
 # Calling ``load`` will return training and test folds:
 
 from relational_datasets import load
@@ -23,7 +23,7 @@ train, test = load("webkb", fold=1)
 # %%
 # We'll set up the learning problem and fit the classifier:
 
-from srlearn.rdn import BoostedRDN
+from srlearn.rdn import BoostedRDNClassifier
 from srlearn import Background
 
 bkg = Background(
@@ -41,7 +41,7 @@ bkg = Background(
     number_of_clauses=8,
 )
 
-clf = BoostedRDN(
+clf = BoostedRDNClassifier(
     background=bkg,
     target="faculty",
     max_tree_depth=3,

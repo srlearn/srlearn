@@ -59,18 +59,18 @@ def export_digraph(booster, tree_index=0, out_file=None):
 
     .. code-block:: python
 
-        from srlearn.rdn import BoostedRDN
+        from srlearn.rdn import BoostedRDNClassifier
         from srlearn import Background
         from srlearn.datasets import load_toy_cancer
         from srlearn.plotting import export_digraph
-        
+
         train, _ = load_toy_cancer()
 
         bkg = Background(
             modes=train.modes,
         )
 
-        clf = BoostedRDN(
+        clf = BoostedRDNClassifier(
             background=bkg,
             target="cancer",
         )

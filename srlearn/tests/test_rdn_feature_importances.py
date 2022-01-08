@@ -5,14 +5,14 @@ Tests for srlearn.rdn.feature_importances_
 """
 
 import pytest
-from srlearn.rdn import BoostedRDN
+from srlearn.rdn import BoostedRDNClassifier
 from srlearn.background import Background
 from srlearn.datasets import load_toy_cancer
 
 
 def test_feature_importances_before_fit():
     """Test that one cannot get feature importances before fit."""
-    rdn = BoostedRDN()
+    rdn = BoostedRDNClassifier()
     with pytest.raises(ValueError):
         rdn.feature_importances_
 
@@ -21,7 +21,7 @@ def test_feature_importances_toy_cancer():
     """Test getting the feature importances from the Toy-Cancer set."""
     train, _ = load_toy_cancer()
     bkg = Background(modes=train.modes)
-    rdn = BoostedRDN(
+    rdn = BoostedRDNClassifier(
         target="cancer",
         background=bkg,
         n_estimators=10,

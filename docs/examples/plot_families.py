@@ -27,7 +27,7 @@ train, test = load_toy_father()
 print(train.pos[0], "→    James Potter is the father of Harry Potter.")
 print(train.neg[0], "  → Mr. Granger is not the father of Harry Potter.")
 
-# %% 
+# %%
 # The *facts* contain three additional predicates: describing ``children``, ``male``,
 # and who is a ``siblingof``.
 
@@ -35,10 +35,10 @@ train.facts
 
 # %%
 # Our aim is to learn about what a "*father*" is in terms of the facts we have available.
-# This process is usually called *induction,* and is often portrayed as "learning a 
+# This process is usually called *induction,* and is often portrayed as "learning a
 # definition of an object."
 
-from srlearn.rdn import BoostedRDN
+from srlearn.rdn import BoostedRDNClassifier
 from srlearn import Background
 
 bk = Background(
@@ -52,7 +52,7 @@ bk = Background(
     number_of_clauses=8,
 )
 
-clf = BoostedRDN(
+clf = BoostedRDNClassifier(
     background=bk,
     target="father",
     n_estimators=5,
@@ -88,7 +88,7 @@ print("{:<35} {}".format("Predicate", "Probability of being True"), "\n", "-" * 
 for predicate, prob in zip(test.pos + test.neg, predictions):
     print("{:<35} {:.2f}".format(predicate, prob))
 
-# %% 
+# %%
 # The confidence might be a little low, which is a good excuse to mention
 # one of the hyperparameters. "Node Size," or ``node_size`` corresponds to
 # the maximum number of predicates that can be used as a split in the
@@ -110,7 +110,7 @@ bk = Background(
     number_of_clauses=8,
 )
 
-clf = BoostedRDN(
+clf = BoostedRDNClassifier(
     background=bk,
     target="father",
     n_estimators=5,
@@ -120,7 +120,7 @@ clf.fit(train)
 
 plot_digraph(export_digraph(clf, 0), format="html")
 
-# %% 
+# %%
 # This seems to be much more stable, which should also be reflected in the
 # probabilities assigned on test examples.
 

@@ -8,24 +8,24 @@ and anything which extends this class.
 
 import numpy as np
 from numpy.testing import assert_array_equal
-from srlearn.rdn import BoostedRDN
+from srlearn.rdn import BoostedRDNClassifier
 from srlearn.rdn import BoostedRDNRegressor
 from srlearn.background import Background
 from srlearn.database import Database
 from srlearn.datasets import load_toy_cancer
 
 
-def test_serialize_BoostedRDN(tmpdir):
+def test_serialize_BoostedRDNClassifier(tmpdir):
     """Test that inference is possible after loading from json"""
     output_json = tmpdir.join("ToyCancerRDN.json")
     train, test = load_toy_cancer()
     bkg = Background(modes=train.modes)
-    rdn = BoostedRDN(background=bkg, target="cancer", n_estimators=5)
+    rdn = BoostedRDNClassifier(background=bkg, target="cancer", n_estimators=5)
     rdn.fit(train)
     rdn.to_json(output_json)
 
-    # New BoostedRDN instance, loading from file, and running.
-    rdn2 = BoostedRDN()
+    # New BoostedRDNClassifier instance, loading from file, and running.
+    rdn2 = BoostedRDNClassifier()
     rdn2.from_json(output_json)
 
     _predictions = rdn2.predict(test)
