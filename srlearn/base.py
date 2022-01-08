@@ -19,7 +19,7 @@ from .utils._parse_trees import parse_tree
 from ._meta import __version__
 
 
-class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
+class BaseBoostedRelationalModel:
     """Base class for deriving boosted relational models
 
     This class extends :class:`sklearn.base.BaseEstimator` and
