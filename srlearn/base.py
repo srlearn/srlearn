@@ -144,10 +144,12 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
         Notes / Warnings
         ----------------
 
-        This feature is *experimental*.
-        There could be major changes between releases, causing old model
-        files to break.
-        """
+        Intended for locally saving/loading.
+
+        .. warning::
+
+            There could be major changes between releases, causing old model
+            files to break.        """
         check_is_fitted(self, "estimators_")
 
         with open(
@@ -191,10 +193,13 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
         Notes / Warnings
         ----------------
 
-        This feature is *experimental*.
-        There could be major changes between releases, causing old model
-        files to break. There are also *no checks* to ensure you are
-        loading the correct object type.
+        Intended for locally saving/loading.
+
+        .. warning::
+
+            There could be major changes between releases, causing old model
+            files to break. There are also *no checks* to ensure you are
+            loading the correct object type.
         """
 
         with open(file_name, "r") as _fh:
