@@ -149,7 +149,7 @@ class BaseBoostedRelationalModel:
         .. warning::
 
             There could be major changes between releases, causing old model
-            files to break.        """
+            files to break."""
         check_is_fitted(self, "estimators_")
 
         with open(
@@ -333,3 +333,10 @@ class BaseBoostedRelationalModel:
 
     def predict_proba(self, database):
         raise NotImplementedError
+
+    def __repr__(self):
+        params = self.__dict__
+        return (
+            self.__class__.__name__
+            + f'({", ".join([str(param) + "=" + repr(params[param]) for param in params])})'
+        )
