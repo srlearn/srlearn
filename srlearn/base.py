@@ -5,6 +5,7 @@ Base class for Boosted Relational Models
 """
 
 from collections import Counter
+import inspect
 import json
 import logging
 
@@ -80,6 +81,24 @@ class BaseBoostedRelationalModel:
         self.max_tree_depth = max_tree_depth
         self.neg_pos_ratio = neg_pos_ratio
         self.solver = solver
+
+    @classmethod
+    def _get_param_names(cls):
+        # Based on `scikit-learn.base.BaseEstimator._get_param_names`
+        # Copyright Gael Varoquaux, BSD 3 clause
+        signature = inspect.signature(cls)
+        parameters = [
+            p
+            for p in signature.parameters.values()
+            if p.name != "self" and p.kind != p.VAR_KEYWORD
+        ]
+        for p in parameters:
+            if p.kind == p.VAR_POSITIONAL:
+                raise RuntimeError(
+                    "Oh no."
+                )
+
+        return sorted([p.name for p in parameters])
 
     def _check_params(self):
         """Check validity of parameters. Raise ValueError if errors are detected.
@@ -335,8 +354,8 @@ class BaseBoostedRelationalModel:
         raise NotImplementedError
 
     def __repr__(self):
-        params = self.__dict__
+        params = self._get_param_names()
         return (
             self.__class__.__name__
-            + f'({", ".join([str(param) + "=" + repr(params[param]) for param in params])})'
+            + f'({", ".join([str(param) + "=" + repr(self.__dict__[param]) for param in params])})'
         )
