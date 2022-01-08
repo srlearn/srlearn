@@ -72,6 +72,7 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
         node_size=2,
         max_tree_depth=3,
         neg_pos_ratio=2,
+        solver="BoostSRL",
     ):
         """Initialize a BaseEstimator"""
         self.background = background
@@ -80,6 +81,7 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
         self.node_size = node_size
         self.max_tree_depth = max_tree_depth
         self.neg_pos_ratio = neg_pos_ratio
+        self.solver = solver
 
     def _check_params(self):
         """Check validity of parameters. Raise ValueError if errors are detected.
