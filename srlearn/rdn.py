@@ -27,14 +27,14 @@ class BoostedRDNClassifier(BaseBoostedRelationalModel):
     Examples
     --------
 
-    >>> from srlearn.rdn import BoostedRDN
+    >>> from srlearn.rdn import BoostedRDNClassifier
     >>> from srlearn import Background
     >>> from srlearn.datasets import load_toy_cancer
     >>> train, test = load_toy_cancer()
     >>> bk = Background(modes=train.modes)
-    >>> dn = BoostedRDN(background=bk, target="cancer")
+    >>> dn = BoostedRDNClassifier(background=bk, target="cancer")
     >>> dn.fit(train)
-    BoostedRDN(background=setParam: nodeSize=2.
+    BoostedRDNClassifier(background=setParam: nodeSize=2.
     setParam: maxTreeDepth=3.
     setParam: numOfClauses=100.
     setParam: numOfCycles=100.
@@ -43,8 +43,7 @@ class BoostedRDNClassifier(BaseBoostedRelationalModel):
     mode: friends(-Person,+Person).
     mode: smokes(+Person).
     mode: cancer(+Person).
-    ,
-               target='cancer')
+    , max_tree_depth=3, n_estimators=10, neg_pos_ratio=2, node_size=2, solver='BoostSRL', target='cancer')
     >>> dn.predict(test)
     array([ True,  True,  True, False, False])
 
@@ -385,8 +384,7 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
     mode: b(+id,#varb).
     mode: lstat(+id,#varlstat).
     mode: medv(+id).
-    ,
-                        n_estimators=5, target='medv')
+    , max_tree_depth=3, n_estimators=5, neg_pos_ratio=2, node_size=2, solver='BoostSRL', target='medv')
     >>> reg.predict(test)   # doctest: +SKIP
     array([10.04313307 13.55804603 20.549378   18.14681934 23.9393469  10.01292162
          29.83298024 20.34668817 27.81642572 32.04067867  9.41342835 20.975001

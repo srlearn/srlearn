@@ -39,7 +39,7 @@ y_neg = []
 thresholds = []
 
 for n_trees in x:
-    clf.set_params(n_estimators=n_trees)
+    clf.n_estimators = n_trees
     probs = clf.predict_proba(test)
 
     thresholds.append(clf.threshold_)
