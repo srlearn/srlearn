@@ -8,8 +8,6 @@ from collections import Counter
 import json
 import logging
 
-from sklearn.base import BaseEstimator
-from sklearn.base import ClassifierMixin
 from sklearn.utils.validation import check_is_fitted
 import subprocess
 
