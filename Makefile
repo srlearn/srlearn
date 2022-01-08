@@ -4,6 +4,7 @@
 
 # Rules for testing, code style, and linting
 test:
+	python -c 'from srlearn.system_manager import reset; reset(soft=False)'
 	pytest --cov=srlearn srlearn/
 	coverage html
 	@echo "Generating coverage report: htmlcov/index.html"
