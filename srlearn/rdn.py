@@ -60,6 +60,7 @@ class BoostedRDNClassifier(BaseBoostedRelationalModel):
         node_size=2,
         max_tree_depth=3,
         neg_pos_ratio=2,
+        solver="BoostSRL",
     ):
         """Initialize a BoostedRDN
 
@@ -93,6 +94,7 @@ class BoostedRDNClassifier(BaseBoostedRelationalModel):
             node_size=node_size,
             max_tree_depth=max_tree_depth,
             neg_pos_ratio=neg_pos_ratio,
+            solver=solver,
         )
 
     def fit(self, database):
@@ -147,9 +149,14 @@ class BoostedRDNClassifier(BaseBoostedRelationalModel):
             filename="train", location=self.file_system.files.TRAIN_DIR.value
         )
 
+        if self.solver == "BoostSRL":
+            _jar = str(self.file_system.files.BOOSTSRL_BACKEND.value)
+        else:
+            _jar = str(self.file_system.files.SRLBOOST_BACKEND.value)
+
         _CALL = (
             "java -jar "
-            + str(self.file_system.files.BOOST_JAR.value)
+            + _jar
             + " -l -train "
             + str(self.file_system.files.TRAIN_DIR.value)
             + " -target "
@@ -203,9 +210,14 @@ class BoostedRDNClassifier(BaseBoostedRelationalModel):
         # Write the data to files.
         database.write(filename="test", location=self.file_system.files.TEST_DIR.value)
 
+        if self.solver == "BoostSRL":
+            _jar = str(self.file_system.files.BOOSTSRL_BACKEND.value)
+        else:
+            _jar = str(self.file_system.files.SRLBOOST_BACKEND.value)
+
         _CALL = (
             "java -jar "
-            + str(self.file_system.files.BOOST_JAR.value)
+            + _jar
             + " -i -test "
             + str(self.file_system.files.TEST_DIR.value)
             + " -model "
@@ -392,6 +404,7 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
         node_size=2,
         max_tree_depth=3,
         neg_pos_ratio=2,
+        solver="BoostSRL",
     ):
         """Initialize a BoostedRDN
 
@@ -425,6 +438,7 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
             node_size=node_size,
             max_tree_depth=max_tree_depth,
             neg_pos_ratio=neg_pos_ratio,
+            solver=solver,
         )
 
     def fit(self, database):
@@ -480,9 +494,14 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
             filename="train", location=self.file_system.files.TRAIN_DIR.value
         )
 
+        if self.solver == "BoostSRL":
+            _jar = str(self.file_system.files.BOOSTSRL_BACKEND.value)
+        else:
+            _jar = str(self.file_system.files.SRLBOOST_BACKEND.value)
+
         _CALL = (
             "java -jar "
-            + str(self.file_system.files.BOOST_JAR.value)
+            + _jar
             + " -reg -l -train "
             + str(self.file_system.files.TRAIN_DIR.value)
             + " -target "
@@ -536,9 +555,14 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
         # Write the data to files.
         database.write(filename="test", location=self.file_system.files.TEST_DIR.value)
 
+        if self.solver == "BoostSRL":
+            _jar = str(self.file_system.files.BOOSTSRL_BACKEND.value)
+        else:
+            _jar = str(self.file_system.files.SRLBOOST_BACKEND.value)
+
         _CALL = (
             "java -jar "
-            + str(self.file_system.files.BOOST_JAR.value)
+            + _jar
             + " -reg -i -test "
             + str(self.file_system.files.TEST_DIR.value)
             + " -model "

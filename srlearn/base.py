@@ -72,6 +72,7 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
         node_size=2,
         max_tree_depth=3,
         neg_pos_ratio=2,
+        solver="BoostSRL",
     ):
         """Initialize a BaseEstimator"""
         self.background = background
@@ -80,6 +81,7 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
         self.node_size = node_size
         self.max_tree_depth = max_tree_depth
         self.neg_pos_ratio = neg_pos_ratio
+        self.solver = solver
 
     def _check_params(self):
         """Check validity of parameters. Raise ValueError if errors are detected.
@@ -144,10 +146,12 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
         Notes / Warnings
         ----------------
 
-        This feature is *experimental*.
-        There could be major changes between releases, causing old model
-        files to break.
-        """
+        Intended for locally saving/loading.
+
+        .. warning::
+
+            There could be major changes between releases, causing old model
+            files to break.        """
         check_is_fitted(self, "estimators_")
 
         with open(
@@ -191,10 +195,13 @@ class BaseBoostedRelationalModel(BaseEstimator, ClassifierMixin):
         Notes / Warnings
         ----------------
 
-        This feature is *experimental*.
-        There could be major changes between releases, causing old model
-        files to break. There are also *no checks* to ensure you are
-        loading the correct object type.
+        Intended for locally saving/loading.
+
+        .. warning::
+
+            There could be major changes between releases, causing old model
+            files to break. There are also *no checks* to ensure you are
+            loading the correct object type.
         """
 
         with open(file_name, "r") as _fh:
