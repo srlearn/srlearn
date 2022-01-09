@@ -149,21 +149,3 @@ class Database:
                 _db.facts = _fh.read().splitlines()
 
         return _db
-
-    def add_pos(self, example: str) -> None:
-        """
-        Append a positive example to the list of positive examples.
-        """
-        self.pos.append(example)
-
-    def add_neg(self, example: str) -> None:
-        """
-        Append a negative example to the list of negative examples.
-        """
-        self.neg.append(example)
-
-    def add_fact(self, example: str) -> None:
-        """
-        Append a fact to the list of facts.
-        """
-        self.facts.append(example)

@@ -141,20 +141,6 @@ def test_mixed_write(tmpdir):
     assert tmpdir.join("test_facts.txt").read() == open(_facts).read()
 
 
-def test_write_to_location_1(tmpdir):
-    """
-    Test that predicates are written to files in a target location with add_pos syntax.
-    """
-    _db = Database()
-    _db.add_pos("a(b).")
-    _db.add_neg("a(c).")
-    _db.add_fact("d(b,c).")
-    _db.write(filename="train", location=pathlib.Path(tmpdir))
-    assert tmpdir.join("train_pos.txt").read() == "a(b).\n"
-    assert tmpdir.join("train_neg.txt").read() == "a(c).\n"
-    assert tmpdir.join("train_facts.txt").read() == "d(b,c).\n"
-
-
 def test_write_to_location_2(tmpdir):
     """
     Test that predicates are written to files in a target location with pos = [] syntax.
