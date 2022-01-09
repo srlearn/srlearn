@@ -167,7 +167,7 @@ class BaseBoostedRelationalModel:
         check_is_fitted(self, "estimators_")
 
         with open(
-            self.file_system.files.BRDNS_DIR.value.joinpath(
+            self.file_system.files.BRDNS_DIR.joinpath(
                 "{0}.model".format(self.target)
             ),
             "r",
@@ -259,10 +259,10 @@ class BaseBoostedRelationalModel:
         # Currently allocates the File System.
         self._check_params()
 
-        self.file_system.files.TREES_DIR.value.mkdir(parents=True)
+        self.file_system.files.TREES_DIR.mkdir(parents=True)
 
         with open(
-            self.file_system.files.BRDNS_DIR.value.joinpath(
+            self.file_system.files.BRDNS_DIR.joinpath(
                 "{0}.model".format(self.target)
             ),
             "w",
@@ -271,7 +271,7 @@ class BaseBoostedRelationalModel:
 
         for i, _tree in enumerate(_estimators):
             with open(
-                self.file_system.files.TREES_DIR.value.joinpath(
+                self.file_system.files.TREES_DIR.joinpath(
                     "{0}Tree{1}.tree".format(self.target, i)
                 ),
                 "w",
@@ -304,7 +304,7 @@ class BaseBoostedRelationalModel:
         dotfiles = []
         for i in range(self.n_estimators):
             with open(
-                self.file_system.files.DOT_DIR.value.joinpath(
+                self.file_system.files.DOT_DIR.joinpath(
                     "WILLTreeFor_" + self.target + str(i) + ".dot"
                 )
             ) as _fh:

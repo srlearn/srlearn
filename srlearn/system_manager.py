@@ -2,8 +2,6 @@
 
 """Handler for file system operations on behalf of BoostSRL."""
 
-from enum import Enum
-from enum import unique
 import pathlib
 import shutil
 import os
@@ -77,6 +75,27 @@ def reset(soft=False):
     return []
 
 
+class BoostSRLFiles:
+    """Pointers to all file locations required by BoostSRL
+
+    After initialization, all of these should be constant.
+    """
+
+    def __init__(self, directory, here) -> None:
+        self.DIRECTORY = directory
+        self.BOOSTSRL_BACKEND = here.joinpath("BoostSRL.jar")
+        self.SRLBOOST_BACKEND = here.joinpath("SRLBoost.jar")
+        self.AUC_JAR = here
+        self.TRAIN_LOG = directory.joinpath("train_output.txt")
+        self.TEST_LOG = directory.joinpath("test_output.txt")
+        self.TRAIN_DIR = directory.joinpath("train")
+        self.TEST_DIR = directory.joinpath("test")
+        self.MODELS_DIR = directory.joinpath("train/models/")
+        self.BRDNS_DIR = directory.joinpath("train/models/bRDNs/")
+        self.TREES_DIR = directory.joinpath("train/models/bRDNs/Trees")
+        self.DOT_DIR = directory.joinpath("train/models/bRDNs/dotFiles")
+
+
 class FileSystem:
     """BoostSRL File System
 
@@ -133,32 +152,13 @@ class FileSystem:
         _allotment_number = self._allocate_space(_data)
         _directory = _data.joinpath("data" + str(_allotment_number))
 
-        @unique
-        class Files(Enum):
-            """Pointers to all file locations required by BoostSRL"""
-
-            DIRECTORY = _directory
-            BOOSTSRL_BACKEND = _here.joinpath("BoostSRL.jar")
-            SRLBOOST_BACKEND = _here.joinpath("SRLBoost.jar")
-            AUC_JAR = _here
-            TRAIN_LOG = _directory.joinpath("train_output.txt")
-            TEST_LOG = _directory.joinpath("test_output.txt")
-            TRAIN_DIR = _directory.joinpath("train")
-            TEST_DIR = _directory.joinpath("test")
-            MODELS_DIR = _directory.joinpath("train/models/")
-            BRDNS_DIR = _directory.joinpath("train/models/bRDNs/")
-            TREES_DIR = _directory.joinpath("train/models/bRDNs/Trees")
-            DOT_DIR = _directory.joinpath("train/models/bRDNs/dotFiles")
-
-        # Create directories
-        Files.TRAIN_DIR.value.mkdir()
-        Files.TEST_DIR.value.mkdir()
-
-        self.files = Files
+        self.files = BoostSRLFiles(_directory, _here)
+        self.files.TRAIN_DIR.mkdir()
+        self.files.TEST_DIR.mkdir()
 
     def __del__(self):
         """Clean up the file system on object de-allocation."""
-        shutil.rmtree(self.files.DIRECTORY.value)
+        shutil.rmtree(self.files.DIRECTORY)
 
     @staticmethod
     def _allocate_space(current_directory) -> int:
