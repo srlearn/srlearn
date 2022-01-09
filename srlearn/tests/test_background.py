@@ -163,7 +163,7 @@ def test_initialize_bad_background_knowledge_line_search(test_input):
 
 
 @pytest.mark.parametrize(
-    "test_input", [0, -1, None, "True", "False", bool, int, 1.5, True, False]
+    "test_input", [0, -1, None, "True", "False", bool, int, 1.5, False]
 )
 def test_initialize_bad_background_knowledge_max_tree_depth(test_input):
     """Incorrect max_tree_depth settings."""
@@ -172,7 +172,7 @@ def test_initialize_bad_background_knowledge_max_tree_depth(test_input):
 
 
 @pytest.mark.parametrize(
-    "test_input", [0, -1, None, "True", "False", bool, int, 1.5, True, False]
+    "test_input", [0, -1, None, "True", "False", bool, int, 1.5, False]
 )
 def test_initialize_bad_background_knowledge_number_of_cycles(test_input):
     """Incorrect number_of_cycles settings."""
@@ -181,7 +181,7 @@ def test_initialize_bad_background_knowledge_number_of_cycles(test_input):
 
 
 @pytest.mark.parametrize(
-    "test_input", [0, -1, None, "True", "False", bool, int, 1.5, True, False]
+    "test_input", [0, -1, None, "True", "False", bool, int, 1.5, False]
 )
 def test_initialize_bad_background_knowledge_number_of_clauses(test_input):
     """Incorrect number_of_cycles settings."""
