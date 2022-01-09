@@ -106,48 +106,43 @@ class BaseBoostedRelationalModel:
         If all parameters are valid, instantiate ``self.file_system`` by
         instantiating it with a :class:`srlearn.system_manager.FileSystem`
         """
-        if self.target == "None":
-            raise ValueError("target must be set, cannot be {0}".format(self.target))
-        if not isinstance(self.target, str):
-            raise ValueError(
-                "target must be a string, cannot be {0}".format(self.target)
-            )
-        if self.background is None:
-            raise ValueError(
-                "background must be set, cannot be {0}".format(self.background)
-            )
-        if not isinstance(self.background, Background):
-            raise ValueError(
-                "background should be a srlearn.Background object, cannot be {0}".format(
-                    self.background
-                )
-            )
-        if not isinstance(self.n_estimators, int) or isinstance(
-            self.n_estimators, bool
-        ):
-            raise ValueError(
-                "n_estimators must be an integer, cannot be {0}".format(
-                    self.n_estimators
-                )
-            )
-        if self.n_estimators <= 0:
-            raise ValueError(
-                "n_estimators must be greater than 0, cannot be {0}".format(
-                    self.n_estimators
-                )
-            )
-        if (
-            not isinstance(self.neg_pos_ratio, int)
-            and not isinstance(self.neg_pos_ratio, float)
-            or isinstance(self.neg_pos_ratio, bool)
-        ):
-            raise ValueError("neg_pos_ratio must be an integer or float")
-        if self.neg_pos_ratio < 1:
-            raise ValueError(
-                "neg_pos_ratio must be greater than 1, cannot be {0}".format(
-                    self.neg_pos_ratio
-                )
-            )
+
+        checks = (
+            (
+                self.target,
+                (str,),
+                (lambda x: x != "None",),
+                "'target' must be a string and cannot be 'None'",
+            ),
+            (
+                self.background,
+                (Background,),
+                (),
+                "'background' must be a Background instance",
+            ),
+            (
+                self.n_estimators,
+                (int,),
+                (
+                    lambda x: not isinstance(x, bool),
+                    lambda x: x >= 1,
+                ),
+                "'n_estimators' must be an 'int' >= 1",
+            ),
+            (
+                self.neg_pos_ratio,
+                (int, float),
+                (lambda x: not isinstance(x, bool), lambda x: x >= 1.0),
+                "'neg_pos_ratio' must be 'int' or 'float'",
+            ),
+        )
+
+        for param, types, constraints, message in checks:
+            if not any([isinstance(param, t) for t in types]):
+                raise ValueError(message)
+            for c in constraints:
+                if not c(param):
+                    raise ValueError(message)
 
         # If all params are valid, allocate a FileSystem:
         self.file_system = FileSystem()
