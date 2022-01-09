@@ -16,7 +16,7 @@ background knowledge, and learning.
 
    Database
    Background
-   rdn.BoostedRDN
+   rdn.BoostedRDNClassifier
    rdn.BoostedRDNRegressor
 
 Data Sets
