@@ -139,99 +139,33 @@ class Background:
         self._check_params()
 
     def _check_params(self) -> None:
-        """Check validity of background knowledge, raise ValueError if invalid."""
-        if not (isinstance(self.modes, list) or self.modes is None):
-            raise ValueError(
-                "modes parameter should be None or a list, found {0}".format(self.modes)
-            )
-        if not (isinstance(self.ok_if_unknown, list) or self.ok_if_unknown is None):
-            raise ValueError(
-                "ok_if_unknown should be None or a list, found {0}".format(
-                    self.ok_if_unknown
-                )
-            )
-        if not (isinstance(self.bridgers, list) or self.bridgers is None):
-            raise ValueError(
-                "bridgers should be None or a list, found {0}".format(self.bridgers)
-            )
-        if not isinstance(self.line_search, bool):
-            raise ValueError(
-                "line_search parameter should be bool, found {0}".format(
-                    self.line_search
-                )
-            )
-        if not isinstance(self.recursion, bool):
-            raise ValueError(
-                "recursion parameter should be a bool, found {0}".format(self.recursion)
-            )
-        if not isinstance(self.max_tree_depth, int) or isinstance(
-            self.max_tree_depth, bool
-        ):
-            raise ValueError(
-                "max_tree_depth should be an int, found {0}".format(self.max_tree_depth)
-            )
-        if self.max_tree_depth <= 0:
-            raise ValueError(
-                "max_tree_depth must be greater than 0, found {0}".format(
-                    self.max_tree_depth
-                )
-            )
-        if not isinstance(self.number_of_clauses, int) or isinstance(
-            self.number_of_clauses, bool
-        ):
-            raise ValueError(
-                "number_of_clauses must be an int, found {0}".format(
-                    self.number_of_clauses
-                )
-            )
-        if self.number_of_clauses <= 0:
-            raise ValueError(
-                "number_of_clauses must be greater than 0, found {0}".format(
-                    self.number_of_clauses
-                )
-            )
-        if not isinstance(self.number_of_cycles, int) or isinstance(
-            self.number_of_cycles, bool
-        ):
-            raise ValueError(
-                "number_of_cycles must be an int, found {0}".format(
-                    self.number_of_cycles
-                )
-            )
-        if self.number_of_cycles <= 0:
-            raise ValueError(
-                "number_of_cycles must be greater than 0, found {0}".format(
-                    self.number_of_cycles
-                )
-            )
-        if not isinstance(self.load_all_libraries, bool):
-            raise ValueError(
-                "load_all_libraries should be a bool, found {0}".format(
-                    self.load_all_libraries
-                )
-            )
-        if not isinstance(self.load_all_basic_modes, bool):
-            raise ValueError(
-                "load_all_basic_modes should be a bool, found {0}".format(
-                    self.load_all_basic_modes
-                )
-            )
-        if not isinstance(self.use_std_logic_variables, bool):
-            raise ValueError(
-                "use_std_logic_variables should be a bool, found {0}".format(
-                    self.use_std_logic_variables
-                )
-            )
-        if not isinstance(self.use_prolog_variables, bool):
-            raise ValueError(
-                "use_prolog_variables should be a bool, found {0}".format(
-                    self.use_prolog_variables
-                )
-            )
-        if self.use_std_logic_variables == self.use_prolog_variables:
-            raise ValueError(
-                "Cannot be equal: {0} == {1}".format(self.use_std_logic_variables, self.use_prolog_variables)
-            )
+        """Runtime check that background parameters are valid.
+
+        Structure:
+            (Parameters, Tuple of valid types, Constraints on values, Message for invalid cases)
+        """
+
+        checks = (
+            (self.modes, (list, type(None)), (), "'modes' should be 'None' or 'list"),
+            (self.ok_if_unknown, (list, type(None)), (), "'ok_if_unknown' should be 'None' or 'list'"),
+            (self.bridgers, (list, type(None)), (), "'bridgers' should be 'None' or 'list'"),
+            (self.line_search, (bool,), (), "'line_search' should be 'bool'"),
+            (self.recursion, (bool,), (), "'recursion' should be 'bool'"),
+            (self.max_tree_depth, (int,), (lambda x: x >= 1,), "'max_tree_depth' should be 'int' >= 1"),
+            (self.number_of_clauses, (int,), (lambda x: x >= 1,), "'number_of_clauses' should be 'int' >= 1"),
+            (self.number_of_cycles, (int,), (lambda x: x >= 1,), "'number_of_cycles' should be 'int' >= 1"),
+            (self.load_all_basic_modes, (bool,), (), "'load_all_basic_modes' should be 'bool'"),
+            (self.load_all_libraries, (bool,), (), "'load_all_libraries' should be 'bool'"),
+            (self.use_std_logic_variables, (bool,), (lambda x: x != self.use_prolog_variables,), "'use_std_logic_variables' should be 'bool'"),
+            (self.use_prolog_variables, (bool,), (lambda x: x != self.use_std_logic_variables,), "'use_prolog_variables' is deprecated"),
+        )
+
+        for param, types, constraints, message in checks:
+            if not any([isinstance(param, t) for t in types]):
+                raise ValueError(message)
+            for c in constraints:
+                if not c(param):
+                    raise ValueError(message)
 
     def write(self, filename="train", location=pathlib.Path("train")) -> None:
         """Write the background to disk for learning.
