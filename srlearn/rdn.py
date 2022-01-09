@@ -133,7 +133,7 @@ class BoostedRDNClassifier(BaseBoostedRelationalModel):
 
         # Write the background to file.
         self.background.write(
-            filename="train", location=self.file_system.files.TRAIN_DIR.value
+            filename="train", location=self.file_system.files.TRAIN_DIR
         )
 
         if isinstance(database, tuple):
@@ -145,19 +145,19 @@ class BoostedRDNClassifier(BaseBoostedRelationalModel):
 
         # Write the data to files.
         database.write(
-            filename="train", location=self.file_system.files.TRAIN_DIR.value
+            filename="train", location=self.file_system.files.TRAIN_DIR
         )
 
         if self.solver == "BoostSRL":
-            _jar = str(self.file_system.files.BOOSTSRL_BACKEND.value)
+            _jar = str(self.file_system.files.BOOSTSRL_BACKEND)
         else:
-            _jar = str(self.file_system.files.SRLBOOST_BACKEND.value)
+            _jar = str(self.file_system.files.SRLBOOST_BACKEND)
 
         _CALL = (
             "java -jar "
             + _jar
             + " -l -train "
-            + str(self.file_system.files.TRAIN_DIR.value)
+            + str(self.file_system.files.TRAIN_DIR)
             + " -target "
             + self.target
             + " -trees "
@@ -165,7 +165,7 @@ class BoostedRDNClassifier(BaseBoostedRelationalModel):
             + " -negPosRatio "
             + str(self.neg_pos_ratio)
             + " > "
-            + str(self.file_system.files.TRAIN_LOG.value)
+            + str(self.file_system.files.TRAIN_LOG)
         )
 
         # Call the constructed command.
@@ -175,7 +175,7 @@ class BoostedRDNClassifier(BaseBoostedRelationalModel):
         _estimators = []
         for _tree_number in range(self.n_estimators):
             with open(
-                self.file_system.files.TREES_DIR.value.joinpath(
+                self.file_system.files.TREES_DIR.joinpath(
                     "{0}Tree{1}.tree".format(self.target, _tree_number)
                 )
             ) as _fh:
@@ -203,38 +203,38 @@ class BoostedRDNClassifier(BaseBoostedRelationalModel):
 
         # Write the background to file.
         self.background.write(
-            filename="test", location=self.file_system.files.TEST_DIR.value
+            filename="test", location=self.file_system.files.TEST_DIR
         )
 
         # Write the data to files.
-        database.write(filename="test", location=self.file_system.files.TEST_DIR.value)
+        database.write(filename="test", location=self.file_system.files.TEST_DIR)
 
         if self.solver == "BoostSRL":
-            _jar = str(self.file_system.files.BOOSTSRL_BACKEND.value)
+            _jar = str(self.file_system.files.BOOSTSRL_BACKEND)
         else:
-            _jar = str(self.file_system.files.SRLBOOST_BACKEND.value)
+            _jar = str(self.file_system.files.SRLBOOST_BACKEND)
 
         _CALL = (
             "java -jar "
             + _jar
             + " -i -test "
-            + str(self.file_system.files.TEST_DIR.value)
+            + str(self.file_system.files.TEST_DIR)
             + " -model "
-            + str(self.file_system.files.MODELS_DIR.value)
+            + str(self.file_system.files.MODELS_DIR)
             + " -target "
             + self.target
             + " -trees "
             + str(self.n_estimators)
             + " -aucJarPath "
-            + str(self.file_system.files.AUC_JAR.value)
+            + str(self.file_system.files.AUC_JAR)
             + " > "
-            + str(self.file_system.files.TEST_LOG.value)
+            + str(self.file_system.files.TEST_LOG)
         )
 
         self._call_shell_command(_CALL)
 
         # Read the threshold
-        with open(self.file_system.files.TEST_LOG.value, "r") as _fh:
+        with open(self.file_system.files.TEST_LOG, "r") as _fh:
             _threshold = re.findall("% Threshold = \\d*.\\d*", _fh.read())
         self.threshold_ = float(_threshold[0].split(" = ")[1])
 
@@ -255,7 +255,7 @@ class BoostedRDNClassifier(BaseBoostedRelationalModel):
         self._run_inference(database)
 
         # Collect the classifications.
-        _results_db = self.file_system.files.TEST_DIR.value.joinpath(
+        _results_db = self.file_system.files.TEST_DIR.joinpath(
             "results_" + self.target + ".db"
         )
         _classes, _results = np.loadtxt(
@@ -292,7 +292,7 @@ class BoostedRDNClassifier(BaseBoostedRelationalModel):
 
         self._run_inference(database)
 
-        _results_db = self.file_system.files.TEST_DIR.value.joinpath(
+        _results_db = self.file_system.files.TEST_DIR.joinpath(
             "results_" + self.target + ".db"
         )
         _classes, _results = np.loadtxt(
@@ -477,7 +477,7 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
 
         # Write the background to file.
         self.background.write(
-            filename="train", location=self.file_system.files.TRAIN_DIR.value
+            filename="train", location=self.file_system.files.TRAIN_DIR
         )
 
         if isinstance(database, tuple):
@@ -489,19 +489,19 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
 
         # Write the data to files.
         database.write(
-            filename="train", location=self.file_system.files.TRAIN_DIR.value
+            filename="train", location=self.file_system.files.TRAIN_DIR
         )
 
         if self.solver == "BoostSRL":
-            _jar = str(self.file_system.files.BOOSTSRL_BACKEND.value)
+            _jar = str(self.file_system.files.BOOSTSRL_BACKEND)
         else:
-            _jar = str(self.file_system.files.SRLBOOST_BACKEND.value)
+            _jar = str(self.file_system.files.SRLBOOST_BACKEND)
 
         _CALL = (
             "java -jar "
             + _jar
             + " -reg -l -train "
-            + str(self.file_system.files.TRAIN_DIR.value)
+            + str(self.file_system.files.TRAIN_DIR)
             + " -target "
             + self.target
             + " -trees "
@@ -509,7 +509,7 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
             + " -negPosRatio "
             + str(self.neg_pos_ratio)
             + " > "
-            + str(self.file_system.files.TRAIN_LOG.value)
+            + str(self.file_system.files.TRAIN_LOG)
         )
 
         # Call the constructed command.
@@ -519,7 +519,7 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
         _estimators = []
         for _tree_number in range(self.n_estimators):
             with open(
-                self.file_system.files.TREES_DIR.value.joinpath(
+                self.file_system.files.TREES_DIR.joinpath(
                     "{0}Tree{1}.tree".format(self.target, _tree_number)
                 )
             ) as _fh:
@@ -540,7 +540,7 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
 
         # Write the background to file.
         self.background.write(
-            filename="test", location=self.file_system.files.TEST_DIR.value
+            filename="test", location=self.file_system.files.TEST_DIR
         )
 
         if isinstance(database, tuple):
@@ -551,28 +551,28 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
             database = _db
 
         # Write the data to files.
-        database.write(filename="test", location=self.file_system.files.TEST_DIR.value)
+        database.write(filename="test", location=self.file_system.files.TEST_DIR)
 
         if self.solver == "BoostSRL":
-            _jar = str(self.file_system.files.BOOSTSRL_BACKEND.value)
+            _jar = str(self.file_system.files.BOOSTSRL_BACKEND)
         else:
-            _jar = str(self.file_system.files.SRLBOOST_BACKEND.value)
+            _jar = str(self.file_system.files.SRLBOOST_BACKEND)
 
         _CALL = (
             "java -jar "
             + _jar
             + " -reg -i -test "
-            + str(self.file_system.files.TEST_DIR.value)
+            + str(self.file_system.files.TEST_DIR)
             + " -model "
-            + str(self.file_system.files.MODELS_DIR.value)
+            + str(self.file_system.files.MODELS_DIR)
             + " -target "
             + self.target
             + " -trees "
             + str(self.n_estimators)
             + " -aucJarPath "
-            + str(self.file_system.files.AUC_JAR.value)
+            + str(self.file_system.files.AUC_JAR)
             + " > "
-            + str(self.file_system.files.TEST_LOG.value)
+            + str(self.file_system.files.TEST_LOG)
         )
 
         self._call_shell_command(_CALL)
@@ -594,7 +594,7 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
         self._run_inference(database)
 
         # Collect the classifications.
-        _results_db = self.file_system.files.TEST_DIR.value.joinpath(
+        _results_db = self.file_system.files.TEST_DIR.joinpath(
             "results_" + self.target + ".db"
         )
         _pred, _true = np.loadtxt(
