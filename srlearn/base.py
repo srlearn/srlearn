@@ -68,7 +68,7 @@ class BaseBoostedRelationalModel:
         background=None,
         target="None",
         n_estimators=10,
-        node_size=2,
+        node_size=None,
         max_tree_depth=3,
         neg_pos_ratio=2,
         solver="BoostSRL",
@@ -81,6 +81,9 @@ class BaseBoostedRelationalModel:
         self.max_tree_depth = max_tree_depth
         self.neg_pos_ratio = neg_pos_ratio
         self.solver = solver
+
+        if node_size and isinstance(background, Background):
+            self.background.node_size = node_size
 
     @classmethod
     def _get_param_names(cls):
