@@ -48,13 +48,13 @@ bk = Background(
         "childof(+name,+name).",
         "siblingof(+name,+name)."
     ],
-    node_size=1,
     number_of_clauses=8,
 )
 
 clf = BoostedRDNClassifier(
     background=bk,
     target="father",
+    node_size=1,
     n_estimators=5,
 )
 
@@ -106,13 +106,13 @@ bk = Background(
         "childof(+name,+name).",
         "siblingof(+name,+name)."
     ],
-    node_size=2,                # <--- Changed from 1 to 2
     number_of_clauses=8,
 )
 
 clf = BoostedRDNClassifier(
     background=bk,
     target="father",
+    node_size=2,                # <--- Changed from 1 to 2
     n_estimators=5,
 )
 

@@ -66,16 +66,14 @@ def test_initializing_example_background_knowledge_2():
         modes=train.modes,
         line_search=True,
         recursion=True,
-        node_size=3,
-        max_tree_depth=4,
         number_of_clauses=8,
         number_of_cycles=10,
     )
     assert _bk.modes == train.modes
 
     _capture = str(_bk)
-    assert "setParam: nodeSize=3." in _capture
-    assert "setParam: maxTreeDepth=4." in _capture
+    assert "setParam: nodeSize=2." in _capture
+    assert "setParam: maxTreeDepth=3." in _capture
     assert "setParam: numOfCycles=10." in _capture
     assert "setParam: numOfClauses=8." in _capture
     assert "setParam: lineSearch=true." in _capture
@@ -93,8 +91,6 @@ def test_initializing_example_background_knowledge_3():
         modes=train.modes,
         line_search=True,
         recursion=True,
-        node_size=3,
-        max_tree_depth=4,
         number_of_clauses=8,
         number_of_cycles=10,
         ok_if_unknown=["smokes/1", "friends/2"],
@@ -103,8 +99,8 @@ def test_initializing_example_background_knowledge_3():
     assert _bk.modes == train.modes
 
     _capture = str(_bk)
-    assert "setParam: nodeSize=3." in _capture
-    assert "setParam: maxTreeDepth=4." in _capture
+    assert "setParam: nodeSize=2." in _capture
+    assert "setParam: maxTreeDepth=3." in _capture
     assert "setParam: numOfCycles=10." in _capture
     assert "setParam: numOfClauses=8." in _capture
     assert "setParam: lineSearch=true." in _capture
@@ -141,7 +137,7 @@ def test_write_background_to_file_1(tmpdir):
 def test_write_background_to_file_2(tmpdir):
     """Test writing Background object to a file with extra parameters."""
     train, _ = load_toy_cancer()
-    _bk = Background(modes=train.modes, node_size=1, max_tree_depth=5)
+    _bk = Background(modes=train.modes)
     _bk.write(filename="train", location=pathlib.Path(tmpdir))
     assert tmpdir.join("train_bk.txt").read() == str(_bk)
 
@@ -173,15 +169,6 @@ def test_initialize_bad_background_knowledge_line_search(test_input):
     """Incorrect line_search settings"""
     with pytest.raises(ValueError):
         _ = Background(line_search=test_input)
-
-
-@pytest.mark.parametrize(
-    "test_input", [0, -1, None, "True", "False", bool, int, 1.5, False]
-)
-def test_initialize_bad_background_knowledge_max_tree_depth(test_input):
-    """Incorrect max_tree_depth settings."""
-    with pytest.raises(ValueError):
-        _ = Background(max_tree_depth=test_input)
 
 
 @pytest.mark.parametrize(

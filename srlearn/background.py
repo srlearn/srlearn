@@ -17,14 +17,13 @@ class Background:
 
     def __init__(
         self,
+        *,
         modes=None,
         ok_if_unknown=None,
         bridgers=None,
         ranges=None,
-        node_size=2,
         number_of_clauses=100,
         number_of_cycles=100,
-        max_tree_depth=3,
         recursion=False,
         line_search=False,
         use_std_logic_variables=False,
@@ -44,10 +43,6 @@ class Background:
             List of bridger predicates.
         ranges : dict of str (default: None)
             Dict mapping object types to discrete categories
-        node_size : int, optional (default: 2)
-            Maximum number of literals in each node.
-        max_tree_depth : int, optional (default: 3)
-            Maximum number of nodes from root to leaf (height) in the tree.
         number_of_clauses : int, optional (default: 100)
             Maximum number of clauses in the tree (i.e. maximum number of leaves)
         number_of_cycles : int, optional (default: 100)
@@ -84,14 +79,13 @@ class Background:
         ...         "friends(+Person,-Person).",
         ...         "friends(-Person,+Person).",
         ...     ],
-        ...     max_tree_depth=2,
         ... )
         >>> print(bk)
-        setParam: nodeSize=2.
-        setParam: maxTreeDepth=2.
         setParam: numOfClauses=100.
         setParam: numOfCycles=100.
         usePrologVariables: true.
+        setParam: nodeSize=2.
+        setParam: maxTreeDepth=3.
         mode: cancer(+Person).
         mode: smokes(+Person).
         mode: friends(+Person,-Person).
@@ -104,11 +98,7 @@ class Background:
         >>> from srlearn import Background
         >>> from srlearn.datasets import load_toy_cancer
         >>> train, _ = load_toy_cancer()
-        >>> bk = Background(
-        ...     modes=train.modes,
-        ...     max_tree_depth=2,
-        ...     node_size=1,
-        ... )
+        >>> bk = Background(modes=train.modes)
         >>> bk.write("training/")   # doctest: +SKIP
 
         Notes
@@ -126,8 +116,6 @@ class Background:
         """
         self.modes = modes
         self.ok_if_unknown = ok_if_unknown
-        self.node_size = node_size
-        self.max_tree_depth = max_tree_depth
         self.number_of_clauses = number_of_clauses
         self.number_of_cycles = number_of_cycles
         self.line_search = line_search
@@ -138,6 +126,10 @@ class Background:
         self.load_all_basic_modes = load_all_basic_modes
         self.bridgers = bridgers
         self.ranges = ranges
+
+        # These parameters are stored in Background, but they're set in classifiers/regressors.
+        self.node_size = 2
+        self.max_tree_depth = 3
 
         # Check params are correct at the tail of initialization.
         self._check_params()
@@ -156,6 +148,7 @@ class Background:
             (self.ranges, (dict, type(None)), (), "'ranges' should be 'None' or 'dict'"),
             (self.line_search, (bool,), (), "'line_search' should be 'bool'"),
             (self.recursion, (bool,), (), "'recursion' should be 'bool'"),
+            (self.node_size, (int,), (lambda x: x >= 1,), "'node_size' should be 'int' >= 1"),
             (self.max_tree_depth, (int,), (lambda x: x >= 1,), "'max_tree_depth' should be 'int' >= 1"),
             (self.number_of_clauses, (int,), (lambda x: x >= 1,), "'number_of_clauses' should be 'int' >= 1"),
             (self.number_of_cycles, (int,), (lambda x: x >= 1,), "'number_of_cycles' should be 'int' >= 1"),

@@ -41,30 +41,11 @@ class BaseBoostedRelationalModel:
 
     All that remains is to implement the specific cases of ``fit()``,
     ``predict()``, and ``predict_proba()``.
-
-    >>> from srlearn.base import BaseBoostedRelationalModel
-    >>> class BoostedRDNClassifier(BaseBoostedRelationalModel):
-    ...     def __init__(self, special_parameter=5):
-    ...         super().__init__(self)
-    ...         self.special_parameter = special_parameter
-    ...
-    >>> dn = BoostedRDNClassifier(special_parameter=8)
-    >>> print(dn)
-    BoostedRDNClassifier(special_parameter=8)
-    >>> print(dn.n_estimators)
-    10
     """
-
-    # pylint: disable=too-many-instance-attributes
-    background = None
-    target = "None"
-    n_estimators = 10
-    node_size = 2
-    max_tree_depth = 3
-    neg_pos_ratio = 2
 
     def __init__(
         self,
+        *,
         background=None,
         target="None",
         n_estimators=10,
@@ -77,10 +58,28 @@ class BaseBoostedRelationalModel:
         self.background = background
         self.target = target
         self.n_estimators = n_estimators
-        self.node_size = node_size
-        self.max_tree_depth = max_tree_depth
         self.neg_pos_ratio = neg_pos_ratio
         self.solver = solver
+
+        if isinstance(background, Background):
+            self.node_size = node_size
+            self.max_tree_depth = max_tree_depth
+
+    @property
+    def node_size(self):
+        return self.background.node_size
+
+    @node_size.setter
+    def node_size(self, value):
+        self.background.node_size = value
+
+    @property
+    def max_tree_depth(self):
+        return self.background.max_tree_depth
+
+    @max_tree_depth.setter
+    def max_tree_depth(self, value):
+        self.background.max_tree_depth = value
 
     @classmethod
     def _get_param_names(cls):
@@ -242,12 +241,17 @@ class BaseBoostedRelationalModel:
         _bkg.__dict__ = _model_parameters["background"]
 
         # 1. Loop over all class attributes of `BaseBoostedRelationalModel`
-        #    except `background`, which has been handled as a special case.
+        #    except `background`, `node_size`, and `max_tree_depth`, which are
+        #    handled by `Background` objects.
         # 2. Update an `_attributes` dictionary mapping attributes from JSON
         # 3. *If a key was not present in the JSON*: set it to the default value.
         # 4. Initialize self by unpacking the dictionary into arguments.
-        _attributes = {"background": _bkg}
-        for key in BaseBoostedRelationalModel().__dict__.keys() - {"background"}:
+        _attributes = {
+            "background": _bkg,
+            "node_size": _model_parameters["node_size"],
+            "max_tree_depth": _model_parameters["max_tree_depth"],
+        }
+        for key in set(BaseBoostedRelationalModel()._get_param_names()) - {"background", "node_size", "max_tree_depth"}:
             _attributes[key] = _model_parameters.get(
                 key,
                 BaseBoostedRelationalModel().__dict__[key],
@@ -277,6 +281,8 @@ class BaseBoostedRelationalModel:
                 "w",
             ) as _fh:
                 _fh.write(_tree)
+
+        return self
 
     @property
     def feature_importances_(self):
@@ -350,7 +356,10 @@ class BaseBoostedRelationalModel:
 
     def __repr__(self):
         params = self._get_param_names()
+        params.remove("max_tree_depth")
+        params.remove("node_size")
+        params = ", ".join([str(param) + "=" + repr(self.__dict__[param]) for param in params])
         return (
             self.__class__.__name__
-            + f'({", ".join([str(param) + "=" + repr(self.__dict__[param]) for param in params])})'
+            + f"({params})"
         )
