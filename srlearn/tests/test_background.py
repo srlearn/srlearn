@@ -118,6 +118,19 @@ def test_initializing_example_background_knowledge_3():
     assert "bridger: friends/2." in _capture
 
 
+def test_initialize_with_ranges():
+    """Test that ranges are created."""
+    _bk = Background(
+        ranges={
+            "part": ["gear", "wheel", "chain", "engine", "control_unit"],
+            "action": ["ok", "fix", "sendback"],
+        }
+    )
+    _capture = str(_bk)
+    assert "range: part={gear, wheel, chain, engine, control_unit}." in _capture
+    assert "range: action={ok, fix, sendback}." in _capture
+
+
 def test_write_background_to_file_1(tmpdir):
     """Test writing Background object to a file with default parameters."""
     _bk = Background()
@@ -241,3 +254,11 @@ def test_initialize_bad_bridgers(test_input):
     """Initialize bridgers with input that should raise an error."""
     with pytest.raises(ValueError):
         _ = Background(bridgers=test_input)
+
+@pytest.mark.parametrize(
+    "test_input", [0, -1, 1, 4, "True", "False", bool, int, 1.5, []]
+)
+def test_initialize_bad_ranges(test_input):
+    """Initialize a Background.ranges with bad data."""
+    with pytest.raises(ValueError):
+        _ = Background(ranges=test_input)
