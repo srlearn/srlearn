@@ -20,6 +20,7 @@ class Background:
         modes=None,
         ok_if_unknown=None,
         bridgers=None,
+        ranges=None,
         node_size=2,
         number_of_clauses=100,
         number_of_cycles=100,
@@ -41,6 +42,8 @@ class Background:
             Okay if not known.
         bridgers : list of str (default: None)
             List of bridger predicates.
+        ranges : dict of str (default: None)
+            Dict mapping object types to discrete categories
         node_size : int, optional (default: 2)
             Maximum number of literals in each node.
         max_tree_depth : int, optional (default: 3)
@@ -134,6 +137,7 @@ class Background:
         self.load_all_libraries = load_all_libraries
         self.load_all_basic_modes = load_all_basic_modes
         self.bridgers = bridgers
+        self.ranges = ranges
 
         # Check params are correct at the tail of initialization.
         self._check_params()
@@ -149,6 +153,7 @@ class Background:
             (self.modes, (list, type(None)), (), "'modes' should be 'None' or 'list"),
             (self.ok_if_unknown, (list, type(None)), (), "'ok_if_unknown' should be 'None' or 'list'"),
             (self.bridgers, (list, type(None)), (), "'bridgers' should be 'None' or 'list'"),
+            (self.ranges, (dict, type(None)), (), "'ranges' should be 'None' or 'dict'"),
             (self.line_search, (bool,), (), "'line_search' should be 'bool'"),
             (self.recursion, (bool,), (), "'recursion' should be 'bool'"),
             (self.max_tree_depth, (int,), (lambda x: x >= 1,), "'max_tree_depth' should be 'int' >= 1"),
@@ -227,7 +232,7 @@ class Background:
 
         _background = ""
         for _attr, _val in _relevant:
-            if _attr in ["modes", "ok_if_unknown", "bridgers"]:
+            if _attr in ["modes", "ok_if_unknown", "bridgers", "ranges"]:
                 pass
             else:
                 _background += _background_syntax[_attr].format(str(_val).lower())
@@ -247,6 +252,13 @@ class Background:
             if getattr(self, "bridgers"):
                 for _bridger in self.bridgers:
                     _background += "bridger: "  + _bridger + ".\n"
+        except AttributeError:
+            pass
+
+        try:
+            if getattr(self, "ranges"):
+                for _range in self.ranges:
+                    _background += f"range: {_range}={{" + ", ".join(self.ranges[_range]) + "}.\n"
         except AttributeError:
             pass
 
