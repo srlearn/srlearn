@@ -72,11 +72,11 @@ to remain compatible with how
 >>> from srlearn import Background
 >>> bk = Background()
 >>> print(bk)
-setParam: nodeSize=2.
-setParam: maxTreeDepth=3.
 setParam: numOfClauses=100.
 setParam: numOfCycles=100.
 usePrologVariables: true.
+setParam: nodeSize=2.
+setParam: maxTreeDepth=3.
 <BLANKLINE>
 
 This gives us a view into some of the default parameters.
@@ -115,7 +115,7 @@ person in this fictional data set will develop cancer.
 ... )
 >>> clf = BoostedRDNClassifier()
 >>> print(clf)
-BoostedRDNClassifier(background=None, max_tree_depth=3, n_estimators=10, neg_pos_ratio=2, node_size=2, solver='BoostSRL', target='None')
+BoostedRDNClassifier(background=None, n_estimators=10, neg_pos_ratio=2, solver='BoostSRL', target='None')
 
 This pattern should begin to look familiar if you've worked with scikit-learn before.
 This classifier is built on top of
@@ -151,16 +151,16 @@ a series of trees.
 ... )
 >>> clf = BoostedRDNClassifier(background=bk, target="cancer")
 >>> clf.fit(train)
-BoostedRDNClassifier(background=setParam: nodeSize=2.
-setParam: maxTreeDepth=3.
-setParam: numOfClauses=100.
+BoostedRDNClassifier(background=setParam: numOfClauses=100.
 setParam: numOfCycles=100.
 usePrologVariables: true.
+setParam: nodeSize=2.
+setParam: maxTreeDepth=3.
 mode: friends(+person,-person).
 mode: friends(-person,+person).
 mode: cancer(+person).
 mode: smokes(+person).
-, max_tree_depth=3, n_estimators=10, neg_pos_ratio=2, node_size=2, solver='BoostSRL', target='cancer')
+, n_estimators=10, neg_pos_ratio=2, solver='BoostSRL', target='cancer')
 >>> clf.predict(test)
 array([ True,  True,  True, False, False])
 

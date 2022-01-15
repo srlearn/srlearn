@@ -41,18 +41,6 @@ class BaseBoostedRelationalModel:
 
     All that remains is to implement the specific cases of ``fit()``,
     ``predict()``, and ``predict_proba()``.
-
-    >>> from srlearn.base import BaseBoostedRelationalModel
-    >>> class BoostedRDNClassifier(BaseBoostedRelationalModel):
-    ...     def __init__(self, special_parameter=5):
-    ...         super().__init__(self)
-    ...         self.special_parameter = special_parameter
-    ...
-    >>> dn = BoostedRDNClassifier(special_parameter=8)
-    >>> print(dn)
-    BoostedRDNClassifier(special_parameter=8)
-    >>> print(dn.n_estimators)
-    10
     """
 
     def __init__(

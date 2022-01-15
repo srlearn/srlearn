@@ -78,11 +78,11 @@ class Background:
         ...     ],
         ... )
         >>> print(bk)
-        setParam: nodeSize=2.
-        setParam: maxTreeDepth=2.
         setParam: numOfClauses=100.
         setParam: numOfCycles=100.
         usePrologVariables: true.
+        setParam: nodeSize=2.
+        setParam: maxTreeDepth=3.
         mode: cancer(+Person).
         mode: smokes(+Person).
         mode: friends(+Person,-Person).
