@@ -9,12 +9,10 @@ import inspect
 import json
 import logging
 
-from sklearn.utils.validation import check_is_fitted
-import subprocess
-
 from .background import Background
-from .system_manager import FileSystem
+from ._solvers import Solver
 from .utils._parse_trees import parse_tree
+from ._errors import NoEstimatorException
 from ._meta import __version__
 
 
@@ -46,40 +44,41 @@ class BaseBoostedRelationalModel:
     def __init__(
         self,
         *,
-        background=None,
-        target="None",
-        n_estimators=10,
-        node_size=2,
-        max_tree_depth=3,
-        neg_pos_ratio=2,
-        solver="BoostSRL",
+        background: Background = None,
+        target: str = "None",
+        n_estimators: int = 10,
+        node_size: int = 2,
+        max_tree_depth: int = 3,
+        neg_pos_ratio: float = 2.0,
+        solver: Solver = None,
     ):
         """Initialize a BaseEstimator"""
-        self.background = background
-        self.target = target
-        self.n_estimators = n_estimators
-        self.neg_pos_ratio = neg_pos_ratio
         self.solver = solver
 
-        if isinstance(background, Background):
-            self.node_size = node_size
-            self.max_tree_depth = max_tree_depth
+        if isinstance(solver, Solver):
+            self.solver.target = target
+            self.solver.n_estimators = n_estimators
+            self.solver.neg_pos_ratio = neg_pos_ratio
+
+        if isinstance(solver, Solver) and isinstance(background, Background):
+            self.solver.background.node_size = node_size
+            self.solver.background.max_tree_depth = max_tree_depth
 
     @property
     def node_size(self):
-        return self.background.node_size
+        return self.solver.background.node_size
 
     @node_size.setter
     def node_size(self, value):
-        self.background.node_size = value
+        self.solver.background.node_size = value
 
     @property
     def max_tree_depth(self):
-        return self.background.max_tree_depth
+        return self.solver.background.max_tree_depth
 
     @max_tree_depth.setter
     def max_tree_depth(self, value):
-        self.background.max_tree_depth = value
+        self.solver.background.max_tree_depth = value
 
     @classmethod
     def _get_param_names(cls):
@@ -143,9 +142,6 @@ class BaseBoostedRelationalModel:
                 if not c(param):
                     raise ValueError(message)
 
-        # If all params are valid, allocate a FileSystem:
-        self.file_system = FileSystem()
-
     def to_json(self, file_name) -> None:
         """Serialize a learned model to json.
 
@@ -162,8 +158,11 @@ class BaseBoostedRelationalModel:
         .. warning::
 
             There could be major changes between releases, causing old model
-            files to break."""
-        check_is_fitted(self, "estimators_")
+            files to break.
+        """
+
+        if not self.is_available(self.solver, "estimators_"):
+            raise NoEstimatorException("Must `.fit()` before exporting a model.")
 
         with open(
             self.file_system.files.BRDNS_DIR.joinpath(
@@ -295,7 +294,8 @@ class BaseBoostedRelationalModel:
         tree_number: int
             Index of the tree to read.
         """
-        check_is_fitted(self, "estimators_")
+        if not self.is_available(self.solver, "estimators_"):
+            raise NoEstimatorException("Must `.fit()` before getting feature_importance.")
 
         features = []
 
@@ -306,60 +306,45 @@ class BaseBoostedRelationalModel:
             )
         return Counter(features)
 
-    def _get_dotfiles(self):
-        dotfiles = []
-        for i in range(self.n_estimators):
-            with open(
-                self.file_system.files.DOT_DIR.joinpath(
-                    "WILLTreeFor_" + self.target + str(i) + ".dot"
-                )
-            ) as _fh:
-                dotfiles.append(_fh.read())
-        self._dotfiles = dotfiles
-
-    def _check_initialized(self):
-        """Check for the estimator(s), raise an error if not found."""
-        check_is_fitted(self, "estimators_")
-
     @staticmethod
-    def _call_shell_command(shell_command):
-        """Start a new process to execute a shell command.
-
-        This is intended for use in calling jar files. It opens a new process and
-        waits for it to return 0.
-
-        Parameters
-        ----------
-        shell_command : str
-            A string representing a shell command.
-
-        Returns
-        -------
-        None
-        """
-
-        _pid = subprocess.Popen(shell_command, shell=True)
-        _status = _pid.wait()
-        if _status != 0:
-            raise RuntimeError(
-                "Error when running shell command: {0}".format(shell_command)
-            )
+    def is_available(obj: object, _name: str) -> bool:
+        return hasattr(obj, _name) and getattr(obj, _name) is not None
 
     def fit(self, database):
-        raise NotImplementedError
+        self.solver.before_learn(database)
+        self.solver.learn()
+        self.solver.after_learn()
+        return self
 
     def predict(self, database):
-        raise NotImplementedError
+        # Returns `predictions_`
+
+        if not self.is_available(self.solver, "estimators_"):
+            raise NoEstimatorException("Must `.fit()` before prediction.")
+
+        self.solver.before_infer(database)
+        self.solver.infer()
+        self.solver.after_infer()
+        return self.solver.predictions_
 
     def predict_proba(self, database):
-        raise NotImplementedError
+        # Returns `predictions_probs_`
+
+        if not self.is_available(self.solver, "estimators_"):
+            raise NoEstimatorException("Must `.fit()` before prediction.")
+
+        self.solver.before_infer(database)
+        self.solver.infer()
+        self.solver.after_infer()
+        return self.solver.predictions_probs_
 
     def __repr__(self):
         params = self._get_param_names()
         params.remove("max_tree_depth")
         params.remove("node_size")
-        params = ", ".join([str(param) + "=" + repr(self.__dict__[param]) for param in params])
+        # params = ", ".join([str(param) + "=" + repr(self.__dict__[param]) for param in params])
         return (
             self.__class__.__name__
-            + f"({params})"
+            # + f"({params})"
+            + "()"
         )
