@@ -1,15 +1,15 @@
-# Copyright © 2017, 2018, 2019 Alexander L. Hayes
+# Copyright © 2017-2021 Alexander L. Hayes
 
 """
 Relational Dependency Networks
 """
 
-import re
 import warnings
 import numpy as np
 
 from .base import BaseBoostedRelationalModel
 from .database import Database
+from ._solvers import (Solver, BoostSRL_RDN_Solver, SRLBoost_RDN_Solver)
 
 warnings.simplefilter("default")
 
@@ -86,17 +86,50 @@ class BoostedRDNClassifier(BaseBoostedRelationalModel):
             Return the feature importances (based on how often each feature appears)
         """
 
-        super().__init__(
-            background=background,
-            target=target,
-            n_estimators=n_estimators,
-            node_size=node_size,
-            max_tree_depth=max_tree_depth,
-            neg_pos_ratio=neg_pos_ratio,
-            solver=solver,
-        )
+        if solver == "BoostSRL":
+            super().__init__(
+                background=background,
+                target=target,
+                n_estimators=n_estimators,
+                node_size=node_size,
+                max_tree_depth=max_tree_depth,
+                neg_pos_ratio=neg_pos_ratio,
+                solver=BoostSRL_RDN_Solver(
+                    background=background,
+                    neg_pos_ratio=neg_pos_ratio,
+                    n_estimators=n_estimators,
+                    target=target,
+                )
+            )
+            self.solver.background.node_size = node_size
+            self.solver.background.max_tree_depth = max_tree_depth
 
-    def fit(self, database):
+        elif solver == "SRLBoost":
+
+            super().__init__(
+                background=background,
+                target=target,
+                n_estimators=n_estimators,
+                node_size=node_size,
+                max_tree_depth=max_tree_depth,
+                neg_pos_ratio=neg_pos_ratio,
+                solver=SRLBoost_RDN_Solver(
+                    background=background,
+                    neg_pos_ratio=neg_pos_ratio,
+                    n_estimators=n_estimators,
+                    target=target,
+                ),
+            )
+            self.solver.background.node_size = node_size
+            self.solver.background.max_tree_depth = max_tree_depth
+
+
+        else:
+            if isinstance(solver, Solver):
+                print("When I drew nigh the nameless city I knew it was accursed.")
+            raise ValueError(f"Unknown solver: {solver}")
+
+    def fit(self, database: Database):
         """Learn structure and parameters.
 
         Fit the structure and parameters of a Relational Dependency Network using a
@@ -128,117 +161,9 @@ class BoostedRDNClassifier(BaseBoostedRelationalModel):
            2015
         .. [2] https://starling.utdallas.edu/software/boostsrl/
         """
+        super().fit(database)
 
-        self._check_params()
-
-        # Write the background to file.
-        self.background.write(
-            filename="train", location=self.file_system.files.TRAIN_DIR
-        )
-
-        if isinstance(database, tuple):
-            _db = Database()
-            _db.pos = database.pos
-            _db.neg = database.neg
-            _db.facts = database.facts
-            database = _db
-
-        # Write the data to files.
-        database.write(
-            filename="train", location=self.file_system.files.TRAIN_DIR
-        )
-
-        if self.solver == "BoostSRL":
-            _jar = str(self.file_system.files.BOOSTSRL_BACKEND)
-        else:
-            _jar = str(self.file_system.files.SRLBOOST_BACKEND)
-
-        _CALL = (
-            "java -jar "
-            + _jar
-            + " -l -train "
-            + str(self.file_system.files.TRAIN_DIR)
-            + " -target "
-            + self.target
-            + " -trees "
-            + str(self.n_estimators)
-            + " -negPosRatio "
-            + str(self.neg_pos_ratio)
-            + " > "
-            + str(self.file_system.files.TRAIN_LOG)
-        )
-
-        # Call the constructed command.
-        self._call_shell_command(_CALL)
-
-        # Read the trees from files.
-        _estimators = []
-        for _tree_number in range(self.n_estimators):
-            with open(
-                self.file_system.files.TREES_DIR.joinpath(
-                    "{0}Tree{1}.tree".format(self.target, _tree_number)
-                )
-            ) as _fh:
-                _estimators.append(_fh.read())
-
-        self._get_dotfiles()
-        self.estimators_ = _estimators
-
-        return self
-
-    def _run_inference(self, database) -> None:
-        """Run inference mode on the BoostSRL Jar files.
-
-        This is a helper method for ``self.predict`` and ``self.predict_proba``
-        """
-
-        self._check_initialized()
-
-        if isinstance(database, tuple):
-            _db = Database()
-            _db.pos = database.pos
-            _db.neg = database.neg
-            _db.facts = database.facts
-            database = _db
-
-        # Write the background to file.
-        self.background.write(
-            filename="test", location=self.file_system.files.TEST_DIR
-        )
-
-        # Write the data to files.
-        database.write(filename="test", location=self.file_system.files.TEST_DIR)
-
-        if self.solver == "BoostSRL":
-            _jar = str(self.file_system.files.BOOSTSRL_BACKEND)
-        else:
-            _jar = str(self.file_system.files.SRLBOOST_BACKEND)
-
-        _CALL = (
-            "java -jar "
-            + _jar
-            + " -i -test "
-            + str(self.file_system.files.TEST_DIR)
-            + " -model "
-            + str(self.file_system.files.MODELS_DIR)
-            + " -target "
-            + self.target
-            + " -trees "
-            + str(self.n_estimators)
-            + " -aucJarPath "
-            + str(self.file_system.files.AUC_JAR)
-            + " > "
-            + str(self.file_system.files.TEST_LOG)
-        )
-
-        self._call_shell_command(_CALL)
-
-        # Read the threshold
-        with open(self.file_system.files.TEST_LOG, "r") as _fh:
-            _threshold = re.findall("% Threshold = \\d*.\\d*", _fh.read())
-        self.threshold_ = float(_threshold[0].split(" = ")[1])
-
-    def predict(self, database):
+    def predict(self, database: Database) -> np.ndarray:
         """Use the learned model to predict on new data.
 
         Parameters
@@ -251,32 +176,9 @@ class BoostedRDNClassifier(BaseBoostedRelationalModel):
         results : ndarray
             Positive or negative class.
         """
+        return super().predict(database)
 
-        self._run_inference(database)
-
-        # Collect the classifications.
-        _results_db = self.file_system.files.TEST_DIR.joinpath(
-            "results_" + self.target + ".db"
-        )
-        _classes, _results = np.loadtxt(
-            _results_db,
-            delimiter=") ",
-            usecols=(0, 1),
-            converters={0: lambda s: 0 if s[0] == 33 else 1},
-            unpack=True,
-        )
-
-        self.classes_ = _classes
-
-        _neg = _results[_classes == 0]
-        _pos = _results[_classes == 1]
-        _results2 = np.greater(
-            np.concatenate((_pos, 1 - _neg), axis=0), self.threshold_
-        )
-
-        return _results2
-
-    def predict_proba(self, database):
+    def predict_proba(self, database: Database) -> np.ndarray:
         """Return class probabilities.
 
         Parameters
@@ -289,37 +191,17 @@ class BoostedRDNClassifier(BaseBoostedRelationalModel):
         results : ndarray
             Probability of belonging to the positive class
         """
-
-        self._run_inference(database)
-
-        _results_db = self.file_system.files.TEST_DIR.joinpath(
-            "results_" + self.target + ".db"
-        )
-        _classes, _results = np.loadtxt(
-            _results_db,
-            delimiter=") ",
-            usecols=(0, 1),
-            converters={0: lambda s: 0 if s[0] == 33 else 1},
-            unpack=True,
-        )
-
-        _neg = _results[_classes == 0]
-        _pos = _results[_classes == 1]
-        _results2 = np.concatenate((_pos, 1 - _neg), axis=0)
-
-        self.classes_ = _classes
-
-        return _results2
+        return super().predict_proba(database)
 
 
 class BoostedRDN(BoostedRDNClassifier):
 
-    def __init__(self, **args):
+    def __init__(self, **kwargs):
         warnings.warn(
             "Use 'BoostedRDNClassifier' instead of 'BoostedRDN'",
             DeprecationWarning,
         )
-        super().__init__(**args)
+        super().__init__(**kwargs)
 
 
 class BoostedRDNRegressor(BaseBoostedRelationalModel):
@@ -529,53 +411,6 @@ class BoostedRDNRegressor(BaseBoostedRelationalModel):
         self.estimators_ = _estimators
 
         return self
-
-    def _run_inference(self, database) -> None:
-        """Run inference mode on the BoostSRL Jar files.
-
-        This is a helper method for ``self.predict`` and ``self.predict_proba``
-        """
-
-        self._check_initialized()
-
-        # Write the background to file.
-        self.background.write(
-            filename="test", location=self.file_system.files.TEST_DIR
-        )
-
-        if isinstance(database, tuple):
-            _db = Database()
-            _db.pos = database.pos
-            _db.neg = database.neg
-            _db.facts = database.facts
-            database = _db
-
-        # Write the data to files.
-        database.write(filename="test", location=self.file_system.files.TEST_DIR)
-
-        if self.solver == "BoostSRL":
-            _jar = str(self.file_system.files.BOOSTSRL_BACKEND)
-        else:
-            _jar = str(self.file_system.files.SRLBOOST_BACKEND)
-
-        _CALL = (
-            "java -jar "
-            + _jar
-            + " -reg -i -test "
-            + str(self.file_system.files.TEST_DIR)
-            + " -model "
-            + str(self.file_system.files.MODELS_DIR)
-            + " -target "
-            + self.target
-            + " -trees "
-            + str(self.n_estimators)
-            + " -aucJarPath "
-            + str(self.file_system.files.AUC_JAR)
-            + " > "
-            + str(self.file_system.files.TEST_LOG)
-        )
-
-        self._call_shell_command(_CALL)
 
     def predict(self, database):
         """Use the learned model to predict values on new data.
