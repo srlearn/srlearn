@@ -10,8 +10,10 @@
 import os
 import re
 import subprocess
+import warnings
 
-print(
+
+warnings.warn(
     "Deprecation Warning: "
     "'srlearn.boostsrl' is deprecated and will be removed in 0.6.0. "
     "'srlearn.rdn' will replace this functionality."
