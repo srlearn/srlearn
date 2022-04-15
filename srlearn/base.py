@@ -8,6 +8,7 @@ from collections import Counter
 import inspect
 import json
 import logging
+import warnings
 
 from sklearn.utils.validation import check_is_fitted
 import subprocess
@@ -16,6 +17,9 @@ from .background import Background
 from .system_manager import FileSystem
 from .utils._parse_trees import parse_tree
 from ._meta import __version__
+
+
+warnings.simplefilter("default")
 
 
 class BaseBoostedRelationalModel:
@@ -52,14 +56,23 @@ class BaseBoostedRelationalModel:
         node_size=2,
         max_tree_depth=3,
         neg_pos_ratio=2,
-        solver="BoostSRL",
+        solver = None,
     ):
         """Initialize a BaseEstimator"""
         self.background = background
         self.target = target
         self.n_estimators = n_estimators
         self.neg_pos_ratio = neg_pos_ratio
-        self.solver = solver
+
+        if solver is None:
+            warnings.warn(
+                "solver='BoostSRL' will default to solver='SRLBoost' in 0.6.0"
+                ", pass one or the other as an argument to suppress this warning.", FutureWarning)
+            self.solver = "BoostSRL"
+        else:
+            if solver not in ("BoostSRL", "SRLBoost"):
+                raise ValueError("`solver` must be 'SRLBoost' or 'BoostSRL'")
+            self.solver = solver
 
         if isinstance(background, Background):
             self.node_size = node_size

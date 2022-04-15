@@ -59,7 +59,7 @@ class BoostedRDNClassifier(BaseBoostedRelationalModel):
         node_size=2,
         max_tree_depth=3,
         neg_pos_ratio=2,
-        solver="BoostSRL",
+        solver=None,
     ):
         """Initialize a BoostedRDN
 
