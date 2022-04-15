@@ -27,8 +27,9 @@ srlearn
     :alt: Documentation status
 .. _ReadTheDocs: https://srlearn.readthedocs.io/en/latest/
 
-**srlearn** is a set of Python wrappers around
-`BoostSRL <https://starling.utdallas.edu/software/BoostSRL>`_ with a scikit-learn interface.
+**srlearn** is a Python package for learning statistical relational models, and wraps
+`BoostSRL <https://starling.utdallas.edu/software/BoostSRL>`_
+(and `other implementations <https://github.com/srlearn/SRLBoost>`_) with a scikit-learn interface.
 
 - **Documentation**: https://srlearn.readthedocs.io/en/latest/
 - **Questions?** Contact `Alexander L. Hayes  <https://hayesall.com>`_ (`hayesall <https://github.com/hayesall>`_)
