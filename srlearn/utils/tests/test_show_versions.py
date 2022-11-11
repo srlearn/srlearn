@@ -6,7 +6,7 @@ from srlearn.utils._show_versions import _get_deps_info
 from srlearn.utils._show_versions import show_versions
 
 
-DEPENDENCIES = ["srlearn", "pip", "setuptools", "sklearn", "numpy", "scipy"]
+DEPENDENCIES = ["srlearn", "relational_datasets", "sklearn", "numpy", "scipy"]
 
 
 def test_get_missing_deps_inf():
@@ -20,8 +20,7 @@ def test_get_deps_info():
     """Assert that strings are in the output of _get_deps_info()"""
     _deps_info = _get_deps_info(DEPENDENCIES)
     assert "srlearn" in _deps_info
-    assert "pip" in _deps_info
-    assert "setuptools" in _deps_info
+    assert "relational_datasets" in _deps_info
     assert "sklearn" in _deps_info
     assert "numpy" in _deps_info
     assert "scipy" in _deps_info
@@ -35,8 +34,7 @@ def test_show_versions_no_github(capsys):
     assert "executable" in out
     assert "machine" in out
     assert "srlearn" in out
-    assert "pip" in out
-    assert "setuptools" in out
+    assert "relational_datasets" in out
     assert "sklearn" in out
     assert "numpy" in out
     assert "scipy" in out
@@ -53,8 +51,7 @@ def test_show_versions_github(capsys):
     assert "* machine" in out
     assert "**Python Dependencies**" in out
     assert "* srlearn" in out
-    assert "* pip" in out
-    assert "* setuptools" in out
+    assert "* relational_datasets" in out
     assert "* sklearn" in out
     assert "* numpy" in out
     assert "* scipy" in out
