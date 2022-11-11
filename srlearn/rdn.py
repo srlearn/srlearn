@@ -258,7 +258,7 @@ class BoostedRDNClassifier(BaseBoostedRelationalModel):
         _results_db = self.file_system.files.TEST_DIR.joinpath(
             "results_" + self.target + ".db"
         )
-        _classes, _results = np.loadtxt(
+        _classes, _results = np.genfromtxt(
             _results_db,
             delimiter=") ",
             usecols=(0, 1),
@@ -295,7 +295,7 @@ class BoostedRDNClassifier(BaseBoostedRelationalModel):
         _results_db = self.file_system.files.TEST_DIR.joinpath(
             "results_" + self.target + ".db"
         )
-        _classes, _results = np.loadtxt(
+        _classes, _results = np.genfromtxt(
             _results_db,
             delimiter=") ",
             usecols=(0, 1),
