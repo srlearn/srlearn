@@ -5,8 +5,8 @@ Getting Started
 1. Prerequisites
 ----------------
 
-- Java (1.8)
-- Python (3.6, 3.7)
+- Java (1.8, 1.11)
+- Python (3.7, 3.8, 3.9, 3.10)
 
 If you do not have Java, you might install it with your operating system's package manager.
 
