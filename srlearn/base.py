@@ -193,6 +193,7 @@ class BaseBoostedRelationalModel:
             "node_size": self.node_size,
             "max_tree_depth": self.max_tree_depth,
             "neg_pos_ratio": self.neg_pos_ratio,
+            "solver": self.solver,
         }
 
         with open(file_name, "w") as _fh:
