@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Hayes"
+  given-names: "Alexander"
+  orcid: "https://orcid.org/0000-0002-4477-1101"
+title: "srlearn: A Python Library for Gradient-Boosted Statistical Relational Models"
+version: 0.5.4
+date-released: 2021-11-24
+url: "https://github.com/srlearn/srlearn/"
+preferred-citation:
+  type: article
+  authors:
+  - family-names: "Hayes"
+    given-names: "Alexander"
+    orcid: "https://orcid.org/0000-0002-4477-1101"
+  journal: "arXiv"
+  month: 12
+  start: 1
+  end: 3
+  title: "srlearn: A Python Library for Gradient-Boosted Statistical Relational Models"
+  year: 2019
